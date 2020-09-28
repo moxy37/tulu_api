@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Spartacus Toolbox</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/Acme/style.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/Acme/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/jquery/dist/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="libs/Acme/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="libs/Acme/core.min.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="navbar-brand" href="/"><span>Spartacus Prototyping Toolbox</span></a>
+
+                <div class="user-information" id="UserWelcome"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div id="sidebar-left" class="col-sm-1">
+                <div class="nav-collapse sidebar-nav navbar-collapse bs-navbar-collapse collapse">
+                    <ul class="nav nav-tabs nav-stacked main-menu" id="Navigation_UL">
+                    </ul>
+                </div>
+            </div>
+            <div id="content" class="col-sm-11 content">
+                <!-- MAIN CONTENT HERE -->
+                <h1>Spartacus Workflow Page</h1>
+
+                <div id="WorkflowList"></div>
+
+                <div id="WorkflowData">
+                    <table id="WorkflowTable">
+                        <tr>
+                            <td>Label:</td>
+                            <td><input type="text" id="labelText" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td>Step Type</td>
+                            <td>
+                                <select id="stepTypeSelect" onchange="ChangeSubType();">
+                                    <option value="0">Trigger</option>
+                                    <option value="1">Conditional</option>
+                                    <option value="2">Action</option>
+                                    <option value="3">End</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sub Type</td>
+                            <td>
+                                <div id="subActionSelectDiv">
+                                    <select id="subActionSelect">
+                                        <option value="0">None</option>
+                                        <option value="1">Get</option>
+                                        <option value="2">Send</option>
+                                        <option value="3">Load</option>
+                                        <option value="4">Update</option>
+                                        <option value="5">Save</option>
+                                        <option value="6">Email</option>
+                                        <option value="7">Get From Document</option>
+                                    </select>
+                                </div>
+                                <div id="subConditionalSelectDiv">
+                                    <select id="subConditionalSelect">
+                                        <option value="0">None</option>
+                                        <option value="1">Any</option>
+                                        <option value="2">Equals</option>
+                                        <option value="3">Between</option>
+                                        <option value="4">Greater Than</option>
+                                        <option value="5">Greater Than Or Equals</option>
+                                        <option value="6">Less Than</option>
+                                        <option value="7">Less Than Or Equals</option>
+                                        <option value="8">In List</option>
+                                        <option value="9">Not Equals</option>
+                                        <option value="10">Not In List</option>
+                                        <option value="11">Like</option>
+                                        <option value="12">Count Equals</option>
+                                        <option value="13">Count More Than</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Success Id</td>
+                            <td><select id="successIdText"></select>
+                        </tr>
+                        <tr>
+                            <td>Failure Id</td>
+                            <td><select id="failureIdText"></select>
+                        </tr>
+                        <tr>
+                            <td>Data Type</td>
+                            <td>
+                                <select id="FdType">
+                                    <option value="0">String</option>
+                                    <option value="1">Integer</option>
+                                    <option value="2">Float</option>
+                                    <option value="3">Date-Time</option>
+                                    <option value="4">Boolean</option>
+                                    <!-- <option value="6">Select-String</option>
+                                    <option value="8">Select-Float</option>
+                                    <option value="9">Select-Integer</option>
+                                    <option value="10">Text</option>
+                                    <option value="17">Password</option>
+                                    <option value="18">Unique String</option>
+                                    <option value="11">Document-Pointer</option>
+                                    <option value="12">Document</option>
+                                    <option value="13">Pointer-Group</option>
+                                    <option value="14">Document-Group</option> -->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Data</td>
+                            <td>
+                                <table id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Value</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td>
+                                                <input type="text" id="newDataEntry" value="" />
+                                            </td>
+                                            <td>
+                                                <input type="button" class="btn btn-primary" value="Add To Data" onclick="AddNewData();" />
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Document Definitions</td>
+                            <td id="DocDefList"></td>
+                        </tr>
+                        <tr>
+                            <td>Document</td>
+                            <td id="DocumentList"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" class="btn" value="Cancel" />
+                            </td>
+                            <td>
+                                <input type="button" class="btn btn-primary" value="Save Workflow" onclick="SaveWorkflow();" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="Results"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!--
+    <footer>
+        <div class="row">
+            <div class="col-sm-5">&copy; 2016</div>
+            <div class="col-sm-7 text-right">
+                app powered by Spartacus
+            </div>
+        </div>
+    </footer>
+-->
+    <script type="text/javascript" src="javascripts/core/userview.js"></script>
+    <script type="text/javascript" src="libs/document/popup.js"></script>
+    <script type="text/javascript" src="libs/document/helpers.js"></script>
+    <script type="text/javascript" src="libs/document/core/workflowhelper.js"></script>
+</body>
+
+</html>

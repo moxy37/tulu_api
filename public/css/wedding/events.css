@@ -1,0 +1,350 @@
+.dinner-table-small .round-table-shadow {
+    height: 100%;
+    width: 100%;
+}
+
+.dinner-table-small .table-shadow {
+    content: "";
+    display: block;
+    height: 45px;
+    width: 50px;
+    margin-top: 2px;
+    margin-left: 4px;
+    border-radius: 45px;
+    border-bottom: solid 4px #CCC;
+    transform: rotate(-24deg);
+}
+
+.dinner-table-small {
+    position: absolute;
+    background-size: 74%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    margin: 5px;
+    padding-bottom: 5px;
+}
+.dinner-table-small-label {
+    font-size: 8pt;
+}
+.font-styling-type {
+    font-family: Courgette;
+}
+
+
+ .dinner-table-medium .round-table-shadow {
+    height: 100%;
+    width: 100%;
+}
+
+.dinner-table-medium .table-shadow {
+    content: "";
+    display: block;
+    height: 105px;
+    width: 110px;
+    margin-top: 2px;
+    margin-left: 7px;
+    border-radius: 105px;
+    border-bottom: solid 6px #CCC;
+    transform: rotate(-24deg);
+}
+
+.dinner-table-medium {
+    position: absolute;
+    background-size: 74%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 120px;
+    -webkit-border-radius: 120px;
+    -moz-border-radius: 120px;
+    border-radius: 120px;
+    margin: 10px;
+    padding-bottom: 10px;
+}
+/*Large Tables*/
+.dinner-table-large .round-table-shadow {
+    height: 100%;
+    width: 100%;
+}
+
+.dinner-table-large .table-shadow {
+    content: "";
+    display: block;
+    height: 165px;
+    width: 170px;
+    margin-top: 2px;
+    margin-left: 11px;
+    border-radius: 165px;
+    border-bottom: solid 6px #CCC;
+    transform: rotate(-24deg);
+}
+
+.dinner-table-large {
+    position: absolute;
+    background-size: 74%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 180px;
+    height: 180px;
+    -webkit-border-radius: 180px;
+    -moz-border-radius: 180px;
+    border-radius: 180px;
+    margin: 10px;
+    padding-bottom: 10px;
+}
+.dinner-table-medium-label {
+    font-size: 14pt;
+}
+
+.tables {
+    text-align: center;
+    position: relative;
+    margin-top: 5%;
+    padding: 20px 0 20px 0;
+}
+
+.blank-dinner-table {
+    border: none;
+    background-color: transparent;
+    background-image: none;
+}
+
+.blank-dinner-table .table-shadow, .blank-dinner-table span {
+    display: none;
+}
+
+.blinking-dinner-table.dinner-table .table-shadow {
+    -webkit-animation-duration: 700ms;
+    -moz-animation-duration: 700ms;
+    -o-animation-duration: 700ms;
+    animation-duration: 700ms;
+    animation-name: blink-table;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+    animation-name: blink-table;
+}
+
+.rotating-dinner-table {
+    -webkit-animation-duration: 700ms;
+    -moz-animation-duration: 700ms;
+    -o-animation-duration: 700ms;
+    animation-duration: 700ms;
+    animation-name: blink-table;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+    animation-name: rotate-table;
+}
+
+.blinking-person-name {
+    -webkit-animation-duration: 1300ms;
+    -moz-animation-duration: 1300ms;
+    -o-animation-duration: 1300ms;
+    animation-duration: 1300ms;
+    animation-name: blink-table;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+    animation-name: blink-name;
+}
+
+.inline-dinner-table {
+    display: inline-table;
+}
+
+@keyframes blink-name {
+    20% {
+        background-color: transparent;
+        color: black;
+    }
+}
+
+@keyframes rotate-table {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes blink-table {
+    20% {
+        border-bottom: solid 6px transparent;
+    }
+}
+
+header {
+    background-color: rgba(138, 138, 138, 0.4);
+    margin: 0;
+    height: 200px;
+    font-size: 44px;
+}
+
+header h1 {
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    bottom: 70px;
+}
+
+header img {
+    height: 200px;
+    width: 400px;
+}
+
+.left {
+    width: 78%;
+    float: left;
+}
+
+.right {
+    width: 18%;
+    float: right;
+    padding: 4px;
+}
+
+.person-name {
+    color: #f5f5f5;
+    background-color: rgba(132, 131, 132, 0.82);
+    opacity: 0.82;
+    border-radius: 6px;
+    padding: 10px;
+    border: 3px #f5f5f5;
+    font-family: Courgette;
+    font-size: 25pt;
+    text-align: center;
+    margin: 5px;
+}
+
+body {
+    background-size: cover; 
+    overflow-x: hidden; 
+    margin: 0;
+    cursor: none;
+}
+
+body:before {
+    content:"";
+    display:block;
+    position:fixed;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    z-index:-1;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.content-background {
+    z-index: -10;
+    position: absolute;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+
+}
+/* .font-type-Courgette {
+    font-family: Courgette;
+}
+.font-type-Aaargh {
+    font-family: Aaargh;
+}
+.font-type-AlexBrush-Regular {
+    font-family: AlexBrush-Regular;
+}
+.font-type-cac_champagne {
+    font-family: cac_champagne;
+}
+.font-type-freebooterscript {
+    font-family: freebooterscript;
+}
+.font-type-Ovo-Regular {
+    font-family: Ovo-Regular;
+}
+.font-type-blackjack{
+    font-family: blackjack;
+}
+.font-type-blackjack{
+    font-family: blackjack;
+}
+.font-type-Lato-Light{
+    font-family: Lato-Light;
+}
+.font-type-Lato-Regular{
+    font-family: Lato-Regular;
+}
+.font-type-Papyrus{
+    font-family: PAPYRUS;
+} */
+.font-custom{
+    font-family: custom;
+}
+/* @font-face {
+    font-family: "Courgette";
+    src: url("Courgette-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Aaargh";
+    src: url("Aaargh.ttf") format("truetype");
+}
+@font-face {
+    font-family: "AlexBrush-Regular";
+    src: url("AlexBrush-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "cac_champagne";
+    src: url("cac_champagne.ttf") format("truetype");
+}
+@font-face {
+    font-family: "freebooterscript";
+    src: url("freebooterscript.ttf") format("truetype");
+}
+@font-face {
+    font-family: "blackjack";
+    src: url("blackjack.otf") format("opentype");
+}
+@font-face {
+    font-family: "Ovo-Regular";
+    src: url("Ovo-Regular.otf") format("opentype");
+}
+@font-face {
+    font-family: "Lato-Light";
+    src: url("Lato-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Lato-Regular";
+    src: url("Lato-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "PAPYRUS";
+    src: url("PAPYRUS.ttf") format("truetype");
+}
+@font-face {
+    font-family: "comic";
+    src: url("comic.ttf") format("truetype");
+} */

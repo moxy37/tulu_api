@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Spartacus Toolbox</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/Acme/style.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/Acme/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/jquery/dist/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="libs/Acme/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="libs/Acme/core.min.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="navbar-brand" href="/"><span>Spartacus Prototyping Toolbox</span></a>
+                <div class="user-information" id="UserWelcome"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div id="sidebar-left" class="col-sm-1">
+                <div class="nav-collapse sidebar-nav navbar-collapse bs-navbar-collapse collapse">
+                    <ul class="nav nav-tabs nav-stacked main-menu" id="Navigation_UL">
+                    </ul>
+                </div>
+            </div>
+            <div id="content" class="col-sm-11 content">
+                <!-- MAIN CONTENT HERE -->
+                <h1>Spartacus Report Page</h1>
+                <div id="RootNodeContainer">
+                    <div id="DocDefList"></div>
+                    <input type="button" class="btn" value="Make New Root" id="RootNodeButton" onclick="MakeNewRootNode();" />
+                </div>
+                <div id="NodeContainer">
+                </div>
+                <br/>
+                <div id="FilterEditor" class="col-sm-8">
+                    <div id="FieldSelectDiv"></div>
+                    <div id="FieldDataTypeDiv">
+                        <select id="FieldDataTypeSelect">
+                            <option value="0">String</option>
+                            <option value="1">Integer</option>
+                            <option value="2">Float</option>
+                            <option value="3">Date-Time</option>
+                            <option value="4">Boolean</option>
+                            <option value="5">UUID</option>
+                            <option value="6">Select-String</option>
+                            <option value="7">File</option>
+                            <option value="8">Select-Float</option>
+                            <option value="9">Select-Integer</option>
+                            <option value="10">Text</option>
+                            <option value="11">Document</option>
+                            <option value="13">Pointer-Group</option>
+                            <option value="14">Document-Group</option>
+                        </select>
+                    </div>
+                    <div id="FilterTypes">
+                        <select id="ConditionTypeSelect" onchange="ChangeConditionType();">
+                            <option value="0">None</option>
+                            <option value="1">Equals</option>
+                            <option value="2">Between</option>
+                            <option value="3">Greater Than</option>
+                            <option value="4">Greater Than Or Equal</option>
+                            <option value="5">Less Than</option>
+                            <option value="6">Less Than Or Equal</option>
+                            <!--<option value="7">In List</option>-->
+                            <option value="8">Not Equal</option>
+                            <!--<option value="9">Not In List</option>-->
+                            <option value="10">Like</option>
+                            <!--<option value="11">Count Equals</option>
+                            <option value="12">CountMoreThan</option>-->
+                        </select>
+                    </div>
+                    <div id="FilterData"></div>
+                </div>
+                <div id="ResultList"></div>
+                <div id="Messages"></div>
+                <input type="button" class="btn" value="Run Report" onclick="RunReport();" />
+                <div id="Results"></div>
+                <div id="TestResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!--
+    <footer>
+        <div class="row">
+            <div class="col-sm-5">&copy; 2016</div>
+            <div class="col-sm-7 text-right">
+                app powered by Spartacus
+            </div>
+        </div>
+    </footer>
+-->
+    <script type="text/javascript" src="javascripts/core/userview.js"></script>
+    <script type="text/javascript" src="libs/document/helpers.js"></script>
+    <script type="text/javascript" src="libs/document/popup.js"></script>
+
+    <script type="text/javascript" src="javascripts/core/reportview.js"></script>
+</body>
+
+</html>

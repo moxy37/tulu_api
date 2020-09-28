@@ -1,0 +1,79 @@
+    .dean-test {
+        background-color: #6699ff;
+        width: 200px;
+        height: 200px;
+        border-radius: 50px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 30px;
+        float: left;
+        margin-bottom: 20px;
+    }
+    
+    .dean-test h2 {
+        padding-top: 30px;
+        font-size: 1.4em;
+        font-weight: bold;
+    }
+    
+    .dean-test p {
+        font-size: 0.8em;
+    }
+    
+    .dean-test-float-right {
+        font-size: 2.4em;
+        font-weight: bold;
+        float: right;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .dean-menu-title-div {
+        float: left;
+        font-size: 2.3em;
+        font-weight: bold;
+    }
+    
+    .dean-price {
+        font-size: 1.7em;
+        font-weight: bold;
+    }
+    
+    .dean-select-item {
+        background-color: #33cc33;
+        width: 200px;
+        height: 200px;
+        border-radius: 50px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 30px;
+        float: right;
+        line-height: 200px;
+        margin-bottom: 20px;
+    }
+    
+    .option-done {
+        background-color: #33cc33;
+    }
+    
+    .option-error {
+        background-color: #ff6666;
+    }
+    
+    .inactive-button {
+        background-color: #b3b3b3;
+    }
+    
+    .option-selected {
+        background-color: #b3b3b3;
+    }
+    
+    .warning-text {
+        background-color: red;
+        font-size: 2.0em;
+        font-weight: bold;
+    }
+    
+    .dean-table {
+        width: 100%;
+    }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Spartacus Toolbox</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/Acme/style.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/lib/Acme/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/jquery/dist/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="libs/Acme/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="libs/Acme/core.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="navbar-brand" href="/"><span>Spartacus Prototyping Toolbox</span></a>
+                <div class="user-information" id="UserWelcome"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div id="sidebar-left" class="col-sm-1">
+                <div class="nav-collapse sidebar-nav navbar-collapse bs-navbar-collapse collapse">
+                    <ul class="nav nav-tabs nav-stacked main-menu" id="Navigation_UL">
+                    </ul>
+                </div>
+            </div>
+            <div id="content" class="col-sm-11 content">
+                <!-- MAIN CONTENT HERE -->
+                <h1>Spartacus User Page</h1>
+                <!--<div id="PatronSelectDiv"></div>
+                <input type="button" value="Show Current Locations" onclick="TestMe();" class="btn" />
+                -->
+                <div id="LoginDiv">
+                    <table>
+                        <tr>
+                            <th>Email:</th>
+                            <td><input type="text" id="Username" /></td>
+                        </tr>
+                        <tr>
+                            <th>Password</th>
+                            <td><input type="password" id="Password" /></td>
+                        </tr>
+                        <tr>
+                            <td> <input type="button" class="btn" value="Login" onclick="Login();" /> </td>
+                            <td> <input type="button" class="btn btn-primary" value="Logout" onclick="Logout();" /> </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="Messages"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <!--
+    <footer>
+        <div class="row">
+            <div class="col-sm-5">&copy; 2016</div>
+            <div class="col-sm-7 text-right">
+                app powered by Spartacus
+            </div>
+        </div>
+    </footer>
+-->
+
+    <script type="text/javascript" src="libs/document/popup.js"></script>
+    <script type="text/javascript" src="libs/document/helpers.js"></script>
+    <script type="text/javascript" src="javascripts/core/userview.js"></script>
+</body>
+
+</html>

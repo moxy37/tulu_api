@@ -1,0 +1,470 @@
+* {
+    font-family: Lato-Light, sans-serif;
+}
+
+#ModalScreen {
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+#Cont {
+    width: 100%;
+}
+
+.modal-body {
+    font-size: 30pt;
+    text-align: center;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.btn-primary {
+    position: relative;
+    right: 200px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.btn-secondary {
+    position: relative;
+    right: 200px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#EventMap {
+    width: 100%;
+    /*height: 800px;*/
+    display: block;
+    /*float: left;*/
+    /* background-color: green; */
+}
+
+.grad {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+
+#TitleDiv {
+    width: 100%;
+    height: 100px;
+    /* background-color: #3C566C; */
+    color: white;
+}
+
+#Controls {
+    width: 100%;
+    margin: 0 auto;
+}
+
+@font-face {
+    font-family: "Lato-Regular";
+    src: url("fonts/Lato-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lato-Light";
+    src: url("fonts/Lato-Light.ttf") format("truetype");
+}
+
+#TitleDiv h1 {
+    font-family: Lato-Regular, sans-serif;
+    font-weight: 400;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.selectBtn {
+    background-color: #e1001b;
+    width: 240px;
+    font-size: 2em;
+    text-align: center;
+    padding: 14px 25px;
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: .5s;
+}
+
+.selectBtn:hover {
+    background-color: #C2B5A8;
+    color: black;
+}
+
+.disable-me {
+    background-color: #C2B5A8;
+    color: black;
+    width: 20%;
+    font-size: 2.0em;
+    text-align: center;
+    padding: 14px 25px;
+    height: 50px;
+    /* float: right; */
+    display: inline-block;
+    position: relative;
+    /* top: -38px; */
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: .5s;
+}
+
+.toggleBtn {
+    /* top: 50%; */
+    background-color: #e1001b;
+    width: 20%;
+    font-size: 2.0em;
+    text-align: center;
+    padding: 14px 25px;
+    height: 50px;
+    /* float: right; */
+    display: inline-block;
+    position: relative;
+    /* top: -38px; */
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: .5s;
+}
+
+.floatRight {
+    float: right;
+}
+
+.toggleBtn:hover {
+    background-color: #C2B5A8;
+    color: black;
+}
+
+.controls_btn_container {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #C2B5A8;
+}
+
+.controlsBtn {
+    box-sizing: border-box;
+    background-color: #e1001b;
+    display: inline-block;
+    padding: 10px 15px;
+    padding-top: 6px;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    margin: 0px;
+    cursor: pointer;
+    border-left: 1px solid white;
+}
+
+.controlsBtn:hover {
+    background-color: #3C566C;
+}
+
+.active_controls_tab {
+    background-color: #3C566C;
+    padding-top: 11px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+#goToSelectColor {
+    margin-left: -3px;
+}
+
+.action-select-div {
+    border: 5px solid #FFF;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+    font-size: 1.5em!important;
+    background-color: gray;
+    background-color: #e1001b;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+    border-radius: 50%;
+    transition: .3s;
+    /* border: 5px solid #FFF; */
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+    font-size: 1.5em!important;
+    /* background-color: gray; */
+}
+
+.action-select-div:hover {
+    background-color: #3C566C;
+    color: white;
+    border: none;
+    box-shadow: 5px 5px 5px grey;
+    font-weight: bold;
+}
+
+.action-select-div-a {
+    background-color: #e1001b;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+    border-radius: 50%;
+    transition: .3s;
+    /* border: 5px solid #FFF; */
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+    font-size: 1.5em!important;
+}
+
+.action-select-div-a:hover {
+    background-color: #3C566C;
+    color: white;
+    border: none;
+    box-shadow: 5px 5px 5px grey;
+    font-weight: bold;
+}
+
+.action-selected {
+    background-color: #3C566C;
+    color: white;
+    border: none;
+    box-shadow: 5px 5px 5px grey;
+    transition: .3s;
+}
+
+.action-selected-a {
+    background-color: #3C566C;
+    color: white;
+    border: none;
+    box-shadow: 5px 5px 5px grey;
+    transition: .3s;
+}
+
+.color-select-div-2 {
+    border: none;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: #1c129c;
+    color: white;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.color-select-div {
+    border: none;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: #978681;
+    color: white;
+    transition: .3s;
+    cursor: pointer;
+    /* border: 5px solid #FFF; */
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+    font-size: 1em!important;
+}
+
+.color-select-div-selected {
+    background-color: #3C566C;
+}
+
+.color-select-div:hover {
+    box-shadow: 5px 5px 5px grey;
+    background-color: #C2B5A8;
+}
+
+.controls_sub_container {
+    margin-bottom: 20px;
+}
+
+.light_groupings_container {
+    margin-top: 10px;
+}
+
+.container_heading {
+    font-weight: 400;
+    font-family: Lato-Regular, sans-serif;
+    color: #3C566C;
+    border-bottom: 3px solid #C2B5A8;
+    margin-bottom: 10px;
+    width: 33%;
+}
+
+.light_groupings_container select {
+    font-size: 1.5em;
+    padding: 5px 10px;
+    border: 1px solid #e1001b;
+    transition: .2s;
+    width: 258px;
+}
+
+.light_groupings_container select:hover {
+    border: 1px solid #3C566C;
+}
+
+.controls_sub_btn {
+    border: none;
+    font-size: 1.5em;
+    padding: 10px 15px;
+    margin-left: 15px;
+    background-color: #e1001b;
+    transition: .3s;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.controls_sub_btn:hover {
+    background-color: #3C566C;
+    color: white;
+    font-weight: bold;
+    box-shadow: 4px 4px 5px grey;
+}
+
+.controls_text_input {
+    font-size: 1.5em;
+    padding: 5px 10px;
+    border: 1px solid #e1001b;
+    transition: .2s;
+}
+
+.controls_text_input:hover {
+    border: 1px solid #3C566C;
+}
+
+.manual_color_label {
+    font-size: 2em !important;
+    font-family: Lato-Regular, sans-serif;
+}
+
+#red_label {
+    color: red;
+}
+
+#blue_label {
+    color: blue;
+}
+
+#green_label {
+    color: green;
+}
+
+.control_call_btn {
+    width: 200px;
+    height: 100px;
+    background-color: #e1001b;
+    display: inline-block;
+    font-size: 1.5em;
+    margin-right: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.control_call_btn:hover {
+    background-color: #3C566C;
+    color: white;
+    font-weight: bold;
+    box-shadow: 4px 4px 5px grey;
+}
+
+.control_call_btn div {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.color-selected {
+    box-sizing: border-box;
+    box-shadow: 4px 4px 5px grey;
+    border: 2px solid black;
+}
+
+.flash-div {
+    -webkit-animation: flash linear 1s infinite;
+    animation: flash linear 1s infinite;
+}
+
+@-webkit-keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.device-table-div {
+    position: absolute;
+    border-radius: 50px;
+    border: 2px solid #000;
+    padding: 0px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #FFFFFF;
+}
+
+.device-table-inner-div {
+    position: relative;
+    border-radius: 46px;
+    padding: 0px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #FFFFFF;
+    font-size: 1.2em!important;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.waiting-table-div {
+    position: absolute;
+    border-radius: 50px;
+    border: 2px solid #909090;
+    padding: 0px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #FFFFFF;
+    color: #909090;
+}

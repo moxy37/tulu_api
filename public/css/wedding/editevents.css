@@ -1,0 +1,78 @@
+.draggable {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    font-size: 2em;
+}
+
+.draggable-small {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 1.5em;
+}
+
+.draggable-large {
+    width: 180px;
+    height: 180px;
+    line-height: 180px;
+    font-size: 2.5em;
+}
+
+.table-div {
+    border-radius: 50%;
+    color:white;
+    background-color:#666;
+    text-align: center;
+    cursor: move;
+}
+
+.active-drag{
+    background-color:#42d4f4;
+    font-weight:bold;
+}
+
+.full-table-size {
+    width: 100%;
+    min-width: 600px;
+}
+
+.h-label {
+    width: 25%;
+    font-size:2.0em;
+}
+
+.color-selected-1
+{
+    box-shadow: 5px 5px 5px grey;
+    border: 5px solid black;
+}
+
+.color-select-div-1
+{
+    /* border: none; */
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: #978681;
+    color: black;
+    transition: .3s;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align:center; 
+    vertical-align: middle;  
+    float:left;
+    font-size: 3em!important;
+}
+
+.color-select-div-selected-1 {
+    background-color: #3C566C;
+}
+
+.color-select-div-1:hover
+{
+    /* box-shadow: 5px 5px 5px grey; */
+    background-color: #C2B5A8;
+}
