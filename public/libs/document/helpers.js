@@ -159,60 +159,6 @@ async function SaveDoc(doc) {
   return result;
 }
 
-async function GetOperatorsOfCompany() {
-  var obj = new Object();
-  obj.tokenId = tokenId;
-  obj.addDummy = 'true';
-  //obj.isPacked = "true";
-  const result = await $.ajax({
-    type: "PUT",
-    url: "/api/company/operators/list",
-    //url: "/api/document/list/pack",
-    data: obj,
-    cache: false,
-    contentType: "application/x-www-form-urlencoded",
-    dataType: "json",
-    success: function (results) { },
-    error: function (results) { console.log(results.statusText); },
-  });
-  return result;
-}
-
-function DynamicFooter() {
-  var footer = '<footer>';
-  if (gUser["Company User Type"] === "Owner") {
-    if (gUser["companyType"] === "Construction") {
-      footer += `<a onclick="LocationChange('jobSearch');" class="">Search</a><a onclick="LocationChange('post');" class="post">Post</a><a onclick="LocationChange('allProjects');" class="allProjects">All Projects</a><a onclick="LocationChange('updateUser');" class="account">Account</a>`;
-    }
-    else {
-      footer += `<a href="javascript:LocationChange('jobSearch');" class="today">Search</a><a href="javascript:LocationChange('jobHistory');" class="allProjects">Job History</a><a id="manage-menu-opener" href="" class="manage">Manage</a><a href="javascript:LocationChange('updateUser');" class="account">Account</a><div id="manage-users-menu"><a href="javascript:LocationChange('manageOperators');">Manage Operators</a><a href="javascript:LocationChange('manageAffiliates');">Manage Affiliates</a><a href="javascript:LocationChange('manageCompanies');">Manage Companies</a></div>`;
-    }
-  } else if (gUser["Company User Type"] === "Supervisor") {
-    footer += `<a href="" class="clockInBtn">Clock In</a><a href="" class="historyBtn">History</a><a href="javascript:LocationChange('updateUser');">Account</a>`;
-  } else {
-    footer += `<a class="clock-in" href="javascript:return false;">Clock In</a><a href="javascript:LocationChange('jobHistory');">History</a><a href="javascript:LocationChange('updateUser');">Account</a>`;
-  }
-  footer += '</footer>';
-  $("footer").remove();
-  $('body').append(footer);
-  var manageMenuButtonPosition = $('.manage').offset();
-  // position manage menu
-  if (gUser["Company User Type"] === "Owner" && gUser["companyType"] != "Construction") {
-    $("#manage-users-menu").offset({
-      top: manageMenuButtonPosition.top - 150,
-      left: manageMenuButtonPosition.left - ($('#manage-users-menu').width() - $('.manage').width())
-    });
-    $("#manage-menu-opener").click(function (e) {
-      if ($("#manage-users-menu").css('display') == 'none') {
-        $("#manage-users-menu").css('display', 'flex');
-        console.log($("#manage-users-menu").css("display"));
-      } else {
-        $("#manage-users-menu").css('display', 'none');
-      }
-      e.preventDefault();
-    });
-  }
-}
 
 async function packContainer(doc) {
   var obj = new Object();
