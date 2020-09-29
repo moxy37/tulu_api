@@ -30,6 +30,7 @@ app.use('/', require('./controllers/core/documentcontroller'));
 app.use('/', require('./controllers/core/definitioncontroller'));
 app.use('/', require('./controllers/core/reportcontroller'));
 app.use('/', require('./controllers/client/test/testcontroller'));
+app.use('/', require('./controllers/client/vehicle/vehiclecontroller'));
 // app.get('/', function (request, response) {
 //     response.render('client/index');
 // });
