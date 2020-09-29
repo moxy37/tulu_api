@@ -1,0 +1,75 @@
+*{
+    margin:0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: ralewayLight;
+    src: url(../fonts/Raleway-Light.ttf);
+}
+
+@font-face {
+    font-family: ralewayMedium;
+    src: url(../fonts/Raleway-Medium.ttf);
+}
+
+@font-face {
+    font-family: ralewaySemiBold;
+    src: url(../fonts/Raleway-SemiBold.ttf);
+}
+
+title{
+    display: none;
+}
+
+header{
+    background:#8b9196;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.banner{
+    justify-content: center;
+    align-items: center;
+}
+
+.banner img{
+    width:350px;
+}
+
+section.first{
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+section.first div{
+    justify-content: center;
+    align-items: center;
+}
+
+section.first div img{
+    width:300px;
+}
+
+section.second{
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+section.second div{
+    justify-content: center;
+    align-items: center;
+}
+
+.circle{
+    overflow: hidden;
+    border-radius: 50%;
+    background:red;
+    width:150px;
+    height:150px;
+}

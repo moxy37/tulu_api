@@ -1,0 +1,39 @@
+
+/* Car Section */
+
+.vehicles{
+    padding:0 15px 15px 15px;
+}
+
+.vehicleList{
+    flex-direction: column;
+}
+
+.vehicleListItems{
+    background:white;
+    filter: drop-shadow(0px 15px 5px #3333331e);
+    border-radius: 20px;
+    padding:25px 10px;
+    flex-direction: column;
+    align-items: center;
+    margin:10px 0;
+}
+
+.carImage{
+    width:300px;
+}
+
+.carDetails{
+    justify-content: center;
+    align-items: center;
+}
+
+.carDetails button{
+    background:#79C6AC;
+    color:white;
+    border:none;
+    margin:20px 0 0 0;
+    padding:10px 20px;
+    border-radius:10px;
+    font-family: ralewaySemiBold;
+}

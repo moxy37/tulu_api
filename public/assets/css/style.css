@@ -1,0 +1,26 @@
+body{
+    background:#0c1114;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+.logo{
+    width:150px;
+    opacity:0.05;
+}
+
+button{
+    background:#79C6AC ;
+    align-items: center;
+    margin:50px 0 0 0;
+    width:300px;
+    padding:20px;
+    opacity:0.01;
+    border-radius: 10px;
+    border:none;
+}
+
+button h3{
+    color: white;
+}

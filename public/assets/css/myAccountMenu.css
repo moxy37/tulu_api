@@ -1,0 +1,29 @@
+
+/* MyAccount Menu */
+.myAccountMenu{
+    position:fixed;
+    width:100vw;
+    bottom:0;
+    background:#8b9196;
+    padding:10px 0;
+    margin:0 0 0 0;
+    
+}
+
+.myAccountMenu ul{
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.myAccountMenu ul li a{
+    font-size: xx-small;
+    color:white;
+    margin:0 10px;
+    align-items: center;
+}
+
+
+.myAccountMenu ul li a i{
+    color:white;
+    padding:5px 0;
+}

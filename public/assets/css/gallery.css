@@ -1,0 +1,42 @@
+.carImageList{
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.carImageListItems{
+    margin:10px;
+}
+
+.carImageListItems img{
+    width:100px;
+}
+
+.carImageListItems img:hover{
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+/*Lighbox CSS*/
+
+.lightbox {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  padding-top: 30px;
+  box-sizing: border-box;
+}
+
+.lightbox img {
+  display: block;
+  margin: auto;
+}
+
+  

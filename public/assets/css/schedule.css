@@ -1,0 +1,73 @@
+/* CALENDAR HEADER */
+
+.calendarContainer{
+    margin:50px 0 0 0;
+    background:#79C6AC;
+    align-items: center;
+}
+
+.calendarHeader{
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background:#79C6AC ;
+    padding:15px 0;
+    width:90vmin;
+}
+
+
+.calendarHeader i,.calendarHeader h3{
+    color:white;
+}
+
+table{
+    border-left:10px solid #79C6AC;
+    border-right:10px solid #79C6AC;
+    border-bottom:10px solid #79C6AC;
+    background:#79C6AC;
+    width:90vmin;
+}
+
+tr,th,td{
+    background:white;
+    table-layout: auto;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color:#79C6AC ;
+}
+th,td{
+    background:#ffffff;
+    border:1px solid #79c6ac00;
+    border-radius: 10%;
+    padding:15px 0;
+    
+}
+
+
+td:hover{
+    border:1px solid white;
+    background:#79c6ac;
+    color:white;
+    transition:0.5s;
+}
+
+.scheduleContainer{
+    padding:15px 30px 80px 30px;
+}
+
+.scheduleContainer ul li{
+    padding:10px 0 0 10px;
+    border-bottom:1px solid #8b91964d;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.clientName{
+    color:#79C6AC;
+}
+
+.clientPhone,.clientEmail{
+    font-size: small;
+}

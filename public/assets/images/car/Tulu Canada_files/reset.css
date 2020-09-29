@@ -1,0 +1,38 @@
+/* Fonts */
+
+@font-face {
+    font-family: ralewayLight;
+    src: url(../fonts/Raleway-Light.ttf);
+}
+
+@font-face {
+    font-family: ralewayMedium;
+    src: url(../fonts/Raleway-Medium.ttf);
+}
+
+@font-face {
+    font-family: ralewaySemiBold;
+    src: url(../fonts/Raleway-SemiBold.ttf);
+}
+
+/* CSS Reset */
+
+*{
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction: column;
+    text-decoration: none;
+    color:#1A2A33;
+    font-family: ralewayMedium;
+    cursor: default;;
+}
+
+title,script{
+    display:none;
+}
+
+body{
+    /* overflow-x: hidden; */
+    /* width:100vw; */
+}

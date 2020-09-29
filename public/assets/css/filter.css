@@ -1,0 +1,71 @@
+
+/* Filter Buttons */
+
+.filter{
+    margin:60px 0 0 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding:10px 0;
+}
+
+.gridDisplayBtn,.searchBtn,.filterBtn{
+    color:#79c6ac;
+}
+
+.filter .searchBar{
+    flex-direction: row;
+    align-items: center;
+    border:1px solid #79c6ac;
+    border-radius: 10px;
+    padding:5px 10px;
+}
+
+.searchBar input{
+    width:60vw;
+    padding:5px;
+    border:none;
+    color:#79c6ac;
+}
+
+aside.filterSettings{
+    overflow:hidden;
+    right:-500px;
+    height:100vh;
+    width:0vw;
+    position: fixed;;
+    top:50px;
+    z-index:1;
+}
+
+.filterSettingContainer{
+    position: absolute;
+    right:0;
+    background:#79C6AC ;
+    width:60vw;
+    height:100vh;
+    padding:20px;
+}
+
+.filterSettingContainer div{
+    margin:10px 0 0 0;
+}
+
+.sortLabel,.makeLabel,.modelLabel,.conditionLabel{
+    color:white;
+    margin-bottom:10px;
+}
+
+.sortSettingList,.makeSettingList,.modelSettingList,.conditionSettingList{
+    border:1px solid white;
+    background:transparent;
+    color:white;
+    padding:10px 25px;
+    border-radius: 10px;
+}
+
+.sortSettingItems,.makeSettingItems,.modelSettingItems,.conditionSettingItems{
+    border:1px solid white;
+    background:#79C6AC ;
+    color:white;
+}

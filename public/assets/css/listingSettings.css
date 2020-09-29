@@ -1,0 +1,30 @@
+
+/* Listing Settings */
+.listingSettingsContainer{
+    bottom:-100vh;
+    opacity:0;
+    position: fixed;
+    width:100vw;
+    height:100vh;
+    justify-content:flex-end ;
+}
+
+.listingSettingsContainer .listingSettingsList{
+    filter: drop-shadow(0 0 20px #8b91969b);
+    background:white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width:100vw;
+    padding:20px 30px;
+}
+
+.listingSettingsList .settingsListItem{
+    padding:20px 0;
+    flex-direction: row;
+}
+
+.listingSettingsList .settingsListItem i{
+    padding: 0 15px 0 0;
+    color:#8b9196;
+    color:#79C6AC;
+}

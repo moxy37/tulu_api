@@ -1,0 +1,27 @@
+/* Footer */
+footer{
+    background:#1A2A33;
+    padding:20px 0;
+}
+
+.footerList{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.footerList h4{
+    width:200px;
+    color:#79C6AC  ;
+    border-bottom:1px solid #8B9196 ;
+    padding:15px 5px 5px 5px;
+}
+
+.footerSubLinkList{
+    margin:5px;
+    font-size: small;
+}
+
+.SubLinkListItem a{
+    color:#8B9196 ;
+}

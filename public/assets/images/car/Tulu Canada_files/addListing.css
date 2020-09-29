@@ -1,0 +1,137 @@
+/* ADD POSTING */
+.addPostingContainer{
+    position: fixed;
+    bottom:30px;
+    width:100vw;
+    height:10vh;
+    background:#79C6AC ;
+    align-items: center;
+    /* z-index: 2; */
+}
+
+.addPostingBtn{
+    position: relative;
+    top:-20px;
+    border:4px solid #79C6AC ;
+    padding:20px;
+    border-radius: 50%;
+    background:white;
+}
+
+
+.addPostingBtn i{
+    color:#79C6AC;
+}
+
+/* adding Form */
+.addVehicleContainer{
+    width:100%;
+    align-items: center;
+}
+
+.addVehicleStepOne,.addVehicleStepTwo,.addVehicleStepThree,.vehicleAdded{
+    display:none;
+    opacity: 0;
+}
+
+.addVehicleStepOne{
+    display:Flex;
+    opacity: 1;
+}
+
+.vehicleAdded{
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.vehicleAdded h3{
+    color:white;
+    flex-direction: row;
+}
+
+.vehicleAdded h3 i{
+    color:white;
+    margin:0 0 0 10px;
+}
+
+.addVehicleForm{
+    width:80%;
+}
+
+.addVehicleForm label{
+    margin:20px 0 10px 0;
+    color:white;
+}
+
+.addVehicleForm .inputContainer  select{
+    width:100%;
+    padding:5px 10px;
+    border:none;
+    color:#79c6ac;
+}
+
+.addVehicleForm .inputContainer{
+    flex-direction: row;
+    align-items: center;
+    background:white;
+    border:1px solid white;
+    border-radius: 10px;
+    padding:5px 10px;
+}
+
+.inputContainer input{
+    width:100%;
+    padding:5px;
+    border:none;
+    color:#79c6ac;
+}
+
+.inputContainer textarea{
+    width:100%;
+    height:100px;
+    padding:5px;
+    border:none;
+    color:#79c6ac;
+    resize: none;
+}
+
+.addVehicleForm button,.vehicleAdded button{
+    padding:20px;
+    border-radius:10px;
+    font-family: ralewaySemiBold;
+    align-items: center;
+}
+
+.nextBtn{
+    margin:30px 0 0 0;
+    background:#17242D;
+    color:white;
+    border:none;
+}
+
+.addImageBtn{
+    margin:30px 0 0 0;
+    background:#17242D;
+    color:white;
+    border:none;
+}
+
+.submitBtn{
+    margin:10px 0 0 0;
+    background:#17242D;
+    color:white;
+    border:none;
+}
+
+.doneBtn{
+    width:300px;
+    margin:30px 0 0 0;
+    background:#17242D;
+    color:white;
+    border:none;
+}
+
+
+

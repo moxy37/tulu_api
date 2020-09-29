@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://127.0.0.1:5500/vendor.html -->
+<html lang="en"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><style type="text/css" id="dark-mode-custom-style"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulu Canada</title>
+    <link rel="stylesheet" href="./Tulu Canada_files/all.css">
+    <link rel="stylesheet" href="./Tulu Canada_files/reset.css">
+    <link rel="stylesheet" href="./Tulu Canada_files/nav.css">
+    <link rel="stylesheet" href="./Tulu Canada_files/vendor.css">
+    <link rel="stylesheet" href="./Tulu Canada_files/addListing.css">
+    <link rel="stylesheet" href="./Tulu Canada_files/listingSettings.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="http://127.0.0.1:5500/home.html">
+            <img src="./Tulu Canada_files/tulu-logo_white.png" alt="">
+        </a>
+        <div class="menuButton" onclick="slideMenu()">
+            <i class="fas fa-bars fa-2x menuBtn"></i>
+            <i class="fas fa-times fa-2x closeMenuBtn"></i>    
+        </div>
+    </nav>
+    <!-- SIDEMENU -->
+    <div class="sideMenu">
+        <ul class="menu">
+            <li class="menuItems">
+                <a href="http://127.0.0.1:5500/vendor.html">About Us</a>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="shopSubMenu()">
+                    Shop
+                    <i class="fas fa-sort-down shopDropMenuBtn"></i>
+                </p>
+                <ul class="shopSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="http://127.0.0.1:5500/shop.html">All</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="http://127.0.0.1:5500/vendor.html">New</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="http://127.0.0.1:5500/vendor.html">Used</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="accountSubMenu()">
+                    My Account
+                    <i class="fas fa-sort-down accountDropMenuBtn"></i>
+                </p>
+                <ul class="accountSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="http://127.0.0.1:5500/login.html">Sign In</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="http://127.0.0.1:5500/register.html">Register</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <a href="http://127.0.0.1:5500/vendor.html">Influencers</a>
+            </li>
+            <li class="menuItems">
+                <a href="http://127.0.0.1:5500/vendor.html">Dealerships</a>
+            </li>
+            <li class="menuItems">
+                <a href="http://127.0.0.1:5500/vendor.html">
+                    <button class="influencerBtn">
+                    Become an Influencer
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="banner">
+
+        </div>
+        <div class="userInfo">
+            <div class="userImage">
+                <i class="fas fa-user fa-4x"></i>
+            </div>
+            <h3 class="userName">
+                Jane Doe
+            </h3>
+            <p class="userActiveListingCount">
+                5 Active Listing
+            </p>
+        </div>
+    </div>
+
+    <!-- Listing -->
+    <div class="activeListing">
+        <ul class="activeListingList">
+            <li class="activeListingListItem">
+                <img src="./Tulu Canada_files/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" onclick="listingSettings()"></i>
+            </li>
+            <li class="activeListingListItem">
+                <img src="./Tulu Canada_files/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" onclick="listingSettings()"></i>
+            </li>
+            <li class="activeListingListItem">
+                <img src="./Tulu Canada_files/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" onclick="listingSettings()"></i>
+            </li>
+            <li class="activeListingListItem">
+                <img src="./Tulu Canada_files/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" onclick="listingSettings()"></i>
+            </li>
+            <li class="activeListingListItem">
+                <img src="./Tulu Canada_files/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" onclick="listingSettings()"></i>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ADD POSTING -->
+    <div class="addPostingContainer">
+        <div class="addPostingBtn" onclick="addListingMenu()">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div class="addVehicleContainer">
+            <form action="http://127.0.0.1:5500/vendor.html" class="addVehicleForm addVehicleStepOne">
+                <label for="bodyType">Body Type :</label>
+                <div class="inputContainer">
+                    <select name="bodyType" id="bodyType">
+                        <option value="N/A">N/A</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Van">Van</option>
+                        <option value="Coupe">Coupe</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Hatch">Hatchback</option>
+                        <option value="Hatch">Convertible</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <label for="year">Year :</label>
+                <div class="inputContainer">
+                    <select name="year" id="year">
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                    </select>
+                </div>
+
+                <label for="make">Make :</label>
+                <div class="inputContainer">
+                    <select name="make" id="make">
+                        <option value="BMW">BMW</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Mercedes">Mercedes</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Toyota">Toyota</option>
+                    </select>
+                </div>
+
+                <label for="model">Model :</label>
+                <div class="inputContainer">
+                    <select name="model" id="model">
+                        <option value="Car Model #1">Car Model #1</option>
+                        <option value="Car Model #2">Car Model #2</option>
+                        <option value="Car Model #3">Car Model #3</option>
+                        <option value="Car Model #4">Car Model #4</option>
+                    </select>
+                </div>
+
+                <label for="price">Price :</label>
+                <div class="inputContainer">
+                    <input type="text" id="price" class="price" name="price"><br>
+                </div>
+
+                <button type="button" class="nextBtn" onclick="addVehicleStep()">NEXT</button>
+            </form>
+            <form action="http://127.0.0.1:5500/vendor.html" class="addVehicleForm addVehicleStepTwo">
+                <label for="condition">Condition</label>
+                <div class="inputContainer">
+                    <select name="condition" id="condition">
+                        <option value="N/A">N/A</option>
+                        <option value="Used">Used</option>
+                        <option value="New">New</option>
+                        <option value="Lease">Lease</option>
+                        <option value="Salvage">Salvage</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <label for="transimission">Transmission :</label>
+                <div class="inputContainer">
+                    <select name="transimission" id="transimission">
+                        <option value="N/A">N/A</option>
+                        <option value="Manual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <label for="drivetrain">Drivetrain :</label>
+                <div class="inputContainer">
+                    <select name="drivetrain" id="drivetrain">
+                        <option value="N/A">N/A</option>
+                        <option value="FWD">FWD</option>
+                        <option value="RWD">RWD</option>
+                        <option value="AWD">AWD</option>
+                        <option value="4x4">4x4</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <label for="gasType">Gas Type :</label>
+                <div class="inputContainer">
+                    <select name="gasType" id="gasType">
+                        <option value="N/A">N/A</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Gasoline">Gasoline</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <button type="button" class="nextBtn" onclick="addVehicleStep()">NEXT</button>
+
+            </form>
+            <form action="http://127.0.0.1:5500/vendor.html" class="addVehicleForm addVehicleStepThree">
+                <label for="vinNum">VIN # :</label>
+                <div class="inputContainer">
+                    <input type="text" id="vinNum" class="vinNum" name="vinNum"><br>
+                </div>
+                
+                <label for="carDescription">Addition Description :</label>
+                <div class="inputContainer">
+                    <textarea type="text" id="carDescription" class="carDescription" name="carDescription"></textarea>
+                </div>
+                <button type="button" class="addImageBtn">ADD PHOTOS</button>
+                <button type="button" class="submitBtn" onclick="addVehicleStep()">SUBMIT</button>
+            </form>
+            <div class="addVehicleForm vehicleAdded">
+                <h3>Vehicle Added <i class="fas fa-check"></i></h3>
+                <button type="button" class="doneBtn" onclick="addVehicleStep()">DONE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Account -->
+    <div class="myAccountMenu">
+        <ul class="accountMenuList">
+            <li class="accountMenuListItems">
+                <i class="fas fa-columns fa-2x accountMenuIcon"></i>
+                Dashboard
+            </li>
+            <li class="accountMenuListItems">
+                <i class="far fa-calendar-alt fa-2x accountMenuIcon"></i>
+                Schedule
+            </li>
+            <li class="accountMenuListItems">
+                <i class="fas fa-phone fa-2x accountMenuIcon"></i>
+                Contact Us
+            </li>
+        </ul>
+    </div>
+
+    <!-- ListingSettings -->
+    <div class="listingSettingsContainer">
+        <ul class="listingSettingsList">
+            <li class="settingsListItem">
+                <i class="far fa-clipboard"></i>
+                <p>
+                    View Listing
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="far fa-trash-alt"></i>
+                <p>
+                    Delete Listing
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="far fa-edit"></i>
+                <p>
+                    Edit Listing
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="far fa-check-circle"></i>
+                <p>
+                    Mark Sold
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="fas fa-chart-line"></i>
+                <p>
+                    Boost Lisitng
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="far fa-share-square"></i>
+                <p>
+                    Share Listing
+                </p>
+            </li>
+        </ul>
+    </div>
+
+
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+<script src="./Tulu Canada_files/sideMenu.js.download"></script>
+<script src="./Tulu Canada_files/listingSetting.js.download"></script>
+<script src="./Tulu Canada_files/addListingMenu.js.download"></script>
+</body></html>

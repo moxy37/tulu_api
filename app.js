@@ -29,10 +29,10 @@ process.on('uncaughtException', function (err) { console.log(err); });
 app.use('/', require('./controllers/core/documentcontroller'));
 app.use('/', require('./controllers/core/definitioncontroller'));
 app.use('/', require('./controllers/core/reportcontroller'));
-
-app.get('/', function (request, response) {
-    response.render('client/index');
-});
+app.use('/', require('./controllers/client/test/testcontroller'));
+// app.get('/', function (request, response) {
+//     response.render('client/index');
+// });
 
 
 module.exports = app;
