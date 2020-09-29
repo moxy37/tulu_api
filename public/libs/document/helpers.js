@@ -39,9 +39,7 @@ $(document).ready(function () {
       hash = hashes[i].split("=");
       if (hash[0] === "tokenId") {
         tokenId = hash[1];
-      } else if (hash[0] === "projectId") {
-        projectId = hash[1];
-      }
+      } 
     }
     if (tokenId !== undefined) {
       console.log("hasToken");
