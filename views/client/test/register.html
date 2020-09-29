@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulu Canada</title>
+    <link rel="stylesheet" href="assets/webfonts/styles/all.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="/home">
+            <img src="assets/images/PNG Files/tulu-logo_white.png" alt="">
+        </a>
+        <div class="menuButton" onclick="slideMenu()">
+            <i class="fas fa-bars fa-2x menuBtn" ></i>
+            <i class="fas fa-times fa-2x closeMenuBtn"></i>    
+        </div>
+    </nav>
+    <!-- SIDEMENU -->
+    <div class="sideMenu">
+        <ul class="menu">
+            <li class="menuItems">
+                <a href="/">About Us</a>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle"  onclick="shopSubMenu()">
+                    Shop
+                    <i class="fas fa-sort-down shopDropMenuBtn"></i>
+                </p>
+                <ul class="shopSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/shop">All</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">New</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">Used</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="accountSubMenu()">
+                    My Account
+                    <i class="fas fa-sort-down accountDropMenuBtn"></i>
+                </p>
+                <ul class="accountSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/login">Sign In</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">Register</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <a href="/">Influencers</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">Dealerships</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">
+                    <button class="influencerBtn">
+                    Become an Influencer
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="registerContainer">
+        <div class="stepOneRegistration">
+            <form action="" class="registerForm">
+                <label for="email">Email:</label>
+                <div class="inputContainer">
+                    <input type="text" id="email" class="email" name="email"><br>
+                </div>
+                <label for="password">Password:</label>
+                <div class="inputContainer">
+                    <input type="password" id="password" class="password" name="password">
+                </div>  
+                <label for="confirmPassword">Confirm Password:</label>
+                <div class="inputContainer">
+                    <input type="password" id="confirmPassword" class="confirmPassword" name="confirmPassword">
+                </div>
+                <button type="button" class="nextBtn stepOneBtn" onclick="registrationStep()">CONTINUE</button>
+            </form>
+        </div>
+        <div class="stepTwoRegistration">
+            <form action="" class="registerForm">
+                <label for="fname">First Name:</label>
+                <div class="inputContainer">
+                    <input type="text" id="fname" class="fname" name="fname"><br>
+                </div>
+                <label for="lname">Last Name:</label>
+                <div class="inputContainer">
+                    <input type="text" id="lname" class="lname" name="lname"><br>
+                </div>
+                <label for="postalCode">Postal Code:</label>
+                <div class="inputContainer">
+                    <input type="text" id="postalCode" class="postalCode" name="postalCode"><br>
+                </div>
+                <label for="phone">Phone Number:</label>
+                <div class="inputContainer">
+                    <input type="text" id="phone" class="phone" name="phone"><br>
+                </div>
+                <button type="button" class="nextBtn stepTwoBtn" onclick="registrationStep()">NEXT</button>
+                <button type="button" class="backBtn stepTwoBackBtn" onclick="registrationStepBack()">BACK</button>
+            </form>
+        </div>
+        <div class="stepThreeRegistration">
+            <form action="" class="registerForm">
+                <label for="ig">Instagram:</label>
+                <div class="inputContainer">
+                    <input type="text" id="ig" class="ig" name="ig"><br>
+                </div>
+                <label for="fb">Facebook:</label>
+                <div class="inputContainer">
+                    <input type="text" id="fb" class="fb" name="fb"><br>
+                </div>
+                <label for="linkedIn">LinkedIn:</label>
+                <div class="inputContainer">
+                    <input type="text" id="linkedIn" class="linkedIn" name="linkedIn"><br>
+                </div>
+                <label for="bio">Bio:</label>
+                <div class="inputContainer">
+                    <textarea type="text" id="bio" class="bio" name="bio"></textarea>
+                </div>
+                <a href="/profile">
+                    <button type="button" class="registerBtn stepThreeBtn" onclick="registrationStep()">COMPLETE</button>
+                </a>
+                    <button type="button" class="backBtn stepThreeBackBtn" onclick="registrationStepBack()">BACK</button>
+            </form>
+        </div>
+    </div>
+    <!-- Steps Circle -->
+    <div class="steps">
+        <div class="stepOne"></div>
+        <div class="stepTwo"></div>
+        <div class="stepThree"></div>
+    </div>
+
+</body>
+<script src="assets/js/sideMenu.js"></script>
+<script src="assets/js/registrationForm.js"></script>
+</html>

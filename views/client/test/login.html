@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulu Canada</title>
+    <link rel="stylesheet" href="assets/webfonts/styles/all.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="/home">
+            <img src="assets/images/PNG Files/tulu-logo_white.png" alt="">
+        </a>
+        <div class="menuButton" onclick="slideMenu()">
+            <i class="fas fa-bars fa-2x menuBtn" ></i>
+            <i class="fas fa-times fa-2x closeMenuBtn"></i>    
+        </div>
+    </nav>
+    <!-- SIDEMENU -->
+    <div class="sideMenu">
+        <ul class="menu">
+            <li class="menuItems">
+                <a href="/">About Us</a>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle"  onclick="shopSubMenu()">
+                    Shop
+                    <i class="fas fa-sort-down shopDropMenuBtn"></i>
+                </p>
+                <ul class="shopSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/shop">All</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">New</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">Used</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="accountSubMenu()">
+                    My Account
+                    <i class="fas fa-sort-down accountDropMenuBtn"></i>
+                </p>
+                <ul class="accountSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/login">Sign In</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/register">Register</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <a href="/">Influencers</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">Dealerships</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">
+                    <button class="influencerBtn">
+                    Become an Influencer
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- LOG IN -->
+    <div class="loginContainer">
+        <form action="" class="loginForm">
+            <label for="email">Email:</label>
+            <div class="inputContainer">
+                <input type="text" id="email" class="email" name="email"><br>
+            </div>
+            
+                <label for="password">Password:</label>
+            <div class="inputContainer">
+                <input type="password" id="password" class="password" name="password">
+            </div>  
+            <a href="/profile">
+                <button type="button" class="loginBtn" onclick="alert('Hello Mr. Stark')">LOG IN</button>
+            </a>
+            <a href="/register">
+                <button type="button" class="registerBtn">REGISTER</button>
+            </a>
+        </form>
+    </div>
+</body>
+<script src="assets/js/sideMenu.js"></script>
+</html>

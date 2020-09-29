@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulu Canada</title>
+    <link rel="stylesheet" href="assets/webfonts/styles/all.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="assets/css/myAccountMenu.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="/home">
+            <img src="assets/images/PNG Files/tulu-logo_white.png" alt="">
+        </a>
+        <div class="menuButton" onclick="slideMenu()">
+            <i class="fas fa-bars fa-2x menuBtn" ></i>
+            <i class="fas fa-times fa-2x closeMenuBtn"></i>    
+        </div>
+    </nav>
+    <!-- SIDEMENU -->
+    <div class="sideMenu">
+        <ul class="menu">
+            <li class="menuItems">
+                <a href="/">About Us</a>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="shopSubMenu()">
+                    Shop
+                    <i class="fas fa-sort-down shopDropMenuBtn"></i>
+                </p>
+                <ul class="shopSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/shop">All</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">New</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">Used</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="accountSubMenu()">
+                    My Account
+                    <i class="fas fa-sort-down accountDropMenuBtn"></i>
+                </p>
+                <ul class="accountSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/login">Sign In</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/register">Register</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <a href="/">Influencers</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">Dealerships</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">
+                    <button class="influencerBtn">
+                    Become an Influencer
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="banner">
+
+        </div>
+        <div class="userInfo">
+            <div class="userImage">
+                <i class="fas fa-user fa-4x"></i>
+            </div>
+            <h3 class="userName">
+                John Doe
+            </h3>
+            <p class="userBio">
+                Sabhihin mo sa ating mga kababayan na hindi na kakamit ang kalayaan sa pag-aaruga sa kanilang mga mahal sa buhay. Kailangan nila mag bayad ng Dugo at pawis. Kailangan nilang tumalon sa kawalan.<br/>
+                -Heneral Luna
+            </p>
+            <ul class="socialMediaAccounts">
+                <li>
+                    <a href="/">
+                        <i class="fab fa-facebook fa-2x"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <i class="fab fa-linkedin-in fa-2x"></i>
+                    </a>
+                </li>
+            </ul>
+            <a href="/editProfile">
+                <button class="editProfileBtn">
+                    Edit Profile
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- My Account -->
+    <div class="myAccountMenu">
+        <ul class="accountMenuList">
+            <li class="accountMenuListItems">
+                <a href="/">
+                    <i class="far fa-user fa-2x accountMenuIcon"></i>
+                    Profile
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/">
+                    <i class="far fa-envelope fa-2x accountMenuIcon"></i>
+                    Messages
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/">
+                    <i class="fas fa-car fa-2x accountMenuIcon"></i>
+                    Vehicles
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/">
+                    <i class="far fa-calendar-alt fa-2x accountMenuIcon"></i>
+                    Appointments
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/influencer">
+                    <i class="far fa-handshake fa-2x accountMenuIcon"></i>
+                    My Influencer
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/">
+                    <i class="far fa-credit-card fa-2x accountMenuIcon"></i>
+                    Coupons
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+
+</body>
+<script src="assets/js/sideMenu.js"></script>
+<script src="assets/js/listingSetting.js"></script>
+<script src="assets/js/addListingMenu.js"></script>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulu Canada</title>
+    <link rel="stylesheet" href="/assets/webfonts/styles/all.css">
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/carView.css">
+    <link rel="stylesheet" href="/assets/css/gallery.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="/home">
+            <img src="/assets/images/PNG Files/tulu-logo_white.png" alt="">
+        </a>
+        <div class="menuButton" onclick="slideMenu()">
+            <i class="fas fa-bars fa-2x menuBtn" ></i>
+            <i class="fas fa-times fa-2x closeMenuBtn"></i>    
+        </div>
+    </nav>
+    <!-- SIDEMENU -->
+    <div class="sideMenu">
+        <ul class="menu">
+            <li class="menuItems">
+                <a href="/">About Us</a>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle"  onclick="shopSubMenu()">
+                    Shop
+                    <i class="fas fa-sort-down shopDropMenuBtn"></i>
+                </p>
+                <ul class="shopSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/shop">All</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">New</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">Used</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="accountSubMenu()">
+                    My Account
+                    <i class="fas fa-sort-down accountDropMenuBtn"></i>
+                </p>
+                <ul class="accountSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/login">Sign In</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/register">Register</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <a href="/">Influencers</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">Dealerships</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">
+                    <button class="influencerBtn">
+                    Become an Influencer
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+<!-- Vendor -->
+<div class="carVendor">
+    <a href="/vendor">
+        <div class="userImage">
+            <i class="fas fa-user fa-2x"></i>
+        </div>
+    </a>
+    <div class="userInfo">
+        <h3 class="userName">
+            Company
+        </h3>
+        <p class="userActiveListingCount">
+            5 Active Listing
+        </p>
+    </div>
+</div>
+
+<!-- VEHICLE INFO -->
+    <section class="vehicles">
+        <img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image">
+        <div class="carDetails">
+            <h2 class="carName">McQueen</h2>
+            <p class="carPrice">$45,000</p>
+
+            <!-- Car Gallery -->
+            <div class="carGallery">
+                <ul class="lightbox-gallery carImageList">
+                        <li class="carImageListItems">
+                            <img src="assets/images/car/stock-photo-1.jpg" data-image-hd="assets/images/car/stock-photo-1.jpg">
+                        </li>
+                        <li class="carImageListItems">
+                            <img src="assets/images/car/stock-photo-2.jpg" data-image-hd="assets/images/car/stock-photo-2.jpg" >
+                        </li>
+                        <li class="carImageListItems">
+                            <img src="assets/images/car/stock-photo-3.jpg" data-image-hd="assets/images/car/stock-photo-3.jpg">
+                        </li>
+                        <li class="carImageListItems">
+                            <img src="assets/images/car/stock-photo-4.jpg" data-image-hd="assets/images/car/stock-photo-4.jpg">
+                        </li>
+                </div>
+            </div>
+
+            
+
+            <!-- Car Specs -->
+            <div class="carSpecs">
+                <div class="carInfo">
+                    <p>Condition</p>
+                    <p>Brand New</p>
+                </div>
+                <div class="carInfo">
+                    <p>Year</p>
+                    <p>2021</p>
+                </div>
+                <div class="carInfo">
+                    <p>Make</p>
+                    <p>Chevrolet</p>
+                </div>
+                <div class="carInfo">
+                    <p>Model</p>
+                    <p>Corvette</p>
+                </div>
+                <div class="carInfo">
+                    <p>Color</p>
+                    <p>Red</p>
+                </div>
+                <div class="carInfo">
+                    <p>Body Type</p>
+                    <p>Coupe</p>
+                </div>
+                <div class="carInfo">
+                    <p>Engine</p>
+                    <p>6.2 L V8</p>
+                </div>
+                <div class="carInfo">
+                    <p>Drivetrain</p>
+                    <p>RWD</p>
+                </div>
+                <div class="carInfo">
+                    <p>Transmission</p>
+                    <p>Manual</p>
+                </div>
+                <div class="carInfo">
+                    <p>Fuel Type</p>
+                    <p>Gasoline</p>
+                </div>
+                <div class="carInfo">
+                    <p>Kilometers</p>
+                    <p>0 km</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- SHARE BUTTON -->
+    <section class="shareSection">
+        <div class="ShareContainer">
+            <p>Share This Listing</p>
+            <div class="shareBtnContainer">
+                <i class="fab fa-facebook fbIcon fa-2x"></i> 
+                <i class="fab fa-facebook-messenger messerngerIcon fa-2x"></i>
+                <i class="fas fa-link linkIcon fa-2x"></i>
+            </div>
+        </div>
+    </section>
+
+<!-- FOOTER -->
+<footer>
+    <ul class="footerList">
+        <li class="footerListItem">
+            <a href="/">
+                <h4>About Us</h4>
+            </a>
+        </li>
+        <li class="footerListItem">
+            <a href="/">
+                <h4>Partners</h4>
+            </a>
+            <ul class="footerSubLinkList">
+                <li class="SubLinkListItem">
+                    <a href="/">Dealerships</a>
+                </li>
+            </ul>
+        </li>
+        <li class="footerListItem">
+            <a href="/">
+                <h4>Customer Support</h4>
+            </a>
+            <ul class="footerSubLinkList">
+                <li class="SubLinkListItem">
+                    <a href="/">FAQ</a>
+                </li>
+                <li class="SubLinkListItem">
+                    <a href="/">Feedback and Comments</a>
+                </li>
+                <li class="SubLinkListItem">
+                    <a href="/">Contact Us</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</footer>
+</body>
+<script src="/assets/js/sideMenu.js"></script>
+<script src="/assets/js/gallery.js"></script>
+</html>

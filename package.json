@@ -4,7 +4,8 @@
   "description": "New Wedding System",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "node-cache": "^5.1.2",
     "node-cmd": "^3.0.0",
     "node-uuid": "^1.4.8",
+    "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "react-native-webview": "^10.9.0",
     "react-router-dom": "^5.2.0",

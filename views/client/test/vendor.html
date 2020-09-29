@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulu Canada</title>
+    <link rel="stylesheet" href="assets/webfonts/styles/all.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="assets/css/addListing.css">
+    
+    <link rel="stylesheet" href="assets/css/listingSettings.css">
+    <link rel="stylesheet" href="assets/css/myAccountMenu.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="/home">
+            <img src="assets/images/PNG Files/tulu-logo_white.png" alt="">
+        </a>
+        <div class="menuButton" onclick="slideMenu()">
+            <i class="fas fa-bars fa-2x menuBtn" ></i>
+            <i class="fas fa-times fa-2x closeMenuBtn"></i>    
+        </div>
+    </nav>
+    <!-- SIDEMENU -->
+    <div class="sideMenu">
+        <ul class="menu">
+            <li class="menuItems">
+                <a href="/">About Us</a>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="shopSubMenu()">
+                    Shop
+                    <i class="fas fa-sort-down shopDropMenuBtn"></i>
+                </p>
+                <ul class="shopSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/shop">All</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">New</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">Used</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="accountSubMenu()">
+                    My Account
+                    <i class="fas fa-sort-down accountDropMenuBtn"></i>
+                </p>
+                <ul class="accountSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/login">Sign In</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/register">Register</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <a href="/">Influencers</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">Dealerships</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">
+                    <button class="influencerBtn">
+                    Become an Influencer
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="banner">
+
+        </div>
+        <div class="userInfo">
+            <div class="userImage">
+                <i class="fas fa-user fa-4x"></i>
+            </div>
+            <h3 class="userName">
+                Jane Doe
+            </h3>
+            <p class="userActiveListingCount">
+                5 Active Listing
+            </p>
+        </div>
+    </div>
+
+    <!-- Listing -->
+    <div class="activeListing">
+        <ul class="activeListingList">
+            <li class="activeListingListItem">
+                <img src="assets/images/car/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p  class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="listingSettings()"></i>
+            </li>
+            <li class="activeListingListItem">
+                <img src="assets/images/car/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p  class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="listingSettings()"></i>
+            </li>
+            <li class="activeListingListItem">
+                <img src="assets/images/car/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p  class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="listingSettings()"></i>
+            </li>
+            <li class="activeListingListItem">
+                <img src="assets/images/car/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p  class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="listingSettings()"></i>
+            </li>
+            <li class="activeListingListItem">
+                <img src="assets/images/car/stock-photo-1.jpg" alt="" class="listingImage">
+                <div class="listingInfo">
+                    <h4 class="listingName">Mcqueen</h4>
+                    <p class="listingPrice">$45,000</p>
+                    <p  class="listingViews">4420 views</p>
+                </div>
+                <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="listingSettings()"></i>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ADD POSTING -->
+    <div class="addPostingContainer">
+        <div class="addPostingBtn"  onclick="addListingMenu()">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div class="addVehicleContainer">
+            <form action="" class="addVehicleForm addVehicleStepOne">
+                <label for="vinNum">VIN # :</label>
+                <div class="inputContainer">
+                    <input type="text" id="vinNum" class="vinNum" name="vinNum"><br>
+                </div>
+                
+                <label for="carDescription">Addition Description :</label>
+                <div class="inputContainer">
+                    <textarea type="text" id="carDescription" class="carDescription" name="carDescription"></textarea>
+                </div>
+                <button type="button" class="addImageBtn">ADD PHOTOS</button>
+                <button type="button" class="submitBtn" onclick="submitVehicle()">SUBMIT</button>
+            </form>
+            <div class="addVehicleForm vehicleAdded">
+                <h3>Vehicle Added <i class="fas fa-check"></i></h3>
+                <button type="button" class="doneBtn" onclick="showAddVehicleStepOne()">DONE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Account -->
+    <div class="myAccountMenu">
+        <ul class="accountMenuList">
+            <li class="accountMenuListItems">
+                <a href="/vendor">
+                    <i class="far fa-user fa-2x accountMenuIcon"></i>
+                    Profile
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/">
+                    <i class="fas fa-columns fa-2x accountMenuIcon"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/schedule">
+                    <i class="far fa-calendar-alt fa-2x accountMenuIcon"></i>
+                    Schedule
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/">
+                    <i class="fas fa-phone fa-2x accountMenuIcon"></i>
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ListingSettings -->
+    <div class="listingSettingsContainer">
+        <ul class="listingSettingsList">
+            <li class="settingsListItem">
+                <i class="far fa-clipboard"></i>
+                <p>
+                    View Listing
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="far fa-trash-alt"></i>
+                <p>
+                    Delete Listing
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="far fa-edit"></i>
+                <p>
+                    Edit Listing
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="far fa-check-circle"></i>
+                <p>
+                    Mark Sold
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="fas fa-chart-line"></i>
+                <p>
+                    Boost Lisitng
+                </p>
+            </li>
+            <li class="settingsListItem">
+                <i class="far fa-share-square"></i>
+                <p>
+                    Share Listing
+                </p>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+<script src="assets/js/sideMenu.js"></script>
+<script src="assets/js/listingSetting.js"></script>
+<script src="assets/js/addListingMenu.js"></script>
+</html>

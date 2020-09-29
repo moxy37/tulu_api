@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulu Canada</title>
+    <link rel="stylesheet" href="assets/webfonts/styles/all.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/schedule.css">
+    <link rel="stylesheet" href="assets/css/myAccountMenu.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="/home">
+            <img src="assets/images/PNG Files/tulu-logo_white.png" alt="">
+        </a>
+        <div class="menuButton" onclick="slideMenu()">
+            <i class="fas fa-bars fa-2x menuBtn" ></i>
+            <i class="fas fa-times fa-2x closeMenuBtn"></i>    
+        </div>
+    </nav>
+    <!-- SIDEMENU -->
+    <div class="sideMenu">
+        <ul class="menu">
+            <li class="menuItems">
+                <a href="/">About Us</a>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="shopSubMenu()">
+                    Shop
+                    <i class="fas fa-sort-down shopDropMenuBtn"></i>
+                </p>
+                <ul class="shopSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/shop">All</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">New</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/">Used</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <p class="menuDropDownTitle" onclick="accountSubMenu()">
+                    My Account
+                    <i class="fas fa-sort-down accountDropMenuBtn"></i>
+                </p>
+                <ul class="accountSubMenuList">
+                    <li class="subMenuListLink">
+                        <a href="/login">Sign In</a>
+                    </li>
+                    <li class="subMenuListLink">
+                        <a href="/register">Register</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuItems">
+                <a href="/">Influencers</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">Dealerships</a>
+            </li>
+            <li class="menuItems">
+                <a href="/">
+                    <button class="influencerBtn">
+                    Become an Influencer
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="calendarContainer">
+        <div class="calendarHeader">
+            <i class="fas fa-caret-left"></i>
+            <h3>September</h3>
+            <i class="fas fa-caret-right"></i>
+        </div>
+        <div class="calendarDays">
+            <table>
+                <tr>
+                  <th>Sun</th>
+                  <th>Mon</th>
+                  <th>Tue</th>
+                  <th>Wed</th>
+                  <th>Thu</th>
+                  <th>Fri</th>
+                  <th>Sat</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                  <td>18</td>
+                  <td>19</td>
+                  <td>20</td>
+                  <td>21</td>
+                </tr>
+                <tr>
+                  <td>22</td>
+                  <td>23</td>
+                  <td>24</td>
+                  <td>25</td>
+                  <td>26</td>
+                  <td>27</td>
+                  <td>28</td>
+                </tr>
+                <tr>
+                  <td>29</td>
+                  <td>30</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </table>
+        </div>
+    </div>
+
+    <div class="scheduleContainer">
+        <ul>
+            <li>
+                <p class="scheduleTime">9:00 am</p>
+                <p class="clientName">James Harden</p>
+                <p class="clientPhone">123-456-7890</p>
+                <p class="clientEmail">theBeard@gmail.com</p>
+            </li>
+            <li>
+                <p class="scheduleTime">10:00 am</p>
+                <p class="clientName">Tim Duncan</p>
+                <p class="clientPhone">123-456-7890</p>
+                <p class="clientEmail">mrFundamentals@gmail.com</p>
+            </li>
+            <li>
+                <p class="scheduleTime">11:00 am</p>
+                <p class="clientName">Ryan Conlon</p>
+                <p class="clientPhone">123-456-7890</p>
+                <p class="clientEmail">ryanConlon@gmail.com</p>
+            </li>
+            <li>
+                <p class="scheduleTime">12:00 pm</p>
+                <p class="clientName">Landon Mcneil</p>
+                <p class="clientPhone">123-456-7890</p>
+                <p class="clientEmail">Landaddy@gmail.com</p>
+            </li>
+            <li>
+                <p class="scheduleTime">1:00 pm</p>
+                <p class="clientName">Jessica King</p>
+                <p class="clientPhone">123-456-7890</p>
+                <p class="clientEmail">jess@gmail.com</p>
+            </li>
+        </ul>
+    </div>
+    
+
+    <!-- My Account -->
+    <div class="myAccountMenu">
+        <ul class="accountMenuList">
+            <li class="accountMenuListItems">
+                <a href="/vendor">
+                    <i class="far fa-user fa-2x accountMenuIcon"></i>
+                    Profile
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/">
+                    <i class="fas fa-columns fa-2x accountMenuIcon"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/schedule">
+                    <i class="far fa-calendar-alt fa-2x accountMenuIcon"></i>
+                    Schedule
+                </a>
+            </li>
+            <li class="accountMenuListItems">
+                <a href="/">
+                    <i class="fas fa-phone fa-2x accountMenuIcon"></i>
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script src="assets/js/sideMenu.js"></script>
+<script src="assets/js/schedule.js"></script>
+
+</html>
