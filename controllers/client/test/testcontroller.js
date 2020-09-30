@@ -64,8 +64,8 @@ router.get('/profile', function (req, res) {
     res.render('client/test/profile');
 });
 
-router.get('/registration', function (req, res) {
-    res.render('client/test/registration');
+router.get('/register', function (req, res) {
+    res.render('client/test/register');
 });
 
 router.get('/schedule', function (req, res) {

@@ -1,6 +1,18 @@
 function LoadVehicles() {
-	var html = '<ul class="vehicleList"><li class="vehicleListItems"><img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image"><div class="carDetails"><h2 class="carName">McQueen</h2><p class="carPrice">$45,000</p><p class="carMileage">14,000km</p><a href="/carView"><button class="moreInfo">Explore</button></a></div></li><li class="vehicleListItems"><img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image"><div class="carDetails"><h2 class="carName">McQueen</h2><p class="carPrice">$45,000</p><p class="carMileage">14,000km</p><a href="/carView"><button class="moreInfo">Explore</button></a></div></li><li class="vehicleListItems"><img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image"><div class="carDetails"><h2 class="carName">McQueen</h2><p class="carPrice">$45,000</p><p class="carMileage">14,000km</p><a href="/carView"><button class="moreInfo">Explore</button></a></div></li><li class="vehicleListItems"><img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image"><div class="carDetails"><h2 class="carName">McQueen</h2><p class="carPrice">$45,000</p><p class="carMileage">14,000km</p><a href="/carView"><button class="moreInfo">Explore</button></a></div></li><li class="vehicleListItems"><img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image"><div class="carDetails"><h2 class="carName">McQueen</h2><p class="carPrice">$45,000</p><p class="carMileage">14,000km</p><a href="/carView"><button class="moreInfo">Explore</button></a></div></li><li class="vehicleListItems"><img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image"><div class="carDetails"><h2 class="carName">McQueen</h2><p class="carPrice">$45,000</p><p class="carMileage">14,000km</p><a href="/carView"><button class="moreInfo">Explore</button></a></div></li><li class="vehicleListItems"><img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image"><div class="carDetails"><h2 class="carName">McQueen</h2><p class="carPrice">$45,000</p><p class="carMileage">14,000km</p><a href="/carView"><button class="moreInfo">Explore</button></a></div></li><li class="vehicleListItems"><img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image"><div class="carDetails"><h2 class="carName">McQueen</h2><p class="carPrice">$45,000</p><p class="carMileage">14,000km</p><a href="/carView"><button class="moreInfo">Explore</button></a></div></li></ul>';
-  
+	var html = '';
+	for(var i=0;i!=10;i++){
+		html=html+'<li class="vehicleListItems">';
+		html=html+'	<img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image">';
+		html=html+'	<div class="carDetails">';
+		html=html+'		<h2 class="carName">McQueen</h2>';
+		html=html+'		<p class="carPrice">$45,000</p>';
+		html=html+'		<p class="carMileage">14,000km</p>';
+		html=html+'		<a href="/carView">';
+		html=html+'			<button class="moreInfo">Explore</button>';
+		html=html+'		</a>';
+		html=html+'	</div>';
+		html=html+'</li>';
+	}
 	$("#Vehicles").empty();
 	$("#Vehicles").append(html);
   }
