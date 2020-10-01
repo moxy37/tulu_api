@@ -1,3 +1,36 @@
+var carImage = [
+	{
+		image:"viper",
+		name:"2006 Dodge Viper",
+		kilometers:"20000 kms",
+		price:"90000",
+		owner:"One Owner",
+		trim:"GTS",
+		transmission:"Manual Transmission",
+		accidents:"No Accidents"
+	},
+	{
+		image:"gtr",
+		name:"2010 Nissan GTR Black Edition",
+		kilometers:"35000 kms",
+		price:"90000",
+		owner:"One Owner",
+		trim:"Fully Loaded",
+		transmission:"Automatic with DCT",
+		accidents:"No Accidents"
+	},
+	{
+		image:"lambo",
+		name:"2006 Lamborghini Gallardo",
+		kilometers:"9000 kms",
+		price:"90000",
+		owner:"One Owner",
+		trim:"Local Car",
+		transmission:"Manual Gated Speed",
+		accidents:"No Accidents"
+	},
+];
+
 function LoadVendor() {
 	var html = '';
 	html=html+'<div class="banner"></div>';
@@ -17,12 +50,12 @@ LoadVendor()
 
 function LoadActiveListing() {	
 	var html = '';	
-	for(var i=0;i!=10;i++){
+	for(var i=0;i!=carImage.length;i++){
 		html=html+'<li class="activeListingListItem">';		
-		html=html+'    <img src="assets/images/car/stock-photo-1.jpg" alt="" class="listingImage">';
+		html=html+'    <img src="assets/images/car/'+carImage[i].image+'.Png" alt="" class="listingImage">';
 		html=html+'    <div class="listingInfo">';
-		html=html+'        <h4 class="listingName">Mcqueen</h4>';		
-		html=html+'        <p class="listingPrice">$45,000</p>';		
+		html=html+'        <h4 class="listingName">'+carImage[i].name+'</h4>';		
+		html=html+'        <p class="listingPrice">$'+carImage[i].price+'</p>';		
 		html=html+'        <p  class="listingViews">4420 views</p>';		
 		html=html+'    </div>';		
 		html=html+'    <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="listingSettings()"></i>';		

@@ -1,0 +1,23 @@
+add cars
+vin
+then after car deatils will appear in new page
+
+add pictures
+picture editing page
+>added delete cars
+
+description box
+>notes
+
+car cards collapsable for more detail
+
+dealership list of cars
+address
+dealership number
+dealership name
+price + fees
+
+carview mobile and desktop(media queries)
+
+
+add image of cars

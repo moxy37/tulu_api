@@ -24,16 +24,28 @@
 }
 
 .carDetails{
+    padding:10px 0;
     justify-content: center;
     align-items: center;
 }
+
+.additionalCarInfo{
+    display:none;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .carDetails button{
     background:#79C6AC;
     color:white;
     border:none;
+    width:200px;
     margin:20px 0 0 0;
     padding:10px 20px;
     border-radius:10px;
     font-family: ralewaySemiBold;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
