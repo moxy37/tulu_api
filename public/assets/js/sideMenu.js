@@ -13,7 +13,7 @@ const slideMenu = () => {
         closeMenuBtn.style = "opacity:1;transform:rotate(0deg); transition:0.5s;";
         toggle="on";
     }else{
-        sideMenu.style = "top:-300px;transition:0.5s ease-in;";
+        sideMenu.style = "top:-600px;transition:0.5s ease-in;";
         menuBtn.style = "opacity:1;transform:rotate(0deg); transition:0.5s;";
         closeMenuBtn.style = "opacity:0;transform:rotate(-180deg); transition:0.5s;";
         toggle="off";
