@@ -2,14 +2,27 @@
 
 .header{
     margin:50px 0 0 0;
-    background:#79C6AC;
+    background-color:#79C6AC;
     height:60vh;
     justify-content: center;
     align-items: center;
+    /* background-image: url(../images/car/header.jpg);
+    background-color:#9dd8c460;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode:soft-light; */
 }
 
 .header h1{
     color:white;
+    font-size: 3em;
+    /* filter: drop-shadow(0 0 3px #0000006e); */
+}
+
+.header h3,.header p{
+    color:white;
+    text-align: center;
+    /* filter: drop-shadow(0 0 3px #0000006e); */
 }
 
 /* 1st Section */
@@ -21,7 +34,6 @@
     justify-content: space-evenly;
     align-items: center;
     padding:50px 0;
-    /* height:60vh; */
 }
 
 .firstSection div{
@@ -35,6 +47,11 @@
 
 .firstSection div:nth-child(1){
     background:#8B9196;
+    background-image: url(../images/car/approve.jpeg);
+    background-color:#8B9196;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode:soft-light;
 }
 
 .firstSection div:nth-child(1) h2{
@@ -43,6 +60,11 @@
 
 .firstSection div:nth-child(2){
     background:#BCE2D5 ;
+    background-image: url(../images/car/appraisal.jpeg);
+    background-color:#8B9196;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode:soft-light;
 }
 
 .firstSection div:nth-child(2) h2{

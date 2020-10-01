@@ -76,6 +76,10 @@ router.get('/shop', function (req, res) {
     res.render('client/test/shop');
 });
 
+router.get('/about', function (req, res) {
+    res.render('client/test/about');
+});
+
 
 
 module.exports = router;
