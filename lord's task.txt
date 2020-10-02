@@ -1,49 +1,28 @@
-add cars
-vin
-then after car deatils will appear in new page
-
-add pictures
-picture editing page
->added delete cars
-
-description box
->notes
-
-car cards collapsable for more detail
-
-dealership list of cars
-address
-dealership number
-dealership name
-price + fees
-
-carview mobile and desktop(media queries)
-
-
-add image of cars
-
-car view
-
-vin
-notes
-picture vin
-enter vin
-details page from vin
-order
-delete trash
-x to remove it
-take picture page
-
+Lord's to do list
+>add pictures
+>picture editing page
+	>delete cars
+>dealership list of cars
+>address
+>dealership number
+>dealership name
+>price + fees
+>carview mobile and desktop(media queries)
+>picture vin
+>take picture page
+>top cars
+>inventory
+>influencer
+	>log in
+	>registration
+>book an appointment page
 
 open calendar from dealership
 R calendar
 PBS
 Outlook calendar
 
-top cars
-inventory
 
-influencer
-log in
-registration
-book an appointment
+
+
+
