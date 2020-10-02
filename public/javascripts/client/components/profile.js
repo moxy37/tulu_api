@@ -55,7 +55,7 @@ function LoadMyAccountMenu() {
     html=html+'        </a>';
     html=html+'    </li>';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a href="/">';
+    html=html+'        <a href="/messages">';
     html=html+'            <i class="far fa-envelope fa-2x accountMenuIcon"></i>';
     html=html+'            Messages';
     html=html+'        </a>';

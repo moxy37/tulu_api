@@ -80,6 +80,10 @@ router.get('/about', function (req, res) {
     res.render('client/test/about');
 });
 
+router.get('/messages', function (req, res) {
+    res.render('client/test/messages');
+});
+
 
 
 module.exports = router;

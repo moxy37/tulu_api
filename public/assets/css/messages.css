@@ -1,0 +1,109 @@
+.messages{
+    margin:50px 0 0 0;
+    display: grid;
+    grid-template-rows:80px auto;
+}
+
+.userOne{
+    background:#79C6AC;
+    padding:15px;
+    flex-direction: row;
+    align-items: center;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.userImage{
+    border:4px solid white;
+    background:transparent;
+    border-radius: 50%;
+    overflow: hidden;
+    height:50px;
+    width:50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.userImage i{
+    color: white;
+}
+
+.userOne p{
+    color:white;
+    margin:0 0 0 15px;
+}
+
+.messageContainer{
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.messageCard{
+    margin:15px;
+    flex-direction: row-reverse;
+}
+
+.messageCard:nth-child(3){
+    margin:20px;
+    flex-direction: row;
+    
+}
+
+.messageCard:nth-child(3) .userOneImage{
+    background: #699284;
+    border:4px solid#699284;
+    border-radius: 50%;
+    overflow: hidden;
+    height:50px;
+    width:50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.userOneImage{
+    background: #79C6AC;
+    border:4px solid#79C6AC;
+    border-radius: 50%;
+    overflow: hidden;
+    height:50px;
+    width:50px;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.userOneImage i{
+    color:white;
+}
+
+.messageCloud{
+    background: #79C6AC;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 0;
+    margin:0 5px 0 0;
+    padding:15px;
+    align-items: center;
+}
+
+.messageCard:nth-child(3) .messageCloud{
+    background: #699284;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 10px;
+    margin:0 0 0 5px;
+    padding:15px;
+    align-items: center;
+}
+.messageCloud p{
+    color:white;
+}
+
+.messengerUserLeft{
+    text-align: center;
+    color:#9e9e9e;
+    padding:20px 0;
+}
