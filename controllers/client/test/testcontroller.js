@@ -84,6 +84,18 @@ router.get('/messages', function (req, res) {
     res.render('client/test/messages');
 });
 
+router.get('/dealership', function (req, res) {
+    res.render('client/test/dealership');
+});
+
+router.get('/dealershipList', function (req, res) {
+    res.render('client/test/dealershipList');
+});
+
+router.get('/contactUs', function (req, res) {
+    res.render('client/test/contactUs');
+});
+
 
 
 module.exports = router;

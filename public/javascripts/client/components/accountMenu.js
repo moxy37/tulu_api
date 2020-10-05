@@ -4,7 +4,7 @@ function LoadMyAccountMenu() {
 	var html = '';		
 	html=html+'<ul class="accountMenuList">';
 	html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a href="/vendor">';
+    html=html+'        <a href="/profile">';
     html=html+'            <i class="far fa-user fa-2x accountMenuIcon"></i>';
     html=html+'            Profile';
     html=html+'        </a>';

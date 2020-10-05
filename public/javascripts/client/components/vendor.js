@@ -205,7 +205,7 @@ function LoadMyAccountMenu() {
     html=html+'        </a>';
     html=html+'    </li>';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a href="/">';
+    html=html+'        <a href="/contactUs">';
     html=html+'            <i class="fas fa-phone fa-2x accountMenuIcon"></i>';
     html=html+'            Contact Us';
     html=html+'        </a>';

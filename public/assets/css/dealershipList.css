@@ -1,0 +1,32 @@
+.dealershipContainer{
+    margin:60px 0;
+}
+
+.dealershipList{
+}
+
+.dealershipListItem{
+    border-bottom:1px solid #8b91967a;
+    padding:15px;
+    flex-direction: row;
+}
+
+.dealerImage{
+    background:#79C6AC;
+    border-radius: 10px;
+    overflow: hidden;
+    width:100px;
+    height:100px;
+}
+
+.dealerInfo{
+    margin:0 0 0 10px;
+}
+
+.dealerName{
+    color:#79C6AC;
+}
+
+.dealerInfo p{
+    color:#8b9196;
+}

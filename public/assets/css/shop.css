@@ -7,6 +7,7 @@
 
 .vehicleList{
     flex-direction: column;
+    align-items: center;
 }
 
 .vehicleListItems{
@@ -17,6 +18,7 @@
     flex-direction: column;
     align-items: center;
     margin:10px 0;
+    width:300px;
 }
 
 .carImage{
@@ -27,6 +29,16 @@
     padding:10px 0;
     justify-content: center;
     align-items: center;
+}
+
+.carDetails p,.additionalCarInfo p{
+    text-align: center;
+}
+
+
+.carName{
+    text-align: center;
+    width:150px;
 }
 
 .additionalCarInfo{

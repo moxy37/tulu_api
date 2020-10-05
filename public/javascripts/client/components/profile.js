@@ -49,7 +49,7 @@ function LoadMyAccountMenu() {
 	
     html=html+'<ul class="accountMenuList">';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a href="/">';
+    html=html+'        <a href="/profile">';
     html=html+'            <i class="far fa-user fa-2x accountMenuIcon"></i>';
     html=html+'            Profile';
     html=html+'        </a>';
@@ -61,7 +61,7 @@ function LoadMyAccountMenu() {
     html=html+'        </a>';
     html=html+'    </li>';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a href="/">';
+    html=html+'        <a href="/shop">';
     html=html+'            <i class="fas fa-car fa-2x accountMenuIcon"></i>';
     html=html+'            Vehicles';
     html=html+'        </a>';
