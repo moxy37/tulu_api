@@ -53,6 +53,19 @@
 <script src="/javascripts/client/components/nav.js"></script>
 <script src="/javascripts/client/components/vendor.js"></script>
 
+<script type="text/javascript">
+    const inputField = document.querySelector('#file-input');
+    var html = "";
+    $(document).ready(function(){
+        $("#file-input").on('change',function(){
+            console.log("fuck you");
+            console.log(inputField.value);
+            html=html+'<img src="'+inputField.value+'">';	
+	        $("#imageContainer").append(html);
+        });
+    });
+</script>
+
 <script src="assets/js/sideMenu.js"></script>
 <script src="assets/js/listingSetting.js"></script>
 <script src="assets/js/addListingMenu.js"></script>

@@ -2,11 +2,7 @@ Lord's to do list
 >add pictures
 >picture editing page
 	>delete cars
->dealership list of cars
->address
->dealership number
->dealership name
->price + fees
+>dealership price + fees
 >carview mobile and desktop(media queries)
 >picture vin
 >take picture page

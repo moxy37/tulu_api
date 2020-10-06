@@ -71,3 +71,14 @@ const addedSuccessful = () => {
     vehicleAdded.style = "display:Flex; opacity:1; transition:0.5s;";
     addVehicleStepThree.style = "display:none;";
 }
+
+
+
+const addImage = () =>{
+    const fileBtn = document.querySelector(`#file-input`);
+    fileBtn.click();
+    console.log('hello');
+    console.log(fileBtn.nodeValue);
+
+    
+}

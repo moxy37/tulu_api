@@ -60,7 +60,9 @@ function LoadActiveListing() {
 		html=html+'    </div>';		
 		html=html+'    <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="listingSettings()"></i>';		
 		html=html+'</li>';	
-	}	
+    }	
+
+
 	$("#ActiveListing").empty();	
 	$("#ActiveListing").append(html);
 }
@@ -167,8 +169,10 @@ function LoadAddPosting() {
     html=html+'        <div class="inputContainer">';
     html=html+'            <textarea type="text" id="carDescription" class="carDescription" name="carDescription"></textarea>';
     html=html+'        </div>';
+    html=html+'        <div id="imageContainer">';
+    html=html+'        </div>';
     html=html+'        <input type="file" accept="image/*" id="file-input">';
-    html=html+'        <button type="button" class="addImageBtn" onclick="const fileBtn = document.querySelector(`#file-input`); fileBtn.click()">ADD PHOTOS</button>';
+    html=html+'        <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
     html=html+'        <button type="button" class="submitBtn" onclick="addVehicleStep()">SUBMIT</button>';
     html=html+'    </form>';
     html=html+'    <div class="addVehicleForm vehicleAdded">';
