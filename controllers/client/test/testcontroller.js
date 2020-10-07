@@ -96,6 +96,10 @@ router.get('/contactUs', function (req, res) {
     res.render('client/test/contactUs');
 });
 
+router.get('/appointment', function (req, res) {
+    res.render('client/test/appointment');
+});
+
 
 
 module.exports = router;
