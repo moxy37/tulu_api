@@ -3,7 +3,6 @@ Lord's to do list
 >picture editing page
 	>delete cars
 >dealership price + fees
->carview mobile and desktop(media queries)
 >picture vin
 >take picture page
 >top cars

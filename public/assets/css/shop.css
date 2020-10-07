@@ -41,6 +41,10 @@
     width:150px;
 }
 
+.carPrice{
+    color:#79C6AC;
+}
+
 .additionalCarInfo{
     display:none;
     justify-content: center;
@@ -60,4 +64,43 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.carDetails a button{
+    width:200px;
+}
+
+@media screen and (min-width: 720px) {
+    .vehicleList{
+        flex-direction: column;
+        align-items: center;
+    }
+    .vehicleListItems{
+        background:white;
+        filter: drop-shadow(0px 15px 5px #3333331e);
+        border-radius: 20px;
+        padding:25px;
+        flex-direction: row;
+        /* align-items: center; */
+        margin:10px 0;
+        width:800px;
+    }
+    .carName{
+        text-align: left;
+        width:100%;
+    }
+    .carDetails{
+        padding:10px 20px;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .additionalCarInfo{
+        display:flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .moreInfoBtn{
+        display:none;
+    }
 }

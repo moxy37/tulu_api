@@ -39,7 +39,7 @@ const vehicleDisplay = () => {
             carName.style = "font-size:default; transition:0.5s;"
 
             const moreInfo = document.querySelector('.vehicleList .vehicleListItems:nth-child('+x+') .moreInfo');
-            moreInfo.style = "width:150px; transition:0.5s;"
+            moreInfo.style = "width:200px; transition:0.5s;"
 
             const exploreBtn = document.querySelector('.vehicleList .vehicleListItems:nth-child('+x+') a .moreInfo');
             exploreBtn.style = "width:200px; transition:0.5s;"
