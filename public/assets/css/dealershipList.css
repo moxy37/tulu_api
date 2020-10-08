@@ -6,7 +6,7 @@
 }
 
 .dealershipListItem{
-    border-bottom:1px solid #8b91967a;
+    border-bottom:1px solid #8b91964b;
     padding:15px;
     flex-direction: row;
 }
@@ -21,12 +21,21 @@
 
 .dealerInfo{
     margin:0 0 0 10px;
+    justify-content: center;
 }
 
 .dealerName{
     color:#79C6AC;
 }
 
+.dealerInfo h3{
+    color:#79C6AC;
+}
+
 .dealerInfo p{
     color:#8b9196;
+}
+
+.dealerInfo .phoneNumber,.dealerInfo .hours,.dealerInfo .listing{
+    font-size: small;
 }

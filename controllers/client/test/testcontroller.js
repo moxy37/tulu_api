@@ -100,6 +100,14 @@ router.get('/appointment', function (req, res) {
     res.render('client/test/appointment');
 });
 
+router.get('/calendar', function (req, res) {
+    res.render('client/test/calendar');
+});
+
+router.get('/influencerList', function (req, res) {
+    res.render('client/test/influencerList');
+});
+
 
 
 module.exports = router;

@@ -1,0 +1,39 @@
+.influencerContainer{
+    margin:60px 0;
+}
+
+.influencerListItem{
+    border-bottom:1px solid #8b91964b;
+    padding:15px;
+    flex-direction: row;
+}
+
+.influencerImage{
+    /* background:#79C6AC; */
+    border:4px solid #79C6AC;
+    border-radius: 50%;
+    overflow: hidden;
+    width:70px;
+    height:70px;
+}
+
+.influencerInfo{
+    margin:0 0 0 20px;
+    justify-content: center;
+}
+
+.influencerName{
+    color:#79C6AC;
+}
+
+.influencerInfo h3{
+    color:#79C6AC;
+}
+
+.influencerInfo p{
+    color:#8b9196;
+}
+
+.influencerInfo .phoneNumber,.influencerInfo .hours,.influencerInfo .listing{
+    font-size: small;
+}
