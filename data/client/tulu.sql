@@ -7,7 +7,6 @@ CREATE TABLE `Vehicle` (
 
 );
 
---type are 'image', 'report', 'badge'
 CREATE TABLE `VehicleLinks` (
 	`vin` VARCHAR(255),
 	`name` VARCHAR(1024),
