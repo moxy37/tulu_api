@@ -17,38 +17,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * */
 var express = require('express');
 var async = require('async');
+var uuid = require("node-uuid");
 
+var UsersDAO = require(__base + "dao/client/users/usersdao");
+var usersDao = new UsersDAO();
 router = express.Router();
 
 
-var WebSocketServer = require('ws').Server;
-global.__wss = new WebSocketServer({ port: 1015 });
-
-__wss.on('connection', function (ws) {
-	console.log(ws.upgradeReq.connection.remoteAddress);
-	ws.remoteAddress = ws.upgradeReq.connection.remoteAddress;
-	__checkTables = true;
-	// wss.broadcast('Connected to ' + ws.remoteAddress, ws.remoteAddress);
-	//setInterval(rfidCon.rfidInterval, 1000);
+router.put("/api/user/login", function (req, res) {
+    var data = req.body;
+    var username = data.email;
+    var password = data.password;
+    usersDao.login(username, password, function (err, user) {
+        return res.send(user);
+    });
 });
 
-__wss.on('message', function (message) {
-	console.log('received: %s', message);
+router.get('/user', function (req, res) {
+	console.log("DOING IT");
+    res.render('client/test/login');
 });
 
-__wss.broadcast = function broadcast(data, ipAddress) {
-	try {
-		__wss.clients.forEach(function each(client) {
-			console.log("Sending data " + data);
-			if (ipAddress === undefined || ipAddress === client.remoteAddress) {
-				client.send(data);
-			}
+router.get('/',function(req,res){
+    res.render('client/test/home');
+});
 
-		});
-	} catch (err) {
-
-	}
-};
-
+setInterval(usersDao.checkTokens, 60000);
 
 module.exports = router;

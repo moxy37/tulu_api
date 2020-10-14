@@ -28,12 +28,43 @@ router.put("/api/vehicle/list", function (req, res) {
 	var tokenId = obj.tokenId;
 	if (__currentTokens[tokenId] !== undefined) {
 		__currentTokens[tokenId].timestamp = new Date();
-		//obj.make, obj.model, obj.year, obj.vin
 		vehicleDao.list(tokenId, obj, function (err, list) {
 			return res.send(list);
 		});
 	} else { return res.status(400).send("Invalid tokenId"); }
 });
 
+router.put("/api/vehicle/save", function (req, res) {
+	var obj = req.body;
+	var tokenId = obj.tokenId;
+	if (__currentTokens[tokenId] !== undefined) {
+		__currentTokens[tokenId].timestamp = new Date();
+		vehicleDao.save(tokenId, obj.vehicle, function (err, vehicle) {
+			return res.send(vehicle);
+		});
+	} else { return res.status(400).send("Invalid tokenId"); }
+});
+
+router.put("/api/vehicle/get", function (req, res) {
+	var obj = req.body;
+	var tokenId = obj.tokenId;
+	if (__currentTokens[tokenId] !== undefined) {
+		__currentTokens[tokenId].timestamp = new Date();
+		vehicleDao.get(tokenId, obj.vin, function (err, vehicle) {
+			return res.send(vehicle);
+		});
+	} else { return res.status(400).send("Invalid tokenId"); }
+});
+
+router.put("/api/vehicle/delete", function (req, res) {
+	var obj = req.body;
+	var tokenId = obj.tokenId;
+	if (__currentTokens[tokenId] !== undefined) {
+		__currentTokens[tokenId].timestamp = new Date();
+		vehicleDao.delete(tokenId, obj.vin, function (err, vehicle) {
+			return res.send(vehicle);
+		});
+	} else { return res.status(400).send("Invalid tokenId"); }
+});
 
 module.exports = router;
