@@ -171,11 +171,14 @@ function LoadAddPosting() {
     html=html+'        </div>';
     html=html+'        <div id="imageContainer">';
     html=html+'        </div>';
-    html=html+'        <input type="file" accept="image/*" id="file-input">';
+    html=html+'        <input type="file" accept="image/*" onchange="loadFile(event)" id="file-input">';
     html=html+'        <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
     html=html+'        <button type="button" class="submitBtn" onclick="addVehicleStep()">SUBMIT</button>';
     html=html+'    </form>';
     html=html+'    <div class="addVehicleForm vehicleAdded">';
+    html=html+'    <div class="addVehicleForm vehicleAdded">';
+    html=html+'    <div id="imageContainer">';
+    html=html+'    </div>';
     html=html+'        <h3>Vehicle Added <i class="fas fa-check"></i></h3>';
     html=html+'        <button type="button" class="doneBtn" onclick="addVehicleStep()">DONE</button>';
     html=html+'    </div>';

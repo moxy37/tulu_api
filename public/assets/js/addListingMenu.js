@@ -72,13 +72,18 @@ const addedSuccessful = () => {
     addVehicleStepThree.style = "display:none;";
 }
 
+var loadFile = function(event) {
+	var html="";
+    html=html+"<img class='uploadDisplayImage'>";
 
+    $("#imageContainer").empty();	
+	$("#imageContainer").append(html);
+
+    var image = document.querySelector('.uploadDisplayImage');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
 
 const addImage = () =>{
     const fileBtn = document.querySelector(`#file-input`);
     fileBtn.click();
-    console.log('hello');
-    console.log(fileBtn.nodeValue);
-
-    
 }

@@ -76,3 +76,16 @@
 .activeListingListItem i{
     color:#79C6AC;
 }
+
+#imageContainer{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#imageContainer img{
+    width:100px;
+    height:100px;
+    margin:10px;
+    border-radius:10px;
+}
