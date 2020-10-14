@@ -44,8 +44,8 @@ router.put("/api/vehicle/delete", function (req, res) {
 	var tokenId = obj.tokenId;
 	if (__currentTokens[tokenId] !== undefined) {
 		__currentTokens[tokenId].timestamp = new Date();
-		vehicleDao.delete(tokenId, obj.vin, function (err, vehicle) {
-			return res.send(vehicle);
+		vehicleDao.delete(tokenId, obj.vehicle, function (err, result) {
+			return res.send(result);
 		});
 	} else { return res.status(400).send("Invalid tokenId"); }
 });
