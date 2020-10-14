@@ -33,7 +33,7 @@ router.put("/api/vehicle/get", function (req, res) {
 	var tokenId = obj.tokenId;
 	if (__currentTokens[tokenId] !== undefined) {
 		__currentTokens[tokenId].timestamp = new Date();
-		vehicleDao.get(tokenId, obj.vin, function (err, vehicle) {
+		vehicleDao.get(tokenId, obj.vin, obj.dealerId, function (err, vehicle) {
 			return res.send(vehicle);
 		});
 	} else { return res.status(400).send("Invalid tokenId"); }

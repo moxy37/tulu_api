@@ -1,7 +1,8 @@
-async function GetVehicle(vin) {
+async function GetVehicle(vin, dealerId) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
 	obj.vin = vin;
+	obj.dealerId = dealerId;
 	const result = await $.ajax({
 		type: "PUT",
 		url: "/api/vehicle/get",

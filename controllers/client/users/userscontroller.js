@@ -1,11 +1,20 @@
 var express = require('express');
 var async = require('async');
 var uuid = require("node-uuid");
+const { router } = require('../../../app');
 
 var UsersDAO = require(__base + "dao/client/users/usersdao");
 var usersDao = new UsersDAO();
 router = express.Router();
 
+router.put("/api/user/current", function (req, res) {
+    var obj = req.body;
+    var tokenId = obj.tokenId;
+    if (__currentTokens[tokenId] !== undefined) {
+        __currentTokens[tokenId].timestamp = new Date();
+        return res.set(__currentTokens[tokenId]);
+    } else { return res.status(400).send("Invalid tokenId"); }
+});
 
 router.put("/api/user/login", function (req, res) {
     var data = req.body;
@@ -17,11 +26,11 @@ router.put("/api/user/login", function (req, res) {
 });
 
 router.get('/user', function (req, res) {
-	console.log("DOING IT");
+    console.log("DOING IT");
     res.render('client/test/login');
 });
 
-router.get('/',function(req,res){
+router.get('/', function (req, res) {
     res.render('client/test/home');
 });
 

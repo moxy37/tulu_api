@@ -67,8 +67,8 @@ function VehicleDAO() {
 		});
 	}
 
-	this.get = function (tokenId, vin, next) {
-		__con.query(tokenId, "SELECT * FROM `DealerList` WHERE `vin`=?", vin, function (err, results) {
+	this.get = function (tokenId, vin, dealerId, next) {
+		__con.query(tokenId, "SELECT * FROM `DealerList` WHERE `vin`=? AND `dealerId`=?", [vin, dealerId], function (err, results) {
 			if (err) return next(err);
 			if (results.length === 0) {
 				return next(new Error("No results"));
