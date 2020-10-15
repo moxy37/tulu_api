@@ -9,8 +9,6 @@ var PhoneDAO = require(__base + "dao/client/users/phonedao");
 var phoneDao = new PhoneDAO();
 
 function DealerDAO() {
-
-	
 	this.get = function (tokenId, id, next) {
 		__con.query(tokenId, "SELECT * FROM `Dealer` WHERE `id`=?", id, function (err, results) {
 			if (err) return next(err);

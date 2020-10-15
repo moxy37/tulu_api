@@ -1,5 +1,6 @@
 var uuid = require("node-uuid");
 var async = require('async');
+
 module.exports = VehicleDAO;
 
 function VehicleDAO() {

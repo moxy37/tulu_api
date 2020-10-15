@@ -1,23 +1,17 @@
 var uuid = require("node-uuid");
 var async = require('async');
+
+
 module.exports = PhoneDAO;
 
+var HelperDAO = require(__base + "dao/core/helperdao");
+var helperDao = new HelperDAO();
+
 function PhoneDAO() {
-
-
 	this.get = function (tokenId, id, next) {
 		__con.query(tokenId, "SELECT * FROM `Phone` WHERE `targetId`=? ORDER BY `sequence`", id, function (err, results) {
 			if (err) return next(err);
-			var list = [];
-			async.forEach(results, function (r, callback) {
-				var obj = new Object();
-				obj.targetId = r.targetId;
-				obj.type = r.type;
-				obj.value = r.value;
-				obj.sequence = r.sequence;
-				list.push(obj);
-				callback();
-			}, function (err) {
+			helperDao.loadResults(tokenId, results, function (err, list) {
 				return next(null, list);
 			});
 		});
