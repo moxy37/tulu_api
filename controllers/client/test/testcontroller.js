@@ -91,6 +91,13 @@ router.get('/influencerList', function (req, res) {
     res.render('client/test/influencerList');
 });
 
+router.get('/tuluLogin', function (req, res) {
+    res.render('client/test/tuluLogin');
+});
+
+router.get('/tuluRegister', function (req, res) {
+    res.render('client/test/tuluRegister');
+});
 
 
 module.exports = router;
