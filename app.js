@@ -1,6 +1,8 @@
 global.__base = __dirname + '/';
 global.__listeningPort = 3001;
 
+var fs = require('fs');
+var https = require('https');
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -20,11 +22,17 @@ global.__currentTokens = new Object();
 global.__userToTokens = new Object();
 global.__defaultSessionTime = 900000;
 
-app.listen(__listeningPort, function () {
-    console.log('Spartacus Node listening on port ' + __listeningPort);
+// app.listen(__listeningPort, function () {
+//     console.log('Spartacus Node listening on port ' + __listeningPort);
 
+// });
+
+https.createServer({
+    key: fs.readFileSync(__base + 'key.pem'),
+    cert: fs.readFileSync(__base + 'cert.pem')
+}, app).listen(3001, function () {
+    console.log('Example app listening on port 3000! Go to https://localhost:3001/')
 });
-
 process.on('uncaughtException', function (err) { console.log(err); });
 
 app.use('/', require('./controllers/client/test/testcontroller'));

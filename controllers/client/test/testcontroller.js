@@ -7,6 +7,9 @@ var helperDao = new HelperDAO();
 
 router = express.Router();
 
+router.get('/test_camera', function (req, res) {
+    res.render('core/test_camera');
+});
 
 router.get('/test', function (req, res) {
     res.render('core/test');

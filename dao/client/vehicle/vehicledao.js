@@ -7,66 +7,6 @@ var helperDao = new HelperDAO();
 module.exports = VehicleDAO;
 
 function VehicleDAO() {
-	this.list = function (tokenId, obj, next) {
-		var sql = "SELECT * FROM `Vehicle` ";
-		var whereAdded = false;
-		var params = [];
-		if (obj.dealerIds !== undefined && obj.dealerIds.length !== 0) {
-			if (whereAdded === true) {
-				sql += "AND ";
-			} else {
-				whereAdded = truel
-				sql += "WHERE ";
-			}
-			sql += "`dealerId` IN (";
-			for (var i = 0; i < obj.dealerIds.length; i++) {
-				if (i > 0) { sql += ", "; }
-				sql += "?";
-				params.push(obj.dealerIds[i]);
-			}
-			sql += ") ";
-		}
-		if (obj.makes !== undefined && obj.makes.length !== 0) {
-			if (whereAdded === true) {
-				sql += "AND ";
-			} else {
-				whereAdded = truel
-				sql += "WHERE ";
-			}
-			sql += "`make` IN (";
-			for (var i = 0; i < obj.makes.length; i++) {
-				if (i > 0) { sql += ", "; }
-				sql += "?";
-				params.push(obj.makes[i]);
-			}
-			sql += ") ";
-		}
-		if (obj.models !== undefined && obj.models.length !== 0) {
-			if (whereAdded === true) {
-				sql += "AND ";
-			} else {
-				whereAdded = truel
-				sql += "WHERE ";
-			}
-			sql += "`model` IN (";
-			for (var i = 0; i < obj.models.length; i++) {
-				if (i > 0) { sql += ", "; }
-				sql += "?";
-				params.push(obj.models[i]);
-			}
-			sql += ") ";
-		}
-		sql += "ORDER BY `dealerId`, `make`, `model`, `year` ";
-		let self = this;
-		__con.query(tokenId, sql, params, function (err, results) {
-			if (err) return next(err);
-			helperDao.loadResults(tokenId, results, function (err, list) {
-				if (err) return next(err);
-				return next(null, list);
-			});
-		});
-	}
-
 	this.new = function (tokenId, dealerId, next) {
 		helperDao.new(tokenId, "Vehicle", null, function (err, obj) {
 			if (err) return next(err);
@@ -137,6 +77,80 @@ function VehicleDAO() {
 			helperDao.delete(tokenId, "VehicleLinks", primary, function (err, result) {
 				if (err) return next(err);
 				return next(null, result);
+			});
+		});
+	}
+
+	this.list = function (tokenId, obj, next) {
+		var sql = "SELECT * FROM `Vehicle` ";
+		var whereAdded = false;
+		var params = [];
+		if (obj.dealerIds !== undefined && obj.dealerIds.length !== 0) {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`dealerId` IN (";
+			for (var i = 0; i < obj.dealerIds.length; i++) {
+				if (i > 0) { sql += ", "; }
+				sql += "?";
+				params.push(obj.dealerIds[i]);
+			}
+			sql += ") ";
+		}
+		if (obj.makes !== undefined && obj.makes.length !== 0) {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`make` IN (";
+			for (var i = 0; i < obj.makes.length; i++) {
+				if (i > 0) { sql += ", "; }
+				sql += "?";
+				params.push(obj.makes[i]);
+			}
+			sql += ") ";
+		}
+		if (obj.models !== undefined && obj.models.length !== 0) {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`model` IN (";
+			for (var i = 0; i < obj.models.length; i++) {
+				if (i > 0) { sql += ", "; }
+				sql += "?";
+				params.push(obj.models[i]);
+			}
+			sql += ") ";
+		}
+		if (obj.isSold !== undefined && obj.isSold !== '') {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`isSold` = ? ";
+			if (String(obj.isSold) === 'true' || String(obj.isSold) === '1') {
+				params.push(true);
+			} else {
+				params.push(false);
+			}
+		}
+		sql += "ORDER BY `dealerId`, `make`, `model`, `year` ";
+		let self = this;
+		__con.query(tokenId, sql, params, function (err, results) {
+			if (err) return next(err);
+			helperDao.loadResults(tokenId, results, function (err, list) {
+				if (err) return next(err);
+				return next(null, list);
 			});
 		});
 	}
