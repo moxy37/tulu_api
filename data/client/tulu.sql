@@ -2,21 +2,35 @@ DROP DATABASE `spartacus`;
 CREATE DATABASE `spartacus`;
 USE `spartacus`;
 
+DROP TABLE IF EXISTS `Dealer`;
+CREATE TABLE `Dealer` (
+	`id` VARCHAR(36) PRIMARY KEY,
+	`name` VARCHAR(2048),
+	`accountId` VARCHAR(255)
+);
+
 DROP TABLE IF EXISTS `Vehicle`;
 CREATE TABLE `Vehicle` (
-	`vin` VARCHAR(255) PRIMARY KEY,
+	`vin` VARCHAR(255),
 	`make` VARCHAR(1024),
 	`model` VARCHAR(1024),
 	`year` INTEGER,
-	`trim` VARCHAR(1024)
+	`trim` VARCHAR(1024),
+	`dealerId` VARCHAR(36),
+	`listDate` DATETIME,
+	`isSold` BOOLEAN, 
+	PRIMARY KEY(`vin`, `dealerId`)
 );
 
 DROP TABLE IF EXISTS `VehicleLinks`;
 CREATE TABLE `VehicleLinks` (
 	`vin` VARCHAR(255),
+	`dealerId` VARCHAR(36),
 	`name` VARCHAR(1024),
 	`url` VARCHAR(2048),
-	`type` VARCHAR(255)
+	`type` VARCHAR(255),
+	`sequence` INTEGER DEFAULT 0,
+	PRIMARY KEY(`vin`, `dealerId`, `sequence`)
 );
 
 DROP TABLE IF EXISTS `Users`;
@@ -24,7 +38,7 @@ CREATE TABLE `Users` (
 	`id` VARCHAR(36) PRIMARY KEY,
 	`name` VARCHAR(1024),
 	`email` VARCHAR(1024),
-	`type` VARCHAR(255),
+	`type` VARCHAR(255) DEFAULT 'User',
 	`password` VARCHAR(1024)
 );
 
@@ -62,21 +76,5 @@ CREATE TABLE `Rating` (
 	`userId` VARCHAR(36),
 	`notes` VARCHAR(4000)
 );
-
-DROP TABLE IF EXISTS `Dealer`;
-CREATE TABLE `Dealer` (
-	`id` VARCHAR(36) PRIMARY KEY,
-	`name` VARCHAR(2048),
-	`accountId` VARCHAR(255)
-);
-
-DROP TABLE IF EXISTS `DealerVehicle`;
-CREATE TABLE `DealerVehicle` (
-	`vin` VARCHAR(255),
-	`dealerId` VARCHAR(36)
-);
-
-DROP VIEW IF EXISTS `DealerList`;
-CREATE VIEW `DealerList` AS SELECT dv.`vin` AS `vin`, dv.`dealerId` AS `dealerId`, v.`make` AS `make`, v.`model` AS `model`, v.`year` AS `year`, v.`trim` AS `trim` FROM `DealerVehicle` dv JOIN `Vehicle` v ON dv.`vin`=v.`vin`;
 
 INSERT INTO `Users` (`id`, `name`, `email`, `type`, `password`) VALUES (UUID(), 'admin', 'admin', 'SysAdmin', 'admin');

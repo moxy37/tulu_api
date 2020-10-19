@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tulu Canada</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/assets/js/global.js"></script>
+</head>
+
+<body>
+	<h1>Test Login</h1>
+	<!-- <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" >
+    <div id="imageContainer"></div> -->
+
+
+</body>
+<script>
+	function PageLoadFunction() {
+		Login();
+	}
+	function Login() {
+		var obj = new Object();
+		obj.username = "admin";
+		obj.password = "admin";
+		obj.email = "admin";
+		$.ajax({
+			type: "PUT",
+			url: "/api/user/login",
+			data: obj,
+			cache: false,
+			dataType: "json",
+			contentType: "application/x-www-form-urlencoded",
+			success: function (results) {
+				gUser = results;
+				tokenId = gUser.tokenId;
+				LocationChange('test');
+			},
+			error: function (results) {
+				alert("Error");
+			},
+		});
+	}
+</script>
+
+</html>

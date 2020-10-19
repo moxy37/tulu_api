@@ -9,27 +9,37 @@ var helperDao = new HelperDAO();
 
 function PhoneDAO() {
 	this.get = function (tokenId, id, next) {
-		__con.query(tokenId, "SELECT * FROM `Phone` WHERE `targetId`=? ORDER BY `sequence`", id, function (err, results) {
+		var primary = new Object();
+		primary.targetId = id;
+		helperDao.list(tokenId, "Phone", primary, 'ORDER BY `sequence`', function (err, list) {
 			if (err) return next(err);
-			helperDao.loadResults(tokenId, results, function (err, list) {
-				return next(null, list);
-			});
+			if (list === undefined) list = [];
+			return next(null, list);
+		});
+	}
+
+	this.new = function (tokenId, targetId, next) {
+		var primary = new Object();
+		primary.targetId = targetId;
+		helperDao.new(tokenId, "Phone", primary, function (err, obj) {
+			if (err) return next(err);
+			obj.targetId = targetId;
+			return next(null, obj);
 		});
 	}
 
 	this.save = function (tokenId, targetId, list, next) {
-		__con.query(tokenId, "DELETE FROM `Phones` WHERE `targetId`=?", targetId, function (err, result) {
+		var primary = new Object();
+		primary.targetId = targetId;
+		helperDao.delete(tokenId, "Phone", primary, function (err, r) {
 			var newList = [];
 			var sequence = 0;
 			async.forEach(list, function (l, callback) {
-				__con.query(tokenId, "INSERT INTO `Phones` (`targetId`, `type`, `value`, `sequence`) VALUES (? , ?, ?, ?)", [targetId, l.type, l.value, sequence], function (err, results) {
-					var o = new Object();
-					o.targetId = targetId;
-					o.sequence = sequence;
-					o.value = l.value;
-					o.type = l.type;
-					newList.push(o);
-					sequence++;
+				primary.sequence = sequence;
+				l.sequence = sequence;
+				sequence++;
+				helperDao.save(tokenId, "Phone", l, primary, function (err, o) {
+					newList.push(l);
 					callback();
 				});
 			}, function (err) {

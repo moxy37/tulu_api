@@ -2,10 +2,19 @@ var express = require('express');
 var async = require('async');
 var uuid = require("node-uuid");
 
+var HelperDAO = require(__base + "dao/core/helperdao");
+var helperDao = new HelperDAO();
 
 router = express.Router();
 
 
+router.get('/test', function (req, res) {
+    res.render('core/test');
+});
+
+router.get('/test_login', function (req, res) {
+    res.render('core/test_login');
+});
 
 router.get('/home', function (req, res) {
     res.render('client/test/home');

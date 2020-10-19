@@ -31,6 +31,7 @@ app.use('/', require('./controllers/client/test/testcontroller'));
 app.use('/', require('./controllers/client/vehicle/vehiclecontroller'));
 app.use('/', require('./controllers/client/users/userscontroller'));
 app.use('/', require('./controllers/client/dealer/dealercontroller'));
+app.use('/', require('./controllers/core/helpercontroller'));
 
 
 module.exports = app;

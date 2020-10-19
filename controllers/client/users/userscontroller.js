@@ -11,7 +11,7 @@ router.put("/api/user/current", function (req, res) {
     var tokenId = obj.tokenId;
     if (__currentTokens[tokenId] !== undefined) {
         __currentTokens[tokenId].timestamp = new Date();
-        return res.set(__currentTokens[tokenId]);
+        return res.send(__currentTokens[tokenId]);
     } else { return res.status(400).send("Invalid tokenId"); }
 });
 
@@ -22,6 +22,17 @@ router.put("/api/user/login", function (req, res) {
     usersDao.login(username, password, function (err, user) {
         return res.send(user);
     });
+});
+
+router.put("/api/user/new", function (req, res) {
+    var obj = req.body;
+    var tokenId = obj.tokenId;
+    if (__currentTokens[tokenId] !== undefined) {
+        __currentTokens[tokenId].timestamp = new Date();
+        usersDao.new(tokenId, function (err, result) {
+            return res.send(result);
+        });
+    } else { return res.status(400).send("Invalid tokenId"); }
 });
 
 router.get('/user', function (req, res) {
