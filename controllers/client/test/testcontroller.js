@@ -7,6 +7,14 @@ var helperDao = new HelperDAO();
 
 router = express.Router();
 
+router.get('/barcode', function (req, res) {
+    res.render('core/barcode');
+});
+
+router.get('/barcode2', function (req, res) {
+    res.render('core/barcode2');
+});
+
 router.get('/test_camera', function (req, res) {
     res.render('core/test_camera');
 });

@@ -36,6 +36,7 @@
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "pem": "^1.14.4",
+    "quagga": "^0.12.1",
     "react-native-webview": "^10.9.0",
     "react-router-dom": "^5.2.0",
     "read-chunk": "^3.0.0",
