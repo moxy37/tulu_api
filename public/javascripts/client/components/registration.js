@@ -1,7 +1,7 @@
 function LoadRegistration() {
 	var html = '';
 	html=html+'<div class="stepOneRegistration">';
-    html=html+'    <form action="" class="registerForm">';
+    html=html+'    <div class="registerForm">';
     html=html+'        <label for="userType">User Role:</label>';
     html=html+'        <div class="inputContainer">';
     html=html+'            <select name="userType" id="userType">';
@@ -22,10 +22,10 @@ function LoadRegistration() {
     html=html+'            <input type="password" id="confirmPassword" class="confirmPassword" name="confirmPassword">';
     html=html+'        </div>';
     html=html+'        <button type="button" class="nextBtn stepOneBtn" onclick="registrationStep()">CONTINUE</button>';
-    html=html+'    </form>';
+    html=html+'    </div>';
     html=html+'</div>';
     html=html+'<div class="stepTwoRegistration">';
-    html=html+'    <form action="" class="registerForm">';
+    html=html+'    <div class="registerForm">';
     html=html+'        <label for="fname">First Name:</label>';
     html=html+'        <div class="inputContainer">';
     html=html+'            <input type="text" id="fname" class="fname" name="fname"><br>';
@@ -42,10 +42,10 @@ function LoadRegistration() {
     html=html+'        </div>';
     html=html+'        <button type="button" class="nextBtn stepTwoBtn" onclick="registrationStep()">NEXT</button>';
     html=html+'        <button type="button" class="backBtn stepTwoBackBtn" onclick="registrationStepBack()">BACK</button>';
-    html=html+'    </form>';
+    html=html+'    </div>';
     html=html+'</div>';
     html=html+'<div class="stepThreeRegistration">';
-    html=html+'    <form action="" class="registerForm">';
+    html=html+'    <div class="registerForm">';
     html=html+'        <label for="ig">Instagram:</label>';
     html=html+'        <div class="inputContainer">';
     html=html+'            <input type="text" id="ig" class="ig" name="ig"><br>';
@@ -66,7 +66,7 @@ function LoadRegistration() {
     html=html+'            <button type="button" class="registerBtn stepThreeBtn" onclick="registrationStep()">COMPLETE</button>';
     html=html+'        </a>';
     html=html+'            <button type="button" class="backBtn stepThreeBackBtn" onclick="registrationStepBack()">BACK</button>';
-    html=html+'    </form>';
+    html=html+'    </div>';
     html=html+'</div>';
   
 	$("#registerContainer").empty();
