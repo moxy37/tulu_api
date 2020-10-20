@@ -50,12 +50,12 @@ function SaveUser() {
 	});
 }
 
-function AddPhone() {
+async function AddNewObject(table, key) {
 	var obj = new Object();
 	obj.primary = new Object();
 	obj.primary.targetId = gObj.id;
-	obj.table = 'Phone';
-	$.ajax({
+	obj.table = table;
+	const result = await $.ajax({
 		type: "PUT",
 		url: "/api/helper/new",
 		data: obj,
@@ -63,13 +63,18 @@ function AddPhone() {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-			results.sequence = gObj.phones.length;
-			gObj.phones.push(results);
-			PopulateUserData(gObj);
+			// alert(JSON.stringify(results));
 		},
-		error: function (results) {
-			alert("Error");
-		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}
+
+function AddNewObj(table, key) {
+	AddNewObject(table, key).then(function (obj) {
+		obj.sequence = gObj[key].length;
+		gObj[key].push(obj);
+		PopulateUserData(gObj);
 	});
 }
 
@@ -103,7 +108,7 @@ function PopulateUserData(user) {
 		html += `</select></div>`;
 		html += `<input type="button" class="" onclick="RemovePhone(` + i + `);" /></div>`;
 	}
-	html += `<input type="button" class="" onclick="AddPhone();" /></div>`;
+	html += `<input type="button" class="" onclick="AddNewObj('Phone', 'phones');" /></div>`;
 	$("#multiplePhone").empty();
 	$("#multiplePhone").append(html);
 }
