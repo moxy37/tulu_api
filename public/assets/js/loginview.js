@@ -1,5 +1,7 @@
 function PageLoadFunction() {
-	
+	LoadLogin();
+	LoadNavigation();
+	LoadSideMenu();
 }
 
 function Login() {
