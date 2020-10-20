@@ -35,14 +35,6 @@ router.put("/api/user/new", function (req, res) {
     } else { return res.status(400).send("Invalid tokenId"); }
 });
 
-router.get('/user', function (req, res) {
-    console.log("DOING IT");
-    res.render('client/test/login');
-});
-
-router.get('/', function (req, res) {
-    res.render('client/test/home');
-});
 
 setInterval(usersDao.checkTokens, 60000);
 
