@@ -60,7 +60,17 @@ function DealerDAO() {
 			obj.id = uuid.v4();
 			obj.addresses = [];
 			obj.phones = [];
-			return next(null, obj);
+			var primary = new Object();
+			primary.targetId = obj.id;
+			helperDao.new(tokenId, "Address", primary, function (err, o) {
+				if (err) return next(err);
+				obj.addresses.push(o);
+				helperDao.new(tokenId, "Phone", primary, function (err, o) {
+					if (err) return next(err);
+					obj.phones.push(o);
+					return next(null, obj);
+				});
+			});
 		});
 	}
 
