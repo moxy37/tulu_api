@@ -42,6 +42,8 @@ function LoadRegistration() {
     html=html+'        <div class="inputContainer">';
     html=html+'            <input type="text" id="phone" class="phone" name="phone"><br>';
     html=html+'        </div>';
+    html=html+'        <div id="multiplePhone">';
+    html=html+'        </div>';
     html=html+'        <button type="button" class="nextBtn stepTwoBtn" onclick="registrationStep()">NEXT</button>';
     html=html+'        <button type="button" class="backBtn stepTwoBackBtn" onclick="registrationStepBack()">BACK</button>';
     html=html+'    </form>';

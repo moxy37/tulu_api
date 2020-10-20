@@ -104,7 +104,8 @@ function PopulateUserData(user) {
 		html += `<input type="button" class="" onclick="RemovePhone(` + i + `);" /></div>`;
 	}
 	html += `<input type="button" class="" onclick="AddPhone();" /></div>`;
-
+	$("#multiplePhone").empty();
+	$("#multiplePhone").append(html);
 }
 
 async function RegisterUser(user) {
