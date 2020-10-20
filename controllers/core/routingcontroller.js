@@ -18,6 +18,10 @@ router.get('/test', function (req, res) {
 	} else { res.render('client/test/home'); }
 });
 
+router.get('/login', function (req, res) {
+    res.render('final/login');
+});
+
 router.get('/', function (req, res) {
     res.render('client/test/home');
 });

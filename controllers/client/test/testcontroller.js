@@ -57,9 +57,7 @@ router.get('/influencer', function (req, res) {
     res.render('client/test/influencer');
 });
 
-router.get('/login', function (req, res) {
-    res.render('client/test/login');
-});
+
 
 router.get('/profile', function (req, res) {
     res.render('client/test/profile');
