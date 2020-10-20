@@ -6,7 +6,9 @@ DROP TABLE IF EXISTS `Dealer`;
 CREATE TABLE `Dealer` (
 	`id` VARCHAR(36) PRIMARY KEY,
 	`name` VARCHAR(2048),
-	`accountId` VARCHAR(255)
+	`accountId` VARCHAR(255),
+	`logo` VARCHAR(2048),
+	`hours` VARCHAR(1024)
 );
 
 DROP TABLE IF EXISTS `Vehicle`;
