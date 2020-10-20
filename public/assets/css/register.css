@@ -5,24 +5,28 @@
     padding:20px;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     height:75vh;
+    flex-direction: column;
 }
 
 .stepOneRegistration,.stepTwoRegistration,.stepThreeRegistration{
-    position:absolute;
+    /* position:absolute; */
     bottom:0;
-    transform: translateX(100vw);
+    /* transform: translateX(100vw); */
 }
 
 .stepOneRegistration{
-    transform: translateX(0);
+    /* transform: translateX(0); */
 }
 
 .registerContainer label{
     margin:20px 0 10px 0;
 }
 
+.phoneLabel{
+    margin:20px 0 0 0;
+}
 
 .inputContainer{
     flex-direction: row;
@@ -30,7 +34,13 @@
     border:1px solid #79c6ac;
     border-radius: 10px;
     padding:5px 10px;
-    
+}
+
+.phoneLabel .inputContainer{
+    width:100%;
+    padding:5px;
+    margin-top:10px;
+    color:#79c6ac;
 }
 
 .registerForm{

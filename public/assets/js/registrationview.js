@@ -1,3 +1,5 @@
+const cons = require("consolidate");
+
 var gObj = null;
 
 function PageLoadFunction() {
@@ -30,12 +32,19 @@ async function MakeNewUser() {
 
 
 function UpdateUser() {
-	gObj.name = $("#name").val();
+	gObj.type = $("#userType").val();
 	gObj.email = $("#email").val();
 	gObj.password = $("#password").val();
-	gObj.type = $("#userType").val();
-	gObj.type = $("#userType").val();
-	gObj.addresses[0].streeet = $("#userType").val();
+	gObj.fname = $("#fname").val();
+	gObj.lname = $("#lname").val();
+	gObj.addresses[0].postalCode = $("#postalCode").val();
+	gObj.phoneValue = $("#phone_value_").val();
+	gObj.phoneType = $("#phone_type_").val();
+	gObj.instagram = $("#ig").val();
+	gObj.facebook = $("#fb").val();
+	gObj.linkedin = $("#linkedIn").val();
+	gObj.bio = $("#bio").val();
+
 
 	for (var i = 0; i < gObj.phones.length; i++) {
 		gObj.phones[i].type = $("#phone_type_0 option:selected").val();
@@ -71,6 +80,7 @@ async function AddNewObject(table, key) {
 }
 
 function AddNewObj(table, key) {
+	alert(obj);
 	AddNewObject(table, key).then(function (obj) {
 		obj.sequence = gObj[key].length;
 		gObj[key].push(obj);
@@ -85,30 +95,37 @@ function RemovePhone(index) {
 
 function PopulateUserData(user) {
 	console.log(JSON.stringify(user));
-	$("#name").val(user.name);
+	$("#userType").val(user.type);
 	$("#email").val(user.email);
 	$("#password").val(user.password);
-	$("#userType").val(user.type);
-	$("#postalcode").val(user.addresses[0].streeet);
+	$("#fname").val(user.name);
+	$("#lname").val(user.name);
+	$("#postalcode").val(user.addresses[0].postalCode);
+	$("#phone_value_").val(user.phoneValue);
+	$("#phone_type_").val(user.phoneType);
+	$("#ig").val(user.instagram);
+	$("#fb").val(user.facebook);
+	$("#linkedIn").val(user.linkedin);
+	$("#bio").val(user.bio);
 
 	var html = '<div id="PhonesDiv" class="">';
 	for (var i = 0; i < user.phones.length; i++) {
 		html += `<div id="phone_0" class="">`;
-		html += `<div class="">Number: <input type="text" id="phone_value_` + i + `" class="" /></div>`;
-		html += `<div class="">Type: <select id="phone_type_` + i + `">`;
+		html += `<label for="phone">Contact Number:</label><div class ="inputContainer"><input type="text" id="phone_value_` + i + `" class="" /></div>`;
+		html += `<label for="phone">Contact Type: </label><div class ="inputContainer"><select id="phone_type_` + i + `">`;
 		html += `<option value="Home"`;
 		if (user.phones[i].type === 'Home') { html += ` selected="selected"`; }
 		html += `>Home</option>`;
 		html += `<option value="Mobile"`;
 		if (user.phones[i].type === 'Mobile') { html += ` selected="selected"`; }
-		html += `>Home</option>`;
+		html += `>Mobile</option>`;
 		html += `<option value="Other"`;
 		if (user.phones[i].type === 'Other') { html += ` selected="selected"`; }
-		html += `>Home</option>`;
+		html += `>Other</option>`;
 		html += `</select></div>`;
-		html += `<input type="button" class="" onclick="RemovePhone(` + i + `);" /></div>`;
+		html += `<button class="" onclick="RemovePhone(` + i + `);">REMOVE</button></div>`;
 	}
-	html += `<input type="button" class="" onclick="AddNewObj('Phone', 'phones');" /></div>`;
+	html += `<button class="" onclick="AddNewObj('Phone', 'phones');">ADD</button> </div>`;
 	$("#multiplePhone").empty();
 	$("#multiplePhone").append(html);
 }
