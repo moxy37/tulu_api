@@ -20,7 +20,7 @@ async function MakeNewUser() {
 		cache: false,
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
-		success: function (results) { 
+		success: function (results) {
 			// alert(JSON.stringify(results));
 		},
 		error: function (results) { console.log(results.statusText); },
@@ -28,6 +28,34 @@ async function MakeNewUser() {
 	return result;
 }
 
+function SaveUser() {
+	gObj.name = $("#name").val();
+	RegisterUser(gUser).then(function (u) {
+		LocationChange('login');
+	});
+}
+
 function PopulateUserData(user) {
 	console.log(JSON.stringify(user));
+	$("#name").val(user.name);
+	$("#email").val(user.email);
+	$("#street").val(user.addresses[0].streeet);
+}
+
+async function RegisterUser(user) {
+	var obj = new Object();
+	obj.user = user;
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/user/register",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			// alert(JSON.stringify(results));
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
 }

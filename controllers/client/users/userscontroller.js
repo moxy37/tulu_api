@@ -36,6 +36,15 @@ router.put("/api/user/new", function (req, res) {
     // } else { return res.status(400).send("Invalid tokenId"); }
 });
 
+router.put('/api/user/register', function (req, res) {
+    var obj = req.body;
+    var user = obj.user;
+    var tokenId = '';
+    usersDao.save(tokenId, user, function (err, result) {
+        return res.send(result);
+    });
+});
+
 
 setInterval(usersDao.checkTokens, 60000);
 
