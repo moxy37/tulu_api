@@ -31,4 +31,8 @@ router.get('/user', function (req, res) {
     res.render('client/test/login');
 });
 
+router.get('/register', function (req, res) {
+    res.render('final/register');
+});
+
 module.exports = router;

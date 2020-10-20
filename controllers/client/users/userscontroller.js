@@ -25,14 +25,15 @@ router.put("/api/user/login", function (req, res) {
 });
 
 router.put("/api/user/new", function (req, res) {
-    var obj = req.body;
-    var tokenId = obj.tokenId;
-    if (__currentTokens[tokenId] !== undefined) {
-        __currentTokens[tokenId].timestamp = new Date();
-        usersDao.new(tokenId, function (err, result) {
-            return res.send(result);
-        });
-    } else { return res.status(400).send("Invalid tokenId"); }
+    // var obj = req.body;
+    // var tokenId = obj.tokenId;
+    // if (__currentTokens[tokenId] !== undefined) {
+    //     __currentTokens[tokenId].timestamp = new Date();
+    var tokenId = '';
+    usersDao.new(tokenId, function (err, result) {
+        return res.send(result);
+    });
+    // } else { return res.status(400).send("Invalid tokenId"); }
 });
 
 

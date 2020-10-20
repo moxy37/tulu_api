@@ -63,9 +63,6 @@ router.get('/profile', function (req, res) {
     res.render('client/test/profile');
 });
 
-router.get('/register', function (req, res) {
-    res.render('client/test/register');
-});
 
 router.get('/schedule', function (req, res) {
     res.render('client/test/schedule');
