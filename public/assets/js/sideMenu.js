@@ -1,12 +1,12 @@
 // MAIN MENU
 
 var toggle="off";
-const sideMenu = document.querySelector('.sideMenu');
-const menuBtn = document.querySelector('.menuBtn');
-const closeMenuBtn = document.querySelector('.closeMenuBtn');
+
 
 const slideMenu = () => {
-    
+    const sideMenu = document.querySelector('.sideMenu');
+const menuBtn = document.querySelector('.menuBtn');
+const closeMenuBtn = document.querySelector('.closeMenuBtn');
     if(toggle=="off"){
         sideMenu.style = "top:50px;transition:0.5s ease-out;";
         menuBtn.style = "opacity:0;transform:rotate(180deg); transition:0.5s;";
