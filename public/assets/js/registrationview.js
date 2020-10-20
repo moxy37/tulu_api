@@ -16,7 +16,7 @@ async function MakeNewUser() {
 	const result = await $.ajax({
 		type: "PUT",
 		url: "/api/user/new",
-		data: obj,
+		// data: obj,
 		cache: false,
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
@@ -26,5 +26,5 @@ async function MakeNewUser() {
 }
 
 function PopulateUserData(user) {
-
+	console.log(JSON.stringify(user));
 }
