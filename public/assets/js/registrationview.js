@@ -1,5 +1,3 @@
-const cons = require("consolidate");
-
 var gObj = null;
 
 function PageLoadFunction() {
@@ -80,7 +78,6 @@ async function AddNewObject(table, key) {
 }
 
 function AddNewObj(table, key) {
-	alert(obj);
 	AddNewObject(table, key).then(function (obj) {
 		obj.sequence = gObj[key].length;
 		gObj[key].push(obj);
