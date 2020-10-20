@@ -18,6 +18,12 @@ R calendar
 PBS
 Outlook calendar
 
+Types of Users
+- User
+- Tulu
+- Dealer
+- SysAdmin
+
 
 
 
