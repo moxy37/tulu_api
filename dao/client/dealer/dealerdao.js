@@ -65,6 +65,7 @@ function DealerDAO() {
 	}
 
 	this.save = function (tokenId, obj, next) {
+		let self = this;
 		var primary = new Object();
 		primary.id = obj.id;
 		helperDao.save(tokenId, "Dealer", obj, primary, function (err, result) {
@@ -75,8 +76,31 @@ function DealerDAO() {
 				phoneDao.save(tokenId, obj.id, obj.phones, function (err, list) {
 					if (err) return next(err);
 					obj.phones = list;
-					return next(null, obj);
+					self.saveUsers(tokenId, obj.id, obj.users, function (err, list) {
+						if (err) return next(err);
+						obj.users = list;
+						return next(null, obj);
+					});
 				});
+			});
+		});
+	}
+
+	this.saveUsers = function (tokenId, dealerId, users, next) {
+		__con.query(tokenId, "DELETE FROM `DealerUser` WHERE `dealerId`=?", dealerId, function (err, result) {
+			if (err) return next(err);
+			var list = [];
+			async.forEach(users, function (u, callback) {
+				__con.query(tokenId, "INSERT INTO `DealerUser` (`userId`, `dealerId`) VALUES (?, ?)", [u.id, dealerId], function (err, result) {
+					if (err) return next(err);
+					userDao.save(tokenId, u, function (err, result) {
+						if (err) return next(err);
+						list.push(result);
+						callback();
+					});
+				});
+			}, function (err) {
+				return next(null, list);
 			});
 		});
 	}
