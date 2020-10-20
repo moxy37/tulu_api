@@ -21,7 +21,9 @@ Outlook calendar
 Types of Users
 - User
 - Tulu
+- TuluBroker
 - Dealer
+- DealerAdmin
 - SysAdmin
 
 

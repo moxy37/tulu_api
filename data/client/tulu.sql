@@ -79,4 +79,7 @@ CREATE TABLE `Rating` (
 	`notes` VARCHAR(4000)
 );
 
+DROP VIEW IF EXISTS `RatingView`;
+CREATE VIEW `RatingView` AS SELECT `targetId`, `type`, AVG(`stars`) AS `rating`, COUNT(`stars`) AS `reviews` FROM `Rating` GROUP BY `targetId`, `type`;
+
 INSERT INTO `Users` (`id`, `name`, `email`, `type`, `password`) VALUES (UUID(), 'admin', 'admin', 'SysAdmin', 'admin');

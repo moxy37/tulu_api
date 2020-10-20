@@ -1,11 +1,13 @@
 function PageLoadFunction() {
-	
+	LoadLogin();
+	LoadNavigation();
+	LoadSideMenu();
 }
 
 function Login() {
 	var obj = new Object();
-	obj.username = "admin";
-	obj.password = "admin";
+	obj.email = $("#email").val();
+	obj.password = $("#password").val();
 	$.ajax({
 		type: "PUT",
 		url: "/api/user/login",
