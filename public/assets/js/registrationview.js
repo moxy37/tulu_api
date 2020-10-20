@@ -52,7 +52,8 @@ function UpdateUser() {
 }
 
 function SaveUser() {
-	RegisterUser(gUser).then(function (u) {
+	UpdateUser();
+	RegisterUser(gObj).then(function (u) {
 		LocationChange('login');
 	});
 }
