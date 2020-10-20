@@ -8,6 +8,9 @@ var addressDao = new AddressDAO();
 var PhoneDAO = require(__base + "dao/client/users/phonedao");
 var phoneDao = new PhoneDAO();
 
+var UserDAO = require(__base + "dao/client/users/userdao");
+var userDao = new UserDAO();
+
 var HelperDAO = require(__base + "dao/core/helperdao");
 var helperDao = new HelperDAO();
 
@@ -34,13 +37,18 @@ function DealerDAO() {
 			if (err) return next(err);
 			obj.addresses = [];
 			obj.phones = [];
+			obj.users = [];
 			addressDao.get(tokenId, id, function (err, list) {
 				if (err) return next(err);
 				obj.addresses = list;
 				phoneDao.get(tokenId, id, function (err, list) {
 					if (err) return next(err);
 					obj.phones = list;
-					return next(null, obj);
+					userDao.getDealerUsers(tokenId, id, function (err, list) {
+						if (err) return next(err);
+						obj.users = list;
+						return next(null, obj);
+					});
 				});
 			});
 		});
