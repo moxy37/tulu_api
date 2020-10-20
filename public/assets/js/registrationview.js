@@ -120,7 +120,7 @@ function PopulateUserData(user) {
 		html += `<option value="Other"`;
 		if (user.phones[i].type === 'Other') { html += ` selected="selected"`; }
 		html += `>Other</option>`;
-		html += `</select></div>`;
+		html += `</select></div></div>`;
 		html += `<div class=""><button class="contactBtn" onclick="RemovePhone(` + i + `);">REMOVE</button></div>`;
 	}
 	html += `<button class="contactBtn" onclick="AddNewObj('Phone', 'phones');">ADD</button> </div></div>`;

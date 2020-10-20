@@ -7,10 +7,10 @@
     position: relative;
     overflow: hidden;
     height:75vh;
-    /* flex-direction: column; */
+    flex-direction: column;
 }
 
-.stepOneRegistration,.stepTwoRegistration,.stepThreeRegistration{
+.stepOneRegistration,.stepTwoRegistration,.stepThreeRegistration,.stepFourRegistration,.stepFiveRegistration,.stepSixRegistration{
     position:absolute;
     bottom:0;
     transform: translateX(100vw);
@@ -109,7 +109,7 @@
 #multiplePhone{
     border-radius: 10px;
     border:1px solid #79C6AC;
-    padding:10px 20px;
+    padding:50px 20px;
 }
 
 .contactBtnContainer{
@@ -133,10 +133,10 @@
     justify-content: center;
 }
 
-.stepOne,.stepTwo,.stepThree{
+.stepOne,.stepTwo,.stepThree,.stepFour,.stepFive,.stepSix{
     margin:0 20px;
-    width:10px;
-    height:10px;
+    width:5px;
+    height:5px;
     border-radius: 50%;
     background:#ffffff00;
     border:2px solid #79C6AC;
