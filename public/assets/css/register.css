@@ -44,6 +44,21 @@
     color:#79c6ac;
 }
 
+
+.registerForm select{
+    width:100%;
+    padding:5px;
+    border:none;
+    color:#79c6ac;
+}
+
+.registerForm select option{
+    width:100%;
+    padding:5px;
+    border:none;
+    color:#79c6ac;
+}
+
 .registerForm textarea{
     width:100%;
     padding:5px;

@@ -2,6 +2,13 @@ function LoadRegistration() {
 	var html = '';
 	html=html+'<div class="stepOneRegistration">';
     html=html+'    <form action="" class="registerForm">';
+    html=html+'        <label for="userType">User Role:</label>';
+    html=html+'        <div class="inputContainer">';
+    html=html+'            <select name="userType" id="userType">';
+    html=html+'                 <option value="user">User</option>';
+    html=html+'                 <option value="tulumem">Tulu Member</option>';
+    html=html+'             </select>';
+    html=html+'        </div>';
     html=html+'        <label for="email">Email:</label>';
     html=html+'        <div class="inputContainer">';
     html=html+'            <input type="text" id="email" class="email" name="email"><br>';
@@ -57,7 +64,7 @@ function LoadRegistration() {
     html=html+'        <div class="inputContainer">';
     html=html+'            <textarea type="text" id="bio" class="bio" name="bio"></textarea>';
     html=html+'        </div>';
-    html=html+'        <a href="/profile">';
+    html=html+'        <a onclick="SaveUser()">';
     html=html+'            <button type="button" class="registerBtn stepThreeBtn" onclick="registrationStep()">COMPLETE</button>';
     html=html+'        </a>';
     html=html+'            <button type="button" class="backBtn stepThreeBackBtn" onclick="registrationStepBack()">BACK</button>';

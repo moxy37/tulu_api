@@ -30,6 +30,11 @@ async function MakeNewUser() {
 
 function SaveUser() {
 	gObj.name = $("#name").val();
+	gObj.email = $("#email").val();
+	gObj.password = $("#password").val();
+	gObj.type = $("#userType").val();
+	gObj.type = $("#userType").val();
+	gObj.addresses[0].streeet = $("#userType").val();
 	RegisterUser(gUser).then(function (u) {
 		LocationChange('login');
 	});
@@ -39,7 +44,9 @@ function PopulateUserData(user) {
 	console.log(JSON.stringify(user));
 	$("#name").val(user.name);
 	$("#email").val(user.email);
-	$("#street").val(user.addresses[0].streeet);
+	$("#password").val(user.password);
+	$("#userType").val(user.type);
+	$("#postalcode").val(user.addresses[0].streeet);
 }
 
 async function RegisterUser(user) {

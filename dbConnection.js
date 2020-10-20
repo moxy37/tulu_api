@@ -3,12 +3,12 @@ var mysql = require("mysql2");
 var dbConnection = mysql.createPool({
   host: "127.0.0.1",
   connectionLimit: 10,
-  // user: "spartacus",
-  // password: "I@mSp@rt@cus!",
+  user: "spartacus",
+  password: "I@mSp@rt@cus!",
   // database: "spike",
   // port: 3306
-  user: "root",
-  password: "root",
+  // user: "root",
+  // password: "admin",
   database: "spartacus",
 });
 
