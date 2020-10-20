@@ -28,16 +28,54 @@ async function MakeNewUser() {
 	return result;
 }
 
-function SaveUser() {
+
+function UpdateUser() {
 	gObj.name = $("#name").val();
 	gObj.email = $("#email").val();
 	gObj.password = $("#password").val();
 	gObj.type = $("#userType").val();
 	gObj.type = $("#userType").val();
 	gObj.addresses[0].streeet = $("#userType").val();
+
+	for (var i = 0; i < gObj.phones.length; i++) {
+		gObj.phones[i].type = $("#phone_type_0 option:selected").val();
+		gObj.phones[i].value = $("#phone_value_0").val();
+	}
+}
+
+function SaveUser() {
+
 	RegisterUser(gUser).then(function (u) {
 		LocationChange('login');
 	});
+}
+
+function AddPhone() {
+	var obj = new Object();
+	obj.primary = new Object();
+	obj.primary.targetId = gObj.id;
+	obj.table = 'Phone';
+	$.ajax({
+		type: "PUT",
+		url: "/api/helper/new",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			results.sequence = gObj.phones.length;
+			gObj.phones.push(results);
+			PopulateUserData(gObj);
+		},
+		error: function (results) {
+			alert("Error");
+		},
+	});
+}
+
+function RemovePhone(index) {
+	gObj.phones.splice(index, 1);
+	PopulateUserData(gObj);
 }
 
 function PopulateUserData(user) {
@@ -47,6 +85,26 @@ function PopulateUserData(user) {
 	$("#password").val(user.password);
 	$("#userType").val(user.type);
 	$("#postalcode").val(user.addresses[0].streeet);
+
+	var html = '<div id="PhonesDiv" class="">';
+	for (var i = 0; i < user.phones.length; i++) {
+		html += `<div id="phone_0" class="">`;
+		html += `<div class="">Number: <input type="text" id="phone_value_` + i + `" class="" /></div>`;
+		html += `<div class="">Type: <select id="phone_type_` + i + `">`;
+		html += `<option value="Home"`;
+		if (user.phones[i].type === 'Home') { html += ` selected="selected"`; }
+		html += `>Home</option>`;
+		html += `<option value="Mobile"`;
+		if (user.phones[i].type === 'Mobile') { html += ` selected="selected"`; }
+		html += `>Home</option>`;
+		html += `<option value="Other"`;
+		if (user.phones[i].type === 'Other') { html += ` selected="selected"`; }
+		html += `>Home</option>`;
+		html += `</select></div>`;
+		html += `<input type="button" class="" onclick="RemovePhone(` + i + `);" /></div>`;
+	}
+	html += `<input type="button" class="" onclick="AddPhone();" /></div>`;
+
 }
 
 async function RegisterUser(user) {
