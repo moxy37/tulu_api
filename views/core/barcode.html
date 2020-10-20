@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title></title>
+
+	<!-- <link rel="stylesheet" href="/css/barcode.css"> -->
+	<!-- <link rel="stylesheet" rel="preload" as="style" onload="this.rel='stylesheet';this.onload=null"
+		href="https://unpkg.com/normalize.css@8.0.0/normalize.css">
+	<link rel="stylesheet" rel="preload" as="style" onload="this.rel='stylesheet';this.onload=null"
+		href="https://unpkg.com/milligram@1.3.0/dist/milligram.min.css"> -->
+	<script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
+	<script src="/assets/js/global.js"></script>
+</head>
+
+<body>
+
+	<main class="wrapper" style="padding-top:2em">
+
+		<section class="container" id="demo-content">
+
+
+
+			<div>
+				<input type="button" id="startButton" value="Start" />
+				<input type="button" id="resetButton" value="Reset" />
+			</div>
+
+			<div>
+				<video id="video" width="300" height="200" style="border: 1px solid gray"></video>
+			</div>
+
+			<div id="sourceSelectPanel" style="display:none">
+				<label for="sourceSelect">Change video source:</label>
+				<select id="sourceSelect" style="max-width:400px">
+				</select>
+			</div>
+
+			<label>Result:</label>
+			<input type="text" id="result" />
+		</section>
+	</main>
+
+	<script type="text/javascript" src="/javascripts/core/bc.js"></script>
+	<script type="text/javascript">
+		var selectedDeviceId;
+		var codeReader;
+		function PageLoadFunction() {
+			codeReader = new ZXing.BrowserMultiFormatReader();
+			codeReader.listVideoInputDevices().then(function (videoInputDevices) {
+				selectedDeviceId = videoInputDevices[0].deviceId;
+				var html = '';
+				videoInputDevices.forEach(function (element) {
+					html += '<option value="' + element.deviceId + '">' + element.label + '</option>';
+				});
+				$("#sourceSelect").empty();
+				$("#sourceSelect").append(html);
+				$("#sourceSelect").change(function () { selectedDeviceId = $("#sourceSelect option:selected").val(); });
+				$('#sourceSelectPanel').show();
+
+				$('#startButton').click(function () {
+					$("#result").val('');
+					codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', function (result, err) {
+						if (result) {
+							console.log(result);
+							if ($("#result").val() !== result.text) { 
+								$("#result").val(result.text);
+							 }
+						}else{
+							console.log("Still looking");
+						}
+					});
+					console.log(`Started continous decode from camera with id ${selectedDeviceId}`);
+				})
+
+				$('#resetButton').click(function () {
+					codeReader.reset();
+					$("#result").val('');
+				});
+
+			}).catch(function (err) { console.error(err) });
+		}
+	</script>
+
+</body>
+
+</html>

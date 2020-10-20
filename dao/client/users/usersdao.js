@@ -8,6 +8,9 @@ var addressDao = new AddressDAO();
 var PhoneDAO = require(__base + "dao/client/users/phonedao");
 var phoneDao = new PhoneDAO();
 
+var HelperDAO = require(__base + "dao/core/helperdao");
+var helperDao = new HelperDAO();
+
 function UsersDAO() {
 	this.checkTokens = function () {
 		var keys = Object.keys(__currentTokens);
@@ -40,7 +43,6 @@ function UsersDAO() {
 				console.log("Error Logging In");
 				return next(new Error("Error Logging In"));
 			} else {
-				var tokenId = uuid.v4();
 				self.get(tokenId, results[0].id, function (err, user) {
 					if (err) return next(err);
 					if (__userToTokens[user.id] !== undefined) {
@@ -62,22 +64,34 @@ function UsersDAO() {
 		});
 	}
 
+	this.list = function (tokenId, next) {
+		let self = this;
+		__con.query(tokenId, "SELECT * FROM `Users` ORDER BY `name`", function (err, results) {
+			var list = [];
+			async.forEach(results, function (r, callback) {
+				self.get(tokenId, r.id, function (err, o) {
+					list.push(o);
+					callback();
+				});
+			}, function (err) {
+				return next(null, list);
+			});
+		});
+	}
+
 	this.get = function (tokenId, id, next) {
-		__con.query(tokenId, "SELECT * FROM `Users` WHERE `id`=?", id, function (err, results) {
+		var tokenId = uuid.v4();
+		var primary = new Object();
+		primary.id = id;
+		helperDao.get(tokenId, "Users", primary, function (err, user) {
 			if (err) {
 				console.log("Error Running Report: " + err.message);
 				return next(err);
 			}
-			if (results.length === 0) {
+			if (user === undefined || user.length === 0) {
 				console.log("Can't find user");
 				return next(new Error("Error Logging In"));
 			} else {
-				var user = new Object();
-				user.id = results[0].id;
-				user.name = results[0].name;
-				user.email = results[0].email;
-				user.type = results[0].type;
-				user.password = results[0].password;
 				user.addresses = [];
 				user.phones = [];
 				addressDao.get(tokenId, id, function (err, list) {
@@ -91,11 +105,44 @@ function UsersDAO() {
 		});
 	}
 
-	this.save = function (tokenId, user, next) {
-		// phoneDao.save(tokenId, user.phones, function (err, list) {
-		// 	user.phones = list;
-
-		// });
+	this.new = function (tokenId, next) {
+		helperDao.new(tokenId, "Users", null, function (err, obj) {
+			if (err) return next(err);
+			obj.id = uuid.v4();
+			obj.phones = [];
+			obj.addresses = [];
+			return next(null, obj);
+		});
 	}
 
+	this.save = function (tokenId, user, next) {
+		var primary = new Object();
+		primary.id = user.id;
+		helperDao.save(tokenId, "Users", user, primary, function (err, result) {
+			addressDao.save(tokenId, user.id, user.addresses, function (err, list) {
+				if (err) return next(err);
+				phoneDao.save(tokenId, user.id, user.phones, function (err, list) {
+					if (err) return next(err);
+					return next(null, user);
+				});
+			});
+		});
+	}
+
+	this.delete = function (tokenId, user, next) {
+		var primary = new Object();
+		primary.id = user.id;
+		helperDao.delete(tokenId, "Users", primary, function (err, obj) {
+			if (err) return next(err);
+			var p = new Object();
+			p.targetId = user.id;
+			helperDao.delete(tokenId, "Address", primary, function (err, obj) {
+				if (err) return next(err);
+				helperDao.delete(tokenId, "Phone", primary, function (err, obj) {
+					if (err) return next(err);
+					return next(null, obj);
+				});
+			});
+		});
+	}
 }

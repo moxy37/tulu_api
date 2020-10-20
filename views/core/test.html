@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tulu Canada</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/assets/js/global.js"></script>
+	<script src="/javascripts/core/testview.js"></script>
+</head>
+
+<body>
+
+	<h1 onclick="LocationChange('test_camera');">Test Page</h1>
+	<div id="TestDiv"></div>
+	<div id="PrimaryData"></div>
+	<input type="text" id="PrimaryKey" />
+	<input type="text" id="PrimaryValue" />
+	<input type="button" value="Add Primary" onclick="AddPrimary();" />
+	<br />
+	<input type="text" id="TestTableName" value="Users" />
+	Add To What:
+	<input type="text" id="KeyAdd" />
+	<input type="button" value="Test New" onclick="TestNew();" />
+	<input type="button" value="Test New Dealer" onclick="TestNewDealer();" />
+	<div id="TestResults"></div>
+	<br />
+	<input type="button" value="Save Dealer" onclick="TestSaveDealer();" />
+	<br />
+	Dealer ID: <input type="text" id="DealerId" /><input type="button" value="Get Dealer" onclick="TestGetDealer();" />
+	<!-- <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" >
+    <div id="imageContainer"></div> -->
+
+
+</body>
+<script>
+    // var loadFile = function(event) {
+    //     var html="";
+    //     html=html+"<img class='uploadDisplayImage'>";
+
+    //     $("#imageContainer").empty();	
+    //     $("#imageContainer").append(html);
+
+    //     var image = document.querySelector('.uploadDisplayImage');
+    //     image.src = URL.createObjectURL(event.target.files[0]);
+    // };
+</script>
+
+</html>

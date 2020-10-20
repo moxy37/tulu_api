@@ -1,11 +1,88 @@
 var uuid = require("node-uuid");
 var async = require('async');
 
+var HelperDAO = require(__base + "dao/core/helperdao");
+var helperDao = new HelperDAO();
+
 module.exports = VehicleDAO;
 
 function VehicleDAO() {
+	this.new = function (tokenId, dealerId, next) {
+		helperDao.new(tokenId, "Vehicle", null, function (err, obj) {
+			if (err) return next(err);
+			obj.links = [];
+			obj.dealerId = dealerId;
+
+		});
+	}
+
+	this.get = function (tokenId, vin, dealerId, next) {
+		var primary = new Object();
+		primary.dealerId = dealerId;
+		primary.vin = vin;
+		helperDao.get(tokenId, "Vehicle", primary, function (err, obj) {
+			if (err) return next(err);
+			if (obj === undefined) return next(new Error("Vehicle not found"));
+			obj.links = [];
+			helperDao.list(tokenId, "VehicleLinks", primary, 'ORDER BY `sequence`', function (err, links) {
+				if (err) return next(err);
+				obj.links = links;
+				return next(null, obj);
+			});
+		});
+	}
+
+	this.save = function (tokenId, vehicle, next) {
+		var list = [];
+		var primary = new Object();
+		primary.dealerId = dealerId;
+		primary.vin = vin;
+		async.series([
+			function (callback) {
+				helperDao.save(tokenId, "Vehicle", vehicle, primary, function (err, result) {
+					callback();
+				});
+			},
+			function (callback) {
+				helperDao.delete(tokenId, "VehicleLinks", primary, function (err, result) {
+					callback();
+				});
+			},
+			function (callback) {
+				var sequence = 0;
+				async.forEach(vehicle.links, function (link, callback2) {
+					link.sequence = sequence;
+					primary.sequence = sequence;
+					sequence++;
+					helperDao.save(tokenId, "VehicleLinks", link, primary, function (err, l) {
+						list.push(link);
+						callback2;
+					});
+				}, function (err) {
+					vehicle.links = list;
+					callback();
+				});
+			}
+		], function (err) {
+			return next(null, vehicle);
+		})
+	}
+
+	this.delete = function (tokenId, vehicle, next) {
+		var primary = new Object();
+		primary.vin = vehicle.vin;
+		primary.dealerId = vehicle.dealerId;
+		helperDao.delete(tokenId, "Vehicle", primary, function (err, result) {
+			if (err) return next(err);
+			helperDao.delete(tokenId, "VehicleLinks", primary, function (err, result) {
+				if (err) return next(err);
+				return next(null, result);
+			});
+		});
+	}
+
 	this.list = function (tokenId, obj, next) {
-		var sql = "SELECT * FROM `DealerList` ";
+		var sql = "SELECT * FROM `Vehicle` ";
 		var whereAdded = false;
 		var params = [];
 		if (obj.dealerIds !== undefined && obj.dealerIds.length !== 0) {
@@ -53,105 +130,27 @@ function VehicleDAO() {
 			}
 			sql += ") ";
 		}
+		if (obj.isSold !== undefined && obj.isSold !== '') {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`isSold` = ? ";
+			if (String(obj.isSold) === 'true' || String(obj.isSold) === '1') {
+				params.push(true);
+			} else {
+				params.push(false);
+			}
+		}
 		sql += "ORDER BY `dealerId`, `make`, `model`, `year` ";
 		let self = this;
 		__con.query(tokenId, sql, params, function (err, results) {
-			var list = [];
-			async.forEach(results, function (r, callback) {
-				self.get(tokenId, r.vin, function (err, vehicle) {
-					list.push(vehicle);
-					callback();
-				});
-			}, function (err) {
-				return next(null, list);
-			});
-		});
-	}
-
-	this.get = function (tokenId, vin, dealerId, next) {
-		__con.query(tokenId, "SELECT * FROM `DealerList` WHERE `vin`=? AND `dealerId`=?", [vin, dealerId], function (err, results) {
 			if (err) return next(err);
-			if (results.length === 0) {
-				return next(new Error("No results"));
-			} else {
-				var r = results[0];
-				var obj = new Object();
-				obj.vin = r.vin;
-				obj.make = r.make;
-				obj.year = r.year;
-				obj.trim = r.trim;
-				obj.model = r.model;
-				obj.dealerId = r.dealerId;
-				obj.links = [];
-				__con.query(tokenId, "SELECT * FROM `VehicleLinks` WHERE `vin`=?", vin, function (err, result) {
-					async.forEach(result, function (rr, callback) {
-						var o = new Object();
-						o.vin = vin;
-						o.name = rr.name;
-						o.url = rr.url;
-						o.type = rr.type;
-						obj.links.push(o);
-						callback();
-					}, function (err) {
-						return next(null, obj);
-					});
-				});
-			}
-		});
-	}
-
-	this.save = function (tokenId, vehicle, next) {
-		var list = [];
-		async.series([
-			function (callback) {
-				__con.query(tokenId, "DELETE FROM `DealerVehicle` WHERE `vin`=? AND `dealerId`=?", [vehicle.vin, vehicle.dealerId], function (err, result) {
-					if (err) return next(err);
-					callback();
-				});
-			},
-			function (callback) {
-				__con.query(tokenId, "DELETE FROM `Vehicle` WHERE `vin`=?", vehicle.vin, function (err, result) {
-					callback();
-				});
-			},
-			function (callback) {
-				__con.query(tokenId, "DELETE FROM `VehicleLinks` WHERE `vin`=?", vehicle.vin, function (err, result) {
-					callback();
-				});
-			},
-			function (callback) {
-				__con.query(tokenId, "INSERT INTO `Vehicle` (`make`, `model`, `year`, `trim`, `vin`) VALUES (?, ?, ?, ?, ?, ?)", [vehicle.make, vehicle.model, vehicle.year, vehicle.trim, vehicle.vin], function (err, result) {
-					callback();
-				});
-			},
-			function (callback) {
-				__con.query(tokenId, "INSERT INTO `DealerVehicle` (`vin`, `dealerId`) VALUES (?, ?)", [vehicle.vin, vehicle.dealerId], function (err, result) {
-					callback();
-				});
-			}, function (callback) {
-				async.forEach(vehicle.links, function (link, callback2) {
-					__con.query(tokenId, "INSERT INTO `VehicleLinks` (`vin`, `name`, `url`, `type`) VALUES (?, ?, ?, ?)", [link.vin, link.name, link.url, link.type], function (err, l) {
-						list.push(link);
-						callback2();
-					});
-				}, function (err) {
-					vehicle.links = list;
-					callback();
-				});
-			}
-		], function (err) {
-			return next(null, vehicle);
-		})
-	}
-
-	this.delete = function (tokenId, vehvicle, next) {
-		__con.query(tokenId, "DELETE FROM `Vehicle` WHERE `vin`=?", vehicle.vin, function (err, result) {
-			__con.query(tokenId, "DELETE FROM `VehicleLinks` WHERE `vin`=?", vehicle.vin, function (err, result) {
-				__con.query(tokenId, "DELETE FROM `DealerVehicle` WHERE `vin`=? AND `dealerId`=?", [vehicle.vin, vehicle.dealerId], function (err, result) {
-					var obj = new Object();
-					obj.message = "Vehicle Deleted";
-					return next(null, obj);
-				});
+			helperDao.loadResults(tokenId, results, function (err, list) {
+				if (err) return next(err);
+				return next(null, list);
 			});
 		});
 	}
