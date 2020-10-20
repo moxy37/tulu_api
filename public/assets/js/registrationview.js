@@ -33,14 +33,15 @@ function UpdateUser() {
 	gObj.type = $("#userType").val();
 	gObj.email = $("#email").val();
 	gObj.password = $("#password").val();
-	gObj.fname = $("#fname").val();
-	gObj.lname = $("#lname").val();
+	// gObj.fname = $("#fname").val();
+	gObj.fname = $("#name").val();
+	// gObj.lname = $("#lname").val();
 	gObj.addresses[0].postalCode = $("#postalCode").val();
 	gObj.phoneValue = $("#phone_value_").val();
 	gObj.phoneType = $("#phone_type_").val();
 	gObj.instagram = $("#ig").val();
 	gObj.facebook = $("#fb").val();
-	gObj.linkedin = $("#linkedIn").val();
+	gObj.linkedIn = $("#linkedIn").val();
 	gObj.bio = $("#bio").val();
 
 
@@ -51,7 +52,6 @@ function UpdateUser() {
 }
 
 function SaveUser() {
-
 	RegisterUser(gUser).then(function (u) {
 		LocationChange('login');
 	});
@@ -96,20 +96,20 @@ function PopulateUserData(user) {
 	$("#email").val(user.email);
 	$("#password").val(user.password);
 	$("#fname").val(user.name);
-	$("#lname").val(user.name);
+	// $("#lname").val(user.name);
 	$("#postalcode").val(user.addresses[0].postalCode);
 	$("#phone_value_").val(user.phoneValue);
 	$("#phone_type_").val(user.phoneType);
 	$("#ig").val(user.instagram);
 	$("#fb").val(user.facebook);
-	$("#linkedIn").val(user.linkedin);
+	$("#linkedIn").val(user.linkedIn);
 	$("#bio").val(user.bio);
 
 	var html = '<div id="PhonesDiv" class="">';
 	for (var i = 0; i < user.phones.length; i++) {
 		html += `<div id="phone_0" class="">`;
-		html += `<label for="phone">Contact Number:</label><div class ="inputContainer"><input type="text" id="phone_value_` + i + `" class="" /></div>`;
-		html += `<label for="phone">Contact Type: </label><div class ="inputContainer"><select id="phone_type_` + i + `">`;
+		html += `<label for="phone">Number:</label><div class ="inputContainer"><input type="text" id="phone_value_` + i + `" class="" /></div>`;
+		html += `<label for="phone">Type: </label><div class ="inputContainer"><select id="phone_type_` + i + `">`;
 		html += `<option value="Home"`;
 		if (user.phones[i].type === 'Home') { html += ` selected="selected"`; }
 		html += `>Home</option>`;
@@ -120,9 +120,9 @@ function PopulateUserData(user) {
 		if (user.phones[i].type === 'Other') { html += ` selected="selected"`; }
 		html += `>Other</option>`;
 		html += `</select></div>`;
-		html += `<button class="" onclick="RemovePhone(` + i + `);">REMOVE</button></div>`;
+		html += `<div class=""><button class="contactBtn" onclick="RemovePhone(` + i + `);">REMOVE</button></div>`;
 	}
-	html += `<button class="" onclick="AddNewObj('Phone', 'phones');">ADD</button> </div>`;
+	html += `<button class="contactBtn" onclick="AddNewObj('Phone', 'phones');">ADD</button> </div></div>`;
 	$("#multiplePhone").empty();
 	$("#multiplePhone").append(html);
 }
@@ -138,7 +138,7 @@ async function RegisterUser(user) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-			// alert(JSON.stringify(results));
+			alert(JSON.stringify(results));
 		},
 		error: function (results) { console.log(results.statusText); },
 	});

@@ -38,6 +38,7 @@ function LoadRegistration() {
     html=html+'        <div class="inputContainer">';
     html=html+'            <input type="text" id="postalCode" class="postalCode" name="postalCode"><br>';
     html=html+'        </div>';
+    html=html+'        <label for="postalCode">Contact Info:</label>';
     html=html+'        <div id="multiplePhone">';
     html=html+'        </div>';
     html=html+'        <button type="button" class="nextBtn stepTwoBtn" onclick="registrationStep()">NEXT</button>';
