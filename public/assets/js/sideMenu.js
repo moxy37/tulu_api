@@ -20,7 +20,7 @@ const closeMenuBtn = document.querySelector('.closeMenuBtn');
     }
 };
 
-
+// FUCK GITHUB
 // SUBMENU DROPDOWN
 // Shop
 var shopToggle = "off";
