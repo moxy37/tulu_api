@@ -1,7 +1,6 @@
 var express = require('express');
 var async = require('async');
 var uuid = require("node-uuid");
-const { router } = require('../../app');
 
 router = express.Router();
 
