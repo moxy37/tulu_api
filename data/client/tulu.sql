@@ -47,7 +47,10 @@ CREATE TABLE `Users` (
 	`name` VARCHAR(1024),
 	`email` VARCHAR(1024),
 	`type` VARCHAR(255) DEFAULT 'User',
-	`password` VARCHAR(1024)
+	`password` VARCHAR(1024),
+	`linkedIn` VARCHAR(1024),
+	`instagram` VARCHAR(1024),
+	`facebook` VARCHAR(1024)
 );
 
 DROP TABLE IF EXISTS `Address`;
