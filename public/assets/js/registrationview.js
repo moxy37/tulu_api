@@ -20,9 +20,12 @@ async function MakeNewUser() {
 		cache: false,
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
-		success: function (results) { },
+		success: function (results) { 
+			// alert(JSON.stringify(results));
+		},
 		error: function (results) { console.log(results.statusText); },
 	});
+	return result;
 }
 
 function PopulateUserData(user) {
