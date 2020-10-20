@@ -64,6 +64,21 @@ function UsersDAO() {
 		});
 	}
 
+	this.getDealerUsers = function (tokenId, dealerId, next) {
+		let self = this;
+		__con.query(tokenId, "SELECT * FROM `Users` WHERE `id` IN (SELECT `userId` FROM `DealerUsers` WHERE `dealerId`=?) ORDER BY `name`", dealerId, function (err, results) {
+			var list = [];
+			async.forEach(results, function (r, callback) {
+				self.get(tokenId, r.id, function (err, o) {
+					list.push(o);
+					callback();
+				});
+			}, function (err) {
+				return next(null, list);
+			});
+		});
+	}
+
 	this.list = function (tokenId, next) {
 		let self = this;
 		__con.query(tokenId, "SELECT * FROM `Users` ORDER BY `name`", function (err, results) {

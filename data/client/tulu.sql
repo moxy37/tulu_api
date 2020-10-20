@@ -11,6 +11,12 @@ CREATE TABLE `Dealer` (
 	`hours` VARCHAR(1024)
 );
 
+CREATE TABLE `DealerUser` (
+	`userId` VARCHAR(36),
+	`dealerId` VARCHAR(36),
+	PRIMARY KEY (`userId`, `dealerId`)
+);
+
 DROP TABLE IF EXISTS `Vehicle`;
 CREATE TABLE `Vehicle` (
 	`vin` VARCHAR(255),
