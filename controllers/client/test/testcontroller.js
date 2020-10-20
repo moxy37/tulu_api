@@ -19,9 +19,7 @@ router.get('/test_camera', function (req, res) {
     res.render('core/test_camera');
 });
 
-router.get('/test', function (req, res) {
-    res.render('core/test');
-});
+
 
 router.get('/test_login', function (req, res) {
     res.render('core/test_login');
