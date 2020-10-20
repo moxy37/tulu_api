@@ -46,7 +46,7 @@ function LoadVendor() {
 	$("#VendorHeader").append(html);
 
 }
-LoadVendor()
+
 
 function LoadActiveListing() {	
 	var html = '';	
@@ -67,7 +67,7 @@ function LoadActiveListing() {
 	$("#ActiveListing").append(html);
 }
 
-LoadActiveListing()
+
 
 function LoadAddPosting() {	
 	var html = '';	
@@ -176,7 +176,6 @@ function LoadAddPosting() {
     html=html+'        <button type="button" class="submitBtn" onclick="addVehicleStep()">SUBMIT</button>';
     html=html+'    </form>';
     html=html+'    <div class="addVehicleForm vehicleAdded">';
-    html=html+'    <div class="addVehicleForm vehicleAdded">';
     html=html+'    <div id="imageContainer">';
     html=html+'    </div>';
     html=html+'        <h3>Vehicle Added <i class="fas fa-check"></i></h3>';
@@ -187,7 +186,7 @@ function LoadAddPosting() {
 	$("#AddPostingContainer").empty();	
 	$("#AddPostingContainer").append(html);
 }
-LoadAddPosting();
+
 
 
 function LoadMyAccountMenu() {
@@ -222,7 +221,7 @@ function LoadMyAccountMenu() {
 	$("#MyAccountMenu").empty();	
 	$("#MyAccountMenu").append(html);
 }
-LoadMyAccountMenu()
+
 
 function LoadListingSettings() {	
 	var html = '';
@@ -268,4 +267,3 @@ function LoadListingSettings() {
 	$("#ListingSettingsContainer").empty();	
 	$("#ListingSettingsContainer").append(html);
 }
-LoadListingSettings()

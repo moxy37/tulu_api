@@ -42,7 +42,7 @@ function LoadProfile() {
 	$("#Header").append(html);
 
 }
-LoadProfile()
+
 
 function LoadMyAccountMenu() {
 	var html = '';
@@ -90,4 +90,4 @@ function LoadMyAccountMenu() {
 	$("#MyAccountMenu").append(html);
 
 }
-LoadMyAccountMenu()
+

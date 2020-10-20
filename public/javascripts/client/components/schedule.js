@@ -46,4 +46,4 @@ function LoadSchedule() {
 	$("#ScheduleContainer").append(html);
 
 }
-LoadSchedule()
+

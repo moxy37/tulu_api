@@ -5,8 +5,8 @@ var toggle="off";
 
 const slideMenu = () => {
     const sideMenu = document.querySelector('.sideMenu');
-const menuBtn = document.querySelector('.menuBtn');
-const closeMenuBtn = document.querySelector('.closeMenuBtn');
+    const menuBtn = document.querySelector('.menuBtn');
+    const closeMenuBtn = document.querySelector('.closeMenuBtn');
     if(toggle=="off"){
         sideMenu.style = "top:50px;transition:0.5s ease-out;";
         menuBtn.style = "opacity:0;transform:rotate(180deg); transition:0.5s;";
@@ -24,10 +24,11 @@ const closeMenuBtn = document.querySelector('.closeMenuBtn');
 // SUBMENU DROPDOWN
 // Shop
 var shopToggle = "off";
-const shopSubMenuList = document.querySelector('.shopSubMenuList');
-const shopDropMenuBtn = document.querySelector('.shopDropMenuBtn');
+
 
 const shopSubMenu = () => {
+    const shopSubMenuList = document.querySelector('.shopSubMenuList');
+    const shopDropMenuBtn = document.querySelector('.shopDropMenuBtn');
     if(shopToggle=="off"){
         shopSubMenuList.style = "height:80px; padding:10px 0; opacity:1; transition:0.5s ease-out;";
         shopDropMenuBtn.style = "transform:rotateX(180deg); transition:0.5s;";
@@ -41,10 +42,10 @@ const shopSubMenu = () => {
 
 // Accounts
 var accountToggle = "off";
-const accountSubMenuList = document.querySelector('.accountSubMenuList');
-const accountDropMenuBtn = document.querySelector('.accountDropMenuBtn');
 
 const accountSubMenu = () => {
+    const accountSubMenuList = document.querySelector('.accountSubMenuList');
+    const accountDropMenuBtn = document.querySelector('.accountDropMenuBtn');   
     if(accountToggle=="off"){
         accountSubMenuList.style = "height:80px; padding:10px 0; opacity:1; transition:0.5s ease-out;";
         accountDropMenuBtn.style = "transform:rotateX(180deg); transition:0.5s;";

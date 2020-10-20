@@ -59,4 +59,3 @@ function LoadVehicles() {
 	$("#Vehicles").append(html);
   }
 
-  LoadVehicles()

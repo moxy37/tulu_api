@@ -38,4 +38,3 @@ function LoadFooter() {
 	$("#Footer").append(html);
   }
 
-  LoadFooter()

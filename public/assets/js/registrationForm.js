@@ -1,18 +1,12 @@
 var registrationStepCount=1;
-const stepOneRegistration = document.querySelector('.stepOneRegistration');
-const stepTwoRegistration = document.querySelector('.stepTwoRegistration');
-const stepThreeRegistration = document.querySelector('.stepThreeRegistration');
-const stepOneBtn = document.querySelector('.stepOneBtn');
-const stepTwoBtn = document.querySelector('.stepTwoBtn');
-const stepTwoBackBtn = document.querySelector('.stepTwoBackBtn');
-const stepThreeBtn = document.querySelector('.stepThreeBtn');
-const stepThreeBackBtn = document.querySelector('.stepThreeBackBtn');
-const stepOne = document.querySelector('.stepOne');
-const stepTwo = document.querySelector('.stepTwo');
-const stepThree = document.querySelector('.stepThree');
+
 
 const registrationStep = () => {
-    
+    const stepOneRegistration = document.querySelector('.stepOneRegistration');
+    const stepTwoRegistration = document.querySelector('.stepTwoRegistration');
+    const stepThreeRegistration = document.querySelector('.stepThreeRegistration');
+    const stepTwo = document.querySelector('.stepTwo');
+    const stepThree = document.querySelector('.stepThree');
     if(registrationStepCount==1){
         stepOneRegistration.style = "transform: translateX(-100vw);transition:0.5s ease-out;";
         stepTwoRegistration.style = "transform: translateX(0vw);transition:0.5s ease-out;";
@@ -29,6 +23,12 @@ const registrationStep = () => {
 };
 
 const registrationStepBack = () => {
+    const stepOneRegistration = document.querySelector('.stepOneRegistration');
+const stepTwoRegistration = document.querySelector('.stepTwoRegistration');
+const stepThreeRegistration = document.querySelector('.stepThreeRegistration');
+
+const stepOne = document.querySelector('.stepOne');
+const stepTwo = document.querySelector('.stepTwo');
     if(registrationStepCount==2){
         stepOneRegistration.style = "transform: translateX(0vw);transition:0.5s ease-out;";
         stepTwoRegistration.style = "transform: translateX(100vw);transition:0.5s ease-out;";
@@ -45,6 +45,10 @@ const registrationStepBack = () => {
 };
 
 const stepReset = () => {
+
+const stepOne = document.querySelector('.stepOne');
+const stepTwo = document.querySelector('.stepTwo');
+const stepThree = document.querySelector('.stepThree');
     stepOne.style = "background:#ffffff00; transition:0.5s;";
     stepTwo.style = "background:#ffffff00; transition:0.5s;";
     stepThree.style = "background:#ffffff00; transition:0.5s;";

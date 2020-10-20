@@ -1,10 +1,10 @@
 var toggleDisplay="off";
-var numberOfCars = document.querySelector(".vehicleList").childElementCount;
+
+const vehicleDisplay = () => {
+    var numberOfCars = document.querySelector(".vehicleList").childElementCount;
 const vehicleList = document.querySelector('.vehicleList');
 const vehicleListItems = document.querySelector('.vehicleListItems');
 const displayBtn = document.querySelector(".gridDisplayBtn");
-const vehicleDisplay = () => {
-    
     if(toggleDisplay=="off"){
         for(x=1;x<=numberOfCars;x++){
             const carImage = document.querySelector('.vehicleList .vehicleListItems:nth-child('+x+')  .carImage');

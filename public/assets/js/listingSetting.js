@@ -1,9 +1,8 @@
 var toggleSetting="off";
-const listingSettingsContainer = document.querySelector('.listingSettingsContainer');
-const listingsettingBtn = document.querySelector('.listingsettingBtn');
+
 
 const listingSettings = () => {
-    
+    const listingSettingsContainer = document.querySelector('.listingSettingsContainer');
     if(toggleSetting=="off"){
         listingSettingsContainer.style = "bottom:0vh; opacity:1;transition:0.5s ease-out;";
         toggleSetting="on";

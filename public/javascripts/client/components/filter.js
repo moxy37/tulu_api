@@ -10,7 +10,7 @@ function LoadFilter() {
 	$("#Filter").empty();
 	$("#Filter").append(html);
   }
-  LoadFilter()
+
 
 
   function LoadFilterSettings() {
@@ -60,4 +60,3 @@ function LoadFilter() {
 	$("#FilterSettings").empty();
 	$("#FilterSettings").append(html);
 }
-LoadFilterSettings()

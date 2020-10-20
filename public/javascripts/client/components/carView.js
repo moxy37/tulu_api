@@ -41,7 +41,7 @@ function LoadCarVendor() {
 	$("#carVendor").empty();
 	$("#carVendor").append(carVendorInsert);
 }
-LoadCarVendor();
+
 
 
 function LoadCarView() {
@@ -133,7 +133,7 @@ function LoadCarView() {
 	$("#Vehicles").append(html);
   }
 
-  LoadCarView()
+
 
 
 function LoadCarGallery() {
@@ -146,7 +146,7 @@ function LoadCarGallery() {
 	$("#carImageList").empty();
 	$("#carImageList").append(carImageInsert);
 }
-LoadCarGallery();
+
 
 function LoadShareButton() {
 	var shareButtonInsert = "";
@@ -161,4 +161,3 @@ function LoadShareButton() {
 	$("#shareSection").empty();
 	$("#shareSection").append(shareButtonInsert);
 }
-LoadShareButton();
