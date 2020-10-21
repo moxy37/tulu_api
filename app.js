@@ -3,6 +3,7 @@ global.__listeningPort = 3001;
 
 var fs = require('fs');
 var formidable = require('formidable');
+var readChunk = require('read-chunk');
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -58,7 +59,7 @@ app.post('/api/file/upload', function(req, res) {
         if (type !== null) {
             filename = Date.now() + '-' + file.name;
             fs.rename(file.path, path.join(__dirname, 'public/files/images/' + filename));
-            photos.push({ status: true, filename: filename, type: type.ext, publicPath: 'files/wedding/' + filename });
+            photos.push({ status: true, filename: filename, type: type.ext, publicPath: 'public/files/images/' + filename });
         }  else {
             // photos.push({ status: false, filename: file.name, message: 'Invalid file type' });
             // fs.unlink(file.path);
