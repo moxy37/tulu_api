@@ -59,7 +59,14 @@ app.post('/api/file/upload', function(req, res) {
             filename = Date.now() + '-' + file.name;
             fs.rename(file.path, path.join(__dirname, 'public/files/images/' + filename));
             photos.push({ status: true, filename: filename, type: type.ext, publicPath: 'files/wedding/' + filename });
-        } 
+        }  else {
+            // photos.push({ status: false, filename: file.name, message: 'Invalid file type' });
+            // fs.unlink(file.path);
+            console.log("Sone Error");
+            filename = Date.now() + '-' + file.name;
+            fs.rename(file.path, path.join(__dirname, 'public/files/images/' + filename));
+            photos.push({ status: true, filename: filename, type: '.png', publicPath: 'public/files/images/' + filename });
+        }
     });
     form.on('error', function(err) { console.log('Error occurred during processing - ' + err); });
     form.on('end', function() { console.log('All the request fields have been processed.'); });
