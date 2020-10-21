@@ -1,49 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WebcamJS Test Page</title>
+    <style type="text/css">
+      body {
+        font-family: Helvetica, sans-serif;
+      }
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>WebcamJS Test Page</title>
-	<style type="text/css">
-		body {
-			font-family: Helvetica, sans-serif;
-		}
+      h2,
+      h3 {
+        margin-top: 0;
+      }
 
-		h2,
-		h3 {
-			margin-top: 0;
-		}
+      form {
+        margin-top: 15px;
+      }
 
-		form {
-			margin-top: 15px;
-		}
+      form > input {
+        margin-right: 15px;
+      }
 
-		form>input {
-			margin-right: 15px;
-		}
+      #results {
+        float: left;
+        margin: 40px;
+        padding: 20px;
+        border: 1px solid;
+        background: #ccc;
+      }
+    </style>
+  </head>
 
-		#results {
-			float: right;
-			margin: 20px;
-			padding: 20px;
-			border: 1px solid;
-			background: #ccc;
-		}
-	</style>
-</head>
+  <body>
+    <h1>Camera Test</h1>
 
-<body>
+    <form action="#" id="myform">
+      <label for="capture">Captuer Image From Phone</label>
+      <input type="file" id="capture" accept="image/*" capture />
 
-	<div id="results"></div>
+      <br />
 
-	<div id="my_camera" onclick="take_snapshot();"></div>
+      <input type="submit" value="Process" />
+    </form>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/javascripts/core/webcam.min.js"></script>
+    <div id="results">
+      <p><img src="" id="img" alt="from phone" /></p>
+    </div>
 
-	<!-- Configure a few settings and attach camera -->
-	<script language="JavaScript">
+    <!-- <div id="my_camera" onclick="take_snapshot();"></div> -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (ev) => {
+        let form = document.getElementById("myform");
+        let input = document.getElementById("capture");
+
+        input.addEventListener("change", (ev) => {
+          console.dir(input.files[0]);
+
+          if (input.files[0].type.indexOf("image/") > -1) {
+            let img = document.getElementById("img");
+            img.src = window.URL.createObjectURL(input.files[0]);
+            console.log(img.src);
+          } else {
+            consol.log("File not supported");
+          }
+        });
+      });
+    </script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/javascripts/core/webcam.min.js"
+    ></script> -->
+
+    <!-- Configure a few settings and attach camera -->
+    <!-- <script language="JavaScript">
 		$("#results").hide();
 		Webcam.set({
 			width: 600,
@@ -68,8 +101,6 @@
 				$("#results").show();
 			});
 		}
-	</script>
-
-</body>
-
+	</script> -->
+  </body>
 </html>
