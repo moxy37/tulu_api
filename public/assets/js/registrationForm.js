@@ -109,9 +109,11 @@ const stepTwo = document.querySelector('.stepTwo');
 const stepThree = document.querySelector('.stepThree');
 const stepFour = document.querySelector('.stepFour');
 const stepFive = document.querySelector('.stepFive');
+const stepSix = document.querySelector('.stepFive');
     stepOne.style = "background:#ffffff00; transition:0.5s;";
     stepTwo.style = "background:#ffffff00; transition:0.5s;";
     stepThree.style = "background:#ffffff00; transition:0.5s;";
     stepFour.style = "background:#ffffff00; transition:0.5s;";
     stepFive.style = "background:#ffffff00; transition:0.5s;";
+    stepSix.style = "background:#ffffff00; transition:0.5s;";
 }

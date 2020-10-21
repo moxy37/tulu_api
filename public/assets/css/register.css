@@ -110,6 +110,10 @@
     border-radius: 10px;
     border:1px solid #79C6AC;
     padding:50px 20px;
+    height:300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    
 }
 
 .contactBtnContainer{

@@ -111,7 +111,7 @@ function PopulateUserData(user) {
 
 	var html = '<div id="PhonesDiv" class="">';
 	for (var i = 0; i < user.phones.length; i++) {
-		html += `<div id="phone_0" class="">`;
+		html += `<div id="phone_0" class="phone_0">`;
 		html += `<label for="phone">Number:</label><div class ="inputContainer"><input type="text" id="phone_value_` + i + `" class="" /></div>`;
 		html += `<label for="phone">Type: </label><div class ="inputContainer"><select id="phone_type_` + i + `">`;
 		html += `<option value="Home"`;
@@ -134,13 +134,22 @@ function PopulateUserData(user) {
 }
 
 function contactInfoDesign() {
-	const childCount = document.querySelectorAll('#PhonesDiv #phone_0').length;
+	const childCount = document.querySelectorAll('#PhonesDiv .phone_0').length;
 	console.log(childCount);
-
-	for(var i=1;i!=childCount;i++){
-		const phoneDiv = document.querySelector("#phone_0:nth-child("+i+")");
-		phoneDiv.style = "background:red;";
+	if(childCount >= 2){
+		for(var i=1;i!=childCount;i++){
+			var x = i-1;
+			const phoneDiv = document.querySelectorAll(".phone_0")[x];
+			phoneDiv.classList.add = "qwerty";
+			// phoneDiv.style = "background:red !important; ";
+			phoneDiv.querySelector("label:nth-child(1)").style = "display:none;"
+			phoneDiv.querySelector("label:nth-child(3)").style = "display:none;"
+			phoneDiv.querySelector(".inputContainer:nth-child(2)").style = "margin-bottom:10px;"
+			phoneDiv.querySelector(".inputContainer:nth-child(2) input").disabled = true;
+			phoneDiv.querySelector(".inputContainer:nth-child(4) select").disabled = true;
+		}
 	}
+	
 }
 
 async function RegisterUser(user) {
