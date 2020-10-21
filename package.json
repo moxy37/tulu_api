@@ -33,6 +33,7 @@
     "node-cache": "^5.1.2",
     "node-cmd": "^3.0.0",
     "node-uuid": "^1.4.8",
+    "node.js": "0.0.1-security",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "pem": "^1.14.4",
