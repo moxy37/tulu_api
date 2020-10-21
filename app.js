@@ -43,4 +43,27 @@ app.use('/', require('./controllers/core/helpercontroller'));
 app.use('/', require('./controllers/core/routingcontroller'));
 
 
+app.post('/api/file/upload', function(req, res) {
+    var photos = [];
+    var form = new formidable.IncomingForm();
+    form.multiples = true;
+    form.uploadDir = path.join(__dirname, 'tmp_uploads');
+    form.on('file', function(name, file) {
+        var buffer = null;
+        var type = null;
+        var filename = '';
+        buffer = readChunk.sync(file.path, 0, 262);
+        type = fileType(buffer);
+        // if (type !== null && (type.ext === 'png' || type.ext === 'jpg' || type.ext === 'jpeg')) {
+        if (type !== null) {
+            filename = Date.now() + '-' + file.name;
+            fs.rename(file.path, path.join(__dirname, 'public/files/images/' + filename));
+            photos.push({ status: true, filename: filename, type: type.ext, publicPath: 'files/wedding/' + filename });
+        } 
+    });
+    form.on('error', function(err) { console.log('Error occurred during processing - ' + err); });
+    form.on('end', function() { console.log('All the request fields have been processed.'); });
+    form.parse(req, function(err, fields, files) { res.status(200).json(photos); });
+});
+
 module.exports = app;

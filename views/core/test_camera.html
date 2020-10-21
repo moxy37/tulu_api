@@ -35,7 +35,7 @@
   <body>
     <h1>Camera Test</h1>
 
-    <form action="#" id="myform">
+    <form action="/api/file/upload" id="myform">
       <label for="capture">Captuer Image From Phone</label>
       <input type="file" id="capture" accept="image/*" capture />
 
@@ -69,38 +69,6 @@
       });
     </script>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="/javascripts/core/webcam.min.js"
-    ></script> -->
-
-    <!-- Configure a few settings and attach camera -->
-    <!-- <script language="JavaScript">
-		$("#results").hide();
-		Webcam.set({
-			width: 600,
-			height: 600,
-			image_format: 'jpeg',
-			jpeg_quality: 90
-		});
-		Webcam.set('constraints', {
-			facingMode: "environment"
-		});
-		Webcam.attach('#my_camera');
-
-		function take_snapshot() {
-			// take snapshot and get image data
-			Webcam.snap(function (data_uri) {
-				// display results in page
-				var html = '<img id="UploadMe" src="' + data_uri + '"/><br/>';
-				html += `<input type="button" value="Again" onclick="Reset();" />		<input type="button" value="Save" onclick="SaveImage();" />`;
-				$("#results").empty();
-				$('#results').append(html);
-				$("#my_camera").hide();
-				$("#results").show();
-			});
-		}
-	</script> -->
+  
   </body>
 </html>

@@ -1,12 +1,102 @@
 function PageLoadFunction() {
-	$("#TestDiv").append(JSON.stringify(gUser));
-	ListDealers();
+	TestAjax();
 }
 
 var primary = new Object();
 var testObj = null;
 
-function ListDealers(){
+function TestAjax() {
+	$.ajax({
+		type: "POST",
+		url: "https://api.dataonesoftware.com/webservices/vindecoder/decode",
+		data: {
+
+			"decoder_query":{
+			"decoder_settings" : {
+				"version" : "7.2.0",
+				"display" : "full",
+				"styles" : "on",
+				"style_data_packs" : {
+					"basic_data" : "on",
+					"pricing" : "on",
+					"engines" : "on",
+					"transmissions" : "on",
+					"standard_specifications" : "on",
+					"standard_generic_equipment" : "on",
+					"oem_options" : "on",
+					"colors" : "on",
+					"safety_equipment" : "on",
+					"warranties" : "on",
+					"fuel_efficiency" : "on"	
+				},
+				"common_data" : "on",
+				"common_data_packs" : {
+					"basic_data" : "on",
+					"pricing" : "on",
+					"engines" : "on",
+					"transmissions" : "on",
+					"standard_specifications" : "on",
+					"standard_generic_equipment" : "on"
+				}
+			},
+			"query_requests" : {
+				"Request-Sample" : {
+					"vin" : "WAUBVAFB4BN123456",
+					"year" : "",
+					"make" : "",
+					"model" : "",
+					"trim" : "",
+					"model_number" : "",
+					"package_code" : "",
+					"drive_type" : "",
+					"vehicle_type" : "",
+					"body_type" : "",
+					"doors" : "",
+					"bedlength" : "",
+					"wheelbase" : "",
+					"msrp" : "",
+					"invoice_price" : "",
+					"engine" : {
+						"description" : "",
+						"block_type" : "",
+						"cylinders" : "",
+						"displacement" : "",
+						"fuel_type" : ""
+					},
+					"transmission" : {
+						"description" : "",
+						"trans_type" : "",
+						"trans_speeds" : ""
+					},
+					"optional_equipment_codes" : "",
+					"installed_equipment_descriptions" : "",
+					"interior_color" : {
+						"description" : "",
+						"color_code" : ""
+					},
+					"exterior_color" : {
+						"description" : "",
+						"color_code" : ""
+					}
+				}
+			}
+		},
+		"access_key_id":"PnuvF35in4",
+		"secret_access_key":"JIO13VOxL2u6FE1czz5tYGkPx8eRYyXZrpRimprI"
+		},
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			$("#TestResults").empty();
+			$("#TestResults").append(JSON.stringify(results));
+		},
+		error: function (results) {
+			alert("Error");
+		},
+	});
+}
+function ListDealers() {
 	var obj = new Object();
 	obj.tokenId = tokenId;
 	$.ajax({
