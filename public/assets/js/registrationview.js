@@ -79,11 +79,13 @@ async function AddNewObject(table, key) {
 }
 
 function AddNewObj(table, key) {
+	
 	AddNewObject(table, key).then(function (obj) {
 		obj.sequence = gObj[key].length;
 		gObj[key].push(obj);
 		PopulateUserData(gObj);
 	});
+	
 }
 
 function RemovePhone(index) {
@@ -92,6 +94,7 @@ function RemovePhone(index) {
 }
 
 function PopulateUserData(user) {
+	
 	console.log(JSON.stringify(user));
 	$("#userType").val(user.type);
 	$("#email").val(user.email);
@@ -126,6 +129,18 @@ function PopulateUserData(user) {
 	html += `<button class="contactBtn" onclick="AddNewObj('Phone', 'phones');">ADD</button> </div></div>`;
 	$("#multiplePhone").empty();
 	$("#multiplePhone").append(html);
+
+	contactInfoDesign();
+}
+
+function contactInfoDesign() {
+	const childCount = document.querySelectorAll('#PhonesDiv #phone_0').length;
+	console.log(childCount);
+
+	for(var i=1;i!=childCount;i++){
+		const phoneDiv = document.querySelector("#phone_0:nth-child("+i+")");
+		phoneDiv.style = "background:red;";
+	}
 }
 
 async function RegisterUser(user) {
