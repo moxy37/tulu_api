@@ -193,7 +193,7 @@ function LoadMyAccountMenu() {
 	var html = '';		
 	html=html+'<ul class="accountMenuList">';
 	html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a href="/vendor">';
+    html=html+'        <a onclick="goToVendor()">';
     html=html+'            <i class="far fa-user fa-2x accountMenuIcon"></i>';
     html=html+'            Profile';
     html=html+'        </a>';
@@ -205,7 +205,7 @@ function LoadMyAccountMenu() {
     html=html+'        </a>';
     html=html+'    </li>';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a href="/schedule">';
+    html=html+'        <a onclick="goToSchedule()">';
     html=html+'            <i class="far fa-calendar-alt fa-2x accountMenuIcon"></i>';
     html=html+'            Schedule';
     html=html+'        </a>';
@@ -266,4 +266,12 @@ function LoadListingSettings() {
 	
 	$("#ListingSettingsContainer").empty();	
 	$("#ListingSettingsContainer").append(html);
+}
+
+function goToVendor(){
+    LocationChange('vendor');
+}
+
+function goToSchedule(){
+    LocationChange('schedule');
 }

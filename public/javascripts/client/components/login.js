@@ -13,7 +13,7 @@ function LoadLogin() {
     html=html+'    <a onclick="Login();">';
     html=html+'        <button type="button" class="loginBtn">LOG IN</button>';
     html=html+'    </a>';
-    html=html+'    <a href="/register">';
+    html=html+'    <a onclick="goToRegister();">';
     html=html+'        <button type="button" class="registerBtn">REGISTER</button>';
     html=html+'    </a>';
     html=html+'</form>';
