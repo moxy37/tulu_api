@@ -48,7 +48,7 @@ function LoadVehicles() {
 		html=html+'		</div>';
 		html=html+'		<div class="moreInfoContainer">';
 		html=html+'			<button class="moreInfo moreInfoBtn" id="moreInfo'+i+'" onclick="const div = document.querySelector(`#vehicle'+i+'`);const moreInfoBtn = document.querySelector(`#moreInfo'+i+'`);  if(moreInfoBtn.innerHTML==`More Info`){div.style=`display:flex;`;moreInfoBtn.innerHTML=`Hide Info`;}else{div.style=`display:none;`;moreInfoBtn.innerHTML=`More Info`;}">More Info</button>';
-		html=html+'			<a href="/carView">';
+		html=html+'			<a onclick="goTocarView()">';
 		html=html+'				<button class="moreInfo">Explore</button>';
 		html=html+'			</a>';
 		html=html+'		</div>';
@@ -59,3 +59,6 @@ function LoadVehicles() {
 	$("#Vehicles").append(html);
   }
 
+  function goTocarView(){
+    LocationChange('carView');
+}

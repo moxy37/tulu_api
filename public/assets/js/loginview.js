@@ -25,3 +25,7 @@ function Login() {
 		},
 	});
 }
+
+function goToRegister() {
+	LocationChange('register');
+}

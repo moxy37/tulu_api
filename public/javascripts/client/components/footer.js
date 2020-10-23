@@ -2,7 +2,7 @@ function LoadFooter() {
 	var html = '';
 	html=html+'<ul class="footerList">';
 	html=html+'	<li class="footerListItem">';
-	html=html+'		<a href="/about">';
+	html=html+'		<a onclick="goToAbout()">';
 	html=html+'			<h4>About Us</h4>';
 	html=html+'		</a>';
 	html=html+'	</li>';
@@ -12,7 +12,7 @@ function LoadFooter() {
 	html=html+'		</a>';
 	html=html+'		<ul class="footerSubLinkList">';
 	html=html+'			<li class="SubLinkListItem">';
-	html=html+'				<a href="/dealershipList">Dealerships</a>';
+	html=html+'				<a onclick="goToDealershipList()">Dealerships</a>';
 	html=html+'			</li>';
 	html=html+'		</ul>';
 	html=html+'	</li>';
@@ -38,3 +38,10 @@ function LoadFooter() {
 	$("#Footer").append(html);
   }
 
+  function goToAbout() {
+	LocationChange('about');
+}
+
+function goToDealershipList() {
+	LocationChange('dealershipList');
+}

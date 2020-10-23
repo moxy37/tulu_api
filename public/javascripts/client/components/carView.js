@@ -25,7 +25,7 @@ var carDetails = [
 
 function LoadCarVendor() {
 	var carVendorInsert = "";
-	carVendorInsert=carVendorInsert+'<a href="/vendor">';
+	carVendorInsert=carVendorInsert+'<a onclick="goToVendor()">';
     carVendorInsert=carVendorInsert+'    <div class="userImage">';
     carVendorInsert=carVendorInsert+'        <i class="fas fa-user fa-2x"></i>';
     carVendorInsert=carVendorInsert+'    </div>';
@@ -160,4 +160,9 @@ function LoadShareButton() {
 	shareButtonInsert=shareButtonInsert+'</div>';
 	$("#shareSection").empty();
 	$("#shareSection").append(shareButtonInsert);
+}
+
+
+function goToVendor() {
+	LocationChange('vendor');
 }
