@@ -1,11 +1,16 @@
 var express = require('express');
 var async = require('async');
 var uuid = require("node-uuid");
+const { router } = require('../../../app');
 
 var HelperDAO = require(__base + "dao/core/helperdao");
 var helperDao = new HelperDAO();
 
 router = express.Router();
+
+router.get('/test_call', function (req, res) {
+    //Malik please add that test in here
+});
 
 router.get('/barcode', function (req, res) {
     res.render('core/barcode');
