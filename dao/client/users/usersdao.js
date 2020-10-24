@@ -66,10 +66,10 @@ function UsersDAO() {
 
 	this.getDealerUsers = function (tokenId, dealerId, next) {
 		let self = this;
-		__con.query(tokenId, "SELECT * FROM `Users` WHERE `id` IN (SELECT `userId` FROM `DealerUsers` WHERE `dealerId`=?) ORDER BY `name`", dealerId, function (err, results) {
+		__con.query(tokenId, "SELECT * FROM `UserRoles` WHERE `targetId` = ?", dealerId, function (err, results) {
 			var list = [];
 			async.forEach(results, function (r, callback) {
-				self.get(tokenId, r.id, function (err, o) {
+				self.get(tokenId, r.userId, function (err, o) {
 					list.push(o);
 					callback();
 				});
@@ -109,11 +109,18 @@ function UsersDAO() {
 			} else {
 				user.addresses = [];
 				user.phones = [];
+				user.roles = [];
 				addressDao.get(tokenId, id, function (err, list) {
 					user.addresses = list;
 					phoneDao.get(tokenId, id, function (err, phones) {
 						user.phones = phones;
-						return next(null, user);
+						var p = new Object();
+						p.userId = id;
+						helperDao.list(tokenId, "UserRoles", p, '', function (err, list) {
+							if (err) return next(err);
+							user.roles = list;
+							return next(null, user);
+						});
 					});
 				});
 			}
@@ -126,6 +133,12 @@ function UsersDAO() {
 			obj.id = uuid.v4();
 			obj.phones = [];
 			obj.addresses = [];
+			obj.roles = [];
+			var rr = new Object();
+			rr.userId = obj.id;
+			rr.role = 'User';
+			rr.targetId = '';
+			obj.roles.push(rr);
 			var primary = new Object();
 			primary.targetId = obj.id;
 			helperDao.new(tokenId, "Address", primary, function (err, o) {
@@ -148,7 +161,20 @@ function UsersDAO() {
 				if (err) return next(err);
 				phoneDao.save(tokenId, user.id, user.phones, function (err, list) {
 					if (err) return next(err);
-					return next(null, user);
+					var roles = [];
+					__con.query(tokenId, "DELETE FROM `UserRoles` WHERE `userId`=?", user.id, function (err, result) {
+						if (err) return next(err);
+						async.forEach(user.roles, function (r, callback) {
+							__con.query(tokenId, "INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES (?, ?, ?)", [r.userId, r.targetId, r.role], function (err, result) {
+								if (err) return next(err);
+								roles.push(r);
+								callback();
+							});
+						}, function (err) {
+							user.roles = roles;
+							return next(null, user);
+						});
+					});
 				});
 			});
 		});
@@ -165,7 +191,10 @@ function UsersDAO() {
 				if (err) return next(err);
 				helperDao.delete(tokenId, "Phone", primary, function (err, obj) {
 					if (err) return next(err);
-					return next(null, obj);
+					__con.query(tokenId, "DELETE FROM `UserRoles` WHERE `userId`=?", user.id, function (err, result) {
+						if (err) return next(err);
+						return next(null, obj);
+					});
 				});
 			});
 		});

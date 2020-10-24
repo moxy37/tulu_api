@@ -11,12 +11,6 @@ CREATE TABLE `Dealer` (
 	`hours` VARCHAR(1024)
 );
 
-CREATE TABLE `DealerUser` (
-	`userId` VARCHAR(36),
-	`dealerId` VARCHAR(36),
-	PRIMARY KEY (`userId`, `dealerId`)
-);
-
 DROP TABLE IF EXISTS `Vehicle`;
 CREATE TABLE `Vehicle` (
 	`vin` VARCHAR(255),
@@ -46,11 +40,18 @@ CREATE TABLE `Users` (
 	`id` VARCHAR(36) PRIMARY KEY,
 	`name` VARCHAR(1024),
 	`email` VARCHAR(1024),
-	`type` VARCHAR(255) DEFAULT 'User',
 	`password` VARCHAR(1024),
 	`linkedIn` VARCHAR(1024),
 	`instagram` VARCHAR(1024),
 	`facebook` VARCHAR(1024)
+);
+
+DROP TABLE IF EXISTS `UserRoles`;
+CREATE TABLE `UserRoles` (
+	`userId` VARCHAR(36),
+	`targetId` VARCHAR(36),
+	`role` VARCHAR(255)  DEFAULT 'User',
+	PRIMARY KEY (`userId`, `targetId`, `role`)
 );
 
 DROP TABLE IF EXISTS `Address`;
@@ -91,4 +92,14 @@ CREATE TABLE `Rating` (
 DROP VIEW IF EXISTS `RatingView`;
 CREATE VIEW `RatingView` AS SELECT `targetId`, `type`, AVG(`stars`) AS `rating`, COUNT(`stars`) AS `reviews` FROM `Rating` GROUP BY `targetId`, `type`;
 
-INSERT INTO `Users` (`id`, `name`, `email`, `type`, `password`) VALUES (UUID(), 'admin', 'admin', 'SysAdmin', 'admin');
+INSERT INTO `Users` (`id`, `name`, `email`, `password`) VALUES ('a21d22fd-15ed-11eb-83a2-e86a647a411d', 'admin', 'admin', 'admin');
+INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES ('a21d22fd-15ed-11eb-83a2-e86a647a411d', '', 'SysAdmin');
+
+
+INSERT INTO `Dealer` (`id`, `name`, `accountId`, `logo`, `hours`) VALUES ('dfb56be7-15ef-11eb-83a2-e86a647a411d', 'Gauhier Chrysler', '', '/files/logos/dealer_1_logo.jpg', 'Open ⋅ Closes 9 p.m');
+INSERT INTO `Users`  (`id`, `name`, `email`, `password`) VALUES ('c5aefb11-15f0-11eb-83a2-e86a647a411d', 'Gauthier Test', 'test@gauthierchrysler.com', 'test');
+
+INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES ('c5aefb11-15f0-11eb-83a2-e86a647a411d', '', 'User'), ('c5aefb11-15f0-11eb-83a2-e86a647a411d', 'dfb56be7-15ef-11eb-83a2-e86a647a411d', 'Dealer');
+INSERT INTO `Users`  (`id`, `name`, `email`, `password`) VALUES ('0167e373-15f1-11eb-83a2-e86a647a411d', 'Gauthier Admin', 'admin@gauthierchrysler.com', 'admin');
+
+INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES ('0167e373-15f1-11eb-83a2-e86a647a411d', '', 'User'), ('0167e373-15f1-11eb-83a2-e86a647a411d', 'dfb56be7-15ef-11eb-83a2-e86a647a411d', 'DealerAdmin');
