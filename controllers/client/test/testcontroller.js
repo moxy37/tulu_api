@@ -1,6 +1,7 @@
 var express = require('express');
 var async = require('async');
 var uuid = require("node-uuid");
+const { router } = require('../../../app');
 
 global.__accessKeyId = 'PnuvF35in4';
 global.__secretAccessKey = 'JIO13VOxL2u6FE1czz5tYGkPx8eRYyXZrpRimprI';
@@ -18,6 +19,9 @@ router.get('/test_vin/:vin', function (req, res) {
     });
 });
 
+router.get('/barcode_malik', function (req, res) {
+    res.render('core/barcode_malik');
+});
 router.get('/barcode', function (req, res) {
     res.render('core/barcode');
 });

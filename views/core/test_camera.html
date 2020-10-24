@@ -62,11 +62,20 @@
 				var file = files[i];
 				formData.append('photos[]', file, file.name);
 			}
+
 			uploadFiles(formData);
 		});
 
 		function uploadFiles(formData) {
+			// formData.append('dealerId','TEST');
+			// formData.append('vin','VIN TEST');
 			$.ajax({
+				headers: {
+					'vin': 'TEST VIN',
+					'dealerId': 'Test DealerId',
+					'tokenId': 'tokenId',
+					'uuid': 'NEW UUID'
+				},
 				url: '/api/file/upload',
 				method: 'post',
 				data: formData,
@@ -77,7 +86,7 @@
 
 					return xhr;
 				}
-			}).done(handleSuccess).fail(function (xhr, status) {
+			}).done(function () { }).fail(function (xhr, status) {
 				alert(status);
 			});
 			$("#upload-photos").hide();
