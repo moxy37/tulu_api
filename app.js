@@ -53,6 +53,11 @@ app.use("/", require("./controllers/core/routingcontroller"));
 
 app.post("/api/file/upload", function (req, res) {
   var photos = [];
+  var headers = req.headers;
+  var dealerId = headers.dealerId;
+  var tokenId = headers.tokenId;
+  var vin = headers.vin;
+  var uuid = headers.uuid;
   var form = new formidable.IncomingForm();
   form.multiples = true;
   form.uploadDir = path.join(__dirname, "tmp_uploads");
