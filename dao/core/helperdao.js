@@ -198,6 +198,16 @@ function HelperDAO() {
 				sql += "`" + k + "` = ? ";
 				params.push(obj[k]);
 				callback();
+			} else if (obj[k] instanceof Date) {
+				if (isFirst === true) {
+					sql += ", ";
+				} else {
+					sql += "SET ";
+					isFirst = true;
+				}
+				sql += "`" + k + "` = ? ";
+				params.push(obj[k]);
+				callback();
 			} else {
 				callback();
 			}
@@ -235,6 +245,17 @@ function HelperDAO() {
 		var params = [];
 		async.forEach(keys, function (k, callback) {
 			if (typeof (obj[k]) === "boolean" || typeof (obj[k]) === "number" || typeof (obj[k]) === "bigint" || typeof (obj[k]) === "string") {
+				if (isFirst === true) {
+					sql += ", ";
+					tempSql += ", ";
+				} else {
+					isFirst = true;
+				}
+				sql += "`" + k + "`";
+				tempSql += "?";
+				params.push(obj[k]);
+				callback();
+			} else if (obj[k] instanceof Date) {
 				if (isFirst === true) {
 					sql += ", ";
 					tempSql += ", ";
