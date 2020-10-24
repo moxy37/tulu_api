@@ -1,15 +1,21 @@
 var express = require('express');
 var async = require('async');
 var uuid = require("node-uuid");
-const { router } = require('../../../app');
 
+global.__accessKeyId = 'PnuvF35in4';
+global.__secretAccessKey = 'JIO13VOxL2u6FE1czz5tYGkPx8eRYyXZrpRimprI';
 var HelperDAO = require(__base + "dao/core/helperdao");
 var helperDao = new HelperDAO();
 
 router = express.Router();
 
-router.get('/test_call', function (req, res) {
-    //Malik please add that test in here
+router.get('/test_call/:vin', function (req, res) {
+    var VehicleDAO = require(__base + "dao/client/vehicle/vehicledao");
+    var vehicleDao = new VehicleDAO();
+    var vin = req.params.vin;
+    vehicleDao.vinDecode('', vin, function (err, result) {
+        return res.send(result);
+    });
 });
 
 router.get('/barcode', function (req, res) {

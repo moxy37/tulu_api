@@ -154,4 +154,22 @@ function VehicleDAO() {
 			});
 		});
 	}
+
+	this.vinDecode = function (tokenId, vin, next) {
+		var request = require('request');
+		var options = {
+			'method': 'POST',
+			'url': 'https://api.dataonesoftware.com/webservices/vindecoder/decode',
+			'headers': { 'Content-Type': 'application/x-www-form-urlencoded' },
+			form: {
+				'access_key_id': __accessKeyId,
+				'secret_access_key': __secretAccessKey,
+				'decoder_query': '{ "decoder_settings" : { "display" : "full", "version" : "7.2.0", "styles" : "on", "style_data_packs" : {  "basic_data" : "on", "pricing" : "on", "engines" : "on", "transmissions" : "on", "standard_specifications" : "on", "standard_generic_equipment" : "on", "oem_options" : "off", "optional_generic_equipment" : "on", "colors" : "on", "warranties" : "on", "fuel_efficiency" : "on", "green_scores" : "on", "crash_test" : "on", "awards" : "on" }, "common_data" : "on", "common_data_packs" : {  "basic_data" : "on", "pricing" : "on", "engines" : "on", "transmissions" : "on", "standard_specifications" : "on", "standard_generic_equipment" : "on", "oem_options" : "on", "optional_generic_equipment" : "on", "colors" : "on", "warranties" : "on", "fuel_efficiency" : "on", "green_scores" : "on", "crash_test" : "on", "awards" : "on" } }, "query_requests" : { "Request-Sample" : { "vin" : "' + vin + '", "year" : "", "make" : "", "model" : "", "trim" : "", "model_number" : "", "package_code" : "", "drive_type" : "", "vehicle_type" : "", "body_type" : "", "body_subtype" : "", "doors" : "", "bedlength" : "", "wheelbase" : "", "msrp" : "", "invoice_price" : "", "engine" : { "description" : "", "block_type" : "", "cylinders" : "", "displacement" : "", "fuel_type" : "" }, "transmission" : { "description" : "", "trans_type" : "", "trans_speeds" : "" }, "optional_equipment_codes" : "", "installed_equipment_descriptions" : "", "interior_color" : { "description" : "", "color_code" : "" }, "exterior_color" : { "description" : "", "color_code" : "" } } }}'
+			}
+		};
+		request(options, function (error, response) {
+			if (error) next(new Error(error));
+			return next(null, JSON.parse(response.body));
+		});
+	}
 }
