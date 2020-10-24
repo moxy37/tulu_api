@@ -3,6 +3,16 @@ var async = require('async');
 module.exports = HelperDAO;
 
 function HelperDAO() {
+	this.getRoles = function (tokenId, user, next) {
+		var list = [];
+		async.forEach(user.roles, function (r, callback) {
+			list.push(r.role);
+			callback();
+		}, function (err) {
+			return next(null, list);
+		});
+	}
+	
 	this.new = function (tokenId, table, primary, next) {
 		var sql = "DESC `" + table + "`";
 		__con.query(tokenId, sql, function (err, results) {

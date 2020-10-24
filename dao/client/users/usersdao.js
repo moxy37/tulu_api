@@ -110,6 +110,7 @@ function UsersDAO() {
 				user.addresses = [];
 				user.phones = [];
 				user.roles = [];
+				user.userRoles = [];
 				addressDao.get(tokenId, id, function (err, list) {
 					user.addresses = list;
 					phoneDao.get(tokenId, id, function (err, phones) {
@@ -119,7 +120,10 @@ function UsersDAO() {
 						helperDao.list(tokenId, "UserRoles", p, '', function (err, list) {
 							if (err) return next(err);
 							user.roles = list;
-							return next(null, user);
+							helperDao.getRoles(tokenId, user, function (err, list) {
+								user.userRoles = list;
+								return next(null, user);
+							});
 						});
 					});
 				});
@@ -138,6 +142,8 @@ function UsersDAO() {
 			rr.userId = obj.id;
 			rr.role = 'User';
 			rr.targetId = '';
+			obj.userRoles = [];
+			obj.userRoles.push('User');
 			obj.roles.push(rr);
 			var primary = new Object();
 			primary.targetId = obj.id;
@@ -172,7 +178,10 @@ function UsersDAO() {
 							});
 						}, function (err) {
 							user.roles = roles;
-							return next(null, user);
+							helperDao.getRoles(tokenId, user, function (err, list) {
+								user.userRoles = list;
+								return next(null, user);
+							});
 						});
 					});
 				});

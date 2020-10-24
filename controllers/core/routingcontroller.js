@@ -9,7 +9,7 @@ router.get('/test', function (req, res) {
 	var tokenId = obj.tokenId;
 	if (__currentTokens[tokenId] !== undefined) {
 		__currentTokens[tokenId].timestamp = new Date();
-		var roles = __currentTokens[tokenId].roles;
+		var roles = __currentTokens[tokenId].userRoles;
 		if (roles.indexOf('SysAdmin') !== -1) {
 			res.render('core/test');
 		} else {
