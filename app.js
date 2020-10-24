@@ -1,6 +1,6 @@
 global.__base = __dirname + "/";
 global.__listeningPort = 3001;
-
+var uuid = require("node-uuid");
 var fs = require("fs");
 var formidable = require("formidable");
 var readChunk = require("read-chunk");
@@ -72,7 +72,7 @@ app.post("/api/file/upload", function (req, res) {
 
     // if (type !== null && (type.ext === 'png' || type.ext === 'jpg' || type.ext === 'jpeg')) {
     if (type !== null) {
-      filename = Date.now() + "-" + file.name;
+      filename = uuid.v4() + "-" + file.name;
       fs.rename(
         file.path,
         path.join(__dirname, "public/files/images/" + filename)
@@ -87,7 +87,7 @@ app.post("/api/file/upload", function (req, res) {
       // photos.push({ status: false, filename: file.name, message: 'Invalid file type' });
       // fs.unlink(file.path);
       console.log("Sone Error");
-      filename = Date.now() + "-" + file.name;
+      filename = uuid.v4() + "-" + file.name;
       fs.rename(
         file.path,
         path.join(__dirname, "public/files/images/" + filename),

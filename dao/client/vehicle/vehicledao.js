@@ -7,12 +7,65 @@ var helperDao = new HelperDAO();
 module.exports = VehicleDAO;
 
 function VehicleDAO() {
-	this.new = function (tokenId, dealerId, next) {
+	this.new = function (tokenId, dealerId, vin, next) {
+		let self = this;
 		helperDao.new(tokenId, "Vehicle", null, function (err, obj) {
 			if (err) return next(err);
 			obj.links = [];
 			obj.dealerId = dealerId;
-
+			obj.vin = vin;
+			self.vinDecode(tokenId, vin, function (err, r) {
+				var data = r['query_responses']['Request-Sample']['us_market_data']['common_us_data'];
+				obj.year = paresInt(data.basic_data.year);
+				obj.make = data.basic_data.make;
+				obj.model = data.basic_data.model;
+				obj.trim = data.basic_data.trim;
+				obj.vehicleType = data.basic_data.vehicle_type;
+				obj.bodyType = data.basic_data.body_type;
+				obj.doors = parseInt(data.basic_data.doors);
+				obj.modelNumber = data.basic_data.model_number;
+				obj.driveType = data.basic_data.drive_type;
+				obj.plant = data.basic_data.plant;
+				obj.msrp = parseFloat(data.pricing.msrp);
+				obj.engineName = data.engines[0].name;
+				obj.engineBrand = data.engines[0].brand;
+				obj.fuelType = data.engines[0].fuel_type;
+				obj.iceMaxHp = data.engines[0].ice_max_hp;
+				obj.iceMaxHpAt = data.engines[0].ice_max_hp_at;
+				obj.iceMaxTorque = data.engines[0].ice_max_torgue;
+				obj.iceMaxTorqueAt = data.engines[0].ice_max_torgue_at;
+				obj.maxPayload = data.engines[0].max_payload;
+				obj.transmissionName = data.transmissions[0].name;
+				obj.colorName = data.colors.exterior_colors[0].generic_color_name;
+				obj.colorHex = data.colors.exterior_colors[0].primary_rgb_code.hex;
+				async.forEach(data.standard_specifications, function (ss, callback) {
+					if (ss.specification_category === 'Weights and Capacities') {
+						async.forEach(ss.specification_values, function (v, callback2) {
+							if (v.specification_name === 'Base Towing Capacity') {
+								obj.baseTowingCapacity = v.specification_value;
+								callback2();
+							} else if (v.specification_name === 'Gross Vehicle Weight Rating') {
+								obj.grossWeight = parseFloat(v.specification_value);
+								callback2();
+							} else if (v.specification_name === 'Fuel Tank Capacity') {
+								obj.fuelTankCapacity = parseFloat(v.specification_value);
+								callback2();
+							} else if (v.specification_name === 'Max Payload') {
+								obj.maxPayload = v.specification_value;
+								callback2();
+							} else {
+								callback2();
+							}
+						}, function (err) {
+							callback();
+						});
+					} else {
+						callback();
+					}
+				}, function (err) {
+					return next(null, obj);
+				});
+			});
 		});
 	}
 

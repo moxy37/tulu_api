@@ -66,7 +66,6 @@
 		});
 
 		function uploadFiles(formData) {
-			$("#ProgressBarDiv").show();
 			$.ajax({
 				url: '/api/file/upload',
 				method: 'post',
@@ -82,7 +81,6 @@
 				alert(status);
 			});
 			$("#upload-photos").hide();
-			ListFonts();
 		}
 
 	</script>

@@ -24,7 +24,7 @@ router.put("/api/vehicle/new", function (req, res) {
 	var tokenId = obj.tokenId;
 	if (__currentTokens[tokenId] !== undefined) {
 		__currentTokens[tokenId].timestamp = new Date();
-		vehicleDao.new(tokenId, obj.dealerId, function (err, vehicle) {
+		vehicleDao.new(tokenId, obj.dealerId, obj.vin, function (err, vehicle) {
 			return res.send(vehicle);
 		});
 	} else { return res.status(400).send("Invalid tokenId"); }
