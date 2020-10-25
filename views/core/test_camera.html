@@ -34,7 +34,7 @@
 </head>
 
 <body>
-	<h1>Camera Test</h1>
+	<h1 id="TestLabel">Camera Test</h1>
 
 
 	<form id="upload-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">
@@ -53,6 +53,8 @@
 	<!-- <div id="my_camera" onclick="take_snapshot();"></div> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
+		var uid = CreateUUID();
+		var myExt = 'jpg';
 		function CreateUUID() {
 			var s = [];
 			var hexDigits = "0123456789abcdef"; for (var i = 0; i < 36; i++) {
@@ -71,6 +73,8 @@
 			if (files.length === 0) { return false; }
 			for (var i = 0; i < files.length; i++) {
 				var file = files[i];
+				var temp = String(file.name).split('.');
+				myExt = temp.slice(-1)[0];
 				formData.append('photos[]', file, file.name);
 			}
 
@@ -78,14 +82,13 @@
 		});
 
 		function uploadFiles(formData) {
-			// formData.append('dealerId','TEST');
-			// formData.append('vin','VIN TEST');
 			$.ajax({
 				headers: {
 					'vin': 'TEST VIN',
-					'dealerId': 'Test DealerId',
-					'tokenId': 'tokenId',
-					'uuid': CreateUUID()
+					'dealerid': 'Test DealerId',
+					'tokenid': 'tokenId',
+					'uuid': uid,
+					'myext': myExt
 				},
 				url: '/api/file/upload',
 				method: 'post',
@@ -94,10 +97,13 @@
 				contentType: false,
 				xhr: function () {
 					var xhr = new XMLHttpRequest();
-
 					return xhr;
 				}
-			}).done(function () { }).fail(function (xhr, status) {
+			}).done(function (o) {
+				$("#img").attr("src", o.url);
+				$("#TestLabel").empty();
+				$("#TestLabel").append(o.name);
+			}).fail(function (xhr, status) {
 				alert(status);
 			});
 			$("#upload-photos").hide();

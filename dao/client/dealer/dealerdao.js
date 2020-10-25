@@ -1,4 +1,4 @@
-var uuid = require("node-uuid");
+const { v4: uuidv4 } = require('uuid');
 var async = require('async');
 module.exports = DealerDAO;
 
@@ -57,7 +57,7 @@ function DealerDAO() {
 	this.new = function (tokenId, next) {
 		helperDao.new(tokenId, "Dealer", null, function (err, obj) {
 			if (err) return next(err);
-			obj.id = uuid.v4();
+			obj.id = uuidv4();
 			obj.addresses = [];
 			obj.phones = [];
 			var primary = new Object();

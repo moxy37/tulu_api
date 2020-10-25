@@ -1,4 +1,4 @@
-var uuid = require("node-uuid");
+const { v4: uuidv4 } = require('uuid');
 var async = require('async');
 module.exports = UsersDAO;
 
@@ -30,7 +30,7 @@ function UsersDAO() {
 	}
 
 	this.login = function (username, password, next) {
-		var tokenId = uuid.v4();
+		var tokenId = uuidv4();
 		let self = this;
 		var sql = "SELECT * FROM `Users` WHERE `email`=? AND `password`=? ";
 		__con.query(tokenId, sql, [username, password], function (err, results) {
@@ -48,7 +48,7 @@ function UsersDAO() {
 					if (__userToTokens[user.id] !== undefined) {
 						user.tokenId = __userToTokens[user.id];
 					} else {
-						user.tokenId = uuid.v4();
+						user.tokenId = uuidv4();
 					}
 					if (__userToTokens[user.id] !== undefined) {
 						if (__currentTokens[__userToTokens[user.id]] !== undefined) { delete __currentTokens[__userToTokens[user.id]]; }
@@ -95,7 +95,7 @@ function UsersDAO() {
 	}
 
 	this.get = function (tokenId, id, next) {
-		var tokenId = uuid.v4();
+		var tokenId = uuidv4();
 		var primary = new Object();
 		primary.id = id;
 		helperDao.get(tokenId, "Users", primary, function (err, user) {
@@ -134,7 +134,7 @@ function UsersDAO() {
 	this.new = function (tokenId, next) {
 		helperDao.new(tokenId, "Users", null, function (err, obj) {
 			if (err) return next(err);
-			obj.id = uuid.v4();
+			obj.id = uuidv4();
 			obj.phones = [];
 			obj.addresses = [];
 			obj.roles = [];

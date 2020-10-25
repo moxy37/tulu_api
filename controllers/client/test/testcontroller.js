@@ -1,6 +1,7 @@
 var express = require('express');
 var async = require('async');
-var uuid = require("node-uuid");
+const { v4: uuidv4 } = require('uuid');
+
 
 global.__accessKeyId = 'PnuvF35in4';
 global.__secretAccessKey = 'JIO13VOxL2u6FE1czz5tYGkPx8eRYyXZrpRimprI';

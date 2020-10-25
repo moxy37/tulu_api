@@ -1,4 +1,4 @@
-var uuid = require("node-uuid");
+const { v4: uuidv4 } = require('uuid');
 var async = require('async');
 
 var HelperDAO = require(__base + "dao/core/helperdao");

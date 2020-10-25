@@ -1,6 +1,6 @@
 var express = require('express');
 var async = require('async');
-var uuid = require("node-uuid");
+const { v4: uuidv4 } = require('uuid');
 
 var HelperDAO = require(__base + "dao/core/helperdao");
 var helperDao = new HelperDAO();

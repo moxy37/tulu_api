@@ -8,7 +8,8 @@ CREATE TABLE `Dealer` (
 	`name` VARCHAR(2048),
 	`accountId` VARCHAR(255),
 	`logo` VARCHAR(2048),
-	`hours` VARCHAR(1024)
+	`hours` VARCHAR(1024),
+	`website` VARCHAR(1024)
 );
 
 DROP TABLE IF EXISTS `Vehicle`;
@@ -54,7 +55,7 @@ CREATE TABLE `VehicleLinks` (
 	`url` VARCHAR(2048),
 	`type` VARCHAR(255),
 	`sequence` INTEGER DEFAULT 0,
-	PRIMARY KEY(`vin`, `dealerId`, `sequence`)
+	PRIMARY KEY(`vin`, `dealerId`, `sequence`, `type`)
 );
 
 DROP TABLE IF EXISTS `Users`;

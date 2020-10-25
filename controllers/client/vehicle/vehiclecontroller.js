@@ -1,6 +1,6 @@
 var express = require('express');
 var async = require('async');
-var uuid = require("node-uuid");
+const { v4: uuidv4 } = require('uuid');
 
 var VehicleDAO = require(__base + "dao/client/vehicle/vehicledao");
 var vehicleDao = new VehicleDAO();
