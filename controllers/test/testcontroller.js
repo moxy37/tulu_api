@@ -11,7 +11,7 @@ var helperDao = new HelperDAO();
 router = express.Router();
 
 router.get('/test_vin/:vin', function (req, res) {
-    var VehicleDAO = require(__base + "dao/client/vehicle/vehicledao");
+    var VehicleDAO = require(__base + "dao/vehicle/vehicledao");
     var vehicleDao = new VehicleDAO();
     var vin = req.params.vin;
     vehicleDao.vinDecode('', vin, function (err, result) {

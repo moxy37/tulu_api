@@ -2,7 +2,7 @@ var express = require('express');
 var async = require('async');
 const { v4: uuidv4 } = require('uuid');
 
-var DealerDAO = require(__base + "dao/client/dealer/dealerdao");
+var DealerDAO = require(__base + "dao/dealer/dealerdao");
 var dealerDao = new DealerDAO();
 router = express.Router();
 

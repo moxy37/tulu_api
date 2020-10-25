@@ -2,10 +2,10 @@ const { v4: uuidv4 } = require('uuid');
 var async = require('async');
 module.exports = UsersDAO;
 
-var AddressDAO = require(__base + "dao/client/users/addressdao");
+var AddressDAO = require(__base + "dao/users/addressdao");
 var addressDao = new AddressDAO();
 
-var PhoneDAO = require(__base + "dao/client/users/phonedao");
+var PhoneDAO = require(__base + "dao/users/phonedao");
 var phoneDao = new PhoneDAO();
 
 var HelperDAO = require(__base + "dao/core/helperdao");

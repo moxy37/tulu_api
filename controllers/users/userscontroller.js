@@ -3,7 +3,7 @@ var async = require('async');
 const { v4: uuidv4 } = require('uuid');
 
 
-var UsersDAO = require(__base + "dao/client/users/usersdao");
+var UsersDAO = require(__base + "dao/users/usersdao");
 var usersDao = new UsersDAO();
 router = express.Router();
 

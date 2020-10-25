@@ -45,10 +45,10 @@ process.on("uncaughtException", function (err) {
     console.log(err);
 });
 
-app.use("/", require("./controllers/client/test/testcontroller"));
-app.use("/", require("./controllers/client/vehicle/vehiclecontroller"));
-app.use("/", require("./controllers/client/users/userscontroller"));
-app.use("/", require("./controllers/client/dealer/dealercontroller"));
+app.use("/", require("./controllers/test/testcontroller"));
+app.use("/", require("./controllers/vehicle/vehiclecontroller"));
+app.use("/", require("./controllers/users/userscontroller"));
+app.use("/", require("./controllers/dealer/dealercontroller"));
 app.use("/", require("./controllers/core/helpercontroller"));
 app.use("/", require("./controllers/core/routingcontroller"));
 
