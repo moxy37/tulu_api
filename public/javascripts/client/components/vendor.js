@@ -79,10 +79,10 @@ function LoadAddPosting() {
     html=html+'    <form action="" class="addVehicleForm addVehicleStepOne">';
     html=html+'        <label for="vinNum">VIN # :</label>';
     html=html+'        <div class="inputContainer">';
-    html=html+'            <input type="text" id="vinNum" class="vinNum" name="vinNum"><br>';
+    html=html+'            <input type="text" id="vinNum" class="vinNum" name="vinNum" value=""><br>';
     html=html+'        </div>';
     html=html+'        ';
-    html=html+'        <button type="button" class="nextBtn" onclick="">ENTER VIN</button>';
+    html=html+'        <button type="button" class="nextBtn" onclick="GetVehicle()">ENTER VIN</button>';
     html=html+'        <!-- <label for="carDescription">Addition Description :</label>';
     html=html+'        <div class="inputContainer">';
     html=html+'            <textarea type="text" id="carDescription" class="carDescription" name="carDescription"></textarea>';

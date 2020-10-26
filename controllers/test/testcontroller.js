@@ -16,8 +16,13 @@ router.get('/test_vin/:vin', function (req, res) {
     var vin = req.params.vin;
     vehicleDao.vinDecode('', vin, function (err, result) {
         return res.send(result);
+        
     });
+    
 });
+
+
+
 
 router.get('/barcode_malik', function (req, res) {
     res.render('core/barcode_malik');
