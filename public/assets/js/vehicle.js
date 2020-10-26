@@ -1,8 +1,8 @@
-async function GetVehicle() {
+async function GetVehicle(vin, dealerId) {
 	var obj = new Object();
-	obj.tokenId = "42422282-eb13-4c56-b0ae-f15b4f4b6ccb";
-	obj.vin = "1FMFK20507LA67262";
-	obj.dealerId = "dfb56be7-15ef-11eb-83a2-e86a647a411d";
+	obj.tokenId = tokenId;
+	obj.vin = vin;
+	obj.dealerId = dealerId;
 	const results = await $.ajax({
 		type: "PUT",
 		url: "/api/vehicle/get",
@@ -10,11 +10,12 @@ async function GetVehicle() {
 		cache: false,
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
-		success: function (results) { 
-			
+		success: function (results) {
+
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
+	return results;
 }
 
 async function SaveVehicle(vehicle) {
@@ -31,6 +32,7 @@ async function SaveVehicle(vehicle) {
 		success: function (results) { },
 		error: function (results) { console.log(results.statusText); },
 	});
+	return result;
 }
 
 async function DeleteVehicle(vin) {
@@ -47,7 +49,29 @@ async function DeleteVehicle(vin) {
 		success: function (results) { },
 		error: function (results) { console.log(results.statusText); },
 	});
+	return result;
 }
+
+async function NewVehicle(vin, dealerId) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.vin = vin;
+	obj.dealerId = dealerId;
+	const results = await $.ajax({
+		type: "PUT",
+		url: "/api/vehicle/new",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return results;
+}
+
 // GetVehicle(vin).then(function (vehicle) {
 // 	alert(vehicle.vin);
 

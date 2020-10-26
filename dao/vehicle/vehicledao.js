@@ -16,7 +16,7 @@ function VehicleDAO() {
 			obj.vin = vin;
 			self.vinDecode(tokenId, vin, function (err, r) {
 				var data = r['query_responses']['Request-Sample']['us_market_data']['common_us_data'];
-				obj.year = paresInt(data.basic_data.year);
+				obj.year = parseInt(data.basic_data.year);
 				obj.make = data.basic_data.make;
 				obj.model = data.basic_data.model;
 				obj.trim = data.basic_data.trim;
