@@ -6,19 +6,6 @@ var VehicleDAO = require(__base + "dao/vehicle/vehicledao");
 var vehicleDao = new VehicleDAO();
 router = express.Router();
 
-router.put("/api/vehicle/decode/vin", function (req, res) {
-	var obj = req.body;
-	var tokenId = obj.tokenId;
-	if (__currentTokens[tokenId] !== undefined) {
-		__currentTokens[tokenId].timestamp = new Date();
-		var vin = obj.vin;
-		var dealerId = obj.dealerId;
-		vehicleDao.vinDecode(tokenId, vin, function (err, result) {
-			return res.send(result);
-		});
-	} else { return res.status(400).send("Invalid tokenId"); }
-});
-
 router.put("/api/vehicle/new", function (req, res) {
 	var obj = req.body;
 	var tokenId = obj.tokenId;
