@@ -145,6 +145,7 @@
     width:135px;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding:5px;
     border:1px solid white;
     border-radius:10px;
@@ -154,6 +155,7 @@
 
 .vinInfoListItems p{
     color:white;
+    text-align: center;
 }
 
 .vinInfoListItems i{

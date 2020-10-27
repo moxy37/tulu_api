@@ -65,7 +65,10 @@ async function NewVehicle(vin, dealerId) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-
+			// alert(JSON.stringify(results));
+			console.log(results);
+			console.log(results.year);
+			LoadVehicleInfo(results)
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
