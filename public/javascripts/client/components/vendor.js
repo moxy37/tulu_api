@@ -77,6 +77,7 @@ function MakeNewVehicle() {
     });
 }
 
+
 function LoadVehicleInfo(results) {
     var html = '';
     html = html + ' <section class="vinInfo">';
@@ -175,7 +176,7 @@ function LoadAddPosting() {
     html = html + '        </div>';
     html = html + '        <input type="file" accept="image/*" onchange="loadFile(event)" id="file-input">';
     html = html + '        <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
-    html = html + '        <button type="button" class="submitBtn" onclick="addVehicleStep()">SUBMIT</button>';
+    html = html + '        <button type="button" class="submitBtn" onclick="SaveNewVehicle()">SUBMIT</button>';
     html = html + '    </form>';
     html = html + '    <div class="addVehicleForm vehicleAdded">';
     html = html + '    <div id="imageContainer">';
@@ -190,6 +191,14 @@ function LoadAddPosting() {
 }
 
 
+function SaveNewVehicle() {
+    var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
+    SaveVehicle(vin, dealerId).then(function (vehicle) {
+        alert(JSON.stringify(vehicle));
+        
+        addVehicleStep();
+    });
+}
 
 function LoadMyAccountMenu() {
     var html = '';

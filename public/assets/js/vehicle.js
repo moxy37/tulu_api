@@ -11,17 +11,18 @@ async function GetVehicle(vin, dealerId) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-
+			
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
 	return results;
 }
 
-async function SaveVehicle(vehicle) {
+async function SaveVehicle(vehicle,dealerId) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
 	obj.vehicle = vehicle;
+	obj.dealerId = dealerId;
 	const result = await $.ajax({
 		type: "PUT",
 		url: "/api/vehicle/save",
@@ -29,11 +30,16 @@ async function SaveVehicle(vehicle) {
 		cache: false,
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
-		success: function (results) { },
+		success: function (results) {console.log(results); },
 		error: function (results) { console.log(results.statusText); },
 	});
 	return result;
+	addVehicleStep()
 }
+
+
+
+
 
 async function DeleteVehicle(vin) {
 	var obj = new Object();
