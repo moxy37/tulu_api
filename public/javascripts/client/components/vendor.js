@@ -1,3 +1,5 @@
+var gVehicle = null;
+
 var carImage = [
     {
         image: "viper",
@@ -72,7 +74,8 @@ function MakeNewVehicle() {
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     NewVehicle(vin, dealerId).then(function (vehicle) {
         alert(JSON.stringify(vehicle));
-        
+        gVehicle = vehicle;
+        LoadVehicleInfo(vehicle);
         addVehicleStep();
     });
 }
@@ -84,52 +87,52 @@ function LoadVehicleInfo(results) {
     html = html + ' <ul class="vinInfoList">';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Year</p>';
-    html = html + '         <p>'+results.year+'</p>';
+    html = html + '         <p>' + results.year + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Make</p>';
-    html = html + '         <p>'+results.make+'</p>';
+    html = html + '         <p>' + results.make + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Model</p>';
-    html = html + '         <p>'+results.model+'</p>';
+    html = html + '         <p>' + results.model + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Color</p>';
-    html = html + '         <p>'+results.color+'</p>';
+    html = html + '         <p>' + results.color + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Body Type</p>';
-    html = html + '         <p>'+results.bodyType+'</p>';
+    html = html + '         <p>' + results.bodyType + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Engine</p>';
-    html = html + '         <p>'+results.engineName+'</p>';
+    html = html + '         <p>' + results.engineName + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>DriveTrain</p>';
-    html = html + '         <p>'+results.driveType+'</p>';
+    html = html + '         <p>' + results.driveType + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Transmission</p>';
-    html = html + '         <p>'+results.transmissionName+'</p>';
+    html = html + '         <p>' + results.transmissionName + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Fuel Type</p>';
-    html = html + '         <p>'+results.fuelType+'</p>';
+    html = html + '         <p>' + results.fuelType + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Trim</p>';
-    html = html + '         <p>'+results.trim+'</p>';
+    html = html + '         <p>' + results.trim + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + ' </ul>';
@@ -162,9 +165,9 @@ function LoadAddPosting() {
     // html = html + '        <button type="button" class="nextBtn" onclick="addVehicleStep()">NEXT</button>';
     html = html + '    </form>';
     html = html + '    <form action="" class="addVehicleForm addVehicleStepTwo" id="addVehicleStepTwo">';
-    
+
     html = html + '';
-    
+
     html = html + '';
     html = html + '    </form>';
     html = html + '    <form action="" class="addVehicleForm addVehicleStepThree">';
@@ -193,9 +196,9 @@ function LoadAddPosting() {
 
 function SaveNewVehicle() {
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
-    SaveVehicle(vin, dealerId).then(function (vehicle) {
+    SaveVehicle(gVehicle).then(function (vehicle) {
         alert(JSON.stringify(vehicle));
-        
+
         addVehicleStep();
     });
 }
