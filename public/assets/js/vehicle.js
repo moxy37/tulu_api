@@ -18,11 +18,11 @@ async function GetVehicle(vin, dealerId) {
 	return results;
 }
 
-async function SaveVehicle(vehicle) {
+async function SaveVehicle(gVehicle,dealerId) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
-	obj.vehicle = vehicle;
-	obj.dealerId = vehicle.dealerId;
+	obj.vehicle = gVehicle;
+	obj.dealerId = dealerId;
 	const result = await $.ajax({
 		type: "PUT",
 		url: "/api/vehicle/save",

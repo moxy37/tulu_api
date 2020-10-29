@@ -152,7 +152,7 @@ function LoadAddPosting() {
     html = html + '</div>';
     html = html + '<div class="addVehicleContainer">';
     html = html + '    ';
-    html = html + '    <form action="" class="addVehicleForm addVehicleStepOne">';
+    html = html + '    <div  class="addVehicleForm addVehicleStepOne">';
     html = html + '        <label for="vinNum">VIN # :</label>';
     html = html + '        <div class="inputContainer">';
     html = html + '            <input type="text" id="vinNum" class="vinNum" name="vinNum" value=""><br>';
@@ -165,24 +165,40 @@ function LoadAddPosting() {
     html = html + '        </div> -->';
     html = html + '        ';
     // html = html + '        <button type="button" class="nextBtn" onclick="addVehicleStep()">NEXT</button>';
-    html = html + '    </form>';
-    html = html + '    <form action="" class="addVehicleForm addVehicleStepTwo" id="addVehicleStepTwo">';
+    html = html + '    </div>';
+    html = html + '    <div  class="addVehicleForm addVehicleStepTwo" id="addVehicleStepTwo">';
 
     html = html + '';
 
     html = html + '';
-    html = html + '    </form>';
-    html = html + '    <form action="" class="addVehicleForm addVehicleStepThree">';
+    html = html + '    </div>';
+    html = html + '    <div  class="addVehicleForm addVehicleStepThree">';
     html = html + '        <label for="carDescription">Addition Description :</label>';
     html = html + '        <div class="inputContainer">';
     html = html + '            <textarea type="text" id="carDescription" class="carDescription" name="carDescription"></textarea>';
     html = html + '        </div>';
     html = html + '        <div id="imageContainer">';
     html = html + '        </div>';
+
+
+html=html+'<form id="upload-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">';
+html=html+'		<div class="form-group">';
+html=html+'			<label for="photos-input">Load Image</label>';
+html=html+'			<input id="photos-input" type="file" name="photos[]" multiple="multiple" accept="image/*" capture />';
+html=html+'		</div>';
+html=html+'		<input type="hidden" name="csrf_token" value="just_a_text_field" />';
+html=html+'		<input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload" />';
+html=html+'	</form>';
+html=html+'';
+html=html+'<div id="results">';
+html=html+'		<p><img src="" id="img" alt="from phone" /></p>';
+html=html+'	</div>';
+
+
     html = html + '        <input type="file" accept="image/*" onchange="loadFile(event)" id="file-input">';
     html = html + '        <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
     html = html + '        <button type="button" class="submitBtn" onclick="SaveNewVehicle()">SUBMIT</button>';
-    html = html + '    </form>';
+    html = html + '    </div>';
     html = html + '    <div class="addVehicleForm vehicleAdded">';
     html = html + '    <div id="imageContainer">';
     html = html + '    </div>';
@@ -199,7 +215,7 @@ function LoadAddPosting() {
 function SaveNewVehicle() {
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     gVehicle.notes = '';
-    SaveVehicle(gVehicle).then(function (vehicle) {
+    SaveVehicle(gVehicle,dealerId).then(function (vehicle) {
         alert(JSON.stringify(vehicle));
 
         addVehicleStep();

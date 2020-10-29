@@ -85,7 +85,7 @@ function VehicleDAO() {
 		});
 	}
 
-	this.save = function (tokenId, vehicle, next) {
+	this.save = function (tokenId, vehicle,dealerId,vin, next) {
 		var list = [];
 		var primary = new Object();
 		primary.dealerId = dealerId;
