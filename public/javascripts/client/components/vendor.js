@@ -181,18 +181,18 @@ function LoadAddPosting() {
     html = html + '        </div>';
 
 
-html=html+'<form id="upload-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">';
-html=html+'		<div class="form-group">';
-html=html+'			<label for="photos-input">Load Image</label>';
-html=html+'			<input id="photos-input" type="file" name="photos[]" multiple="multiple" accept="image/*" capture />';
-html=html+'		</div>';
-html=html+'		<input type="hidden" name="csrf_token" value="just_a_text_field" />';
-html=html+'		<input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload" />';
-html=html+'	</form>';
-html=html+'';
-html=html+'<div id="results">';
-html=html+'		<p><img src="" id="img" alt="from phone" /></p>';
-html=html+'	</div>';
+    html = html + '<form id="upload-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">';
+    html = html + '		<div class="form-group">';
+    html = html + '			<label for="photos-input">Load Image</label>';
+    html = html + '			<input id="photos-input" type="file" name="photos[]" multiple="multiple" accept="image/*" capture />';
+    html = html + '		</div>';
+    html = html + '		<input type="hidden" name="csrf_token" value="just_a_text_field" />';
+    html = html + '		<input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload" />';
+    html = html + '	</form>';
+    html = html + '';
+    html = html + '<div id="results">';
+    // html=html+'		';
+    html = html + '	</div>';
 
 
     html = html + '        <input type="file" accept="image/*" onchange="loadFile(event)" id="file-input">';
@@ -215,7 +215,7 @@ html=html+'	</div>';
 function SaveNewVehicle() {
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     gVehicle.notes = '';
-    SaveVehicle(gVehicle,dealerId).then(function (vehicle) {
+    SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
         alert(JSON.stringify(vehicle));
 
         addVehicleStep();
@@ -253,6 +253,23 @@ function LoadMyAccountMenu() {
 
     $("#MyAccountMenu").empty();
     $("#MyAccountMenu").append(html);
+
+    $('#upload-photos').on('submit', function (event) {
+        event.preventDefault();
+        var files = $('#photos-input').get(0).files;
+        var formData = new FormData();
+        if (files.length === 0) { return false; }
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var temp = String(file.name).split('.');
+            myExt = temp.slice(-1)[0];
+            uid = CreateUUID();
+            formData.append('photos[]', file, file.name);
+        }
+        console.log(uid);
+        console.log(myExt);
+        UploadFiles(formData);
+    });
 }
 
 
@@ -309,20 +326,7 @@ function goToSchedule() {
     LocationChange('schedule');
 }
 
-$('#upload-photos').on('submit', function (event) {
-    event.preventDefault();
-    var files = $('#photos-input').get(0).files;
-    var formData = new FormData();
-    if (files.length === 0) { return false; }
-    for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        var temp = String(file.name).split('.');
-        myExt = temp.slice(-1)[0];
-        uid = CreateUUID();
-        formData.append('photos[]', file, file.name);
-    }
-    UploadFiles(formData);
-});
+
 
 function UploadFiles(formData) {
     $.ajax({
@@ -343,13 +347,16 @@ function UploadFiles(formData) {
             return xhr;
         }
     }).done(function (o) {
-        $("#img").attr("src", o.url);
-        $("#TestLabel").empty();
-        $("#TestLabel").append(o.name);
         o.sequence = gVehicle.links.length;
         gVehicle.links.push(o);
+        var html = '';
+        for (var i = 0; i < gVehicle.links.length; i++) {
+            html += '<img src="' + gVehicle.links[i].url + '" />';
+        }
+        $("#results").empty();
+        $("#results").append(html);
     }).fail(function (xhr, status) {
         alert(status);
     });
-    $("#upload-photos").hide();
+    // $("#upload-photos").hide();
 }
