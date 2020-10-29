@@ -182,21 +182,24 @@ function LoadAddPosting() {
 
 
     html = html + '<form id="upload-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">';
-    html = html + '		<div class="form-group">';
+    html = html + '		<div class="form-group" style="display:none;">';
     html = html + '			<label for="photos-input">Load Image</label>';
     html = html + '			<input id="photos-input" type="file" name="photos[]" multiple="multiple" accept="image/*" capture />';
+    html = html + '		<input class="btn btn-default" id="uploadBtn" style="display:none;" type="submit" name="Photo Uploads" value="Upload" />';
     html = html + '		</div>';
-    html = html + '		<input type="hidden" name="csrf_token" value="just_a_text_field" />';
-    html = html + '		<input class="btn btn-default" type="submit" name="Photo Uploads" value="Upload" />';
-    html = html + '	</form>';
-    html = html + '';
-    html = html + '<div id="results">';
+    html = html + '<div id="thumbnailContainer">';
     // html=html+'		';
     html = html + '	</div>';
+    html = html + '		<input type="hidden" name="csrf_token" value="just_a_text_field" />';
+    html = html + '     <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
+    html = html + '     <button type="button" class="addImageBtn uploadImageBtn" onclick="uploadImage()">UPLOAD';
+    html = html + '     </button>';
+    html = html + '	</form>';
+    html = html + '';
+    
 
 
-    html = html + '        <input type="file" accept="image/*" onchange="loadFile(event)" id="file-input">';
-    html = html + '        <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
+
     html = html + '        <button type="button" class="submitBtn" onclick="SaveNewVehicle()">SUBMIT</button>';
     html = html + '    </div>';
     html = html + '    <div class="addVehicleForm vehicleAdded">';
@@ -210,6 +213,8 @@ function LoadAddPosting() {
     $("#AddPostingContainer").empty();
     $("#AddPostingContainer").append(html);
 }
+
+
 
 
 function SaveNewVehicle() {
@@ -351,10 +356,10 @@ function UploadFiles(formData) {
         gVehicle.links.push(o);
         var html = '';
         for (var i = 0; i < gVehicle.links.length; i++) {
-            html += '<img src="' + gVehicle.links[i].url + '" />';
+            html += '<img  class="thumbNail" src="' + gVehicle.links[i].url + '" />';
         }
-        $("#results").empty();
-        $("#results").append(html);
+        $("#thumbnailContainer").empty();
+        $("#thumbnailContainer").append(html);
     }).fail(function (xhr, status) {
         alert(status);
     });

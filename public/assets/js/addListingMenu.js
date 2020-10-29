@@ -101,6 +101,12 @@ var loadFile = function(event) {
 };
 
 const addImage = () =>{
-    const fileBtn = document.querySelector(`#file-input`);
+    const fileBtn = document.querySelector(`#photos-input`);
     fileBtn.click();
+}
+
+
+const uploadImage = () =>{
+    const uploadBtn = document.querySelector(`#uploadBtn`);
+    uploadBtn.click();
 }
