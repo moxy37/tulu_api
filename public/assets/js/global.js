@@ -30,34 +30,28 @@ $(document).ready(function () {
 });
 
 function GetCurrentUser(t, next) {
-	var data = sessionStorage.getItem('gUser');
-	if (data === undefined) {
-		var obj = new Object();
-		obj.tokenId = tokenId;
-		$.ajax({
-			type: "PUT",
-			url: "/api/user/current",
-			data: obj,
-			cache: false,
-			dataType: "json",
-			contentType: "application/x-www-form-urlencoded",
-			success: function (results) {
-				gUser = results;
-				sessionStorage.setItem('gUser', JSON.stringify(gUser));
-				for (var i = 0; i < results.roles.length; i++) {
-					if (results.roles[i].role === 'Dealer' || results.roles[i].role === 'DealerAdmin') {
-						dealerId = results.roles[i].targetId;
-					}
+
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	$.ajax({
+		type: "PUT",
+		url: "/api/user/current",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			gUser = results;
+			alert(JSON.stringify(gUser));
+			for (var i = 0; i < results.roles.length; i++) {
+				if (results.roles[i].role === 'Dealer' || results.roles[i].role === 'DealerAdmin') {
+					dealerId = results.roles[i].targetId;
 				}
-				sessionStorage.setItem('dealerId', dealerId);
-				next();
-			},
-			error: function (results) { next(); },
-		});
-	} else {
-		gUser = JSON.parse(data);
-		dealerId = sessionStorage.getItem('dealerId');
-	}
+			}
+			next();
+		},
+		error: function (results) { next(); },
+	});
 }
 
 function CreateUUID() {
