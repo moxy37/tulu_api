@@ -18,6 +18,13 @@ function Login() {
 		success: function (results) {
 			gUser = results;
 			tokenId = gUser.tokenId;
+			sessionStorage.setItem('gUser', JSON.stringify(gUser));
+			for (var i = 0; i < results.roles.length; i++) {
+				if (results.roles[i].role === 'Dealer' || results.roles[i].role === 'DealerAdmin') {
+					dealerId = results.roles[i].targetId;
+				}
+			}
+			sessionStorage.setItem('dealerId', dealerId);
 			LocationChange('home');
 		},
 		error: function (results) {
