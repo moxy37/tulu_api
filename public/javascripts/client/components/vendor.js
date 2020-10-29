@@ -1,4 +1,6 @@
 var gVehicle = null;
+var uid = '';
+var myExt = 'jpg';
 
 var carImage = [
     {
@@ -196,6 +198,7 @@ function LoadAddPosting() {
 
 function SaveNewVehicle() {
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
+    gVehicle.notes = '';
     SaveVehicle(gVehicle).then(function (vehicle) {
         alert(JSON.stringify(vehicle));
 
@@ -288,4 +291,49 @@ function goToVendor() {
 
 function goToSchedule() {
     LocationChange('schedule');
+}
+
+$('#upload-photos').on('submit', function (event) {
+    event.preventDefault();
+    var files = $('#photos-input').get(0).files;
+    var formData = new FormData();
+    if (files.length === 0) { return false; }
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var temp = String(file.name).split('.');
+        myExt = temp.slice(-1)[0];
+        uid = CreateUUID();
+        formData.append('photos[]', file, file.name);
+    }
+    UploadFiles(formData);
+});
+
+function UploadFiles(formData) {
+    $.ajax({
+        headers: {
+            'vin': gVehicle.vin,
+            'dealerid': gVehicle.dealerId,
+            'tokenid': tokenId,
+            'uuid': uid,
+            'myext': myExt
+        },
+        url: '/api/file/upload',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        xhr: function () {
+            var xhr = new XMLHttpRequest();
+            return xhr;
+        }
+    }).done(function (o) {
+        $("#img").attr("src", o.url);
+        $("#TestLabel").empty();
+        $("#TestLabel").append(o.name);
+        o.sequence = gVehicle.links.length;
+        gVehicle.links.push(o);
+    }).fail(function (xhr, status) {
+        alert(status);
+    });
+    $("#upload-photos").hide();
 }

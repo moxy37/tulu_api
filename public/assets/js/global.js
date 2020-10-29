@@ -42,7 +42,7 @@ function GetCurrentUser(t, next) {
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
 			gUser = results;
-			// alert(JSON.stringify(gUser));
+			// alert(JSON.stringify(gUser.roles));
 			// for (var i = 0; i < results.roles.length; i++) {
 			// 	if (results.roles[i].role === 'Dealer' || results.roles[i].role === 'DealerAdmin') {
 			// 		dealerId = results.roles[i].targetId;
