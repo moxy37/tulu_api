@@ -89,11 +89,11 @@ function VehicleDAO() {
 		});
 	}
 
-	this.save = function (tokenId, vehicle, dealerId, vin, next) {
+	this.save = function (tokenId, vehicle, next) {
 		var list = [];
 		var primary = new Object();
-		primary.dealerId = dealerId;
-		primary.vin = vin;
+		primary.dealerId = vehicle.dealerId;
+		primary.vin = vehicle.vin;
 		async.series([
 			function (callback) {
 				helperDao.save(tokenId, "Vehicle", vehicle, primary, function (err, result) {
@@ -113,7 +113,7 @@ function VehicleDAO() {
 					sequence++;
 					helperDao.save(tokenId, "VehicleLinks", link, primary, function (err, l) {
 						list.push(link);
-						callback2;
+						callback2();
 					});
 				}, function (err) {
 					vehicle.links = list;

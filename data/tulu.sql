@@ -28,7 +28,6 @@ CREATE TABLE `Vehicle` (
 	`bodyType` VARCHAR(255),
 	`trim` VARCHAR(255),
 	`dealerId` VARCHAR(36),
-	`listDate` DATETIME,
 	`isSold` BOOLEAN, 
 	`doors` INTEGER,
 	`modelNumber` VARCHAR(255),
