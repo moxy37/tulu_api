@@ -2,6 +2,12 @@ DROP DATABASE `spartacus`;
 CREATE DATABASE `spartacus`;
 USE `spartacus`;
 
+DROP TABLE IF EXISTS `VehicleDump`;
+CREATE TABLE `VehicleDump` (
+	`vin` VARCHAR(255) PRIMARY KEY,
+	`value` LONGTEXT
+);
+
 DROP TABLE IF EXISTS `Dealer`;
 CREATE TABLE `Dealer` (
 	`id` VARCHAR(36) PRIMARY KEY,
