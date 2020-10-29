@@ -53,7 +53,7 @@
 	<!-- <div id="my_camera" onclick="take_snapshot();"></div> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
-		var uid = CreateUUID();
+		var uid = '';
 		var myExt = 'jpg';
 		function CreateUUID() {
 			var s = [];
@@ -75,13 +75,13 @@
 				var file = files[i];
 				var temp = String(file.name).split('.');
 				myExt = temp.slice(-1)[0];
+				uid = CreateUUID();
 				formData.append('photos[]', file, file.name);
 			}
-
-			uploadFiles(formData);
+			UploadFiles(formData);
 		});
 
-		function uploadFiles(formData) {
+		function UploadFiles(formData) {
 			$.ajax({
 				headers: {
 					'vin': 'TEST VIN',
