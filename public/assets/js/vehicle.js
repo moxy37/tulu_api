@@ -1,3 +1,5 @@
+var link ='';
+
 async function GetVehicle(vin, dealerId) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
@@ -11,12 +13,13 @@ async function GetVehicle(vin, dealerId) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
 	return results;
 }
+
+
 
 async function SaveVehicle(gVehicle,dealerId) {
 	var obj = new Object();
@@ -30,13 +33,36 @@ async function SaveVehicle(gVehicle,dealerId) {
 		cache: false,
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
-		success: function (results) { console.log(results); },
+		success: function (results) { 
+			console.log(results); 
+		},
 		error: function (results) { console.log(results.statusText); },
 	});
+	DisplayVehicle();
 	return result;
-	// addVehicleStep()
+	
 }
 
+
+async function DisplayVehicle(gVehicle,dealerId) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.vehicle = gVehicle;
+	obj.dealerId = dealerId;
+	const results = await $.ajax({
+		type: "PUT",
+		url: "/api/vehicle/list",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {	
+			// console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return results;
+}
 
 
 

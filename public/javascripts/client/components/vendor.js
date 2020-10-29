@@ -1,6 +1,7 @@
 var gVehicle = null;
 var uid = '';
 var myExt = 'jpg';
+var link ='';
 
 var carImage = [
     {
@@ -52,30 +53,11 @@ function LoadVendor() {
 }
 
 
-function LoadActiveListing() {
-    var html = '';
-    for (var i = 0; i != carImage.length; i++) {
-        html = html + '<li class="activeListingListItem">';
-        html = html + '    <img src="assets/images/car/' + carImage[i].image + '.Png" alt="" class="listingImage">';
-        html = html + '    <div class="listingInfo">';
-        html = html + '        <h4 class="listingName">' + carImage[i].name + '</h4>';
-        html = html + '        <p class="listingPrice">$' + carImage[i].price + '</p>';
-        html = html + '        <p  class="listingViews">4420 views</p>';
-        html = html + '    </div>';
-        html = html + '    <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="listingSettings()"></i>';
-        html = html + '</li>';
-    }
-
-
-    $("#ActiveListing").empty();
-    $("#ActiveListing").append(html);
-}
-
 function MakeNewVehicle() {
     var vin = $("#vinNum").val();
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     NewVehicle(vin, dealerId).then(function (vehicle) {
-        alert(JSON.stringify(vehicle));
+        // alert(JSON.stringify(vehicle));
         gVehicle = vehicle;
         LoadVehicleInfo(vehicle);
         addVehicleStep();
@@ -159,16 +141,9 @@ function LoadAddPosting() {
     html = html + '        </div>';
     html = html + '        ';
     html = html + '        <button type="button" class="nextBtn" onclick="MakeNewVehicle()">ENTER VIN</button>';
-    html = html + '        <!-- <label for="carDescription">Addition Description :</label>';
-    html = html + '        <div class="inputContainer">';
-    html = html + '            <textarea type="text" id="carDescription" class="carDescription" name="carDescription"></textarea>';
-    html = html + '        </div> -->';
-    html = html + '        ';
-    // html = html + '        <button type="button" class="nextBtn" onclick="addVehicleStep()">NEXT</button>';
     html = html + '    </div>';
     html = html + '    <div  class="addVehicleForm addVehicleStepTwo" id="addVehicleStepTwo">';
 
-    html = html + '';
 
     html = html + '';
     html = html + '    </div>';
@@ -184,16 +159,13 @@ function LoadAddPosting() {
     html = html + '<form id="upload-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">';
     html = html + '		<div class="form-group" style="display:none;">';
     html = html + '			<label for="photos-input">Load Image</label>';
-    html = html + '			<input id="photos-input" type="file" name="photos[]" multiple="multiple" accept="image/*" capture />';
+    html = html + '			<input id="photos-input" type="file" name="photos[]" onchange="uploadImage()"multiple="multiple" accept="image/*" capture />';
     html = html + '		<input class="btn btn-default" id="uploadBtn" style="display:none;" type="submit" name="Photo Uploads" value="Upload" />';
     html = html + '		</div>';
     html = html + '<div id="thumbnailContainer">';
-    // html=html+'		';
     html = html + '	</div>';
     html = html + '		<input type="hidden" name="csrf_token" value="just_a_text_field" />';
     html = html + '     <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
-    html = html + '     <button type="button" class="addImageBtn uploadImageBtn" onclick="uploadImage()">UPLOAD';
-    html = html + '     </button>';
     html = html + '	</form>';
     html = html + '';
     
@@ -217,13 +189,16 @@ function LoadAddPosting() {
 
 
 
-function SaveNewVehicle() {
+function SaveNewVehicle(link) {
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
-    gVehicle.notes = '';
+    gVehicle.notes = $("#carDescription").val();
+    gVehicle.image = link;
+    alert(JSON.stringify(gVehicle.links));
     SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
-        alert(JSON.stringify(vehicle));
-
+        // alert(JSON.stringify(vehicle));
+        console.log(vehicle);
         addVehicleStep();
+        populateVehicle();
     });
 }
 
@@ -272,8 +247,11 @@ function LoadMyAccountMenu() {
             formData.append('photos[]', file, file.name);
         }
         console.log(uid);
+        console.log(file.name);
         console.log(myExt);
+
         UploadFiles(formData);
+        
     });
 }
 
@@ -350,6 +328,7 @@ function UploadFiles(formData) {
         xhr: function () {
             var xhr = new XMLHttpRequest();
             return xhr;
+            
         }
     }).done(function (o) {
         o.sequence = gVehicle.links.length;
@@ -360,8 +339,9 @@ function UploadFiles(formData) {
         }
         $("#thumbnailContainer").empty();
         $("#thumbnailContainer").append(html);
+
+        
     }).fail(function (xhr, status) {
         alert(status);
     });
-    // $("#upload-photos").hide();
 }

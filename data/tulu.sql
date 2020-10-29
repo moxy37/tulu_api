@@ -29,6 +29,7 @@ CREATE TABLE `Vehicle` (
 	`trim` VARCHAR(255),
 	`dealerId` VARCHAR(36),
 	`isSold` BOOLEAN, 
+	`image` VARCHAR(255), 
 	`doors` INTEGER,
 	`modelNumber` VARCHAR(255),
 	`plant` VARCHAR(255),
