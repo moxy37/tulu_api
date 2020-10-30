@@ -29,7 +29,7 @@
     align-items: center;
 }
 
-.addVehicleStepOne,.addVehicleStepTwo,.addVehicleStepThree,.vehicleAdded{
+.addVehicleStepOne,.addVehicleStepTwo,.addVehicleStepThree,.addVehicleStepFour,.vehicleAdded{
     display:none;
     opacity: 0;
 }
@@ -79,6 +79,11 @@
     border:1px solid white;
     border-radius: 10px;
     padding:5px 10px;
+}
+
+.addVehicleForm.addVehicleStepThree{
+    justify-content: center;
+    align-items: center;
 }
 
 .inputContainer input{
@@ -133,7 +138,47 @@
     border:none;
 }
 
+.checkBoxContainer{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
+.checkBoxContainer input{
+    margin:5px 10px 0 0;
+}
+
+
+
+.hide{
+    opacity: 0;
+    transition:0.5s;
+}
+
+.show{
+    opacity: 1;
+    transition:0.5s;
+}
+
+#wholesalePriceContainer{
+    background:white;
+    border:none;
+    border-radius: 10px;
+    padding:10px 15px;
+    flex-direction: row;
+}
+
+#wholesalePriceContainer p{
+    color:#79c6ac;
+    margin:0 10px 0 0;
+}
+
+#wholesalePriceContainer input{
+    background:transparent;
+    border:none;
+    width:100%;
+    color:#79c6ac;
+}
 
 .vinInfoList{
     flex-direction: row;

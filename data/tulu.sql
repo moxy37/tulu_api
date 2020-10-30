@@ -35,6 +35,7 @@ CREATE TABLE `Vehicle` (
 	`plant` VARCHAR(255),
 	`driveType` VARCHAR(255),
 	`msrp` FLOAT,
+	`wholesaleprice` FLOAT,
 	`engineName` VARCHAR(255),
 	`engineBrand` VARCHAR(255), 
 	`engineId` VARCHAR(255),

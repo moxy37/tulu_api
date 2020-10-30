@@ -2,39 +2,8 @@ var gVehicle = null;
 var uid = '';
 var myExt = 'jpg';
 var link ='';
+var toogle='off';
 
-var carImage = [
-    {
-        image: "viper",
-        name: "2006 Dodge Viper",
-        kilometers: "20000 kms",
-        price: "90000",
-        owner: "One Owner",
-        trim: "GTS",
-        transmission: "Manual Transmission",
-        accidents: "No Accidents"
-    },
-    {
-        image: "gtr",
-        name: "2010 Nissan GTR Black Edition",
-        kilometers: "35000 kms",
-        price: "90000",
-        owner: "One Owner",
-        trim: "Fully Loaded",
-        transmission: "Automatic with DCT",
-        accidents: "No Accidents"
-    },
-    {
-        image: "lambo",
-        name: "2006 Lamborghini Gallardo",
-        kilometers: "9000 kms",
-        price: "90000",
-        owner: "One Owner",
-        trim: "Local Car",
-        transmission: "Manual Gated Speed",
-        accidents: "No Accidents"
-    },
-];
 
 function LoadVendor() {
     var html = '';
@@ -143,11 +112,20 @@ function LoadAddPosting() {
     html = html + '        <button type="button" class="nextBtn" onclick="MakeNewVehicle()">ENTER VIN</button>';
     html = html + '    </div>';
     html = html + '    <div  class="addVehicleForm addVehicleStepTwo" id="addVehicleStepTwo">';
-
-
     html = html + '';
     html = html + '    </div>';
-    html = html + '    <div  class="addVehicleForm addVehicleStepThree">';
+    html = html + '    <div  class="addVehicleForm addVehicleStepThree" id="addVehicleStepThree">';
+    html = html + '			<div class="checkBoxContainer">';
+    html = html + '			    <input type="checkbox" name="wholesalePriceCheckbox" onchange="wholesalePriceChecked()" />';
+    html = html + '			    <label for="wholesalePriceCheckbox">Add wholesale price</label>';
+    html = html + '			</div>';
+    html = html + '			<div id="wholesalePriceContainer" class="hide">';
+    html = html + '			    <p>$</p>';
+    html = html + '			    <input type="text" id="wholesalePrice"value="">';
+    html = html + '			</div>';
+    html = html + '        <button type="button" class="doneBtn" onclick="addVehicleStep()">NEXT</button>';
+    html = html + '    </div>';
+    html = html + '    <div  class="addVehicleForm addVehicleStepFour">';
     html = html + '        <label for="carDescription">Addition Description :</label>';
     html = html + '        <div class="inputContainer">';
     html = html + '            <textarea type="text" id="carDescription" class="carDescription" name="carDescription"></textarea>';
@@ -174,6 +152,7 @@ function LoadAddPosting() {
 
     html = html + '        <button type="button" class="submitBtn" onclick="SaveNewVehicle()">SUBMIT</button>';
     html = html + '    </div>';
+    
     html = html + '    <div class="addVehicleForm vehicleAdded">';
     html = html + '    <div id="imageContainer">';
     html = html + '    </div>';
@@ -187,15 +166,25 @@ function LoadAddPosting() {
 }
 
 
+function wholesalePriceChecked(){
+    const priceInput = document.querySelector('#wholesalePriceContainer');
+    if(toogle=='off'){
+        priceInput.className = "show";
+        toogle='on';
+    }else{
+        priceInput.className = "hide";
+        toogle='off';
+    }
+}
 
 
 function SaveNewVehicle(link) {
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     gVehicle.notes = $("#carDescription").val();
+    gVehicle.wholesaleprice = $("#wholesalePrice").val();
     gVehicle.image = link;
     alert(JSON.stringify(gVehicle.links));
     SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
-        // alert(JSON.stringify(vehicle));
         console.log(vehicle);
         addVehicleStep();
         populateVehicle();

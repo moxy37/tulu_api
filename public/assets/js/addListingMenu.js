@@ -19,6 +19,7 @@ const addListingMenu = () => {
 const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
 const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
 const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
+const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
 const vehicleAdded = document.querySelector('.vehicleAdded');
 var addVehicleStepCount = 1;
 const addVehicleStep = () => {
@@ -38,13 +39,21 @@ const addVehicleStep = () => {
         setTimeout(showAddVehicleStepThree, 600);
     }else if(addVehicleStepCount == 3){
         const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
-        const vehicleAdded = document.querySelector('.vehicleAdded');
+        const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
         addVehicleStepThree.style = "display:Flex; opacity:0; transition:0.5s;";
+        addVehicleStepFour.style = "display:Flex;";
+        addVehicleStepCount++;
+        setTimeout(showAddVehicleStepFour, 600);
+    }
+    else if(addVehicleStepCount == 4){
+        const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
+        const vehicleAdded = document.querySelector('.vehicleAdded');
+        addVehicleStepFour.style = "display:Flex; opacity:0; transition:0.5s;";
         vehicleAdded.style = "display:Flex;";
         addVehicleStepCount++;
         setTimeout(addedSuccessful, 600);
     }
-    else if(addVehicleStepCount == 4){
+    else if(addVehicleStepCount == 5){
         const vehicleAdded = document.querySelector('.vehicleAdded');
         vehicleAdded.style = "display:Flex; opacity:0; transition:0.5s;";
         setTimeout(addingDone, 600);
@@ -66,6 +75,16 @@ const addingDone = () => {
     addListingSetting="off";
     addVehicleStepCount=1;
     setTimeout(showAddVehicleStepOne, 600);
+    setTimeout(resetForms, 600);
+}
+
+
+const resetForms = () => {
+    document.querySelector('#vinNum').value = "";
+    document.querySelector('#wholesalePrice').value = "";
+    document.querySelector('#carDescription').value = "";
+    document.querySelector('#photos-input').value = "";
+    $("#thumbnailContainer").empty();
 }
 
 const showAddVehicleStepTwo = () => {
@@ -82,11 +101,18 @@ const showAddVehicleStepThree = () => {
     addVehicleStepTwo.style = "display:none;";
 }
 
+const showAddVehicleStepFour = () => {
+    const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
+    const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
+    addVehicleStepFour.style = "display:Flex; opacity:1; transition:0.5s;";
+    addVehicleStepThree.style = "display:none;";
+}
+
 const addedSuccessful = () => {
     const vehicleAdded = document.querySelector('.vehicleAdded');
-    const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
+    const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
     vehicleAdded.style = "display:Flex; opacity:1; transition:0.5s;";
-    addVehicleStepThree.style = "display:none;";
+    addVehicleStepFour.style = "display:none;";
 }
 
 var loadFile = function(event) {

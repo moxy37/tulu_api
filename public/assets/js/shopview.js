@@ -6,3 +6,4 @@ function PageLoadFunction() {
 	LoadFilterSettings();
 	LoadFooter();
 }
+
