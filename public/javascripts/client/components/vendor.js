@@ -1,7 +1,6 @@
 var gVehicle = null;
 var uid = '';
 var myExt = 'jpg';
-var link ='';
 var toogle='off';
 
 
@@ -13,7 +12,7 @@ function LoadVendor() {
     html = html + '		<i class="fas fa-user fa-4x"></i>';
     html = html + '	</div>';
     html = html + '	<h3 class="userName">Jane Doe</h3>';
-    html = html + '	<p class="userActiveListingCount">5 Active Listing</p>';
+    html = html + '	<p class="userActiveListingCount"><span></span>&nbsp Active Listing</p>';
     html = html + '</div>';
 
     $("#VendorHeader").empty();
@@ -178,12 +177,12 @@ function wholesalePriceChecked(){
 }
 
 
-function SaveNewVehicle(link) {
+function SaveNewVehicle() {
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     gVehicle.notes = $("#carDescription").val();
     gVehicle.wholesaleprice = $("#wholesalePrice").val();
-    gVehicle.image = link;
-    alert(JSON.stringify(gVehicle.links));
+    gVehicle.image = gVehicle.links[0].url;
+    alert('test'+JSON.stringify(gVehicle.links));
     SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
         console.log(vehicle);
         addVehicleStep();
@@ -245,10 +244,14 @@ function LoadMyAccountMenu() {
 }
 
 
+function viewListing(){
+    //get vin number of car selected then go to carview then populate
+}
+
 function LoadListingSettings() {
     var html = '';
     html = html + '<ul class="listingSettingsList">';
-    html = html + '    <li class="settingsListItem">';
+    html = html + '    <li class="settingsListItem" onClick="viewListing()">';
     html = html + '        <i class="far fa-clipboard"></i>';
     html = html + '        <p>';
     html = html + '            View Listing';

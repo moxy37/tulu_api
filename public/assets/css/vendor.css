@@ -37,6 +37,12 @@
 .userActiveListingCount{
     font-size: small;
     color:#8b9196;
+    flex-direction: row;
+}
+
+.userActiveListingCount span{
+    font-size: small;
+    color:#8b9196;
 }
 
 /* Listing */

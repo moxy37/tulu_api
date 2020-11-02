@@ -9,14 +9,14 @@ function PageLoadFunction() {
 	populateVehicle()
 }
 
-function populateVehicle() {
+function populateVehicle(gVehicle) {
     var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     DisplayVehicle(dealerId).then(function (vehicle) {
 		console.log(vehicle);
 		var html = '';
 		for (var i = 0; i != vehicle.length; i++) {
-			html = html + '<li class="activeListingListItem">';
-			html = html + '    <img src="assets/images/car/' + vehicle[i].image + '.Png" alt="" class="listingImage">';
+			html = html + '<li class="activeListingListItem" id="'+vehicle[i].vin+'">';
+			html = html + '    <img src="' + vehicle[i].image + '" alt="" class="listingImage">';
 			html = html + '    <div class="listingInfo">';
 			html = html + '        <h4 class="listingName">' + vehicle[i].year +' '+ vehicle[i].make +' '+ vehicle[i].model + '</h4>';
 			html = html + '        <p class="listingPrice">$' + vehicle[i].msrp + '</p>';
@@ -26,6 +26,8 @@ function populateVehicle() {
 			html = html + '</li>';
 		}
 
+		$(".userActiveListingCount").empty();
+		$(".userActiveListingCount span").append(vehicle.length);
 
 		$("#ActiveListing").empty();
 		$("#ActiveListing").append(html);

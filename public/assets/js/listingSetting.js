@@ -2,6 +2,7 @@ var toggleSetting="off";
 
 
 const listingSettings = () => {
+    
     const listingSettingsContainer = document.querySelector('.listingSettingsContainer');
     if(toggleSetting=="off"){
         listingSettingsContainer.style = "bottom:0vh; opacity:1;transition:0.5s ease-out;";
