@@ -53,9 +53,7 @@ router.get('/carView', function (req, res) {
     res.render('client/test/carView');
 });
 
-router.get('/vendor', function (req, res) {
-    res.render('client/test/vendor');
-});
+
 
 router.get('/editProfile', function (req, res) {
     res.render('client/test/editProfile');

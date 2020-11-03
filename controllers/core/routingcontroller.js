@@ -5,8 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 router = express.Router();
 
 router.get('/test', function (req, res) {
-	var obj = req.body;
-	var tokenId = obj.tokenId;
+	var tokenId = req.query.tokenId;
 	if (__currentTokens[tokenId] !== undefined) {
 		__currentTokens[tokenId].timestamp = new Date();
 		var roles = __currentTokens[tokenId].userRoles;
@@ -33,6 +32,19 @@ router.get('/user', function (req, res) {
 
 router.get('/register', function (req, res) {
 	res.render('final/register');
+});
+
+router.get('/vendor', function (req, res) {
+	var tokenId = req.query.tokenId;
+	if (__currentTokens[tokenId] !== undefined) {
+		__currentTokens[tokenId].timestamp = new Date();
+		var roles = __currentTokens[tokenId].user.userRoles;
+		if (roles.indexOf('Dealer') !== -1 || roles.indexOf('DealerAdmin') !== -1) {
+			res.render('client/test/vendor');
+		} else {
+			res.render('client/test/home');
+		}
+	} else { res.render('client/test/home'); }
 });
 
 module.exports = router;

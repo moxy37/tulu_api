@@ -9,6 +9,7 @@ function LocationChange(p) {
 }
 
 $(document).ready(function () {
+
 	function getUrlVars() {
 		var hash;
 		var hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&");
@@ -20,7 +21,7 @@ $(document).ready(function () {
 		}
 		if (tokenId !== undefined) {
 			console.log("hasToken");
-			GetCurrentUser(tokenId, PageLoadFunction);
+			GetCurrentUser(PageLoadFunction);
 		} else {
 			console.log("noToken");
 			PageLoadFunction();
@@ -29,28 +30,38 @@ $(document).ready(function () {
 	getUrlVars();
 });
 
-function GetCurrentUser(t, next) {
-
-	var obj = new Object();
-	obj.tokenId = tokenId;
-	$.ajax({
-		type: "PUT",
-		url: "/api/user/current",
-		data: obj,
-		cache: false,
-		dataType: "json",
-		contentType: "application/x-www-form-urlencoded",
-		success: function (results) {
-			gUser = results.user;
-			for (var i = 0; i < gUser.roles.length; i++) {
-				if (gUser.roles[i].role === 'Dealer' || gUser.roles[i].role === 'DealerAdmin') {
-					dealerId = gUser.roles[i].targetId;
+function GetCurrentUser(next) {
+	var makeCall = true;
+	var tempUserText = window.sessionStorage.getItem("gUser");
+	if (tempUserText !== undefined && tempUserText !== null) {
+		gUser = JSON.parse(tempUserText);
+		dealerId = window.sessionStorage.getItem("dealerId");
+		if (tokenId === gUser.tokenId) { makeCall = false; }
+	}
+	if (makeCall === true) {
+		var obj = new Object();
+		obj.tokenId = tokenId;
+		$.ajax({
+			type: "PUT",
+			url: "/api/user/current",
+			data: obj,
+			cache: false,
+			dataType: "json",
+			contentType: "application/x-www-form-urlencoded",
+			success: function (results) {
+				gUser = results.user;
+				for (var i = 0; i < gUser.roles.length; i++) {
+					if (gUser.roles[i].role === 'Dealer' || gUser.roles[i].role === 'DealerAdmin') {
+						dealerId = gUser.roles[i].targetId;
+						window.sessionStorage.setItem("dealerId", dealerId);
+					}
 				}
-			}
-			next();
-		},
-		error: function (results) { next(); },
-	});
+				window.sessionStorage.setItem("gUser", JSON.stringify(gUser));
+				next();
+			},
+			error: function (results) { next(); },
+		});
+	} else { next(); }
 }
 
 function CreateUUID() {
