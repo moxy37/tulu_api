@@ -3,15 +3,17 @@ function PageLoadFunction() {
 	LoadSideMenu();
 	LoadCarVendor();
 
-	LoadCarGallery();
+	
 	LoadShareButton();
 	LoadFooter();
 	var vin = window.sessionStorage.getItem("vin");
 	var id = window.sessionStorage.getItem("viewDealerId");
 	GetVehicle(vin, id).then(function (result) {
 		gVehicle = result;
-		alert(JSON.stringify(result));
+		// alert(JSON.stringify(result));
+		console.log(result)
 		LoadCarView();
+		LoadCarGallery();
 	});
 }
 
@@ -64,10 +66,10 @@ function LoadCarView() {
 	var html = '';
 	// html=html+'<img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image">';
 	html = html + '<div class="carDetails">';
-	html = html + '<img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image">';
+	html = html + '<img src="' + gVehicle.links[0].url + '" class="carImage" alt="car-image">';
 	html = html + '     <div class="carTitle">';
 	html = html + '         <h2 class="carName">' + gVehicle.model + '</h2>';
-	html = html + '         <p class="carPrice">' + gVehicle.msrp + '</p>';
+	html = html + '         <p class="carPrice">$&nbsp' + gVehicle.msrp + '</p>';
 	html = html + '     </div>';
 	html = html + '     <div class="carGallery">';
 	html = html + '         <ul id="carImageList" class="lightbox-gallery carImageList">';
@@ -99,7 +101,7 @@ function LoadCarView() {
 	html = html + '		        </li>';
 	html = html + '		        <li class="carInfo">';
 	html = html + '		            <p>Body Type</p>';
-	html = html + '		            <p>' + carDetails[0].bodytype + '</p>';
+	html = html + '		            <p>' + gVehicle.bodyType + '</p>';
 	html = html + '		        </li>';
 	html = html + '		    </ul>';
 	html = html + '		    <ul class="carSpecs">';
@@ -139,7 +141,8 @@ function LoadCarView() {
 	html = html + '		        <p>' + gVehicle.vin + '</p>';
 	html = html + '		    </div>';
 	html = html + '		    <div class="carInfo carInfoNotes">';
-	html = html + '		        <p>' + '' + '</p>';
+	html = html + '		        <p>Notes:</p>';
+	html = html + '		        <p>' + gVehicle.notes + '</p>';
 	html = html + '		    </div>';
 	html = html + '		</div>';
 	html = html + '</div>';
@@ -156,11 +159,12 @@ function LoadCarGallery() {
 	var carImageInsert = "";
 	for (var i = 0; i != gVehicle.links.length; i++) {
 		carImageInsert = carImageInsert + '                <li class="carImageListItems">';
-		carImageInsert = carImageInsert + '                    <img src="' + gVehicle.links[i].url + '" >';
+		carImageInsert = carImageInsert + '                    <img src="' + gVehicle.links[i].url + '" data-image-hd="' + gVehicle.links[i].url + '">';
 		carImageInsert = carImageInsert + '                </li>';
 	}
 	$("#carImageList").empty();
 	$("#carImageList").append(carImageInsert);
+	console.log(gVehicle.links);
 }
 
 
