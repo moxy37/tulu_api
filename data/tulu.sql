@@ -86,6 +86,9 @@ CREATE TABLE `Users` (
 	`linkedIn` VARCHAR(1024),
 	`instagram` VARCHAR(1024),
 	`facebook` VARCHAR(1024),
+	`image` VARCHAR(2048),
+	`postalCode` VARCHAR(255),
+	`bio` VARCHAR(1024),
 	`image` VARCHAR(2048)
 );
 

@@ -160,7 +160,7 @@
     transition:0.5s;
 }
 
-#wholesalePriceContainer{
+#wholeSalePriceContainer{
     background:white;
     border:none;
     border-radius: 10px;
@@ -168,12 +168,12 @@
     flex-direction: row;
 }
 
-#wholesalePriceContainer p{
+#wholeSalePriceContainer p{
     color:#79c6ac;
     margin:0 10px 0 0;
 }
 
-#wholesalePriceContainer input{
+#wholeSalePriceContainer input{
     background:transparent;
     border:none;
     width:100%;

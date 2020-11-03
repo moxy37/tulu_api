@@ -115,12 +115,12 @@ function LoadAddPosting() {
     html = html + '    </div>';
     html = html + '    <div  class="addVehicleForm addVehicleStepThree" id="addVehicleStepThree">';
     html = html + '			<div class="checkBoxContainer">';
-    html = html + '			    <input type="checkbox" name="wholesalePriceCheckbox" onchange="WholesalePriceChecked()" />';
-    html = html + '			    <label for="wholesalePriceCheckbox">Add wholesale price</label>';
+    html = html + '			    <input type="checkbox" name="wholeSalePriceCheckbox" onchange="wholeSalePriceChecked()" />';
+    html = html + '			    <label for="wholeSalePriceCheckbox">Add wholesale price</label>';
     html = html + '			</div>';
-    html = html + '			<div id="wholesalePriceContainer" class="hide">';
+    html = html + '			<div id="wholeSalePriceContainer" class="hide">';
     html = html + '			    <p>$</p>';
-    html = html + '			    <input type="text" id="wholesalePrice"value="">';
+    html = html + '			    <input type="text" id="wholeSalePrice"value="">';
     html = html + '			</div>';
     html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">NEXT</button>';
     html = html + '    </div>';
@@ -165,8 +165,8 @@ function LoadAddPosting() {
 }
 
 
-function WholesalePriceChecked() {
-    const priceInput = document.querySelector('#wholesalePriceContainer');
+function wholeSalePriceChecked() {
+    const priceInput = document.querySelector('#wholeSalePriceContainer');
     if (toogle == 'off') {
         priceInput.className = "show";
         toogle = 'on';
@@ -180,7 +180,7 @@ function WholesalePriceChecked() {
 function SaveNewVehicle() {
     // var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     gVehicle.notes = $("#carDescription").val();
-    gVehicle.wholeSalePrice = $("#wholesalePrice").val();
+    gVehicle.wholeSalePrice = $("#wholeSalePrice").val();
     gVehicle.image = gVehicle.links[0].url;
     SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
         AddVehicleStep();

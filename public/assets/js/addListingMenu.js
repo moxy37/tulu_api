@@ -81,7 +81,7 @@ const AddingDone = () => {
 
 const ResetForms = () => {
     document.querySelector('#vinNum').value = "";
-    document.querySelector('#wholesalePrice').value = "";
+    document.querySelector('#wholeSalePrice').value = "";
     document.querySelector('#carDescription').value = "";
     document.querySelector('#photos-input').value = "";
     $("#thumbnailContainer").empty();

@@ -9,9 +9,9 @@ function LoadProfile() {
     html=html+'    <form action="" class="editForm">';
     html=html+'        <label for="email">Email:</label>';
     html=html+'        <div class="inputContainer">';
-    html=html+'            <input type="text" id="email" class="email" name="email"><br>';
+    html=html+'            <input type="text" id="email" class="email" name="email" value="email"><br>';
     html=html+'        </div>';
-    html=html+'        <label for="password">Password:</label>';
+    html=html+'        <label for="password">New Password:</label>';
     html=html+'        <div class="inputContainer">';
     html=html+'            <input type="password" id="password" class="password" name="password">';
     html=html+'        </div>  ';
@@ -19,13 +19,9 @@ function LoadProfile() {
     html=html+'        <div class="inputContainer">';
     html=html+'            <input type="password" id="confirmPassword" class="confirmPassword" name="confirmPassword">';
     html=html+'        </div>';
-    html=html+'        <label for="fname">First Name:</label>';
+    html=html+'        <label for="name">Name:</label>';
     html=html+'        <div class="inputContainer">';
-    html=html+'            <input type="text" id="fname" class="fname" name="fname"><br>';
-    html=html+'        </div>';
-    html=html+'        <label for="lname">Last Name:</label>';
-    html=html+'        <div class="inputContainer">';
-    html=html+'            <input type="text" id="lname" class="lname" name="lname"><br>';
+    html=html+'            <input type="text" id="name" class="name" name="name"><br>';
     html=html+'        </div>';
     html=html+'        <label for="postalCode">Postal Code:</label>';
     html=html+'        <div class="inputContainer">';

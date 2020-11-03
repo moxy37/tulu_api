@@ -32,3 +32,13 @@ remove href replace it with location change
 adding cars to the dealer
 
 
+Dashboards
+-Tulu
+-DealerAdmin
+-Dealer
+Screens
+-Car Search Page
+-Car View Page
+-User Profile Page
+-Register Tulu page
+-Book Test Drive page

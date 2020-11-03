@@ -38,7 +38,7 @@ function Login() {
 		tokenId = gUser.tokenId;
 		var nextPage = 'home';
 		if (gUser.userRoles.indexOf('Tulu') !== -1) {
-			nextPage = 'home';
+			nextPage = 'profile';
 		}
 		for (var i = 0; i < gUser.roles.length; i++) {
 			if (gUser.roles[i].role === 'Dealer' || gUser.roles[i].role === 'DealerAdmin') {
