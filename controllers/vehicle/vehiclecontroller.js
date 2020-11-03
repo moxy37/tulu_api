@@ -23,7 +23,6 @@ router.put("/api/vehicle/list", function (req, res) {
 	if (__currentTokens[tokenId] !== undefined) {
 		__currentTokens[tokenId].timestamp = new Date();
 		vehicleDao.list(tokenId, obj, function (err, list) {
-			console.log(JSON.stringify(list));
 			return res.send(list);
 		});
 	} else { return res.status(400).send("Invalid tokenId"); }

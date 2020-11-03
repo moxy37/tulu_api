@@ -12,11 +12,12 @@ function HelperDAO() {
 			return next(null, list);
 		});
 	}
-	
+
 	this.new = function (tokenId, table, primary, next) {
 		var sql = "DESC `" + table + "`";
 		__con.query(tokenId, sql, function (err, results) {
 			if (err) return next(err);
+			console.log(JSON.stringify(results));
 			var obj = new Object();
 			async.forEach(results, function (r, callback) {
 				var t = String(r.Type);
@@ -36,9 +37,11 @@ function HelperDAO() {
 					} catch (err) { obj[r.Field] = 0; }
 				} else if (t.includes('boolean')) {
 					obj[r.Field] = false;
-				} else if (t.includes('date') || t.includes('time')) {
-					obj[r.Field] = new Date();
-				} else {
+				}
+				// else if (t.includes('date') || t.includes('time')) {
+				// 	obj[r.Field] = new Date();
+				// } 
+				else {
 					obj[r.Field] = '';
 					if (r.Default !== undefined && r.Default !== "null" && r.Default !== null) {
 						obj[r.Field] = r.Default;

@@ -55,6 +55,15 @@ CREATE TABLE `Vehicle` (
 	PRIMARY KEY(`vin`, `dealerId`)
 );
 
+DROP TABLE IF EXISTS `VehicleTimeline`;
+CREATE TABLE `VehicleTimeline` (
+	`vin` VARCHAR(255),
+	`dealerId` VARCHAR(36),
+	`label` VARCHAR(255),
+	`timestamp` DATETIME DEFAULT NOW(),
+	`value` FLOAT DEFAULT 0
+);
+
 DROP TABLE IF EXISTS `VehicleLinks`;
 CREATE TABLE `VehicleLinks` (
 	`vin` VARCHAR(255),

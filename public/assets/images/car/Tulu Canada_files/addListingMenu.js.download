@@ -36,25 +36,25 @@ const addVehicleStep = () => {
         addVehicleStepThree.style = "display:Flex; opacity:0; transition:0.5s;";
         vehicleAdded.style = "display:Flex;";
         addVehicleStepCount++;
-        setTimeout(addedSuccessful, 600);
+        setTimeout(AddedSuccessful, 600);
     }
     else if(addVehicleStepCount == 4){
         vehicleAdded.style = "display:Flex; opacity:0; transition:0.5s;";
-        setTimeout(addingDone, 600);
+        setTimeout(AddingDone, 600);
     }
 };
 
-const showAddVehicleStepOne = () => {
+const ShowAddVehicleStepOne = () => {
     addVehicleStepOne.style = "display:Flex; opacity:1; transition:0.5s;";
     vehicleAdded.style = "display:none;";
 }
 
-const addingDone = () => {
+const AddingDone = () => {
     addPostingContainer.style = "height:10vh;transition:0.5s ease-in-out;";
     addPostingBtn.style = "transform:rotate(0deg);transition:0.8s ease-in-out;";
     addListingSetting="off";
     addVehicleStepCount=1;
-    setTimeout(showAddVehicleStepOne, 600);
+    setTimeout(ShowAddVehicleStepOne, 600);
 }
 
 const showAddVehicleStepTwo = () => {
@@ -67,7 +67,7 @@ const showAddVehicleStepThree = () => {
     addVehicleStepTwo.style = "display:none;";
 }
 
-const addedSuccessful = () => {
+const AddedSuccessful = () => {
     vehicleAdded.style = "display:Flex; opacity:1; transition:0.5s;";
     addVehicleStepThree.style = "display:none;";
 }

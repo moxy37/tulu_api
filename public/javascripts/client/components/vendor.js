@@ -1,7 +1,7 @@
 var gVehicle = null;
 var uid = '';
 var myExt = 'jpg';
-var toogle='off';
+var toogle = 'off';
 
 
 function LoadVendor() {
@@ -11,7 +11,7 @@ function LoadVendor() {
     html = html + '	<div class="userImage">';
     html = html + '		<i class="fas fa-user fa-4x"></i>';
     html = html + '	</div>';
-    html = html + '	<h3 class="userName">Jane Doe</h3>';
+    html = html + '	<h3 class="userName">' + gUser.name + '</h3>';
     html = html + '	<p class="userActiveListingCount"><span></span>&nbsp Active Listing</p>';
     html = html + '</div>';
 
@@ -145,13 +145,13 @@ function LoadAddPosting() {
     html = html + '     <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
     html = html + '	</form>';
     html = html + '';
-    
+
 
 
 
     html = html + '        <button type="button" class="submitBtn" onclick="SaveNewVehicle()">SUBMIT</button>';
     html = html + '    </div>';
-    
+
     html = html + '    <div class="addVehicleForm vehicleAdded">';
     html = html + '    <div id="imageContainer">';
     html = html + '    </div>';
@@ -165,14 +165,14 @@ function LoadAddPosting() {
 }
 
 
-function wholesalePriceChecked(){
+function wholesalePriceChecked() {
     const priceInput = document.querySelector('#wholesalePriceContainer');
-    if(toogle=='off'){
+    if (toogle == 'off') {
         priceInput.className = "show";
-        toogle='on';
-    }else{
+        toogle = 'on';
+    } else {
         priceInput.className = "hide";
-        toogle='off';
+        toogle = 'off';
     }
 }
 
@@ -182,7 +182,7 @@ function SaveNewVehicle() {
     gVehicle.notes = $("#carDescription").val();
     gVehicle.wholesaleprice = $("#wholesalePrice").val();
     gVehicle.image = gVehicle.links[0].url;
-    alert('test'+JSON.stringify(gVehicle.links));
+    alert('test' + JSON.stringify(gVehicle.links));
     SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
         console.log(vehicle);
         AddVehicleStep();
@@ -239,12 +239,12 @@ function LoadMyAccountMenu() {
         console.log(myExt);
 
         UploadFiles(formData);
-        
+
     });
 }
 
 
-function viewListing(){
+function viewListing() {
     //get vin number of car selected then go to carview then populate
 }
 
@@ -320,7 +320,7 @@ function UploadFiles(formData) {
         xhr: function () {
             var xhr = new XMLHttpRequest();
             return xhr;
-            
+
         }
     }).done(function (o) {
         o.sequence = gVehicle.links.length;
@@ -332,7 +332,7 @@ function UploadFiles(formData) {
         $("#thumbnailContainer").empty();
         $("#thumbnailContainer").append(html);
 
-        
+
     }).fail(function (xhr, status) {
         alert(status);
     });

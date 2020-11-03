@@ -41,13 +41,12 @@ function GetCurrentUser(t, next) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-			gUser = results;
-			// alert(JSON.stringify(gUser.roles));
-			// for (var i = 0; i < results.roles.length; i++) {
-			// 	if (results.roles[i].role === 'Dealer' || results.roles[i].role === 'DealerAdmin') {
-			// 		dealerId = results.roles[i].targetId;
-			// 	}
-			// }
+			gUser = results.user;
+			for (var i = 0; i < gUser.roles.length; i++) {
+				if (gUser.roles[i].role === 'Dealer' || gUser.roles[i].role === 'DealerAdmin') {
+					dealerId = gUser.roles[i].targetId;
+				}
+			}
 			next();
 		},
 		error: function (results) { next(); },

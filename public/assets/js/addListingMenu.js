@@ -1,7 +1,7 @@
 var addListingSetting="off";
 
 
-const addListingMenu = () => {
+const AddListingMenu = () => {
     const addPostingContainer = document.querySelector('.addPostingContainer');
     const addPostingBtn = document.querySelector('.addPostingBtn');
     if(addListingSetting=="off"){
@@ -22,28 +22,28 @@ const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
 const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
 const vehicleAdded = document.querySelector('.vehicleAdded');
 var addVehicleStepCount = 1;
-const addVehicleStep = () => {
+const AddVehicleStep = () => {
     if(addVehicleStepCount == 1){
         const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
         const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
         addVehicleStepOne.style = "display:Flex; opacity:0; transition:0.5s;";
         addVehicleStepTwo.style = "display:Flex;";
         addVehicleStepCount++;
-        setTimeout(showAddVehicleStepTwo, 600);
+        setTimeout(ShowAddVehicleStepTwo, 600);
     }else if(addVehicleStepCount == 2){
         const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
         const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
         addVehicleStepTwo.style = "display:Flex; opacity:0; transition:0.5s;";
         addVehicleStepThree.style = "display:Flex;";
         addVehicleStepCount++;
-        setTimeout(showAddVehicleStepThree, 600);
+        setTimeout(ShowAddVehicleStepThree, 600);
     }else if(addVehicleStepCount == 3){
         const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
         const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
         addVehicleStepThree.style = "display:Flex; opacity:0; transition:0.5s;";
         addVehicleStepFour.style = "display:Flex;";
         addVehicleStepCount++;
-        setTimeout(showAddVehicleStepFour, 600);
+        setTimeout(ShowAddVehicleStepFour, 600);
     }
     else if(addVehicleStepCount == 4){
         const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
@@ -51,35 +51,35 @@ const addVehicleStep = () => {
         addVehicleStepFour.style = "display:Flex; opacity:0; transition:0.5s;";
         vehicleAdded.style = "display:Flex;";
         addVehicleStepCount++;
-        setTimeout(addedSuccessful, 600);
+        setTimeout(AddedSuccessful, 600);
     }
     else if(addVehicleStepCount == 5){
         const vehicleAdded = document.querySelector('.vehicleAdded');
         vehicleAdded.style = "display:Flex; opacity:0; transition:0.5s;";
-        setTimeout(addingDone, 600);
+        setTimeout(AddingDone, 600);
     }
 };
 
-const showAddVehicleStepOne = () => {
+const ShowAddVehicleStepOne = () => {
     const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
     const vehicleAdded = document.querySelector('.vehicleAdded');
     addVehicleStepOne.style = "display:Flex; opacity:1; transition:0.5s;";
     vehicleAdded.style = "display:none;";
 }
 
-const addingDone = () => {
+const AddingDone = () => {
     const addPostingContainer = document.querySelector('.addPostingContainer');
     const addPostingBtn = document.querySelector('.addPostingBtn');
     addPostingContainer.style = "height:10vh;transition:0.5s ease-in-out;";
     addPostingBtn.style = "transform:rotate(0deg);transition:0.8s ease-in-out;";
     addListingSetting="off";
     addVehicleStepCount=1;
-    setTimeout(showAddVehicleStepOne, 600);
-    setTimeout(resetForms, 600);
+    setTimeout(ShowAddVehicleStepOne, 600);
+    setTimeout(ResetForms, 600);
 }
 
 
-const resetForms = () => {
+const ResetForms = () => {
     document.querySelector('#vinNum').value = "";
     document.querySelector('#wholesalePrice').value = "";
     document.querySelector('#carDescription').value = "";
@@ -87,28 +87,28 @@ const resetForms = () => {
     $("#thumbnailContainer").empty();
 }
 
-const showAddVehicleStepTwo = () => {
+const ShowAddVehicleStepTwo = () => {
     const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
     const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
     addVehicleStepTwo.style = "display:Flex; opacity:1; transition:0.5s;";
     addVehicleStepOne.style = "display:none";
 }
 
-const showAddVehicleStepThree = () => {
+const ShowAddVehicleStepThree = () => {
     const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
     const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
     addVehicleStepThree.style = "display:Flex; opacity:1; transition:0.5s;";
     addVehicleStepTwo.style = "display:none;";
 }
 
-const showAddVehicleStepFour = () => {
+const ShowAddVehicleStepFour = () => {
     const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
     const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
     addVehicleStepFour.style = "display:Flex; opacity:1; transition:0.5s;";
     addVehicleStepThree.style = "display:none;";
 }
 
-const addedSuccessful = () => {
+const AddedSuccessful = () => {
     const vehicleAdded = document.querySelector('.vehicleAdded');
     const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
     vehicleAdded.style = "display:Flex; opacity:1; transition:0.5s;";
