@@ -79,5 +79,5 @@ function CreateUUID() {
 function Logout() {
 	window.sessionStorage.clear();
 	window.localStorage.clear();
-	window.location = '/';
+	window.location = '/login';
 }
