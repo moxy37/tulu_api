@@ -54,7 +54,7 @@ function LoadVehicleInfo(results) {
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';
     html = html + '         <p>Color</p>';
-    html = html + '         <p>' + results.color + '</p>';
+    html = html + '         <p>' + results.colorName + '</p>';
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + '     <li class="vinInfoListItems">';

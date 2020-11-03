@@ -36,7 +36,7 @@ function PopulateVehicle(gVehicle) {
 	DisplayVehicle(dealerId).then(function (vehicle) {
 		var html = '';
 		for (var i = 0; i != vehicle.length; i++) {
-			html = html + '<li class="activeListingListItem" id="' + vehicle[i].vin + '">';
+			html = html + '<li class="activeListingListItem" id="' + vehicle[i].vin + '" onclick="ViewVehicle(\'' + vehicle[i].vin + '\',\'' + vehicle[i].dealerId + '\');">';
 			var text = '';
 			if (vehicle[i].links !== undefined) {
 				if (vehicle[i].links[0] !== undefined) {
@@ -63,4 +63,10 @@ function PopulateVehicle(gVehicle) {
 	});
 
 
+}
+
+function ViewVehicle(vin, id) {
+	window.sessionStorage.setItem("vin", vin);
+	window.sessionStorage.setItem("viewDealerId", id);
+	LocationChange('carView');
 }

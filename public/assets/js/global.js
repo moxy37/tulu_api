@@ -1,7 +1,7 @@
 var tokenId = "";
 var gUser;
-var dealerId = "";
-
+var viewVin = '';
+var viewDealerId = '';
 function LocationChange(p) {
 	console.log("LocationChange");
 	console.log(tokenId);
@@ -17,6 +17,10 @@ $(document).ready(function () {
 			hash = hashes[i].split("=");
 			if (hash[0] === "tokenId") {
 				tokenId = hash[1];
+			} else if (hash[0] === "viewDealerId") {
+				viewDealerId = hash[1];
+			} else if (hash[0] === "vin") {
+				viewVin = hash[1];
 			}
 		}
 		if (tokenId !== undefined) {
