@@ -29,7 +29,7 @@ function PopulateVehicle(gVehicle) {
 			html = html + '        <p class="listingPrice">$' + vehicle[i].msrp + '</p>';
 			html = html + '        <p  class="listingViews">4420 views</p>';
 			html = html + '    </div>';
-			html = html + '    <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="listingSettings()"></i>';
+			html = html + '    <i class="fas fa-ellipsis-h" class="listingsettingBtn" onclick="ListingSettings()"></i>';
 			html = html + '</li>';
 		}
 

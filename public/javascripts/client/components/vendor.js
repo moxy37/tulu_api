@@ -97,7 +97,7 @@ function LoadVehicleInfo(results) {
 
 function LoadAddPosting() {
     var html = '';
-    html = html + '<div class="addPostingBtn"  onclick="addListingMenu()">';
+    html = html + '<div class="addPostingBtn"  onclick="AddListingMenu()">';
     html = html + '    <i class="fas fa-plus"></i>';
     html = html + '</div>';
     html = html + '<div class="addVehicleContainer">';
