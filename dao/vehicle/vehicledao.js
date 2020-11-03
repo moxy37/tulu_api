@@ -18,7 +18,7 @@ function VehicleDAO() {
 			var tl = new Object();
 			tl.vin = vin;
 			tl.dealerId = dealerId;
-			tl.label = 'Added';
+			tl.label = 'New';
 			tl.timestamp = new Date();
 			tl.value = 0;
 			obj.timeline.push(tl);

@@ -6,7 +6,29 @@ function PageLoadFunction() {
 	LoadAddPosting();
 	LoadMyAccountMenu();
 	LoadListingSettings();
-	PopulateVehicle()
+	PopulateVehicle();
+	GetDealer();
+}
+
+
+function GetDealer() {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.id = dealerId;
+	$.ajax({
+		type: "PUT",
+		url: "/api/dealer/get",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(JSON.stringify(results));
+		},
+		error: function (results) {
+			alert("Error");
+		},
+	});
 }
 
 function PopulateVehicle(gVehicle) {
