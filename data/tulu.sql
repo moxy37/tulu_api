@@ -61,7 +61,8 @@ CREATE TABLE `VehicleTimeline` (
 	`dealerId` VARCHAR(36),
 	`label` VARCHAR(255),
 	`timestamp` DATETIME DEFAULT NOW(),
-	`value` FLOAT DEFAULT 0
+	`value` FLOAT DEFAULT 0,
+	`targetId` VARCHAR(36) DEFAULT ''
 );
 
 DROP TABLE IF EXISTS `VehicleLinks`;
@@ -102,7 +103,9 @@ CREATE TABLE `Address` (
 	`city` VARCHAR(1024),
 	`province` VARCHAR(255),
 	`postal` VARCHAR(255),
-	`sequence` INTEGER DEFAULT 0
+	`sequence` INTEGER DEFAULT 0,
+	`latitude` FLOAT,
+	`longitude` FLOAT
 );
 
 DROP TABLE IF EXISTS `Phone`;
@@ -127,6 +130,29 @@ CREATE TABLE `Rating` (
 	`type` VARCHAR(255),
 	`userId` VARCHAR(36),
 	`notes` VARCHAR(4000)
+);
+
+DROP TABLE IF EXISTS `Message`;
+CREATE TABLE `Message` (
+	`id` VARCHAR(36) PRIMARY KEY,
+	`senderId` VARCHAR(36),
+	`targetId` VARCHAR(36),
+	`type` VARCHAR(255),
+	`timestamp` DATETIME DEFAULT NOT(),
+	`message` LONGTEXT,
+	`vin` VARCHAR(255),
+	`dealerId` VARCHAR(36)
+);
+
+DROP TABLE IF EXISTS `TestDrive`;
+CREATE TABLE `TestDrive` (
+	`id` VARCHAR(36) PRIMARY KEY,
+	`vin` VARCHAR(255),
+	`dealerId` VARCHAR(36),
+	`timestamp` DATETIME, 
+	`userId` VARCHAR(36),
+	`tuluId` VARCHAR(36),
+	`type` VARCHAR(255)
 );
 
 DROP VIEW IF EXISTS `RatingView`;
