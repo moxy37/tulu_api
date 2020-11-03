@@ -97,6 +97,7 @@ function VehicleDAO() {
 		primary.vin = vehicle.vin;
 		async.series([
 			function (callback) {
+				if (vehicle.wholesaleprice === '') vehicle.wholesaleprice = 0;
 				helperDao.save(tokenId, "Vehicle", vehicle, primary, function (err, result) {
 					if (err) console.log(JSON.stringify(err));
 					callback();
