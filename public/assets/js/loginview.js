@@ -4,11 +4,12 @@ function PageLoadFunction() {
 	LoadSideMenu();
 }
 
-function Login() {
+async function DoLogin() {
 	var obj = new Object();
-	obj.email = "admin";
-	obj.password = "admin";
-	$.ajax({
+	obj.email = $("#email").val();
+	obj.username = $("#email").val();
+	obj.password = $("#password").val();
+	const result = await $.ajax({
 		type: "PUT",
 		url: "/api/user/login",
 		data: obj,
@@ -16,18 +17,28 @@ function Login() {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-			gUser = results;
-			tokenId = gUser.tokenId;
-			for (var i = 0; i < results.roles.length; i++) {
-				if (results.roles[i].role === 'Dealer' || results.roles[i].role === 'DealerAdmin') {
-					dealerId = results.roles[i].targetId;
-				}
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}
+
+function Login() {
+	DoLogin().then(function (results) {
+		gUser = results;
+		tokenId = gUser.tokenId;
+		var nextPage = 'home';
+		if (gUser.userRoles.indexOf('Tulu') !== -1) {
+			nextPage = 'home';
+		}
+		for (var i = 0; i < gUser.roles.length; i++) {
+			if (gUser.roles[i].role === 'Dealer' || gUser.roles[i].role === 'DealerAdmin') {
+				dealerId = gUser.roles[i].targetId;
+				nextPage = 'vendor';
 			}
-			LocationChange('home');
-		},
-		error: function (results) {
-			LocationChange('');
-		},
+		}
+		LocationChange(nextPage);
 	});
 }
 

@@ -34,7 +34,7 @@ function UsersDAO() {
 		let self = this;
 		var sql = "SELECT * FROM `Users` WHERE `email`=? AND `password`=? ";
 		__con.query(tokenId, sql, [username, password], function (err, results) {
-			console.log(JSON.stringify(results));
+			// console.log(JSON.stringify(results));
 			if (err) {
 				console.log("Error Running Report: " + err.message);
 				return next(err);
