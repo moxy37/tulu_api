@@ -97,11 +97,13 @@ function VehicleDAO() {
 		async.series([
 			function (callback) {
 				helperDao.save(tokenId, "Vehicle", vehicle, primary, function (err, result) {
+					if (err) console.log(JSON.stringify(err));
 					callback();
 				});
 			},
 			function (callback) {
 				helperDao.delete(tokenId, "VehicleLinks", primary, function (err, result) {
+					if (err) console.log(JSON.stringify(err));
 					callback();
 				});
 			},
@@ -112,6 +114,7 @@ function VehicleDAO() {
 					primary.sequence = sequence;
 					sequence++;
 					helperDao.save(tokenId, "VehicleLinks", link, primary, function (err, l) {
+						if (err) console.log(JSON.stringify(err));
 						list.push(link);
 						callback2();
 					});
