@@ -35,12 +35,6 @@ app.listen(__listeningPort, function () {
     console.log("Spartacus Node listening on port " + __listeningPort);
 });
 
-// https.createServer({
-//     key: fs.readFileSync(__base + 'key.pem'),
-//     cert: fs.readFileSync(__base + 'cert.pem')
-// }, app).listen(3001, function () {
-//     console.log('Example app listening on port 3000! Go to https://localhost:3001/')
-// });
 process.on("uncaughtException", function (err) {
     console.log(err);
 });

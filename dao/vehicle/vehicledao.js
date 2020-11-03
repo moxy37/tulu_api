@@ -205,7 +205,14 @@ function VehicleDAO() {
 		let self = this;
 		__con.query(tokenId, sql, params, function (err, results) {
 			if (err) return next(err);
-			helperDao.loadResults(tokenId, results, function (err, list) {
+			var list = [];
+			async.forEach(results, function (r, callback) {
+				self.get(tokenId, r.vin, r.dealerId, function (err, v) {
+					if (err) return next(err);
+					list.push(v);
+					callback();
+				});
+			}, function (err) {
 				if (err) return next(err);
 				return next(null, list);
 			});

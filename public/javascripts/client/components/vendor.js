@@ -136,7 +136,7 @@ function LoadAddPosting() {
     html = html + '<form id="upload-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">';
     html = html + '		<div class="form-group" style="display:none;">';
     html = html + '			<label for="photos-input">Load Image</label>';
-    html = html + '			<input id="photos-input" type="file" name="photos[]" onchange="uploadImage()"multiple="multiple" accept="image/*" capture />';
+    html = html + '			<input id="photos-input" type="file" name="photos[]" onchange="uploadImage()" multiple="multiple" accept="image/*" capture />';
     html = html + '		<input class="btn btn-default" id="uploadBtn" style="display:none;" type="submit" name="Photo Uploads" value="Upload" />';
     html = html + '		</div>';
     html = html + '<div id="thumbnailContainer">';

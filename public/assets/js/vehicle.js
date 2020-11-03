@@ -1,4 +1,4 @@
-var link ='';
+var link = '';
 
 async function GetVehicle(vin, dealerId) {
 	var obj = new Object();
@@ -21,7 +21,7 @@ async function GetVehicle(vin, dealerId) {
 
 
 
-async function SaveVehicle(gVehicle,dealerId) {
+async function SaveVehicle(gVehicle, dealerId) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
 	obj.vehicle = gVehicle;
@@ -33,21 +33,20 @@ async function SaveVehicle(gVehicle,dealerId) {
 		cache: false,
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
-		success: function (results) { 
-			console.log(results); 
+		success: function (results) {
+			console.log(results);
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
-	DisplayVehicle();
+	// DisplayVehicle();
 	return result;
-	
+
 }
 
 
-async function DisplayVehicle(gVehicle,dealerId) {
+async function DisplayVehicle(dealerId) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
-	obj.vehicle = gVehicle;
 	obj.dealerId = dealerId;
 	const results = await $.ajax({
 		type: "PUT",
@@ -56,7 +55,7 @@ async function DisplayVehicle(gVehicle,dealerId) {
 		cache: false,
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
-		success: function (results) {	
+		success: function (results) {
 			// console.log(results);
 		},
 		error: function (results) { console.log(results.statusText); },
