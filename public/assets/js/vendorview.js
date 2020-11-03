@@ -16,7 +16,13 @@ function populateVehicle(gVehicle) {
 		for (var i = 0; i != vehicle.length; i++) {
 			html = html + '<li class="activeListingListItem" id="' + vehicle[i].vin + '">';
 			var text = '';
-			if (vehicle[i].links !== undefined && vehicle[i].links.length > 0) { text = vehicle[i].links[0].url; }
+			if (vehicle[i].links !== undefined) {
+				if (vehicle[i].links[0] !== undefined) {
+					if (vehicle[i].links[0].url !== undefined) {
+						text = vehicle[i].links[0].url;
+					}
+				}
+			}
 			html = html + '    <img src="' + text + '" alt="" class="listingImage">';
 			html = html + '    <div class="listingInfo">';
 			html = html + '        <h4 class="listingName">' + vehicle[i].year + ' ' + vehicle[i].make + ' ' + vehicle[i].model + '</h4>';
