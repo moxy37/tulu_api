@@ -2,7 +2,7 @@ function LoadFooter() {
 	var html = '';
 	html=html+'<ul class="footerList">';
 	html=html+'	<li class="footerListItem">';
-	html=html+'		<a onclick="goToAbout()">';
+	html=html+'		<a onclick="LocationChange(\'about\');">';
 	html=html+'			<h4>About Us</h4>';
 	html=html+'		</a>';
 	html=html+'	</li>';
@@ -37,10 +37,6 @@ function LoadFooter() {
 	$("#Footer").empty();
 	$("#Footer").append(html);
   }
-
-  function goToAbout() {
-	LocationChange('about');
-}
 
 function goToDealershipList() {
 	LocationChange('dealershipList');

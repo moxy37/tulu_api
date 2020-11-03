@@ -51,7 +51,3 @@ function Login() {
 		LocationChange(nextPage);
 	});
 }
-
-function goToRegister() {
-	LocationChange('register');
-}

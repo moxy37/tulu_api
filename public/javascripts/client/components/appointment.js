@@ -6,4 +6,4 @@ function LoadNavigation() {
 
 	console.log(html);
   }
-  LoadNavigation()
+  LoadNavigation();

@@ -66,4 +66,4 @@ function LoadProfile() {
 	$("#Header").append(html);
 
 }
-LoadProfile()
+LoadProfile();

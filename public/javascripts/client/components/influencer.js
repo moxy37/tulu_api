@@ -41,7 +41,7 @@ function LoadProfile() {
     html=html+'            </a>';
     html=html+'        </li>';
     html=html+'    </ul>';
-    html=html+'    <a onclic="goToEditProfile()">';
+    html=html+'    <a onclic="LocationChange(\'editProfile\');">';
     html=html+'        <button class="editProfileBtn">';
     html=html+'            Edit Profile';
     html=html+'        </button>';
@@ -59,19 +59,19 @@ function LoadMyAccountMenu() {
 	
     html=html+'<ul class="accountMenuList">';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a onclick="goToInfluencer()">';
+    html=html+'        <a onclick="LocationChange(\'influencerList\');">';
     html=html+'            <i class="far fa-user fa-2x accountMenuIcon"></i>';
     html=html+'            Profile';
     html=html+'        </a>';
     html=html+'    </li>';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a onclick="goToMessages()">';
+    html=html+'        <a onclick="LocationChange(\'messages\');">';
     html=html+'            <i class="far fa-envelope fa-2x accountMenuIcon"></i>';
     html=html+'            Messages';
     html=html+'        </a>';
     html=html+'    </li>';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a onclick="goToShop()">';
+    html=html+'        <a onclick="LocationChange(\'shop\');">';
     html=html+'            <i class="fas fa-car fa-2x accountMenuIcon"></i>';
     html=html+'            Vehicles';
     html=html+'        </a>';
@@ -83,7 +83,7 @@ function LoadMyAccountMenu() {
     html=html+'        </a>';
     html=html+'    </li>';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a onclick="goToProfile()">';
+    html=html+'        <a onclick="LocationChange(\'profile\');">';
     html=html+'            <i class="far fa-handshake fa-2x accountMenuIcon"></i>';
     html=html+'            My Clients';
     html=html+'        </a>';
@@ -100,25 +100,4 @@ function LoadMyAccountMenu() {
 	$("#MyAccountMenu").append(html);
 
 }
-LoadMyAccountMenu()
-
-
-function goToEditProfile(){
-    LocationChange('editProfile');
-}
-
-function goToInfluencer(){
-    LocationChange('influencer');
-}
-
-function goToMessages(){
-    LocationChange('messages');
-}
-
-function goToShop(){
-    LocationChange('shop');
-}
-
-function goToProfile(){
-    LocationChange('profile');
-}
+LoadMyAccountMenu();

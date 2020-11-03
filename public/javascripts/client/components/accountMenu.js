@@ -4,7 +4,7 @@ function LoadMyAccountMenu() {
 	var html = '';		
 	html=html+'<ul class="accountMenuList">';
 	html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a onclick="goToProfile()">';
+    html=html+'        <a onclick="LocationChange(\'profile\');">';
     html=html+'            <i class="far fa-user fa-2x accountMenuIcon"></i>';
     html=html+'            Profile';
     html=html+'        </a>';
@@ -16,7 +16,7 @@ function LoadMyAccountMenu() {
     html=html+'        </a>';
     html=html+'    </li>';
     html=html+'    <li class="accountMenuListItems">';
-    html=html+'        <a onclick="goToSchedule()">';
+    html=html+'        <a onclick="LocationChange(\'schedule\');">';
     html=html+'            <i class="far fa-calendar-alt fa-2x accountMenuIcon"></i>';
     html=html+'            Schedule';
     html=html+'        </a>';
@@ -33,12 +33,4 @@ function LoadMyAccountMenu() {
 	$("#MyAccountMenu").append(html);
 
 }
-LoadMyAccountMenu()
-
-function goToProfile(){
-    LocationChange('profile');
-}
-
-function goToSchedule(){
-    LocationChange('schedule');
-}
+LoadMyAccountMenu();

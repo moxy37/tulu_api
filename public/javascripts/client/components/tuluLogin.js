@@ -22,4 +22,4 @@ function LoadLogin() {
 	$("#LoginContainer").append(html);
 }
 
-LoadLogin()
+LoadLogin();

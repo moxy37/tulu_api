@@ -115,7 +115,7 @@ function LoadAddPosting() {
     html = html + '    </div>';
     html = html + '    <div  class="addVehicleForm addVehicleStepThree" id="addVehicleStepThree">';
     html = html + '			<div class="checkBoxContainer">';
-    html = html + '			    <input type="checkbox" name="wholesalePriceCheckbox" onchange="wholesalePriceChecked()" />';
+    html = html + '			    <input type="checkbox" name="wholesalePriceCheckbox" onchange="WholesalePriceChecked()" />';
     html = html + '			    <label for="wholesalePriceCheckbox">Add wholesale price</label>';
     html = html + '			</div>';
     html = html + '			<div id="wholesalePriceContainer" class="hide">';
@@ -165,7 +165,7 @@ function LoadAddPosting() {
 }
 
 
-function wholesalePriceChecked() {
+function WholesalePriceChecked() {
     const priceInput = document.querySelector('#wholesalePriceContainer');
     if (toogle == 'off') {
         priceInput.className = "show";
@@ -182,9 +182,7 @@ function SaveNewVehicle() {
     gVehicle.notes = $("#carDescription").val();
     gVehicle.wholesaleprice = $("#wholesalePrice").val();
     gVehicle.image = gVehicle.links[0].url;
-    alert('test' + JSON.stringify(gVehicle.links));
     SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
-        console.log(vehicle);
         AddVehicleStep();
         PopulateVehicle();
     });
@@ -194,7 +192,7 @@ function LoadMyAccountMenu() {
     var html = '';
     html = html + '<ul class="accountMenuList">';
     html = html + '    <li class="accountMenuListItems">';
-    html = html + '        <a onclick="goToVendor()">';
+    html = html + '        <a onclick="LocationChange(\'vendor\');">';
     html = html + '            <i class="far fa-user fa-2x accountMenuIcon"></i>';
     html = html + '            Profile';
     html = html + '        </a>';
@@ -206,7 +204,7 @@ function LoadMyAccountMenu() {
     html = html + '        </a>';
     html = html + '    </li>';
     html = html + '    <li class="accountMenuListItems">';
-    html = html + '        <a onclick="goToSchedule()">';
+    html = html + '        <a onclick="LocationChange(\'schedule\');">';
     html = html + '            <i class="far fa-calendar-alt fa-2x accountMenuIcon"></i>';
     html = html + '            Schedule';
     html = html + '        </a>';
@@ -234,24 +232,19 @@ function LoadMyAccountMenu() {
             uid = CreateUUID();
             formData.append('photos[]', file, file.name);
         }
-        console.log(uid);
-        console.log(file.name);
-        console.log(myExt);
-
         UploadFiles(formData);
-
     });
 }
 
 
-function viewListing() {
+function ViewListing() {
     //get vin number of car selected then go to carview then populate
 }
 
 function LoadListingSettings() {
     var html = '';
     html = html + '<ul class="listingSettingsList">';
-    html = html + '    <li class="settingsListItem" onClick="viewListing()">';
+    html = html + '    <li class="settingsListItem" onClick="ViewListing()">';
     html = html + '        <i class="far fa-clipboard"></i>';
     html = html + '        <p>';
     html = html + '            View Listing';
@@ -293,16 +286,6 @@ function LoadListingSettings() {
     $("#ListingSettingsContainer").append(html);
 }
 
-function goToVendor() {
-    LocationChange('vendor');
-}
-
-function goToSchedule() {
-    LocationChange('schedule');
-}
-
-
-
 function UploadFiles(formData) {
     $.ajax({
         headers: {
@@ -320,7 +303,6 @@ function UploadFiles(formData) {
         xhr: function () {
             var xhr = new XMLHttpRequest();
             return xhr;
-
         }
     }).done(function (o) {
         o.sequence = gVehicle.links.length;
@@ -331,8 +313,6 @@ function UploadFiles(formData) {
         }
         $("#thumbnailContainer").empty();
         $("#thumbnailContainer").append(html);
-
-
     }).fail(function (xhr, status) {
         alert(status);
     });

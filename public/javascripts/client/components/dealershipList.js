@@ -71,4 +71,4 @@ function LoadDealership() {
 	$("#dealershipList").append(html);
   }
 
-  LoadDealership()
+  LoadDealership();

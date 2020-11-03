@@ -74,7 +74,7 @@ function LoadRegistration() {
 	$("#registerContainer").append(html);
 }
 
-LoadRegistration()
+LoadRegistration();
 
 function LoadStepCircles() {
 	var html = '';
@@ -87,5 +87,5 @@ function LoadStepCircles() {
 	$("#Steps").append(html);
 }
 
-LoadStepCircles()
+LoadStepCircles();
 

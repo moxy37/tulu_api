@@ -48,4 +48,4 @@ function LoadDealership() {
 	$("#dealerListingList").append(html);
   }
 
-  LoadDealership()
+  LoadDealership();

@@ -45,4 +45,4 @@ function LoadDealership() {
 	$("#influencerList").append(html);
   }
 
-  LoadDealership()
+  LoadDealership();

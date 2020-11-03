@@ -109,7 +109,7 @@ function LoadRegistration() {
 function LoadStepCircles() {
 	var html = '';
 	html=html+'<div class="stepOne"></div>';
-    html=html+'    <div class="stepTwo"></div>';
+    html=html+'<div class="stepTwo"></div>';
     html=html+'<div class="stepThree"></div>';
     html=html+'<div class="stepFour"></div>';
     html=html+'<div class="stepFive"></div>';
