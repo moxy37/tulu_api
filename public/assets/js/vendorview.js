@@ -6,10 +6,10 @@ function PageLoadFunction() {
 	LoadAddPosting();
 	LoadMyAccountMenu();
 	LoadListingSettings();
-	populateVehicle()
+	PopulateVehicle()
 }
 
-function populateVehicle(gVehicle) {
+function PopulateVehicle(gVehicle) {
 	var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
 	DisplayVehicle(dealerId).then(function (vehicle) {
 		var html = '';

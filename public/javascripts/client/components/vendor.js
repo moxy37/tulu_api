@@ -28,7 +28,7 @@ function MakeNewVehicle() {
         // alert(JSON.stringify(vehicle));
         gVehicle = vehicle;
         LoadVehicleInfo(vehicle);
-        addVehicleStep();
+        AddVehicleStep();
     });
 }
 
@@ -88,7 +88,7 @@ function LoadVehicleInfo(results) {
     html = html + '         <i class="fas fa-times"></i>';
     html = html + '     </li>';
     html = html + ' </ul>';
-    html = html + '        <button type="button" class="nextBtn" onclick="addVehicleStep()">NEXT</button>';
+    html = html + '        <button type="button" class="nextBtn" onclick="AddVehicleStep()">NEXT</button>';
     html = html + ' </section>';
 
     $("#addVehicleStepTwo").empty();
@@ -122,7 +122,7 @@ function LoadAddPosting() {
     html = html + '			    <p>$</p>';
     html = html + '			    <input type="text" id="wholesalePrice"value="">';
     html = html + '			</div>';
-    html = html + '        <button type="button" class="doneBtn" onclick="addVehicleStep()">NEXT</button>';
+    html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">NEXT</button>';
     html = html + '    </div>';
     html = html + '    <div  class="addVehicleForm addVehicleStepFour">';
     html = html + '        <label for="carDescription">Addition Description :</label>';
@@ -156,7 +156,7 @@ function LoadAddPosting() {
     html = html + '    <div id="imageContainer">';
     html = html + '    </div>';
     html = html + '        <h3>Vehicle Added <i class="fas fa-check"></i></h3>';
-    html = html + '        <button type="button" class="doneBtn" onclick="addVehicleStep()">DONE</button>';
+    html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">DONE</button>';
     html = html + '    </div>';
     html = html + '</div>';
 
@@ -185,8 +185,8 @@ function SaveNewVehicle() {
     alert('test'+JSON.stringify(gVehicle.links));
     SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
         console.log(vehicle);
-        addVehicleStep();
-        populateVehicle();
+        AddVehicleStep();
+        PopulateVehicle();
     });
 }
 
