@@ -167,5 +167,6 @@ INSERT INTO `Users`  (`id`, `name`, `email`, `password`) VALUES ('c5aefb11-15f0-
 
 INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES ('c5aefb11-15f0-11eb-83a2-e86a647a411d', '', 'User'), ('c5aefb11-15f0-11eb-83a2-e86a647a411d', 'dfb56be7-15ef-11eb-83a2-e86a647a411d', 'Dealer');
 INSERT INTO `Users`  (`id`, `name`, `email`, `password`) VALUES ('0167e373-15f1-11eb-83a2-e86a647a411d', 'Gauthier Admin', 'admin@gauthierchrysler.com', 'admin');
-
+INSERT INTO `Users`  (`id`, `name`, `email`, `password`) VALUES ('d3096938-1e04-11eb-b7cf-e86a647a411d', 'Test User', 'test@user.com', 'test');
+INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES ('d3096938-1e04-11eb-b7cf-e86a647a411d', '', 'User');
 INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES ('0167e373-15f1-11eb-83a2-e86a647a411d', '', 'User'), ('0167e373-15f1-11eb-83a2-e86a647a411d', 'dfb56be7-15ef-11eb-83a2-e86a647a411d', 'DealerAdmin');
