@@ -180,7 +180,7 @@ function WholesalePriceChecked() {
 function SaveNewVehicle() {
     // var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     gVehicle.notes = $("#carDescription").val();
-    gVehicle.wholesaleprice = $("#wholesalePrice").val();
+    gVehicle.wholeSalePrice = $("#wholesalePrice").val();
     gVehicle.image = gVehicle.links[0].url;
     SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
         AddVehicleStep();

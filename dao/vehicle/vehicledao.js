@@ -48,7 +48,7 @@ function VehicleDAO() {
 				obj.transmissionName = data.transmissions[0].name;
 				obj.colorName = data.colors.exterior_colors[0].generic_color_name;
 				obj.colorHex = data.colors.exterior_colors[0].primary_rgb_code.hex;
-				obj.wholesaleprice = 0;
+				obj.wholeSalePrice = 0;
 				async.forEach(data.standard_specifications, function (ss, callback) {
 					if (ss.specification_category === 'Weights and Capacities') {
 						async.forEach(ss.specification_values, function (v, callback2) {
@@ -124,7 +124,7 @@ function VehicleDAO() {
 		primary.vin = vehicle.vin;
 		async.series([
 			function (callback) {
-				if (vehicle.wholesaleprice === '') vehicle.wholesaleprice = 0;
+				if (vehicle.wholeSalePrice === '') vehicle.wholeSalePrice = 0;
 				helperDao.save(tokenId, "Vehicle", vehicle, primary, function (err, result) {
 					if (err) console.log(JSON.stringify(err));
 					callback();

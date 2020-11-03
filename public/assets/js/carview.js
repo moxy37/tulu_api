@@ -38,30 +38,6 @@ function LoadCarVendor() {
 	$("#carVendor").append(carVendorInsert);
 }
 
-// obj.year = parseInt(data.basic_data.year);
-// obj.make = data.basic_data.make;
-// obj.model = data.basic_data.model;
-// obj.trim = data.basic_data.trim;
-// obj.vehicleType = data.basic_data.vehicle_type;
-// obj.bodyType = data.basic_data.body_type;
-// obj.doors = parseInt(data.basic_data.doors);
-// obj.modelNumber = data.basic_data.model_number;
-// obj.driveType = data.basic_data.drive_type;
-// obj.plant = data.basic_data.plant;
-// obj.msrp = parseFloat(data.pricing.msrp);
-// obj.engineName = data.engines[0].name;
-// obj.engineBrand = data.engines[0].brand;
-// obj.fuelType = data.engines[0].fuel_type;
-// obj.iceMaxHp = data.engines[0].ice_max_hp;
-// obj.iceMaxHpAt = data.engines[0].ice_max_hp_at;
-// obj.iceMaxTorque = data.engines[0].ice_max_torgue;
-// obj.iceMaxTorqueAt = data.engines[0].ice_max_torgue_at;
-// obj.maxPayload = data.engines[0].max_payload;
-// obj.transmissionName = data.transmissions[0].name;
-// obj.colorName = data.colors.exterior_colors[0].generic_color_name;
-// obj.colorHex = data.colors.exterior_colors[0].primary_rgb_code.hex;
-// obj.wholesaleprice = 0;
-
 function LoadCarView() {
 	var html = '';
 	// html=html+'<img src="assets/images/car/not-available.jpg" class="carImage" alt="car-image">';
