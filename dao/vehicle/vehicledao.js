@@ -22,6 +22,7 @@ function VehicleDAO() {
 			tl.timestamp = new Date();
 			tl.value = 0;
 			tl.targetId = '';
+			tl.notes = '';
 			obj.timeline.push(tl);
 			self.vinDecode(tokenId, vin, function (err, r) {
 				var data = r['query_responses']['Request-Sample']['us_market_data']['common_us_data'];
@@ -105,6 +106,7 @@ function VehicleDAO() {
 						o.label = r.label;
 						o.value = r.value;
 						o.targetId = r.targetId;
+						o.notes = r.notes;
 						obj.timeline.push(o);
 						callback();
 					}, function (err) {
@@ -160,7 +162,7 @@ function VehicleDAO() {
 				async.forEach(vehicle.timeline, function (tl, callback2) {
 					var date = new Date(tl.timestamp);
 					var date2 = date.toISOString().slice(0, 19).replace('T', ' ');
-					__con.query(tokenId, "INSERT INTO `VehicleTimeline` (`vin`, `dealerId`, `label`, `timestamp`, `value`, `targetId`) VALUES (?, ?, ?, ?, ?, ?)", [vehicle.vin, vehicle.dealerId, tl.label, date2, tl.value, tl.targetId], function (err, result) {
+					__con.query(tokenId, "INSERT INTO `VehicleTimeline` (`vin`, `dealerId`, `label`, `timestamp`, `value`, `targetId`, `notes`) VALUES (?, ?, ?, ?, ?, ?, ?)", [vehicle.vin, vehicle.dealerId, tl.label, date2, tl.value, tl.targetId, tl.notes], function (err, result) {
 						if (err) return next(err);
 						callback2();
 					});

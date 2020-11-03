@@ -62,7 +62,8 @@ CREATE TABLE `VehicleTimeline` (
 	`label` VARCHAR(255),
 	`timestamp` DATETIME DEFAULT NOW(),
 	`value` FLOAT DEFAULT 0,
-	`targetId` VARCHAR(36) DEFAULT ''
+	`targetId` VARCHAR(36) DEFAULT '',
+	`notes` VARCHAR(2048)
 );
 
 DROP TABLE IF EXISTS `VehicleLinks`;
@@ -84,7 +85,8 @@ CREATE TABLE `Users` (
 	`password` VARCHAR(1024),
 	`linkedIn` VARCHAR(1024),
 	`instagram` VARCHAR(1024),
-	`facebook` VARCHAR(1024)
+	`facebook` VARCHAR(1024),
+	`image` VARCHAR(2048)
 );
 
 DROP TABLE IF EXISTS `UserRoles`;
