@@ -2,6 +2,14 @@ function PageLoadFunction() {
 	LoadLogin();
 	LoadNavigation();
 	LoadSideMenu();
+	var email = window.localStorage.getItem("email");
+	if (email !== undefined && email !== null) {
+		$("#email").val(email);
+	}
+	var password = window.localStorage.getItem("password");
+	if (password !== undefined && password !== null) {
+		$("#password").val(password);
+	}
 }
 
 async function DoLogin() {
@@ -38,6 +46,8 @@ function Login() {
 				nextPage = 'vendor';
 			}
 		}
+		window.localStorage.setItem("email", $("#email").val());
+		window.localStorage.setItem("password", $("#password").val());
 		LocationChange(nextPage);
 	});
 }

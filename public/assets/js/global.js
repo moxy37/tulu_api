@@ -75,3 +75,9 @@ function CreateUUID() {
 	var uuid = s.join("");
 	return uuid;
 }
+
+function Logout() {
+	window.sessionStorage.clear();
+	window.localStorage.clear();
+	window.location = '/';
+}
