@@ -6,7 +6,7 @@ function LoadProfile() {
     html=html+'    <div class="userImage">';
     html=html+'        <i class="fas fa-user fa-4x"></i>';
     html=html+'    </div>';
-    html=html+'    <form action="" class="editForm">';
+    html=html+'    <div action="" class="editForm">';
     html=html+'        <label for="email">Email:</label>';
     html=html+'        <div class="inputContainer">';
     html=html+'            <input type="text" id="email" class="email" name="email" value="email"><br>';
@@ -47,13 +47,13 @@ function LoadProfile() {
     html=html+'        <div class="inputContainer">';
     html=html+'            <textarea type="text" id="bio" class="bio" name="bio"></textarea>';
     html=html+'        </div>';
-    html=html+'        <button class="saveEditBtn">';
+    html=html+'        <button class="saveEditBtn" onclick="SaveChanges()">';
     html=html+'            Save Changes';
     html=html+'        </button>';
     html=html+'        <button class="cancelEditBtn">';
     html=html+'            Cancel';
     html=html+'        </button>';
-    html=html+'    </form>';
+    html=html+'    </div>';
     html=html+'    ';
     html=html+'    ';
     html=html+'</div>';

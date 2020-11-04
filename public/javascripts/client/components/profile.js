@@ -15,7 +15,7 @@ function LoadProfile() {
     html=html+'        -Heneral Luna';
     html=html+'    </p>';
     html=html+'    <ul class="socialMediaAccounts"></ul>';
-    html=html+'    <a onclic="LocationChange(\'editProfile\');">';
+    html=html+'    <a onclick="LocationChange(\'editProfile\');">';
     html=html+'        <button class="editProfileBtn">';
     html=html+'            Edit Profile';
     html=html+'        </button>';

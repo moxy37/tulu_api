@@ -29,9 +29,9 @@ function GetUser() {
 
 function PopulateUser() {
 	DisplayUser(tokenId).then(function (user) {
-		// console.log(user)
+		console.log(user)
 		$(".userName").text(user.user.name);
-		// $(".userBio").text(user.user.bio);  <------------- Add Profile Bio
+		$(".userBio").text(user.user.bio);
 
 		var SocialMediaLinks ="";
 		SocialMediaLinks+='        <li>';

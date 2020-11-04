@@ -8,6 +8,7 @@ function PageLoadFunction() {
 function GetUser() {
 	var obj = new Object();
 	obj.tokenId = tokenId;
+	// obj.id = id;
 	$.ajax({
 		type: "PUT",
 		url: "/api/user/current",
@@ -30,11 +31,17 @@ function PopulateUser() {
 		$("#email").val(user.user.email);
 		$("#name").val(user.user.name);
 		$("#postalCode").val(user.user.postalCode);
-		$("#phone").val(user.user.phones);
+		$("#phone").val(user.user.phone);
 		$("#postalCode").val(user.user.postalCode);
 		$("#ig").val(user.user.instagram);
 		$("#fb").val(user.user.facebook);
 		$("#linkedIn").val(user.user.linkedIn);
 		$("#bio").val(user.user.bio);
 	});
+}
+
+function SaveChanges() {
+    SaveUser(tokenId).then(function (user) {
+        console.log(user);
+    });
 }

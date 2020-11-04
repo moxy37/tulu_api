@@ -16,6 +16,17 @@ router.put("/api/user/current", function (req, res) {
     } else { return res.status(400).send("Invalid tokenId"); }
 });
 
+router.put("/api/user/save", function (req, res) {
+	var obj = req.body;
+	var tokenId = obj.tokenId;
+	if (__currentTokens[tokenId] !== undefined) {
+		__currentTokens[tokenId].timestamp = new Date();
+		usersDao.save(tokenId, obj.user, function (err, user) {
+			return res.send(user);
+		});
+	} else { return res.status(400).send("Invalid tokenId"); }
+});
+
 router.put("/api/user/login", function (req, res) {
     var data = req.body;
     var username = data.email;
