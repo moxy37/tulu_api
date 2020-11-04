@@ -17,7 +17,7 @@ async function DisplayUser(tokenId,id) {
 	return results;
 }
 
-async function SaveUser(tokenId) {
+async function SaveUser(tokenId,id) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
 	const result = await $.ajax({
