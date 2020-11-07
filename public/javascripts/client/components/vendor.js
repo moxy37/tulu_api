@@ -106,6 +106,7 @@ function LoadAddPosting() {
     html = html + '        <label for="vinNum">VIN # :</label>';
     html = html + '        <div class="inputContainer">';
     html = html + '            <input type="text" id="vinNum" class="vinNum" name="vinNum" value=""><br>';
+    html = html + '            <i class="fas fa-camera" onclick="barCodeScanner();"></i>';
     html = html + '        </div>';
     html = html + '        ';
     html = html + '        <button type="button" class="nextBtn" onclick="MakeNewVehicle()">ENTER VIN</button>';
@@ -284,6 +285,85 @@ function LoadListingSettings() {
 
     $("#ListingSettingsContainer").empty();
     $("#ListingSettingsContainer").append(html);
+}
+
+
+function loadScanner(){
+    // var html = '';
+    // html+='<main class="wrapper" style="padding-top:2em">';
+	// html+='	<section class="container" id="demo-content">';
+	// html+='		<div>';
+	// html+='			<input type="button" id="startButton" value="Start" />';
+	// html+='			<input type="button" id="resetButton" value="Reset" />';
+	// html+='		</div>';
+	// html+='		<div>';
+	// html+='			<video id="video" width="300" height="200" style="border: 1px solid gray"></video>';
+	// html+='		</div>';
+	// html+='		<div id="sourceSelectPanel" style="display:none">';
+	// html+='			<label for="sourceSelect">Change video source:</label>';
+	// html+='			<select id="sourceSelect" style="max-width:400px">';
+	// html+='			</select>';
+	// html+='		</div>';
+	// html+='		<label>Result:</label>';
+	// html+='		<input type="text" id="result" />';
+	// html+='	</section>';
+    // html+='</main>';
+    // $("#barCodeScannerContainer").empty();
+    // $("#barCodeScannerContainer").append(html);
+
+
+    var selectedDeviceId;
+		var codeReader;
+		function barcode() {
+			codeReader = new ZXing.BrowserMultiFormatReader();
+			codeReader.listVideoInputDevices().then(function (videoInputDevices) {
+				selectedDeviceId = videoInputDevices[0].deviceId;
+				var html = '';
+				videoInputDevices.forEach(function (element) {
+					html += '<option value="' + element.deviceId + '">' + element.label + '</option>';
+				});
+				$("#sourceSelect").empty();
+				$("#sourceSelect").append(html);
+				$("#sourceSelect").change(function () { selectedDeviceId = $("#sourceSelect option:selected").val(); });
+				$('#sourceSelectPanel').show();
+
+				$('#startButton').click(function () {
+					$("#result").val('');
+					codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', function (result, err) {
+						if (result) {
+							console.log(result);
+							if ($("#result").val() !== result.text) { 
+								$("#result").val(result.text);
+							 }
+						}else{
+							console.log("Still looking");
+						}
+					});
+					console.log(`Started continous decode from camera with id ${selectedDeviceId}`);
+				})
+
+				$('#resetButton').click(function () {
+					codeReader.reset();
+					$("#result").val('');
+				});
+
+			}).catch(function (err) { console.error(err) });
+		}barcode();
+}
+
+function barCodeScanner(){
+    document.querySelector('#barCodeScannerContainer').style = "display:flex;";
+    document.querySelector('.buttonContainer #startButton').click();
+    document.querySelector('.buttonContainer #startButton').click();
+    const width = document.querySelector('#barCodeScannerContainer main').offsetWidth +50;
+    const height = document.querySelector('#barCodeScannerContainer main').offsetHeight +50;
+    document.querySelector('#video').style = "height:"+height+"px;width:"+width+"px;";
+}
+
+function capture(){
+    alert($('#result').val());
+    document.querySelector('#vinNum').value =  $('#result').val();
+    document.querySelector('#barCodeScannerContainer').style = "display:none;";
 }
 
 function UploadFiles(formData) {

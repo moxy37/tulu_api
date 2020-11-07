@@ -1,5 +1,7 @@
 
 function PageLoadFunction() {
+	
+	loadScanner();
 	LoadNavigation();
 	LoadSideMenu();
 	LoadVendor();
