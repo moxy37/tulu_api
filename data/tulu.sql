@@ -86,8 +86,6 @@ CREATE TABLE `Users` (
 	`linkedIn` VARCHAR(1024),
 	`instagram` VARCHAR(1024),
 	`facebook` VARCHAR(1024),
-	`postalCode` VARCHAR(255),
-	`phone` VARCHAR(36),
 	`bio` VARCHAR(1024),
 	`image` VARCHAR(2048)
 );
@@ -172,7 +170,7 @@ INSERT INTO `Users`  (`id`, `name`, `email`, `password`) VALUES ('c5aefb11-15f0-
 
 INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES ('c5aefb11-15f0-11eb-83a2-e86a647a411d', '', 'User'), ('c5aefb11-15f0-11eb-83a2-e86a647a411d', 'dfb56be7-15ef-11eb-83a2-e86a647a411d', 'Dealer');
 INSERT INTO `Users`  (`id`, `name`, `email`, `password`) VALUES ('0167e373-15f1-11eb-83a2-e86a647a411d', 'Gauthier Admin', 'admin@gauthierchrysler.com', 'admin');
-INSERT INTO `Users`  (`id`, `name`, `email`, `password`,`linkedIn`,`instagram`,`facebook`,`postalCode`,`phone`,`bio`) VALUES ('d3096938-1e04-11eb-b7cf-e86a647a411d', 'Test User', 'test@user.com', 'test','https://www.linkedin.com/company/tulu-inc/','https://www.instagram.com/tulucanada/?hl=en','https://www.facebook.com/tulucanada1/','T2C2H1','403909725','This is a Bio');
+INSERT INTO `Users`  (`id`, `name`, `email`, `password`,`linkedIn`,`instagram`,`facebook`,`bio`) VALUES ('d3096938-1e04-11eb-b7cf-e86a647a411d', 'Test User', 'test@user.com', 'test','https://www.linkedin.com/company/tulu-inc/','https://www.instagram.com/tulucanada/?hl=en','https://www.facebook.com/tulucanada1/','This is a Bio');
 INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES ('d3096938-1e04-11eb-b7cf-e86a647a411d', '', 'User');
 INSERT INTO `UserRoles` (`userId`, `targetId`, `role`) VALUES ('0167e373-15f1-11eb-83a2-e86a647a411d', '', 'User'), ('0167e373-15f1-11eb-83a2-e86a647a411d', 'dfb56be7-15ef-11eb-83a2-e86a647a411d', 'DealerAdmin');
 INSERT INTO `Users`  (`id`, `name`, `email`, `password`) VALUES ('2de62f1e-1e05-11eb-b7cf-e86a647a411d', 'Test  Tulu', 'tulu@tulu.com', 'tulu');
