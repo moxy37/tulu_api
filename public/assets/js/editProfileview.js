@@ -45,7 +45,7 @@ function PopulateUser() {
 	$("#fb").val(user.facebook);
 	$("#linkedIn").val(user.linkedIn);
 	$("#bio").val(user.bio);
-
+	alert(JSON.stringify(user));
 	if(user.addresses.length ==0){
 		document.querySelector("#addressContainer").style = "display:none !important;";
 	}

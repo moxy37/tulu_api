@@ -36,12 +36,12 @@ $(document).ready(function () {
 
 function GetCurrentUser(next) {
 	var makeCall = true;
-	var tempUserText = window.sessionStorage.getItem("gUser");
-	if (tempUserText !== undefined && tempUserText !== null) {
-		gUser = JSON.parse(tempUserText);
-		dealerId = window.sessionStorage.getItem("dealerId");
-		if (tokenId === gUser.tokenId) { makeCall = false; }
-	}
+	// var tempUserText = window.sessionStorage.getItem("gUser");
+	// if (tempUserText !== undefined && tempUserText !== null) {
+	// 	gUser = JSON.parse(tempUserText);
+	// 	dealerId = window.sessionStorage.getItem("dealerId");
+	// 	if (tokenId === gUser.tokenId) { makeCall = false; }
+	// }
 	if (makeCall === true) {
 		var obj = new Object();
 		obj.tokenId = tokenId;
