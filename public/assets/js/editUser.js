@@ -18,12 +18,17 @@ async function SaveUser(user) {
 	return result;
 }
 
-async function AddAddress(tokenId, targetId) {
+async function AddAddress(tokenId, targetId,street,city,province,postal) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
 	obj.primary = new Object();
 	obj.primary.targetId = targetId;
+	obj.primary.street = street;
+	obj.primary.city = city;
+	obj.primary.province = province;
+	obj.primary.postal = postal;
 	obj.table = 'Address';
+	
 	const result = await $.ajax({
 		type: "PUT",
 		url: "/api/helper/new",
@@ -39,11 +44,12 @@ async function AddAddress(tokenId, targetId) {
 	return result;
 }
 
-async function AddPhone(tokenId, targetId) {
+async function AddPhone(tokenId, targetId,phone) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
 	obj.primary = new Object();
 	obj.primary.targetId = targetId;
+	obj.primary.value = phone;
 	obj.table = 'Phone';
 	const result = await $.ajax({
 		type: "PUT",

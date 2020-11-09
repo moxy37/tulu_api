@@ -23,13 +23,46 @@ function LoadProfile() {
     html=html+'        <div class="inputContainer">';
     html=html+'            <input type="text" id="name" class="name" name="name"><br>';
     html=html+'        </div>';
-    html=html+'        <label for="postalCode">Postal Code:</label>';
-    html=html+'        <div class="inputContainer">';
-    html=html+'            <input type="text" id="postalCode" class="postalCode" name="postalCode"><br>';
+    html=html+'        <label for="address">Address:</label>';
+    html=html+'        <div class="addressContainer" id="addressContainer">';
+    html=html+'            <p class="address"></p>';
+    html=html+'            <i class="fas fa-times"></i>';
+    html=html+'        </div>';
+    html=html+'        <div class="addAddress">';
+    html=html+'            <label for="street">Street:</label>';
+    html=html+'           <div class="inputContainer">';
+    html=html+'               <input type="text" id="street" class="street" name="street"><br>';
+    html=html+'           </div>';
+    html=html+'           <label for="city">City:</label>';
+    html=html+'           <div class="inputContainer">';
+    html=html+'               <input type="text" id="city" class="city" name="city"><br>';
+    html=html+'           </div>';
+    html=html+'           <label for="province">Province:</label>';
+    html=html+'           <div class="inputContainer">';
+    html=html+'               <input type="text" id="province" class="province" name="province"><br>';
+    html=html+'           </div>';
+    html=html+'           <label for="postalCode">Postal Code:</label>';
+    html=html+'           <div class="inputContainer">';
+    html=html+'               <input type="text" id="postalCode" class="postalCode" name="postalCode"><br>';
+    html=html+'           </div>';
+    html=html+'           <button class="saveEditBtn" onclick="AddNewAddress()">';
+    html=html+'               Add Address';
+    html=html+'           </button>';
+    // html=html+'               <i class="fas fa-plus" onclick="AddNewAddress()"></i>';
     html=html+'        </div>';
     html=html+'        <label for="phone">Phone Number:</label>';
-    html=html+'        <div class="inputContainer">';
-    html=html+'            <input type="text" id="phone" class="phone" name="phone"><br>';
+    html=html+'        <div class="phoneContainer" id="phoneContainer">';
+    html=html+'            <p class="phoneNumber"></p>';
+    html=html+'            <i class="fas fa-times"></i>';
+    html=html+'        </div>';
+    html=html+'        <div class="addPhone">';
+    html=html+'            <label for="phone">Add Phone Number:</label>';
+    html=html+'           <div class="inputContainer">';
+    html=html+'               <input type="text" id="phone" class="phone" name="phone"><br>';
+    html=html+'           </div>';
+    html=html+'           <button class="saveEditBtn" onclick="AddNewPhone()">';
+    html=html+'               Add Phone';
+    html=html+'           </button>';
     html=html+'        </div>';
     html=html+'        <label for="ig">Instagram:</label>';
     html=html+'        <div class="inputContainer">';
@@ -63,3 +96,5 @@ function LoadProfile() {
 
 }
 LoadProfile();
+
+
