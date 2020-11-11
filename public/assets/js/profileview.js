@@ -33,6 +33,11 @@ function PopulateUser() {
 		$(".userName").text(user.user.name);
 		$(".userBio").text(user.user.bio);
 
+		if(user.image != ""){
+			document.querySelector("#userImage").style = "background:url(/uploads/"+user.user.image+");background-size:cover; background-position:center;"
+			document.querySelector("#userImage i").style = "display:none;"
+		}
+
 		var SocialMediaLinks ="";
 		SocialMediaLinks+='        <li>';
 		SocialMediaLinks+='            <a href="'+user.user.facebook+'" target="_blank">';

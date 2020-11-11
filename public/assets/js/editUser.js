@@ -18,6 +18,89 @@ async function SaveUser(user) {
 	return result;
 }
 
+async function changeImage(gUser,uid) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.user = gUser;
+	obj.user.image = uid
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/user/save",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}
+
+async function AddressRemove(user,address) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.user = user;
+	obj.user.addresses = address
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/user/save",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}
+
+async function PhoneRemove(user,phone) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.user = user;
+	obj.user.phones = phone
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/user/save",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}
+
+
+async function UpdateAddress(tokenId,address) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.addresses = address;
+	// obj.table = 'addresses';
+	
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/helper/new",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}
+
+
 async function AddAddress(tokenId, targetId,street,city,province,postal) {
 	var obj = new Object();
 	obj.tokenId = tokenId;

@@ -28,12 +28,26 @@
 }
 
 .userImage i{
+    background:#79c6ac55;
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+}
+
+.userImage #userIcon{
     color: white;
 }
 
 
 .editForm label{
     margin:20px 0 0 0;
+}
+
+#upload-photos{
+    display:none;
 }
 
 .addressContainer{

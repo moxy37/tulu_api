@@ -146,10 +146,6 @@ function LoadAddPosting() {
     html = html + '     <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
     html = html + '	</form>';
     html = html + '';
-
-
-
-
     html = html + '        <button type="button" class="submitBtn" onclick="SaveNewVehicle()">SUBMIT</button>';
     html = html + '    </div>';
 
@@ -289,28 +285,6 @@ function LoadListingSettings() {
 
 
 function loadScanner(){
-    // var html = '';
-    // html+='<main class="wrapper" style="padding-top:2em">';
-	// html+='	<section class="container" id="demo-content">';
-	// html+='		<div>';
-	// html+='			<input type="button" id="startButton" value="Start" />';
-	// html+='			<input type="button" id="resetButton" value="Reset" />';
-	// html+='		</div>';
-	// html+='		<div>';
-	// html+='			<video id="video" width="300" height="200" style="border: 1px solid gray"></video>';
-	// html+='		</div>';
-	// html+='		<div id="sourceSelectPanel" style="display:none">';
-	// html+='			<label for="sourceSelect">Change video source:</label>';
-	// html+='			<select id="sourceSelect" style="max-width:400px">';
-	// html+='			</select>';
-	// html+='		</div>';
-	// html+='		<label>Result:</label>';
-	// html+='		<input type="text" id="result" />';
-	// html+='	</section>';
-    // html+='</main>';
-    // $("#barCodeScannerContainer").empty();
-    // $("#barCodeScannerContainer").append(html);
-
 
     var selectedDeviceId;
 		var codeReader;

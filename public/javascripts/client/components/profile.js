@@ -4,7 +4,7 @@ function LoadProfile() {
     html=html+'<div class="banner">';
     html=html+'</div>';
     html=html+'<div class="userInfo">';
-    html=html+'    <div class="userImage">';
+    html=html+'    <div class="userImage" id="userImage">';
     html=html+'        <i class="fas fa-user fa-4x"></i>';
     html=html+'    </div>';
     html=html+'    <h3 class="userName">';

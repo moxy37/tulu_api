@@ -42,3 +42,12 @@ Screens
 -User Profile Page
 -Register Tulu page
 -Book Test Drive page
+
+
+document (image upload)
+drop down (car picture position)
+>left rear quarter panel
+>bumper
+
+when price is added, put how much for comission(%)
+
