@@ -110,3 +110,12 @@ async function NewVehicle(vin, dealerId) {
 // 	alert(vehicle.vin);
 
 // });
+
+function NewVehicleTimeline(vin, dealerId) {
+	var obj = new Object();
+	obj.vin = vin;
+	obj.dealerId = dealerId;
+	NewHelperObject('VehicleTimeline', obj).then(function (tl) {
+		gVehicle.timeline.push(tl);
+	});
+}

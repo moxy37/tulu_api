@@ -85,3 +85,24 @@ function Logout() {
 	window.localStorage.clear();
 	window.location = '/login';
 }
+
+async function NewHelperObject(table, primary) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.primary = primary;
+	obj.table = table;
+
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/helper/new",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}

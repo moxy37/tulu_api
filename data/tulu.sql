@@ -141,10 +141,11 @@ CREATE TABLE `Message` (
 	`senderId` VARCHAR(36),
 	`targetId` VARCHAR(36),
 	`type` VARCHAR(255),
-	`timestamp` DATETIME DEFAULT NOT(),
+	`timestamp` DATETIME DEFAULT NOW(),
 	`message` LONGTEXT,
 	`vin` VARCHAR(255),
-	`dealerId` VARCHAR(36)
+	`dealerId` VARCHAR(36),
+	`isRead` INTEGER DEFAULT 0
 );
 
 DROP TABLE IF EXISTS `TestDrive`;
