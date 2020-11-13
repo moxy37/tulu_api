@@ -51,7 +51,7 @@ CREATE TABLE `Vehicle` (
 	`baseTowingCapacity` VARCHAR(255),
 	`grossWeight` FLOAT,
 	`fuelTankCapacity` FLOAT,
-	`notes` TEXT,
+	`notes` LONGTEXT,
 	PRIMARY KEY(`vin`, `dealerId`)
 );
 
