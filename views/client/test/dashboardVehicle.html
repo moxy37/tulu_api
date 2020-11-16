@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/assets/webfonts/styles/all.css">
 	<link rel="stylesheet" href="/assets/css/reset.css">
 	<link rel="stylesheet" href="/assets/css/dashboardNav.css">
-	<link rel="stylesheet" href="/assets/css/dashboardUser.css">
+	<link rel="stylesheet" href="/assets/css/dashboardVehicle.css">
 
     <script type="text/javascript" src="../libs/jquery/dist/jquery.min.js"></script>
 </head>
@@ -30,41 +30,41 @@
 
 				</div>
 				<div class="userInfo">
-					<p>name:John Doe</p>
-					<p>email:sample@example.com</p>
-					<p>password:***********</p>
+					<p>Car Title</p>
+					<p>$12,345</p>
+					<p>0 views</p>
 				</div>
 				<div class="control">
-					<i class="far fa-edit" onclick="showEditUser()"></i>
-					<i class="far fa-trash-alt" onclick="deleteUser()"></i>
+					<i class="far fa-edit" onclick="showEditVehicle()"></i>
+					<i class="far fa-trash-alt" onclick="deleteVehicle()"></i>
 				</div>
 			</li>
 		</ul>
-		<div class="addUser">
-			<i class="fas fa-plus" onclick="showAddNewUser()"></i>
+		<div class="addVehicle">
+			<i class="fas fa-plus" onclick="showAddNewVehicle()"></i>
 		</div>
 	</div>
-	<div class="addNewUser">
-		<div class="addNewUserForm">
+	<div class="addNewVehicle">
+		<div class="addNewVehicleForm">
 			<label for="name">Name:</label>
 			<input type="text" name="name">
 			<label for="email">Email:</label>
 			<input type="text" name="email">
 			<label for="password">Password:</label>
 			<input type="text" name="password">
-			<button class="addUserBtn"  onclick="saveUser()">ADD USER</button>
-			<button class="cancelBtn" onclick="hideAddNewUser()">CANCEL</button>
+			<button class="addUserBtn"  onclick="saveVehicle()">ADD USER</button>
+			<button class="cancelBtn" onclick="hideAddNewVehicle()">CANCEL</button>
 		</div>
 	</div>
 
-	<div class="editUser">
-		<div class="editUserForm">
+	<div class="editVehicle">
+		<div class="editVehicleForm">
 			<label for="name">Name:</label>
-			<input type="text" name="name" id="">
+			<input type="text" name="name">
 			<label for="email">Email:</label>
-			<input type="text" name="email" id="">
+			<input type="text" name="email">
 			<label for="password">Password:</label>
-			<input type="text" name="password" id="">
+			<input type="text" name="password">
 			<button onclick="saveEdit()">SAVE EDIT</button>
 			<button class="cancelBtn" onclick="hideEditUser()">CANCEL</button>
 		</div>
@@ -77,6 +77,6 @@
 <script src="/javascripts/client/components/footer.js"></script>
 <script src="/assets/js/sideMenu.js"></script>
 <script src="/assets/js/global.js"></script>
-<script src="/assets/js/dashboardUserView.js"></script>
+<script src="/assets/js/dashboardVehicleView.js"></script>
 
 </html>

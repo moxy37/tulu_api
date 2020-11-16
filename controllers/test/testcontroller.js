@@ -138,5 +138,9 @@ router.get('/dashboard/user', function (req, res) {
     res.render('client/test/dashboardUser');
 });
 
+router.get('/dashboard/vehicle', function (req, res) {
+    res.render('client/test/dashboardVehicle');
+});
+
 
 module.exports = router;
