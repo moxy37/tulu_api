@@ -90,3 +90,23 @@ button{
 .cancelBtn{
     margin-top:10px;
 }
+
+.editUser{
+    display:none;
+    height:80vh;
+    width:100vw;
+    position: absolute;
+    background:white;
+    padding:150px 0 0 0;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.editUserForm{
+    width:80vmin;
+    padding:15px 20px;
+}
+
+label{
+    margin:15px 0 5px 0;
+}

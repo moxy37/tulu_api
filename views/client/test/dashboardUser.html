@@ -35,64 +35,8 @@
 					<p>password:***********</p>
 				</div>
 				<div class="control">
-					<i class="far fa-edit"></i>
-					<i class="far fa-trash-alt"></i>
-				</div>
-			</li>
-			<li>
-				<div class="image">
-
-				</div>
-				<div class="userInfo">
-					<p>name:John Doe</p>
-					<p>email:sample@example.com</p>
-					<p>password:***********</p>
-				</div>
-				<div class="control">
-					<i class="far fa-edit"></i>
-					<i class="far fa-trash-alt"></i>
-				</div>
-			</li>
-			<li>
-				<div class="image">
-
-				</div>
-				<div class="userInfo">
-					<p>name:John Doe</p>
-					<p>email:sample@example.com</p>
-					<p>password:***********</p>
-				</div>
-				<div class="control">
-					<i class="far fa-edit"></i>
-					<i class="far fa-trash-alt"></i>
-				</div>
-			</li>
-			<li>
-				<div class="image">
-
-				</div>
-				<div class="userInfo">
-					<p>name:John Doe</p>
-					<p>email:sample@example.com</p>
-					<p>password:***********</p>
-				</div>
-				<div class="control">
-					<i class="far fa-edit"></i>
-					<i class="far fa-trash-alt"></i>
-				</div>
-			</li>
-			<li>
-				<div class="image">
-
-				</div>
-				<div class="userInfo">
-					<p>name:John Doe</p>
-					<p>email:sample@example.com</p>
-					<p>password:***********</p>
-				</div>
-				<div class="control">
-					<i class="far fa-edit"></i>
-					<i class="far fa-trash-alt"></i>
+					<i class="far fa-edit" onclick="showEditUser()"></i>
+					<i class="far fa-trash-alt" onclick="deleteUser()"></i>
 				</div>
 			</li>
 		</ul>
@@ -108,8 +52,21 @@
 			<input type="text" name="email" id="">
 			<label for="password">Password:</label>
 			<input type="text" name="password" id="">
-			<button class="addUserBtn">ADD USER</button>
+			<button class="addUserBtn"  onclick="saveUser()">ADD USER</button>
 			<button class="cancelBtn" onclick="hideAddNewUser()">CANCEL</button>
+		</div>
+	</div>
+
+	<div class="editUser">
+		<div class="editUserForm">
+			<label for="name">Name:</label>
+			<input type="text" name="name" id="">
+			<label for="email">Email:</label>
+			<input type="text" name="email" id="">
+			<label for="password">Password:</label>
+			<input type="text" name="password" id="">
+			<button onclick="saveEdit()">SAVE EDIT</button>
+			<button class="cancelBtn" onclick="hideEditUser()">CANCEL</button>
 		</div>
 	</div>
 
