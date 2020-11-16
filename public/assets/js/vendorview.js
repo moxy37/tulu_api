@@ -1,3 +1,4 @@
+var gDealer = null;
 
 function PageLoadFunction() {
 	
@@ -8,16 +9,29 @@ function PageLoadFunction() {
 	LoadAddPosting();
 	LoadMyAccountMenu();
 	LoadListingSettings();
-	PopulateVehicle();
-	GetDealer();
+	GetDealerId();
 }
 
 
-function GetDealer() {
+function GetDealerId() {
+	var dId = '';
+	for (var i = 0; i < gUser.roles.length; i++) {
+		if (gUser.roles[i].role === 'Dealer' || gUser.roles[i].role === 'DealerAdmin') {
+			dId = gUser.roles[i].targetId;
+		}
+	}
+	if (dId !== '') {
+		GetDealer(dId).then(function (dealer) {
+			gDealer = dealer;
+		});
+	}
+}
+
+async function GetDealer(id) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
-	obj.id = dealerId;
-	$.ajax({
+	obj.id = id;
+	const results = await $.ajax({
 		type: "PUT",
 		url: "/api/dealer/get",
 		data: obj,
@@ -25,17 +39,15 @@ function GetDealer() {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-			console.log(JSON.stringify(results));
+			PopulateVehicle();
 		},
-		error: function (results) {
-			alert("Error");
-		},
+		error: function (results) { console.log(results.statusText); },
 	});
+	return results;
 }
 
-function PopulateVehicle(gVehicle) {
-	// var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
-	DisplayVehicle(dealerId).then(function (vehicle) {
+function PopulateVehicle() {
+	DisplayVehicle(gDealer.id).then(function (vehicle) {
 		var html = '';
 		for (var i = 0; i != vehicle.length; i++) {
 			html = html + '<li class="activeListingListItem" id="' + vehicle[i].vin + '" onclick="ViewVehicle(\'' + vehicle[i].vin + '\',\'' + vehicle[i].dealerId + '\');">';

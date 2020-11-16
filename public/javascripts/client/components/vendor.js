@@ -23,8 +23,7 @@ function LoadVendor() {
 
 function MakeNewVehicle() {
     var vin = $("#vinNum").val();
-    var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
-    NewVehicle(vin, dealerId).then(function (vehicle) {
+    NewVehicle(vin, gDealer.id).then(function (vehicle) {
         // alert(JSON.stringify(vehicle));
         gVehicle = vehicle;
         LoadVehicleInfo(vehicle);
@@ -252,7 +251,6 @@ function wholeSalePriceChecked() {
 
 
 function SaveNewVehicle() {
-    // var dealerId = 'dfb56be7-15ef-11eb-83a2-e86a647a411d';
     gVehicle.notes = $("#carDescription").val();
     gVehicle.wholeSalePrice = $("#wholeSalePrice").val();
     gVehicle.image = gVehicle.links[0].url;
@@ -361,59 +359,59 @@ function LoadListingSettings() {
 }
 
 
-function loadScanner(){
+function loadScanner() {
 
     var selectedDeviceId;
-		var codeReader;
-		function barcode() {
-			codeReader = new ZXing.BrowserMultiFormatReader();
-			codeReader.listVideoInputDevices().then(function (videoInputDevices) {
-				selectedDeviceId = videoInputDevices[0].deviceId;
-				var html = '';
-				videoInputDevices.forEach(function (element) {
-					html += '<option value="' + element.deviceId + '">' + element.label + '</option>';
-				});
-				$("#sourceSelect").empty();
-				$("#sourceSelect").append(html);
-				$("#sourceSelect").change(function () { selectedDeviceId = $("#sourceSelect option:selected").val(); });
-				$('#sourceSelectPanel').show();
+    var codeReader;
+    function barcode() {
+        codeReader = new ZXing.BrowserMultiFormatReader();
+        codeReader.listVideoInputDevices().then(function (videoInputDevices) {
+            selectedDeviceId = videoInputDevices[0].deviceId;
+            var html = '';
+            videoInputDevices.forEach(function (element) {
+                html += '<option value="' + element.deviceId + '">' + element.label + '</option>';
+            });
+            $("#sourceSelect").empty();
+            $("#sourceSelect").append(html);
+            $("#sourceSelect").change(function () { selectedDeviceId = $("#sourceSelect option:selected").val(); });
+            $('#sourceSelectPanel').show();
 
-				$('#startButton').click(function () {
-					$("#result").val('');
-					codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', function (result, err) {
-						if (result) {
-							console.log(result);
-							if ($("#result").val() !== result.text) { 
-								$("#result").val(result.text);
-							 }
-						}else{
-							console.log("Still looking");
-						}
-					});
-					console.log(`Started continous decode from camera with id ${selectedDeviceId}`);
-				})
+            $('#startButton').click(function () {
+                $("#result").val('');
+                codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', function (result, err) {
+                    if (result) {
+                        console.log(result);
+                        if ($("#result").val() !== result.text) {
+                            $("#result").val(result.text);
+                        }
+                    } else {
+                        console.log("Still looking");
+                    }
+                });
+                console.log(`Started continous decode from camera with id ${selectedDeviceId}`);
+            })
 
-				$('#resetButton').click(function () {
-					codeReader.reset();
-					$("#result").val('');
-				});
+            $('#resetButton').click(function () {
+                codeReader.reset();
+                $("#result").val('');
+            });
 
-			}).catch(function (err) { console.error(err) });
-		}barcode();
+        }).catch(function (err) { console.error(err) });
+    } barcode();
 }
 
-function barCodeScanner(){
+function barCodeScanner() {
     document.querySelector('#barCodeScannerContainer').style = "display:flex;";
     document.querySelector('.buttonContainer #startButton').click();
     document.querySelector('.buttonContainer #startButton').click();
-    const width = document.querySelector('#barCodeScannerContainer main').offsetWidth +50;
-    const height = document.querySelector('#barCodeScannerContainer main').offsetHeight +50;
-    document.querySelector('#video').style = "height:"+height+"px;width:"+width+"px;";
+    const width = document.querySelector('#barCodeScannerContainer main').offsetWidth + 50;
+    const height = document.querySelector('#barCodeScannerContainer main').offsetHeight + 50;
+    document.querySelector('#video').style = "height:" + height + "px;width:" + width + "px;";
 }
 
-function capture(){
+function capture() {
     alert($('#result').val());
-    document.querySelector('#vinNum').value =  $('#result').val();
+    document.querySelector('#vinNum').value = $('#result').val();
     document.querySelector('#barCodeScannerContainer').style = "display:none;";
 }
 

@@ -24,7 +24,7 @@
 		<h1>Users</h1>
 	</div>
 	<div class="users">
-		<ul class="userContainer">
+		<ul class="userContainer" id="userContainer">
 			<li>
 				<div class="image">
 
@@ -60,11 +60,11 @@
 	<div class="editUser">
 		<div class="editUserForm">
 			<label for="name">Name:</label>
-			<input type="text" name="name" id="">
+			<input type="text" name="name" id="editName">
 			<label for="email">Email:</label>
-			<input type="text" name="email" id="">
+			<input type="text" name="email" id="editEmail">
 			<label for="password">Password:</label>
-			<input type="text" name="password" id="">
+			<input type="text" name="password" id="editPassword">
 			<button onclick="saveEdit()">SAVE EDIT</button>
 			<button class="cancelBtn" onclick="hideEditUser()">CANCEL</button>
 		</div>
