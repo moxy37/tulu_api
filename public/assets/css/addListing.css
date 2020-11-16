@@ -29,9 +29,14 @@
     align-items: center;
 }
 
-.addVehicleStepOne,.addVehicleStepTwo,.addVehicleStepThree,.addVehicleStepFour,.vehicleAdded{
+.addVehicleStepOne,.addVehicleStepTwo,.addVehicleStepThree,.addVehicleStepFour,.addVehicleStepFive,.vehicleAdded{
     display:none;
     opacity: 0;
+}
+
+.addVehicleStepFour{
+    justify-content: center;
+    align-items: center;
 }
 
 .addVehicleStepOne{

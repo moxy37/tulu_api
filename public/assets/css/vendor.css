@@ -114,3 +114,164 @@
     justify-content: center;
     align-items: center;
 }
+
+.carDetails p{
+    color:white;
+}
+
+
+.frontBumper,.rearBumper,.hood,.sideSkirt,.quarterPanel{
+    background:#79C6AC;
+    border:2px solid white;
+    margin:10px 0 0 0;
+    padding:10px 15px;
+    border-radius: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.frontBumper p,.rearBumper p,.hood p,.sideSkirt p,.quarterPanel p,.frontBumper i,.rearBumper i,.hood i,.sideSkirt i,.quarterPanel i{
+    color:white;
+}
+
+.detailsContainer{
+    flex-direction: column;
+    padding:20px;
+    margin-top:-10px;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.frontBumperContainerHide{
+    overflow: hidden;
+    height:0;
+    padding:0;
+    margin:0;
+    border: 0px solid #ffffff00;
+    transition: 0.5s;
+}
+
+.frontBumperContainerShow{
+    overflow: hidden;
+    height:100;
+    padding:20px;
+    margin-top:-10px;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.rearBumperContainerHide{
+    overflow: hidden;
+    height:0;
+    padding:0;
+    margin:0;
+    border: 0px solid #ffffff00;
+    transition: 0.5s;
+}
+
+.rearBumperContainerShow{
+    overflow: hidden;
+    height:100;
+    padding:20px;
+    margin-top:-10px;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.sideSkirtContainerHide{
+    overflow: hidden;
+    height:0;
+    padding:0;
+    margin:0;
+    border: 0px solid #ffffff00;
+    transition: 0.5s;
+}
+
+.sideSkirtContainerShow{
+    overflow: hidden;
+    height:100;
+    padding:20px;
+    margin-top:-10px;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.hoodContainerHide{
+    overflow: hidden;
+    height:0;
+    padding:0;
+    margin:0;
+    border: 0px solid #ffffff00;
+    transition: 0.5s;
+}
+
+.hoodContainerShow{
+    overflow: hidden;
+    height:100;
+    padding:20px;
+    margin-top:-10px;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.quarterPanelContainerHide{
+    overflow: hidden;
+    height:0;
+    padding:0;
+    margin:0;
+    border: 0px solid #ffffff00;
+    transition: 0.5s;
+}
+
+.quarterPanelContainerShow{
+    overflow: hidden;
+    height:100;
+    padding:20px;
+    margin-top:-10px;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.detailsContainer textarea{
+    border:none;
+    height:100px;
+    padding:10px;
+}
+
+.imageContainer{
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:10px 0;
+}
+
+.addImage{
+    /* padding:50px; */
+    height:50px;
+    width:50px;
+    justify-content: center;
+    align-items: center;
+    border:2px solid white;
+}
+
+.addImage i{
+    color:white;
+}

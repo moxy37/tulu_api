@@ -20,6 +20,7 @@ const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
 const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
 const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
 const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
+const addVehicleStepFive = document.querySelector('.addVehicleStepFive');
 const vehicleAdded = document.querySelector('.vehicleAdded');
 var addVehicleStepCount = 1;
 const AddVehicleStep = () => {
@@ -47,13 +48,21 @@ const AddVehicleStep = () => {
     }
     else if(addVehicleStepCount == 4){
         const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
-        const vehicleAdded = document.querySelector('.vehicleAdded');
+        const addVehicleStepFive = document.querySelector('.addVehicleStepFive');
         addVehicleStepFour.style = "display:Flex; opacity:0; transition:0.5s;";
+        addVehicleStepFive.style = "display:Flex;";
+        addVehicleStepCount++;
+        setTimeout(ShowAddVehicleStepFive, 600);
+    }
+    else if(addVehicleStepCount == 5){
+        const addVehicleStepFive = document.querySelector('.addVehicleStepFive');
+        const vehicleAdded = document.querySelector('.vehicleAdded');
+        addVehicleStepFive.style = "display:Flex; opacity:0; transition:0.5s;";
         vehicleAdded.style = "display:Flex;";
         addVehicleStepCount++;
         setTimeout(AddedSuccessful, 600);
     }
-    else if(addVehicleStepCount == 5){
+    else if(addVehicleStepCount == 6){
         const vehicleAdded = document.querySelector('.vehicleAdded');
         vehicleAdded.style = "display:Flex; opacity:0; transition:0.5s;";
         setTimeout(AddingDone, 600);
@@ -108,11 +117,18 @@ const ShowAddVehicleStepFour = () => {
     addVehicleStepThree.style = "display:none;";
 }
 
+const ShowAddVehicleStepFive = () => {
+    const addVehicleStepFive = document.querySelector('.addVehicleStepFive');
+    const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
+    addVehicleStepFive.style = "display:Flex; opacity:1; transition:0.5s;";
+    addVehicleStepFour.style = "display:none;";
+}
+
 const AddedSuccessful = () => {
     const vehicleAdded = document.querySelector('.vehicleAdded');
-    const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
+    const addVehicleStepFive = document.querySelector('.addVehicleStepFour');
     vehicleAdded.style = "display:Flex; opacity:1; transition:0.5s;";
-    addVehicleStepFour.style = "display:none;";
+    addVehicleStepFive.style = "display:none;";
 }
 
 var loadFile = function(event) {
@@ -135,4 +151,37 @@ const addImage = () =>{
 const uploadImage = () =>{
     const uploadBtn = document.querySelector(`#uploadBtn`);
     uploadBtn.click();
+}
+
+function showFrontBumperContainer(){
+    resetContainers();
+    document.querySelector("#frontBumperContainer").classList = "detailsContainer frontBumperContainerShow";
+}
+
+function showRearBumperContainer(){
+    resetContainers();
+    document.querySelector("#rearBumperContainer").classList = "detailsContainer rearBumperContainerShow";
+}
+
+function showSideSkirtContainer(){
+    resetContainers();
+    document.querySelector("#sideSkirtContainer").classList = "detailsContainer sideSkirtContainerShow";
+}
+
+function showHoodContainer(){
+    resetContainers();
+    document.querySelector("#hoodContainer").classList = "detailsContainer hoodContainerShow";
+}
+
+function showQuarterPanelContainer(){
+    resetContainers();
+    document.querySelector("#quarterPanelContainer").classList = "detailsContainer quarterPanelContainerShow";
+}
+
+function resetContainers(){
+    document.querySelector("#frontBumperContainer").classList = "detailsContainer frontBumperContainerHide";
+    document.querySelector("#rearBumperContainer").classList = "detailsContainer rearBumperContainerHide";
+    document.querySelector("#sideSkirtContainer").classList = "detailsContainer sideSkirtContainerHide";
+    document.querySelector("#hoodContainer").classList = "detailsContainer hoodContainerHide";
+    document.querySelector("#quarterPanelContainer").classList = "detailsContainer quarterPanelContainerHide";
 }
