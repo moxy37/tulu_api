@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tulu Canada</title>
+	<link rel="stylesheet" href="/assets/webfonts/styles/all.css">
+	<link rel="stylesheet" href="/assets/css/reset.css">
+	<link rel="stylesheet" href="/assets/css/dashboardNav.css">
+	<link rel="stylesheet" href="/assets/css/dashboard.css">
+
+    <script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body id="HomePage">
+	<!-- NAVIGATION -->
+	<nav id="Nav"></nav>
+	<!-- SIDEMENU -->
+	<div id ="SideMenu"class="sideMenu"></div>
+
+	<!-- HEADER -->
+	<div class="header">
+		<h1>Dashboard</h1>
+	</div>
+
+	<div class="cardContainer">
+		<div class="card carsUploaded">
+			<div class="icon">
+				<i class="far fa-copy fa-4x"></i>
+			</div>
+			<div class="info">
+				<p>Cars Uploaded</p>
+				<p class="uploadCount">
+					0/50
+				</p>
+			</div>
+			<div class="viewCars">
+				<i class="fas fa-list"></i>
+				<p>View Cars</p>
+			</div>
+		</div>
+		<div class="card carsSold">
+			<div class="icon">
+				<i class="fas fa-file-invoice-dollar fa-4x"></i>
+			</div>
+			<div class="info">
+				<p>Cars Sold</p>
+				<p class="soldCount">
+					$34,245
+				</p>
+			</div>
+			<div class="lastUpdate">
+				<i class="far fa-clock"></i>
+				<p>Last 24 Hours</p>
+			</div>
+		</div>
+		<div class="card dailyViews">
+			<div class="graph">
+
+			</div>
+			<div class="info">
+				<p>Daily Views</p>
+				<div class="viewsCount">
+					<p class="count">0</p>
+					<p>views</p>
+				</div>
+			</div>
+			<div class="lastUpdate">
+				<i class="far fa-clock"></i>
+				<p>Last 24 Hours</p>
+			</div>
+		</div>
+		<div class="card monthlySales">
+			<div class="graph">
+
+			</div>
+			<div class="info">
+				<p>Monthly Sales</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script src="/assets/js/global.js"></script>
+<script src="/javascripts/client/components/dashboardNav.js"></script>
+<script src="/javascripts/client/components/footer.js"></script>
+<script src="/assets/js/sideMenu.js"></script>
+<script src="/assets/js/global.js"></script>
+<script src="/assets/js/dashboardView.js"></script>
+
+</html>

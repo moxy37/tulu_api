@@ -1,0 +1,104 @@
+
+/* Navigation and Menu */
+
+nav{
+    background:#1A2A33 ;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+    z-index: 5;
+    position: fixed;
+    width:100vw;
+    padding:10px 0;
+}
+
+nav img{
+    width:50px;
+}
+
+nav i{
+    position: absolute;
+    left:15px;
+}
+
+nav .menuButton{
+    position: absolute;
+    left:5px;
+    top:10px;
+}
+
+.menuBtn{
+    color:white;
+    opacity:1;
+}
+
+.closeMenuBtn{
+    color:white;
+    opacity:0;
+    transform:rotate(-90deg);
+}
+
+.sideMenu{
+    background:#8b9196;
+    justify-content: center;
+    align-items: center;
+    padding:20px 0;
+    z-index: 1;
+    position:fixed;
+    top:-600px;
+}
+
+.sideMenu .menu{
+    align-items: center;
+}
+
+.sideMenu .menu .menuItems{
+    /* border:1px solid red; */
+    padding:10px 30px;
+    width:60vw;
+    justify-content: center;
+}
+
+.sideMenu .menu .menuItems a,.sideMenu .menu .menuItems p{
+    color:white;
+}
+
+.menuItems p{
+    flex-direction: row;
+    position: relative;
+}
+
+.menuItems p i{
+    color:white;
+    position:absolute;
+    right:0;
+}
+
+.sideMenu .menu .menuItems a:hover{
+    color:#79C6AC;
+}
+
+.shopSubMenuList,.accountSubMenuList{
+    width:100px;
+    padding:0px;
+    height:0px;
+    opacity:0; 
+    justify-content: center;
+    overflow: hidden;
+}
+
+.subMenuListLink{
+    padding:5px
+}
+
+button.influencerBtn{
+    background:#79C6AC;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:10px;
+    font-family: ralewaySemiBold;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}

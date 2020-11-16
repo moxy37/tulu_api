@@ -130,5 +130,13 @@ router.get('/tuluRegister', function (req, res) {
     res.render('client/test/tuluRegister');
 });
 
+router.get('/dashboard', function (req, res) {
+    res.render('client/test/dashboard');
+});
+
+router.get('/dashboard/user', function (req, res) {
+    res.render('client/test/dashboardUser');
+});
+
 
 module.exports = router;
