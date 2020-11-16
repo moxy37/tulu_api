@@ -14,8 +14,8 @@
 
 .cardContainer{
     padding:50px 0 20px 0;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
@@ -46,6 +46,7 @@
     border-radius:10px;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 2px 15px #00000042;
 }
 
 .icon i{
@@ -107,6 +108,7 @@
 
 .dailyViews .graph{
     background:#78afcf;
+    box-shadow: 0px 2px 15px #00000042;
     height:150px;
     width:100%;
     position: relative;
@@ -155,6 +157,7 @@
 
 .monthlySales .graph{
     background:#69cf90;
+    box-shadow: 0px 2px 15px #00000042;
     height:150px;
     width:100%;
     position: relative;
