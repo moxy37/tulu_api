@@ -17,7 +17,20 @@ function MessageDAO() {
 		o.timestamp = new Date();
 		return next(null, o);
 	}
-	
+
+	this.isRead = function (tokenId, id, next) {
+		let self = this;
+		__con.query(tokenId, "UPDATE `Messages` SET `isRead`=1 WHERE `id`=?", id, function (err, result) {
+			if (err) return next(err);
+			var o = new Object();
+			o.id = id;
+			self.list(tokenId, o, function (err, list) {
+				if (err) return next(err);
+				return next(null, list[0]);
+			});
+		});
+	}
+
 	this.save = function (tokenId, obj, next) {
 		__con.query(tokenId, "INSERT INTO `Messages` (`id`, `senderId`, `targetId`, `type`, `message`, `vin`, `dealerId`, `isRead`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [obj.id, obj.senderId, obj.targetId, obj.type, obj.message, obj.vin, obj.dealerId, obj.isRead], function (err, result) {
 			if (err) return next(err);
@@ -25,8 +38,83 @@ function MessageDAO() {
 		});
 	}
 
-	this.list = function (tokenId, userId, next) {
-		__con.query(tokenId, "SELECT * FROM `Messages` WHERE `userId`=? ORDER BY `timestamp`", userId, function (err, results) {
+	this.list = function (tokenId, obj, next) {
+		var sql = "SELECT * FROM `Messages` ";
+		var whereAdded = false;
+		var params = [];
+		if (obj.id !== undefined && obj.id !== '') {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`id` = ? ";
+			params.push(obj.id);
+		}
+		if (obj.dealerId !== undefined && obj.dealerId !== '') {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`dealerId` = ? ";
+			params.push(obj.dealerId);
+		}
+		if (obj.senderId !== undefined && obj.senderId !== '') {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`senderId` = ? ";
+			params.push(obj.senderId);
+		}
+		if (obj.targetId !== undefined && obj.targetId !== '') {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`targetId` = ? ";
+			params.push(obj.targetId);
+		}
+		if (obj.type !== undefined && obj.type !== '') {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`type` = ? ";
+			params.push(obj.type);
+		}
+		if (obj.vin !== undefined && obj.vin !== '') {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`vin` = ? ";
+			params.push(obj.vin);
+		}
+		if (obj.isRead !== undefined && obj.isRead !== '') {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = truel
+				sql += "WHERE ";
+			}
+			sql += "`isRead` = ? ";
+			params.push(obj.isRead);
+		}
+		sql += " ORDER BY `timestamp`";
+		__con.query(tokenId, sql, params, function (err, results) {
+			if (err) return next(err);
 			var list = [];
 			async.forEach(results, function (r, callback) {
 				var o = new Object();
