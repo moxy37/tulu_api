@@ -1,3 +1,5 @@
+// const cons = require("consolidate");
+
 var gDealer = null;
 var gDealerUsers = [];
 
@@ -53,6 +55,7 @@ async function GetDealer(id) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
+			console.log(results)
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
@@ -92,6 +95,74 @@ function saveUser() {
 	alert('Save User');
 }
 
-function deleteUser() {
-	alert('Delete User');
+function deleteUser(index) {
+	
+	for(var i = 0; i != gDealer.users[index].roles.length; i++){
+		if(gDealer.users[index].roles[i].role == "Dealer" || gDealer.users[index].roles[i].role == "DealerAdmin" )
+		console.log(gDealer.users[index].roles[i].userId);
+		var id = gDealer.users[index].roles[i].userId;
+		console.log(gUser)
+	}
+
+	GetUser(id).then(function () {});
+}
+
+async function GetUser(id) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.name = id;
+	const results = await $.ajax({
+		type: "PUT",
+		url: "/api/user/list",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			check(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return results;
+}
+
+function check(currentUser){
+	// currentUser.user.roles
+	var role = new Object();
+	var x = 0;
+	for(var i = 0; i != currentUser.user.roles.length; i++){
+		if(currentUser.user.roles[i].role == "Dealer" || currentUser.user.roles[i].role == "DealerAdmin"){
+			// alert("FUCK")
+		}
+		else{
+			role[x] = currentUser.user.roles[i];
+			x++;
+		}
+	}
+	console.log(role)
+	currentUser.user.roles = role;
+	console.log(currentUser)
+	var user=currentUser
+	UpdateUser(user).then(function () {
+		GetDealerId()
+	});
+}
+
+async function UpdateUser(user) {
+	var obj = new Object();
+	obj = user
+	obj.tokenId = tokenId;
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/user/save",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
 }

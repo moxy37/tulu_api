@@ -32,7 +32,6 @@
 				<div class="userInfo">
 					<p>name:John Doe</p>
 					<p>email:sample@example.com</p>
-					<p>password:***********</p>
 				</div>
 				<div class="control">
 					<i class="far fa-edit" onclick="showEditUser()"></i>
@@ -50,8 +49,6 @@
 			<input type="text" name="name">
 			<label for="email">Email:</label>
 			<input type="text" name="email">
-			<label for="password">Password:</label>
-			<input type="text" name="password">
 			<button class="addUserBtn"  onclick="saveUser()">ADD USER</button>
 			<button class="cancelBtn" onclick="hideAddNewUser()">CANCEL</button>
 		</div>
@@ -63,8 +60,6 @@
 			<input type="text" name="name" id="editName">
 			<label for="email">Email:</label>
 			<input type="text" name="email" id="editEmail">
-			<label for="password">Password:</label>
-			<input type="text" name="password" id="editPassword">
 			<button onclick="saveEdit()">SAVE EDIT</button>
 			<button class="cancelBtn" onclick="hideEditUser()">CANCEL</button>
 		</div>

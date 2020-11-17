@@ -224,3 +224,10 @@
     display:none;
 }
 
+
+
+/* //////////// */
+
+.checkBoxContainer,#wholeSalePriceContainer{
+    display:none;
+}

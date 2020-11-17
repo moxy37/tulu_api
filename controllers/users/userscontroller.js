@@ -16,6 +16,15 @@ router.put("/api/user/current", function (req, res) {
     } else { return res.status(400).send("Invalid tokenId"); }
 });
 
+router.put("/api/user/list", function (req, res) {
+    var obj = req.body;
+    var tokenId = obj.tokenId;
+    if (__currentTokens[tokenId] !== undefined) {
+        __currentTokens[tokenId].timestamp = new Date();
+        return res.send(__currentTokens[tokenId]);
+    } else { return res.status(400).send("Invalid tokenId"); }
+});
+
 router.put("/api/user/save", function (req, res) {
 	var obj = req.body;
 	var tokenId = obj.tokenId;
