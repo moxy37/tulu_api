@@ -13,7 +13,7 @@
 }
 
 
-.userContainer li{
+.vehicleContainer li{
     padding:15px 20px;
     flex-direction: row;
     justify-content:space-between;
@@ -27,7 +27,7 @@
     width:50px;
 }
 
-.userInfo p{
+.vehicleInfo p{
     font-size: small;
     /* width:230px; */
 }

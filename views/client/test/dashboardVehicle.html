@@ -23,13 +23,13 @@
 	<div class="header">
 		<h1>Vehicles</h1>
 	</div>
-	<div class="users">
-		<ul class="userContainer">
+	<div class="vehicles">
+		<ul class="vehicleContainer" id="vehicleContainer">
 			<li>
 				<div class="image">
 
 				</div>
-				<div class="userInfo">
+				<div class="vehicleInfo">
 					<p>Car Title</p>
 					<p>$12,345</p>
 					<p>0 views</p>
@@ -59,14 +59,17 @@
 
 	<div class="editVehicle">
 		<div class="editVehicleForm">
-			<label for="name">Name:</label>
-			<input type="text" name="name">
-			<label for="email">Email:</label>
-			<input type="text" name="email">
-			<label for="password">Password:</label>
-			<input type="text" name="password">
+			<label for="price">Price:</label>
+			<input type="text" name="price" id="price">
+			<label for="mileage">Mileage:</label>
+			<input type="text" name="mileage" id="mileage">
+			<label for="engine">Engine:</label>
+			<input type="text" name="engine" id="engine">
+			<label for="color">Color:</label>
+			<input type="text" name="color" id="color">
+			
 			<button onclick="saveEdit()">SAVE EDIT</button>
-			<button class="cancelBtn" onclick="hideEditUser()">CANCEL</button>
+			<button class="cancelBtn" onclick="hideEditVehicle()">CANCEL</button>
 		</div>
 	</div>
 
@@ -76,7 +79,6 @@
 <script src="/javascripts/client/components/dashboardNav.js"></script>
 <script src="/javascripts/client/components/footer.js"></script>
 <script src="/assets/js/sideMenu.js"></script>
-<script src="/assets/js/global.js"></script>
 <script src="/assets/js/dashboardVehicleView.js"></script>
 
 </html>

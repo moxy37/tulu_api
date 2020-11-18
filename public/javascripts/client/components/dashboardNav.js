@@ -19,7 +19,7 @@ function LoadSideMenu() {
 	html+='		<p>Schedule</p>';
 	html+='	</li>';
 	html+='	<li class="menuItems">';
-	html+='		<p>Vehicles</p>'
+	html+='		<p onclick="LocationChange(`dashboard/vehicle`);">Vehicles</p>'
 	html+='	</li>';
 	html+='	<li class="menuItems">';
 	html+='		<p onclick="LocationChange(`dashboard/user`);">Users</p>';

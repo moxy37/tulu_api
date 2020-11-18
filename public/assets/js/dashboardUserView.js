@@ -38,7 +38,6 @@ function GetDealerId() {
 				</li>`;
 			}
 			$("#userContainer").append(html);
-			// alert(JSON.stringify(dealer.users));
 		});
 	}
 }
@@ -55,7 +54,7 @@ async function GetDealer(id) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-			console.log(results)
+			// console.log(results)
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
@@ -92,8 +91,60 @@ function saveEdit() {
 }
 
 function saveUser() {
-	alert('Save User');
+	var name = $("#name").val();
+	var email = $("#email").val();
+
+	NewUser(name,email).then(function () {
+		GetDealerId();
+	});
 }
+
+async function NewUser(name,email) {
+	var obj = new Object();
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/user/new",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			// console.log(results);
+			var newRole = new Object;
+			newRole.role = "DealerAdmin"
+			newRole.targetId = gDealer.id;
+			newRole.userId = results.id;
+			results.name = name;
+			results.email = email;
+			results.password = "1234";
+			results.roles.push(newRole)
+			SaveNewUser(tokenId,results)
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}
+
+async function SaveNewUser(tokenId,user) {
+	var obj = new Object();
+	obj.tokenId = tokenId
+	obj.user = user;
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/user/save",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			// alert(JSON.stringify(results));
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}
+
+
 
 function deleteUser(index) {
 	
@@ -127,7 +178,6 @@ async function GetUser(id) {
 }
 
 function check(currentUser){
-	// currentUser.user.roles
 	var role = new Object();
 	var x = 0;
 	for(var i = 0; i != currentUser.user.roles.length; i++){
