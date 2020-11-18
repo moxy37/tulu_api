@@ -109,40 +109,44 @@ function deleteVehicle(index,dId){
 	alert('Delete Vehicle');
 	gIndex = index;
 	var n = new Array;
-	var v = 0;
 	for(var i = 0; i != gVehicles.length;i++){
-		console.log(gVehicles[i].vin);
-		console.log(gVehicles[gIndex].vin);
-		console.log(gVehicles[gIndex]);
-		if(gVehicles[i].vin != gVehicles[gIndex].vin){
-			n[v] = gVehicles[gIndex];
-			v++;
+		// console.log(gVehicles[i].vin);
+		// console.log(gVehicles[gIndex].vin);
+		// console.log(gVehicles[gIndex]);
+		if(gVehicles[i].vin == gVehicles[gIndex].vin){
+			n = gVehicles[gIndex].vin;
 		}
 	}	
 
-	console.log(n)
+	// console.log(n)
 
-	gVehicles = n;
+	// gVehicles = n;
 
-	UpdateVehicle(n,dId).then(function (vehicles) {
+	UpdateVehicle(gVehicles).then(function () {
+		
+	})
+	// 	gVehicles = vehicles;
+	// 	console.log(n);
+	// 	// DisplayVehicle(dId).then(function (vehicleList) {});
+	// RemoveVehicle(gVehicles,n,dId).then(function (vehicles) {
+	// 	gVehicles = vehicles;
+	// 	console.log(n);
+	// 	// DisplayVehicle(dId).then(function (vehicleList) {});
+	// });
 
-	});
-	RemoveVehicle(gVehicles,n,dId).then(function (vehicles) {
-		gVehicles = vehicles;
-		console.log(n);
-		DisplayVehicle(dId).then(function (vehicleList) {});
-	});
+	// check(n,dId).then(function (vehicles) {
+
+	// });
 }
 
 
-async function UpdateVehicle(n,dId) {
+async function UpdateVehicle(gVehicles) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
-	obj.vehicle = n;
-	obj.dealerId = dId;
+	obj.vehicle = gVehicles;
 	const results = await $.ajax({
 		type: "PUT",
-		url: "/api/vehicle/list",
+		url: "/api/vehicle/delete",
 		data: obj,
 		cache: false,
 		dataType: "json",
@@ -155,27 +159,47 @@ async function UpdateVehicle(n,dId) {
 	return results;
 }
 
+// async function check(n,dId) {
+// 	var obj = new Object();
+// 	obj.tokenId = tokenId;
+// 	obj.vehicle = n;
+// 	obj.dealerId = dId;
+// 	const results = await $.ajax({
+// 		type: "PUT",
+// 		url: "/api/vehicle/list",
+// 		data: obj,
+// 		cache: false,
+// 		dataType: "json",
+// 		contentType: "application/x-www-form-urlencoded",
+// 		success: function (results) {
+// 			console.log(results);
+// 		},
+// 		error: function (results) { console.log(results.statusText); },
+// 	});
+// 	return results;
+// }
 
-async function RemoveVehicle(n,dId) {
-	var obj = new Object();
-	obj.tokenId = tokenId;
-	obj.vehicle = n;
-	obj.dealerId = dId;
-	const result = await $.ajax({
-		type: "PUT",
-		url: "/api/vehicle/save",
-		data: obj,
-		cache: false,
-		dataType: "json",
-		contentType: "application/x-www-form-urlencoded",
-		success: function (results) {
-			console.log(results);
-		},
-		error: function (results) { console.log(results.statusText); },
-	});
-	return result;
+
+// async function RemoveVehicle(n,dId) {
+// 	var obj = new Object();
+// 	obj.tokenId = tokenId;
+// 	obj.vehicle = n;
+// 	obj.dealerId = dId;
+// 	const result = await $.ajax({
+// 		type: "PUT",
+// 		url: "/api/vehicle/save",
+// 		data: obj,
+// 		cache: false,
+// 		dataType: "json",
+// 		contentType: "application/x-www-form-urlencoded",
+// 		success: function (results) {
+// 			console.log(results);
+// 		},
+// 		error: function (results) { console.log(results.statusText); },
+// 	});
+// 	return result;
 	
-}
+// }
 
 
 

@@ -61,4 +61,16 @@ router.put("/api/vehicle/delete", function (req, res) {
 	} else { return res.status(400).send("Invalid tokenId"); }
 });
 
+router.put("/api/vehicle/chaka", function (req, res) {
+	var obj = req.body;
+	var tokenId = obj.tokenId;
+	var vin = obj.vin;
+	if (__currentTokens[tokenId] !== undefined) {
+		__currentTokens[tokenId].timestamp = new Date();
+		vehicleDao.chaka(tokenId, obj.vin, function (err, result) {
+			return res.send(result);
+		});
+	} else { return res.status(400).send("Invalid tokenId"); }
+});
+
 module.exports = router;

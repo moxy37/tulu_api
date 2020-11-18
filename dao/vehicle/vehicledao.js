@@ -192,6 +192,51 @@ function VehicleDAO() {
 		});
 	}
 
+
+
+
+	// this.chaka = function (tokenId, vin,next) {
+	// 	var primary = new Object();
+	// 	primary.tokenId = tokenId;
+	// 	primary.vin = vin;
+	// 	__con.query(tokenId, "DELETE FROM `Vehicle` WHERE `vin`=?", vin, function (err, results) {
+	// 		if (err) return next(err);
+	// 		var list = [];
+	// 		async.forEach(results, function (r, callback) {
+	// 			self.get(tokenId, r.vin, r.dealerId, function (err, v) {
+	// 				if (err) return next(err);
+	// 				list.push(v);
+	// 				callback();
+	// 			});
+	// 		}, function (err) {
+	// 			if (err) return next(err);
+	// 			return next(null, list);
+	// 		});
+	// 	});
+	// }
+
+	this.chaka = function (tokenId, vin, next) {
+		var sql = "DELETE FROM `Vehicle` WHERE `vin` = ?";
+
+		console.log(sql)
+		let self = this;
+		__con.query(tokenId, sql , vin, function (err, results) {
+			if (err) return next(err);
+			var list = [];
+			async.forEach(results, function (r, callback) {
+				self.get(tokenId ,function (err, v) {
+					if (err) return next(err);
+					list.push(v);
+					callback();
+				});
+			}, function (err) {
+				if (err) return next(err);
+				return next(null, list);
+			});
+		});
+	}
+
+	
 	this.list = function (tokenId, obj, next) {
 		var sql = "SELECT * FROM `Vehicle` ";
 		var whereAdded = false;
