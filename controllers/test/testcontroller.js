@@ -40,6 +40,11 @@ router.get('/test_camera', function (req, res) {
 });
 
 
+router.get('/notification', function (req, res) {
+    res.render('core/notification');
+});
+
+
 
 router.get('/test_login', function (req, res) {
     res.render('core/test_login');

@@ -5,12 +5,43 @@ var fs = require("fs");
 var formidable = require("formidable");
 var readChunk = require("read-chunk");
 var express = require("express");
+const webpush = require('web-push');
 var path = require("path");
 var bodyParser = require("body-parser");
 var cons = require("consolidate");
 var app = express();
 var detect = require("detect-file-type");
 const { on } = require("process");
+
+app.use(bodyParser.json());
+
+const publicVapidKey='BNjEGngrbF5536XYmz3KDxXWBrDqC2ofRxh6AWS_IVrjNmdfnUEA0s3QOta1NTTgGHdAbXgr1bamn8k2jIdA0sM';
+const privateVapidKey='bzO5laebaj80gSC_UwYGT6CujsdKv9OP5o-mteuJ5cU';
+
+webpush.setVapidDetails('mailto:test@test.com',publicVapidKey,privateVapidKey);
+
+// subcribe route
+app.post('/subscribe',(req,res) => {
+    // get pushSUbscription object
+    const subscription = req.body;
+
+    // send 202 - resource created
+
+    res.status(202).json({});
+
+    // create payload
+    const payload = JSON.stringify({title:'Push Test'});
+
+    console.log(subscription)
+    // pass object into send notification
+    webpush.sendNotification(subscription, payload).catch(err =>console.error(err));
+
+});
+
+const port = 6969;
+
+app.listen(port,() => console.log(`Server started on port ${port}`))
+
 
 app.engine("html", cons.swig);
 app.set("views", path.join(__dirname, "views"));
