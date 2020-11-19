@@ -22,7 +22,13 @@
 }
 
 .image{
-    border:3px solid #79C6AC;
+    border-radius: 10px;
+    overflow: hidden;
+    height:50px;
+    width:50px;
+}
+
+.image img{
     height:50px;
     width:50px;
 }
