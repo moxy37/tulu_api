@@ -106,10 +106,6 @@ async function NewVehicle(vin, dealerId) {
 	return results;
 }
 
-// GetVehicle(vin).then(function (vehicle) {
-// 	alert(vehicle.vin);
-
-// });
 
 function NewVehicleTimeline(vin, dealerId) {
 	var obj = new Object();

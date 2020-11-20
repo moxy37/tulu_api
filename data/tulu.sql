@@ -36,6 +36,9 @@ CREATE TABLE `Vehicle` (
 	`driveType` VARCHAR(255),
 	`msrp` FLOAT,
 	`wholeSalePrice` FLOAT,
+	`minPrice` FLOAT,
+	`maxPrice` FLOAT,
+	`mileage` INTEGER,
 	`engineName` VARCHAR(255),
 	`engineBrand` VARCHAR(255), 
 	`engineId` VARCHAR(255),
@@ -73,6 +76,7 @@ CREATE TABLE `VehicleLinks` (
 	`name` VARCHAR(1024),
 	`url` VARCHAR(2048),
 	`type` VARCHAR(255),
+	`description` VARCHAR(255),
 	`sequence` INTEGER DEFAULT 0,
 	PRIMARY KEY(`vin`, `dealerId`, `sequence`, `type`)
 );

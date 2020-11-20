@@ -38,9 +38,6 @@ app.post('/subscribe',(req,res) => {
 
 });
 
-const port = 6969;
-
-app.listen(port,() => console.log(`Server started on port ${port}`))
 
 
 app.engine("html", cons.swig);
