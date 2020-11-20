@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="addVehicleForm RetailPrice">
+        <div id="maxPriceContainer" class="maxPriceContainer">
+            <label for="maxPrice">Max Price:</label>
+            <div class="inputContainer">
+                <i class="fas fa-dollar-sign"></i>
+                <input type="number" name="maxPrice" class="maxPrice" id="maxPrice">
+            </div>
+        </div>
+        <div id="minPriceContainer" class="minPriceContainer">
+            <label for="minPrice">Min Price:</label>
+            <div class="inputContainer">
+                <i class="fas fa-dollar-sign"></i>
+                <input type="number" name="minPrice" class="minPrice" id="minPrice">
+            </div>
+        </div>
+        <button type="button" class="doneBtn" onclick="referralFee()">DONE</button>
+    </div>
+
+
+<div class="addVehicleForm referralFee">
+        <div id="referralFeeContainer" class="referralFeeContainer">
+            <label for="referralFee">Enter Referral Fee:</label>
+            <div class="inputContainer">
+                <i class="fas fa-dollar-sign"></i>
+                <input type="number" name="referralFee" class="referralFee" id="referralFee">
+            </div>
+        </div>
+        <button type="button" class="doneBtn" onclick="AddVehicleStep()">DONE</button>
+</div>
+
+
+<div class="addVehicleForm vehicleAdded">
+    <div id="imageContainer">
+    </div>
+    <h3>Vehicle Added <i class="fas fa-check"></i></h3>
+    <button type="button" class="doneBtn" onclick="AddVehicleStep()">DONE</button>
+</div>
+
+
+
+</body>
+</html>
+
+
+

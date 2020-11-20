@@ -50,7 +50,7 @@ function PopulateVehicle() {
 	DisplayVehicle(gDealer).then(function (vehicle) {
 		var html = '';
 		for (var i = 0; i != vehicle.length; i++) {
-			html = html + '<li class="activeListingListItem" id="' + vehicle[i].vin + '" onclick="ViewVehicle(\'' + vehicle[i].vin + '\',\'' + vehicle[i].dealerId + '\');">';
+			html = html + '<li class="activeListingListItem" id="' + vehicle[i].vin + '" >';
 			var text = '';
 			if (vehicle[i].links !== undefined) {
 				if (vehicle[i].links[0] !== undefined) {
@@ -59,8 +59,8 @@ function PopulateVehicle() {
 					}
 				}
 			}
-			html = html + '    <img src="' + text + '" alt="" class="listingImage">';
-			html = html + '    <div class="listingInfo">';
+			html = html + '    <img src="' + text + '" alt="" class="listingImage" onclick="ViewVehicle(\'' + vehicle[i].vin + '\',\'' + vehicle[i].dealerId + '\');">';
+			html = html + '    <div class="listingInfo" onclick="ViewVehicle(\'' + vehicle[i].vin + '\',\'' + vehicle[i].dealerId + '\');">';
 			html = html + '        <h4 class="listingName">' + vehicle[i].year + ' ' + vehicle[i].make + ' ' + vehicle[i].model + '</h4>';
 			html = html + '        <p class="listingPrice">$' + vehicle[i].msrp + '</p>';
 			html = html + '        <p  class="listingViews">4420 views</p>';

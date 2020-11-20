@@ -22,8 +22,33 @@ const addVehicleStepThree = document.querySelector('.addVehicleStepThree');
 const addVehicleStepFour = document.querySelector('.addVehicleStepFour');
 const addVehicleStepFive = document.querySelector('.addVehicleStepFive');
 const addVehicleStepSix = document.querySelector('.addVehicleStepSix');
+const addVehicleStepSeven = document.querySelector('.addVehicleStepSeven');
+const addVehicleStepEight = document.querySelector('.addVehicleStepEight');
+const addVehicleStepNine = document.querySelector('.addVehicleStepNine');
 const vehicleAdded = document.querySelector('.vehicleAdded');
 var addVehicleStepCount = 1;
+
+const goToStepOne = () => {
+    const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
+    addVehicleStepTwo.style = "display:Flex; opacity:0; transition:0.5s;";
+    setTimeout(ShowAddVehicleStepOne, 600);
+}
+
+const ShowAddVehicleStepOne = () => {
+    const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
+    const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
+    addVehicleStepOne.style = "display:Flex; opacity:0;";
+    addVehicleStepTwo.style = "display:none;";
+    document.querySelector('#vinNum').value = "";
+    setTimeout(FadeVehicleStepOne, 10);
+    addVehicleStepCount = 1;
+}
+const FadeVehicleStepOne = () => {
+    const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
+    addVehicleStepOne.style = "opacity:1; transition:0.5s;";
+}
+
+
 const AddVehicleStep = () => {
     if(addVehicleStepCount == 1){
         const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
@@ -65,25 +90,81 @@ const AddVehicleStep = () => {
     }
     else if(addVehicleStepCount == 6){
         const addVehicleStepSix = document.querySelector('.addVehicleStepSix');
-        const vehicleAdded = document.querySelector('.vehicleAdded');
+        const addVehicleStepSeven = document.querySelector('.addVehicleStepSeven');
         addVehicleStepSix.style = "display:Flex; opacity:0; transition:0.5s;";
+        addVehicleStepSeven.style = "display:Flex;";
+        addVehicleStepCount++;
+        setTimeout(ShowAddVehicleStepSeven, 600);
+    }
+    else if(addVehicleStepCount == 7){
+        const addVehicleStepSeven = document.querySelector('.addVehicleStepSeven');
+        const addVehicleStepEight = document.querySelector('.addVehicleStepEight');
+        addVehicleStepSeven.style = "display:Flex; opacity:0; transition:0.5s;";
+        addVehicleStepEight.style = "display:Flex;";
+        addVehicleStepCount++;
+        setTimeout(ShowAddVehicleStepEight, 600);
+    }
+    else if(addVehicleStepCount == 8){
+        const addVehicleStepEight = document.querySelector('.addVehicleStepEight');
+        const addVehicleStepNine = document.querySelector('.addVehicleStepNine');
+        addVehicleStepEight.style = "display:Flex; opacity:0; transition:0.5s;";
+        addVehicleStepNine.style = "display:Flex;";
+        addVehicleStepCount++;
+        setTimeout(ShowAddVehicleStepNine, 600);
+    }
+    else if(addVehicleStepCount == 9){
+        const addVehicleStepNine = document.querySelector('.addVehicleStepNine');
+        const vehicleAdded = document.querySelector('.vehicleAdded');
+        addVehicleStepNine.style = "display:Flex; opacity:0; transition:0.5s;";
         vehicleAdded.style = "display:Flex;";
         addVehicleStepCount++;
         setTimeout(AddedSuccessful, 600);
     }
-    else if(addVehicleStepCount == 7){
+    else if(addVehicleStepCount == 10){
         const vehicleAdded = document.querySelector('.vehicleAdded');
         vehicleAdded.style = "display:Flex; opacity:0; transition:0.5s;";
         setTimeout(AddingDone, 600);
     }
 };
 
-const ShowAddVehicleStepOne = () => {
-    const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
+const AfterReferralFee = () => {
+    const referralFee = document.querySelector('.referralFee');
     const vehicleAdded = document.querySelector('.vehicleAdded');
-    addVehicleStepOne.style = "display:Flex; opacity:1; transition:0.5s;";
-    vehicleAdded.style = "display:none;";
+    referralFee.style = "display:Flex; opacity:0; transition:0.5s;";
+    vehicleAdded.style = "display:Flex;";
+    addVehicleStepCount++;
+    setTimeout(AddingSuccess, 600);
 }
+
+const AddingSuccess = () => {
+    const vehicleAdded = document.querySelector('.vehicleAdded');
+    const referralFee = document.querySelector('.referralFee');
+    vehicleAdded.style = "display:Flex; opacity:1; transition:0.5s;";
+    referralFee.style = "display:none;";
+}
+
+const EnterRetailPrice = () => {
+    const addVehicleStepNine = document.querySelector('.addVehicleStepEight');
+    const RetailPrice = document.querySelector('.RetailPrice');
+    addVehicleStepNine.style = "display:Flex; opacity:0; transition:0.5s;";
+    RetailPrice.style = "display:Flex;";
+    setTimeout(ShowRetailPrice(), 600);
+}
+
+const referralFee = () => {
+    const RetailPrice = document.querySelector('.RetailPrice');
+    const referralFee = document.querySelector('.referralFee');
+    RetailPrice.style = "display:Flex; opacity:0; transition:0.5s;";
+    referralFee.style = "display:Flex;";
+    setTimeout(ShowReferralFee(), 600);
+}
+
+// const ShowAddVehicleStepOne = () => {
+//     const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
+//     const vehicleAdded = document.querySelector('.vehicleAdded');
+//     addVehicleStepOne.style = "display:Flex; opacity:1; transition:0.5s;";
+//     vehicleAdded.style = "display:none;";
+// }
 
 const AddingDone = () => {
     const addPostingContainer = document.querySelector('.addPostingContainer');
@@ -107,6 +188,13 @@ const ResetForms = () => {
     document.querySelector('#photos-input').value = "";
     $("#thumbnailContainer").empty();
 }
+
+// const ShowAddVehicleStepOne = () => {
+//     const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
+//     const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
+//     addVehicleStepOne.style = "display:Flex; opacity:1; transition:0.5s;";
+//     addVehicleStepTwo.style = "display:none";
+// }
 
 const ShowAddVehicleStepTwo = () => {
     const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
@@ -143,12 +231,49 @@ const ShowAddVehicleStepSix = () => {
     addVehicleStepFive.style = "display:none;";
 }
 
-const AddedSuccessful = () => {
-    const vehicleAdded = document.querySelector('.vehicleAdded');
+const ShowAddVehicleStepSeven = () => {
+    const addVehicleStepSeven = document.querySelector('.addVehicleStepSeven');
     const addVehicleStepSix = document.querySelector('.addVehicleStepSix');
-    vehicleAdded.style = "display:Flex; opacity:1; transition:0.5s;";
+    addVehicleStepSeven.style = "display:Flex; opacity:1; transition:0.5s;";
     addVehicleStepSix.style = "display:none;";
 }
+
+const ShowAddVehicleStepEight = () => {
+    const addVehicleStepEight = document.querySelector('.addVehicleStepEight');
+    const addVehicleStepSeven = document.querySelector('.addVehicleStepSeven');
+    addVehicleStepEight.style = "display:Flex; opacity:1; transition:0.5s;";
+    addVehicleStepSeven.style = "display:none;";
+}
+
+const ShowAddVehicleStepNine = () => {
+    const addVehicleStepNine = document.querySelector('.addVehicleStepNine');
+    const addVehicleStepEight = document.querySelector('.addVehicleStepEight');
+    addVehicleStepNine.style = "display:Flex; opacity:1; transition:0.5s;";
+    addVehicleStepEight.style = "display:none;";
+}
+
+const ShowRetailPrice = () => {
+    const RetailPrice = document.querySelector('.RetailPrice');
+    const addVehicleStepNine = document.querySelector('.addVehicleStepNine');
+    RetailPrice.style = "display:Flex; opacity:1; transition:0.5s;";
+    addVehicleStepNine.style = "display:none;";
+}
+
+const ShowReferralFee = () => {
+    const referralFee = document.querySelector('.referralFee');
+    const RetailPrice = document.querySelector('.RetailPrice');
+    referralFee.style = "display:Flex; opacity:1; transition:0.5s;";
+    RetailPrice.style = "display:none;";
+}
+
+const AddedSuccessful = () => {
+    const vehicleAdded = document.querySelector('.vehicleAdded');
+    const addVehicleStepNine = document.querySelector('.addVehicleStepNine');
+    vehicleAdded.style = "display:Flex; opacity:1; transition:0.5s;";
+    addVehicleStepNine.style = "display:none;";
+}
+
+
 
 var loadFile = function(event) {
 	var html="";
@@ -244,6 +369,16 @@ const addQuarterPanelImage = () =>{
 
 const uploadQuarterPanelImage = () =>{
     const uploadBtn = document.querySelector(`#uploadQuarterPanelBtn`);
+    uploadBtn.click();
+}
+
+const addCarDocumentsImage = () =>{
+        const fileBtn = document.querySelector(`#carDocuments-photos-input`);
+        fileBtn.click();
+}
+
+const uploadCarDocumentsImage = () =>{
+    const uploadBtn = document.querySelector(`#uploadCarDocumentsBtn`);
     uploadBtn.click();
 }
 

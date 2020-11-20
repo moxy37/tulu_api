@@ -27,8 +27,20 @@ function MakeNewVehicle() {
         // alert(JSON.stringify(vehicle));
         gVehicle = vehicle;
         LoadVehicleInfo(vehicle);
+        DisplayVehicleInitialInfo(vehicle);
         AddVehicleStep();
     });
+}
+
+
+function DisplayVehicleInitialInfo(results) {
+    var html = '';
+    html = html + ' <h3 class="initialInfo">'+results.year +'&nbsp'+ results.make +'&nbsp'+ results.model +'&nbsp'+ results.trim+'</h3>';
+    html = html + ' <button type="button" class="nextBtn" onclick="AddVehicleStep()">CONTINUE WITH THIS VEHICLE?</button>';
+    html = html + ' <button type="button" class="nextBtn" onclick="goToStepOne()">ENTER ANOTHER VIN</button>';
+
+    $("#addVehicleStepTwo").empty();
+    $("#addVehicleStepTwo").append(html);
 }
 
 
@@ -90,8 +102,8 @@ function LoadVehicleInfo(results) {
     html = html + '        <button type="button" class="nextBtn" onclick="AddVehicleStep()">NEXT</button>';
     html = html + ' </section>';
 
-    $("#addVehicleStepTwo").empty();
-    $("#addVehicleStepTwo").append(html);
+    $("#addVehicleStepThree").empty();
+    $("#addVehicleStepThree").append(html);
 }
 
 function LoadAddPosting() {
@@ -112,8 +124,21 @@ function LoadAddPosting() {
     html = html + '    <div  class="addVehicleForm addVehicleStepTwo" id="addVehicleStepTwo">';
     html = html + '';
     html = html + '    </div>';
-    html = html + '    <div class="addVehicleForm addVehicleStepThree" id="addVehicleStepThree">';
+    html = html + '    <div  class="addVehicleForm addVehicleStepThree" id="addVehicleStepThree">';
+    html = html + '';
+    html = html + '    </div>';
+
+
+    html = html + '    <div class="addVehicleForm addVehicleStepFour" id="addVehicleStepFour">';
+    html = html + '        <label for="mileage">Enter Car`s Mileage :</label>';
+    html = html + '        <div class="inputContainer">';
+    html = html + '            <input type="text" id="mileage" class="mileage" name="mileage" value="">';
+    html = html + '        </div>';
+    html = html + '         <button type="button" class="doneBtn" onclick="AddVehicleStep()">NEXT</button>';
     
+    html = html + '     </div>';
+    
+    html = html + '    <div class="addVehicleForm addVehicleStepFive" id="addVehicleStepFive">';
 
     html = html + '    <div class="carDetails">';
     html = html + '         <p>Car Details :</p>';
@@ -242,42 +267,11 @@ function LoadAddPosting() {
     html = html + '         </div>';
     html = html + '         <button type="button" class="doneBtn" onclick="AddVehicleStep()">NEXT</button>';
     html = html + '     </div>';
-    html = html + '     </div>';
     
-    html = html + '    <div class="addVehicleForm addVehicleStepFour" id="addVehicleStepFour">';
-    html = html + '        <label for="mileage">Enter Car`s Mileage :</label>';
-    html = html + '        <div class="inputContainer">';
-    html = html + '            <input type="text" id="mileage" class="mileage" name="mileage" value="">';
-    html = html + '        </div>';
-    html = html + '         <button type="button" class="doneBtn" onclick="AddVehicleStep()">NEXT</button>';
     html = html + '    </div>';
     
-    html = html + '    <div class="addVehicleForm addVehicleStepFive" id="addVehicleStepFive">';
-    // html = html + '			<div class="checkBoxContainer">';
-    // html = html + '			    <input type="checkbox" name="wholeSalePriceCheckbox" onchange="wholeSalePriceChecked()" />';
-    // html = html + '			    <label for="wholeSalePriceCheckbox">Add wholesale price</label>';
-    // html = html + '			</div>';
-    // html = html + '			<div id="wholeSalePriceContainer" class="hide">';
-    // html = html + '			    <p>$</p>';
-    // html = html + '			    <input type="text" id="wholeSalePrice"value="">';
-    // html = html + '			</div>';
-    html = html + '			<div id="maxPriceContainer" class="maxPriceContainer">';
-    html = html + '			    <label for="maxPrice">Max Price:</label>';
-    html = html + '             <div class="inputContainer">';
-    html = html + '                 <i class="fas fa-dollar-sign"></i>';
-    html = html + '			        <input type="number" name="maxPrice" class="maxPrice" id="maxPrice">';
-    html = html + '			    </div>';
-    html = html + '			</div>';
-    html = html + '			<div id="minPriceContainer" class="minPriceContainer">';
-    html = html + '			    <label for="minPrice">Min Price:</label>';
-    html = html + '             <div class="inputContainer">';
-    html = html + '                 <i class="fas fa-dollar-sign"></i>';
-    html = html + '			        <input type="number" name="minPrice" class="minPrice" id="minPrice">';
-    html = html + '			    </div>';
-    html = html + '			</div>';
-    html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">NEXT</button>';
-    html = html + '    </div>';
-    html = html + '    <div  class="addVehicleForm addVehicleStepSix" id="addVehicleStepSix">';
+    html = html + '    <div class="addVehicleForm addVehicleStepSix" id="addVehicleStepSix">';
+
     html = html + '        <label for="carDescription">Addition Description :</label>';
     html = html + '        <div class="inputContainer">';
     html = html + '            <textarea type="text" id="carDescription" class="carDescription" name="carDescription"></textarea>';
@@ -297,23 +291,83 @@ function LoadAddPosting() {
     html = html + '	</form>';
     html = html + '';
     html = html + '        <button type="button" class="submitBtn" onclick="SaveNewVehicle()">SUBMIT</button>';
+
+    
+    html = html + '    </div>';
+    html = html + '    <div  class="addVehicleForm addVehicleStepSeven" id="addVehicleStepSeven">';
+    
+    html = html + '             <label>';
+    html = html + '                 Upload Pictures of your Car Documents:';
+    html = html + '             </label>';
+    html = html + '             <div class="imageContainer" id="carDocumentsImageContainer">';
+    
+    html = html + '             </div>';
+    html = html + '             <button class="doneBtn" onclick="addCarDocumentsImage()">UPLOAD CAR DOCUMENTS</button>';
+    
+    html = html + '<form id="upload-carDocuments-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">';
+    html = html + '		<div class="form-group" style="display:none;">';
+    html = html + '			<label for="carDocuments-photos-input">Load Image</label>';
+    html = html + '			<input id="carDocuments-photos-input" type="file" name="photos[]" onchange="SubmitCarDocumentsImage()" multiple="multiple" accept="image/*" capture />';
+    html = html + '		<input class="btn btn-default" id="uploadcarDocumentsBtn" style="display:none;" type="testsubmit" name="Photo Uploads" value="Upload" />';
+    html = html + '		</div>';
+    html = html + '		<input type="hidden" name="csrf_token" value="just_a_text_field" />';
+    html = html + '	</form>';
+
+
+
+
+    html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">NEXT</button>';
+    html = html + '    </div>';
+    
+    html = html + '    <div  class="addVehicleForm addVehicleStepEight" id="addVehicleStepEight">';
+    html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">CONTINUE</button>';
     html = html + '    </div>';
 
-    html = html + '    <div class="addVehicleForm vehicleAdded">';
-    html = html + '    <div id="imageContainer">';
+
+    html = html + '    <div  class="addVehicleForm addVehicleStepNine" id="addVehicleStepNine">';
+    html = html + '        <button type="button" class="doneBtn" onclick="EnterRetailPrice()">ENTER RETAIL PRICE</button>';
+    html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">EXIT & SAVE</button>';
     html = html + '    </div>';
-    html = html + '        <h3>Vehicle Added <i class="fas fa-check"></i></h3>';
-    html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">DONE</button>';
-    html = html + '    </div>';
-    html = html + '</div>';
+
+html = html + '    <div class="addVehicleForm RetailPrice">';
+html = html + '         <div id="maxPriceContainer" class="maxPriceContainer">';
+html = html + '             <label for="maxPrice">Max Price:</label>';
+html = html + '             <div class="inputContainer">';
+html = html + '                 <i class="fas fa-dollar-sign"></i>';
+html = html + '                 <input type="number" name="maxPrice" class="maxPrice" id="maxPrice">';
+html = html + '             </div>';
+html = html + '         </div>';
+html = html + '         <div id="minPriceContainer" class="minPriceContainer">';
+html = html + '             <label for="minPrice">Min Price:</label>';
+html = html + '             <div class="inputContainer">';
+html = html + '                 <i class="fas fa-dollar-sign"></i>';
+html = html + '                 <input type="number" name="minPrice" class="minPrice" id="minPrice">';
+html = html + '             </div>';
+html = html + '         </div>';
+html = html + '         <button type="button" class="doneBtn" onclick="referralFee()">DONE</button>';
+html = html + '     </div>';
+html = html + '     <div class="addVehicleForm referralFee">';
+html = html + '         <div id="referralFeeContainer" class="referralFeeContainer">';
+html = html + '             <label for="referralFee">Enter Referral Fee:</label>';
+html = html + '             <div class="inputContainer">';
+html = html + '                 <i class="fas fa-dollar-sign"></i>';
+html = html + '                 <input type="number" name="minPrice" class="minPrice" id="minPrice">';
+html = html + '             </div>';
+html = html + '         </div>';
+html = html + '         <button type="button" class="doneBtn" onclick="AfterReferralFee()">DONE</button>';
+html = html + '     </div>';
+html = html + '     <div class="addVehicleForm vehicleAdded">';
+html = html + '         <div id="imageContainer">';
+html = html + '         </div>';
+html = html + '         <h3>Vehicle Added <i class="fas fa-check"></i></h3>';
+html = html + '         <button type="button" class="doneBtn" onclick="AddVehicleStep()">DONE</button>';
+html = html + '     </div>';
 
     $("#AddPostingContainer").empty();
     $("#AddPostingContainer").append(html);
 
     
 }
-
-
 
 function SubmitFrontBumperImage() {
     var files = $('#frontBumper-photos-input').get(0).files;
@@ -388,6 +442,21 @@ function SubmitQuarterPanelImage() {
     }
     console.log(files)
     UploadQuarterPanelFiles(formData);
+};
+
+function SubmitCarDocumentsImage() {
+    var files = $('#carDocuments-photos-input').get(0).files;
+    var formData = new FormData();
+    if (files.length === 0) { return false; }
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var temp = String(file.name).split('.');
+        myExt = temp.slice(-1)[0];
+        uid = CreateUUID();
+        formData.append('photos[]', file, file.name);
+    }
+    console.log(files)
+    UploadCarDocumentsFiles(formData);
 };
 
 function UploadFrontBumperFiles(formData) {
@@ -576,6 +645,42 @@ function UploadQuarterPanelFiles(formData) {
         }
         $("#quarterPanelImageContainer").empty();
         $("#quarterPanelImageContainer").append(html);
+    }).fail(function (xhr, status) {
+        alert(status);
+    });
+}
+
+function UploadCarDocumentsFiles(formData) {
+    $.ajax({
+        headers: {
+            'vin': gVehicle.vin,
+            'dealerid': gVehicle.dealerId,
+            'tokenid': tokenId,
+            'uuid': uid,
+            'myext': myExt
+        },
+        url: '/api/file/upload',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        xhr: function () {
+            var xhr = new XMLHttpRequest();
+            return xhr;
+        }
+    }).done(function (o) {  
+        o.sequence = gVehicle.links.length;
+        o.type = "carDocuments";
+        gVehicle.links.push(o);
+
+        var html = '';
+        for (var i = 0; i < gVehicle.links.length; i++) {
+            if(gVehicle.links[i].type=="carDocuments"){
+                html += '<img  class="thumbNail" src="' + gVehicle.links[i].url + '" />';
+            }
+        }
+        $("#carDocumentsImageContainer").empty();
+        $("#carDocumentsImageContainer").append(html);
     }).fail(function (xhr, status) {
         alert(status);
     });
