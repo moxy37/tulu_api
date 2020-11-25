@@ -13,11 +13,11 @@ function PageLoadFunction() {
 	getVehicles();
 }
 
-function getVehicles(){
-	
+function getVehicles() {
+
 	console.log(gUser.roles)
-	for(var i = 0;i!= gUser.roles.length;i++){
-		if(gUser.roles[i].role == "Dealer" ||gUser.roles[i].role == "DealerAdmin"){
+	for (var i = 0; i != gUser.roles.length; i++) {
+		if (gUser.roles[i].role == "Dealer" || gUser.roles[i].role == "DealerAdmin") {
 			console.log(gUser.roles[i].targetId);
 			dId = gUser.roles[i].targetId;
 		}
@@ -25,23 +25,23 @@ function getVehicles(){
 
 	DisplayVehicle(dId).then(function (vehicleList) {
 		gVehicles = vehicleList;
-		var html =	'';
+		var html = '';
 		$("#vehicleContainer").empty();
-		for(var i = 0; i != vehicleList.length; i++){
-			html+='<li>';
-			html+='	<div class="image">';
-			html+='	<img src='+vehicleList[i].image+'>';
-			html+='	</div>';
-			html+='	<div class="userInfo">';
-			html+='		<p>'+vehicleList[i].year+" "+vehicleList[i].make+" "+vehicleList[i].model+'</p>';
-			html+='		<p>'+vehicleList[i].msrp+'</p>';
-			html+='		<p>0 views</p>';
-			html+='	</div>';
-			html+='	<div class="control">';
-			html+='		<i class="far fa-edit" onclick="showEditVehicle('+i+')"></i>';
-			html+='		<i class="far fa-trash-alt" onclick="deleteVehicle('+i+')"></i>';
-			html+='	</div>';
-			html+='</li>';
+		for (var i = 0; i != vehicleList.length; i++) {
+			html += '<li>';
+			html += '	<div class="image">';
+			html += '	<img src=' + vehicleList[i].image + '>';
+			html += '	</div>';
+			html += '	<div class="userInfo">';
+			html += '		<p>' + vehicleList[i].year + " " + vehicleList[i].make + " " + vehicleList[i].model + '</p>';
+			html += '		<p>' + vehicleList[i].msrp + '</p>';
+			html += '		<p>0 views</p>';
+			html += '	</div>';
+			html += '	<div class="control">';
+			html += '		<i class="far fa-edit" onclick="showEditVehicle(' + i + ')"></i>';
+			html += '		<i class="far fa-trash-alt" onclick="deleteVehicle(' + i + ')"></i>';
+			html += '	</div>';
+			html += '</li>';
 		}
 		$("#vehicleContainer").append(html);
 	});
@@ -67,15 +67,15 @@ async function DisplayVehicle(dId) {
 	return results;
 }
 
-function showAddNewVehicle(){
+function showAddNewVehicle() {
 	document.querySelector(".addNewVehicle").style = "display:flex;";
 }
 
-function hideAddNewVehicle(){
+function hideAddNewVehicle() {
 	document.querySelector(".addNewVehicle").style = "display:none;";
 }
 
-function showEditVehicle(index){
+function showEditVehicle(index) {
 	document.querySelector(".editVehicle").style = "display:flex;";
 
 	gIndex = index;
@@ -86,45 +86,50 @@ function showEditVehicle(index){
 	document.querySelector(".editVehicle").style = "display:flex;";
 }
 
-function hideEditVehicle(){
+function hideEditVehicle() {
 	document.querySelector(".editVehicle").style = "display:none;";
 }
 
-function saveEdit(){
+function saveEdit() {
 	var i = gIndex;
 	console.log(gVehicles)
-	gVehicles[gIndex].msrp=$("#price").val();
-	gVehicles[gIndex].engineName=$("#engine").val();
-	gVehicles[gIndex].colorName=$("#color").val();
+	gVehicles[gIndex].msrp = $("#price").val();
+	gVehicles[gIndex].engineName = $("#engine").val();
+	gVehicles[gIndex].colorName = $("#color").val();
 	alert('Save Edit');
 }
 
-function saveVehicle(){
+function saveVehicle() {
 	alert('Save Vehicle');
 }
 
 
-function deleteVehicle(index,dId){
+function deleteVehicle(index, dId) {
 
 	alert('Delete Vehicle');
 	gIndex = index;
 	var n = new Array;
-	for(var i = 0; i != gVehicles.length;i++){
+	var vehicle = null;
+	for (var i = 0; i != gVehicles.length; i++) {
 		// console.log(gVehicles[i].vin);
 		// console.log(gVehicles[gIndex].vin);
 		// console.log(gVehicles[gIndex]);
-		if(gVehicles[i].vin == gVehicles[gIndex].vin){
+		if (gVehicles[i].vin == gVehicles[gIndex].vin) {
 			n = gVehicles[gIndex].vin;
+			vehicle = gVehicles[i];
 		}
-	}	
+	}
 
 	// console.log(n)
 
 	// gVehicles = n;
+	if (vehicle !== null) {
+		TestDeleteVehicle(vehicle).then(function () {
 
-	UpdateVehicle(gVehicles).then(function () {
-		
-	})
+		});
+	} else {
+		alert("Nothing selected");
+	}
 	// 	gVehicles = vehicles;
 	// 	console.log(n);
 	// 	// DisplayVehicle(dId).then(function (vehicleList) {});
@@ -139,7 +144,24 @@ function deleteVehicle(index,dId){
 	// });
 }
 
-
+async function TestDeleteVehicle(vehicle) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.vehicle = vehicle;
+	const results = await $.ajax({
+		type: "PUT",
+		url: "/api/vehicle/delete",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return results;
+}
 async function UpdateVehicle(gVehicles) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
@@ -198,7 +220,7 @@ async function UpdateVehicle(gVehicles) {
 // 		error: function (results) { console.log(results.statusText); },
 // 	});
 // 	return result;
-	
+
 // }
 
 
@@ -282,7 +304,7 @@ async function UpdateVehicle(gVehicles) {
 // 	currVin = gVehicles[index].vin
 // 	var vehicle = newVehicleList;
 // 	console.log(vehicle);
-	
+
 
 // 	RemoveVehicle(vehicle,dId).then(function (vehicle) {
 // 		gVehicles.push(vehicle);
