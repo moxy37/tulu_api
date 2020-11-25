@@ -69,7 +69,8 @@ function MessageDAO() {
 				whereAdded = truel
 				sql += "WHERE ";
 			}
-			sql += "`senderId` = ? ";
+			sql += "(`senderId` = ? OR `targetId`=?) ";
+			params.push(obj.senderId);
 			params.push(obj.senderId);
 		}
 		if (obj.targetId !== undefined && obj.targetId !== '') {
