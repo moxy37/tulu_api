@@ -10,12 +10,14 @@ var messageDao = new MessageDAO();
 router = express.Router();
 
 /**
- * id
- * type
- * senderId
+ * id - optional
+ * type - what time, right now just message - ptional
+ * senderId - the user in question - not optional
  * targetId - the dealership or user getting the message - left empty if not decided
  * dealerId - the dealership the car is at
  * vin - the vin of the car
+ * isRead - determine if only unread or not. 0 is not read
+ * 
  * */
 router.put('/api/message/list', function (req, res) {
 	var obj = req.body;
