@@ -22,7 +22,9 @@ router.get('/test_vin/:vin', function (req, res) {
 });
 
 
-
+router.get('/car_photo', function (req, res) {
+    res.render('core/carPhotoTest');
+});
 
 router.get('/barcode_malik', function (req, res) {
     res.render('core/barcode_malik');

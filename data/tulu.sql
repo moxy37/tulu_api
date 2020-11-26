@@ -38,6 +38,7 @@ CREATE TABLE `Vehicle` (
 	`wholeSalePrice` FLOAT,
 	`minPrice` FLOAT,
 	`maxPrice` FLOAT,
+	`refferalFee` FLOAT,
 	`mileage` INTEGER,
 	`engineName` VARCHAR(255),
 	`engineBrand` VARCHAR(255), 

@@ -13,6 +13,7 @@ async function GetVehicle(vin, dealerId) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
+			console.log(results);
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
@@ -56,7 +57,7 @@ async function DisplayVehicle(dealerId) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-			// console.log(results);
+			console.log(results);
 		},
 		error: function (results) { console.log(results.statusText); },
 	});

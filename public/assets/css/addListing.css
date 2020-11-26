@@ -39,6 +39,16 @@
     align-items: center;
 }
 
+.addVehicleStepEight h3{
+    color:white;
+    flex-direction: row;
+}
+
+.addVehicleStepEight h3 i{
+    color:white;
+    margin:0 0 0 10px;
+}
+
 .referralFee,.RetailPrice{
     justify-content: center;
     align-items: center;
@@ -353,4 +363,10 @@
     border:1px solid white;
     border-radius: 10px;
     padding:5px 10px;
+}
+
+.Calculated,.calculatedReferralFee{
+    text-align: center;
+    color:white;
+    margin:20px 0 0 0;
 }

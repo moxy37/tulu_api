@@ -1,4 +1,17 @@
 Lord's to do list
+
+
+MESSAGE
+>page
+>new to create
+>save to send
+>list to display
+
+
+how tulu share
+
+how to book appointment
+
 >add pictures
 >picture editing page
 	>delete cars

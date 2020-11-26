@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/assets/webfonts/styles/all.css">
 	<link rel="stylesheet" href="/assets/css/reset.css">
 	<link rel="stylesheet" href="/assets/css/nav.css">
-	<link rel="stylesheet" href="/assets/css/contactUs.css">
+	<link rel="stylesheet" href="/assets/css/carPhotoTest.css">
 	<link rel="stylesheet" href="/assets/css/footer.css">
 
     <script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
@@ -19,29 +19,37 @@
 	<nav id="Nav"></nav>
 	<!-- SIDEMENU -->
 	<div id ="SideMenu"class="sideMenu"></div>
-	<div class="contactUs">
-		<div>
-			<label for="">Name:</label>
-			<input type="text">
-			<label for="">Email:</label>
-			<input type="text">
-			<label for="">Phone Number:</label>
-			<input type="text">
-			<label for="">Message:</label>
-			<textarea name="" id="" cols="30" rows="10"></textarea>
-			<button>SEND</button>
-		</div>
-	</div>
 
-	<!-- FOOTER -->
-	<footer id="Footer"></footer>
+	<div class="wrapper">
+		  <!-- Video Element & Canvas -->
+		  <div class="play-area">
+			<div class="play-area-sub">
+			  <div class="imageContainer">
+				<video id="stream"></video>
+				<div class="xContainer">
+					<h3>X</h3>
+					<h3>X</h3>
+				</div>
+				<canvas id="capture"></canvas>
+				<div id="snapshot"></div>
+			  </div>
+			  <p class="instructions">Align the marks on your vehicle's headlights</p>
+			  <div class="button-group">
+				<button id="btn-capture" type="button" class="button">CAPTURE</i></button>
+			</div>
+			</div>
+
+			
+
+
+		  </div>
+		  
+		  <div class="dl"></div>
+	</div>
 </body>
 <script src="/assets/js/global.js"></script>
 <script src="/javascripts/client/components/nav.js"></script>
-<script src="/javascripts/client/components/footer.js"></script>
-
 <script src="/assets/js/sideMenu.js"></script>
-
-<script src="/assets/js/contactView.js"></script>
+<script src="/assets/js/carPhotoTest.js"></script>
 
 </html>

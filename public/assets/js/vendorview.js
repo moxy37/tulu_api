@@ -48,6 +48,7 @@ async function GetDealer(id) {
 
 function PopulateVehicle() {
 	DisplayVehicle(gDealer).then(function (vehicle) {
+		console.log(vehicle);
 		var html = '';
 		for (var i = 0; i != vehicle.length; i++) {
 			html = html + '<li class="activeListingListItem" id="' + vehicle[i].vin + '" >';

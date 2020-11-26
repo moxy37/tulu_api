@@ -290,7 +290,7 @@ function LoadAddPosting() {
     html = html + '     <button type="button" class="addImageBtn" onclick="addImage()">ADD PHOTOS</button>';
     html = html + '	</form>';
     html = html + '';
-    html = html + '        <button type="button" class="submitBtn" onclick="SaveNewVehicle()">SUBMIT</button>';
+    html = html + '        <button type="button" class="submitBtn" onclick="AddVehicleStep()">SUBMIT</button>';
 
     
     html = html + '    </div>';
@@ -320,13 +320,14 @@ function LoadAddPosting() {
     html = html + '    </div>';
     
     html = html + '    <div  class="addVehicleForm addVehicleStepEight" id="addVehicleStepEight">';
+    html = html + '        <h3>Vehicle Info Saved <i class="fas fa-check"></i></h3>';
     html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">CONTINUE</button>';
     html = html + '    </div>';
 
 
     html = html + '    <div  class="addVehicleForm addVehicleStepNine" id="addVehicleStepNine">';
     html = html + '        <button type="button" class="doneBtn" onclick="EnterRetailPrice()">ENTER RETAIL PRICE</button>';
-    html = html + '        <button type="button" class="doneBtn" onclick="AddVehicleStep()">EXIT & SAVE</button>';
+    html = html + '        <button type="button" class="doneBtn" onclick="SaveNewVehicle()">EXIT & SAVE</button>';
     html = html + '    </div>';
 
 html = html + '    <div class="addVehicleForm RetailPrice">';
@@ -347,14 +348,12 @@ html = html + '         </div>';
 html = html + '         <button type="button" class="doneBtn" onclick="referralFee()">DONE</button>';
 html = html + '     </div>';
 html = html + '     <div class="addVehicleForm referralFee">';
-html = html + '         <div id="referralFeeContainer" class="referralFeeContainer">';
-html = html + '             <label for="referralFee">Enter Referral Fee:</label>';
-html = html + '             <div class="inputContainer">';
-html = html + '                 <i class="fas fa-dollar-sign"></i>';
-html = html + '                 <input type="number" name="minPrice" class="minPrice" id="minPrice">';
-html = html + '             </div>';
+html = html + '         <div id="referralFeeContainer" class="referralFeeContainer">';      
+html = html + '             <h1 class="calculatedReferralFee"></h1>';
+html = html + '             <h3 class="Calculated">Automated Referral Fee</h3>';
 html = html + '         </div>';
-html = html + '         <button type="button" class="doneBtn" onclick="AfterReferralFee()">DONE</button>';
+html = html + '         <button type="button" class="doneBtn" onclick="manualOption()">Enter Referral Fee Manually</button>';
+html = html + '         <button type="button" class="doneBtn" onclick="SaveNewVehicleMoreInfo()">DONE</button>';
 html = html + '     </div>';
 html = html + '     <div class="addVehicleForm vehicleAdded">';
 html = html + '         <div id="imageContainer">';
@@ -365,8 +364,32 @@ html = html + '     </div>';
 
     $("#AddPostingContainer").empty();
     $("#AddPostingContainer").append(html);
+}
 
+var referralOption = 1;
+
+function manualOption(){
+    var html="";
+    if(referralOption == 1){
+        html += '<label for="referralFee">Enter Referral Fee:</label>';
+        html += '<div class="inputContainer">';
+        html += '    <i class="fas fa-dollar-sign"></i>';
+        html += '    <input type="number" name="referralFee" class="referralFee" id="referralFee">';
+        html += '</div>';
+        referralOption ++;
+    }else{
+
+        var minPrice = Number($("#minPrice").val());
+        var maxPrice = Number($("#maxPrice").val());
+        var referralFee = (maxPrice - minPrice) * 0.25;
+
+        html = html + '             <h1 class="calculatedReferralFee">$ '+referralFee+'</h1>';
+        html = html + '             <h3 class="Calculated">Automated Referral Fee</h3>';
+        referralOption = 1;
+    }
     
+    $(".referralFeeContainer").empty();
+    $(".referralFeeContainer").append(html);
 }
 
 function SubmitFrontBumperImage() {
@@ -672,7 +695,7 @@ function UploadCarDocumentsFiles(formData) {
         o.sequence = gVehicle.links.length;
         o.type = "carDocuments";
         gVehicle.links.push(o);
-
+        console.log(gVehicle.links);
         var html = '';
         for (var i = 0; i < gVehicle.links.length; i++) {
             if(gVehicle.links[i].type=="carDocuments"){
@@ -691,10 +714,25 @@ function SaveNewVehicle() {
     gVehicle.notes = $("#carDescription").val();
     gVehicle.minPrice = $("#minPrice").val();
     gVehicle.maxPrice = $("#maxPrice").val();
-    // gVehicle.maxPrice = $("#maxPrice").val();
     gVehicle.image = gVehicle.links[0].url;
     SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
         AddVehicleStep();
+        PopulateVehicle();
+    });
+}
+
+function SaveNewVehicleMoreInfo() {
+    gVehicle.notes = $("#carDescription").val();
+    gVehicle.minPrice = $("#minPrice").val();
+    gVehicle.maxPrice = $("#maxPrice").val();
+    gVehicle.image = gVehicle.links[0].url;
+    if(referralOption==1){
+        gVehicle.referralFee = referralFee;
+    }else{
+        gVehicle.referralFee = $("#referralFee").val();
+    }
+    SaveVehicle(gVehicle, dealerId).then(function (vehicle) {
+        AfterReferralFee();
         PopulateVehicle();
     });
 }

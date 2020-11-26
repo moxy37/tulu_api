@@ -73,7 +73,6 @@
     var html = "";
     $(document).ready(function(){
         $("#file-input").on('change',function(){
-            console.log("fuck you");
             console.log(inputField.value);
             html=html+'<img src="'+inputField.value+'">';	
 	        $("#imageContainer").append(html);

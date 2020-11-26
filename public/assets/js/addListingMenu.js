@@ -133,6 +133,7 @@ const AfterReferralFee = () => {
     referralFee.style = "display:Flex; opacity:0; transition:0.5s;";
     vehicleAdded.style = "display:Flex;";
     addVehicleStepCount++;
+    
     setTimeout(AddingSuccess, 600);
 }
 
@@ -144,11 +145,31 @@ const AddingSuccess = () => {
 }
 
 const EnterRetailPrice = () => {
-    const addVehicleStepNine = document.querySelector('.addVehicleStepEight');
+    const addVehicleStepNine = document.querySelector('.addVehicleStepNine');
     const RetailPrice = document.querySelector('.RetailPrice');
     addVehicleStepNine.style = "display:Flex; opacity:0; transition:0.5s;";
-    RetailPrice.style = "display:Flex;";
-    setTimeout(ShowRetailPrice(), 600);
+    RetailPrice.style = "display:Flex; opacity:0;";
+    setTimeout(ShowRetailPrice, 600);
+}
+
+function calculate(){
+    var minPrice = Number($("#minPrice").val());
+    var maxPrice = Number($("#maxPrice").val());
+    var referralFee = (maxPrice - minPrice) * 0.25;
+
+    var html = "$ "+ referralFee;
+
+    $(".calculatedReferralFee").empty;
+    $(".calculatedReferralFee").append(html);
+}
+
+
+
+const ShowRetailPrice = () => {
+    const RetailPrice = document.querySelector('.RetailPrice');
+    const addVehicleStepNine = document.querySelector('.addVehicleStepNine');
+    RetailPrice.style = "display:Flex; opacity:1; transition:0.5s;";
+    addVehicleStepNine.style = "display:none;";
 }
 
 const referralFee = () => {
@@ -156,15 +177,9 @@ const referralFee = () => {
     const referralFee = document.querySelector('.referralFee');
     RetailPrice.style = "display:Flex; opacity:0; transition:0.5s;";
     referralFee.style = "display:Flex;";
-    setTimeout(ShowReferralFee(), 600);
+    setTimeout(ShowReferralFee, 600);
 }
 
-// const ShowAddVehicleStepOne = () => {
-//     const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
-//     const vehicleAdded = document.querySelector('.vehicleAdded');
-//     addVehicleStepOne.style = "display:Flex; opacity:1; transition:0.5s;";
-//     vehicleAdded.style = "display:none;";
-// }
 
 const AddingDone = () => {
     const addPostingContainer = document.querySelector('.addPostingContainer');
@@ -189,12 +204,7 @@ const ResetForms = () => {
     $("#thumbnailContainer").empty();
 }
 
-// const ShowAddVehicleStepOne = () => {
-//     const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
-//     const addVehicleStepTwo = document.querySelector('.addVehicleStepTwo');
-//     addVehicleStepOne.style = "display:Flex; opacity:1; transition:0.5s;";
-//     addVehicleStepTwo.style = "display:none";
-// }
+
 
 const ShowAddVehicleStepTwo = () => {
     const addVehicleStepOne = document.querySelector('.addVehicleStepOne');
@@ -252,18 +262,14 @@ const ShowAddVehicleStepNine = () => {
     addVehicleStepEight.style = "display:none;";
 }
 
-const ShowRetailPrice = () => {
-    const RetailPrice = document.querySelector('.RetailPrice');
-    const addVehicleStepNine = document.querySelector('.addVehicleStepNine');
-    RetailPrice.style = "display:Flex; opacity:1; transition:0.5s;";
-    addVehicleStepNine.style = "display:none;";
-}
+
 
 const ShowReferralFee = () => {
     const referralFee = document.querySelector('.referralFee');
     const RetailPrice = document.querySelector('.RetailPrice');
     referralFee.style = "display:Flex; opacity:1; transition:0.5s;";
     RetailPrice.style = "display:none;";
+    calculate();
 }
 
 const AddedSuccessful = () => {
