@@ -31,18 +31,19 @@ function GetUser() {
 
 
 function getMessages() {
-	DisplayMessage(tokenId).then(function () {});
+	console.log(gUser)
+	DisplayMessage(tokenId,gUser).then(function () {});
 }
 
 function SendMessage(){
 	var message = $('#message').val();
-	SendMessage(tokenId,message).then(function () {});
+	SendMessage(tokenId,message,gUser).then(function () {});
 }
 
-async function SendMessage(tokenId,message) {
+async function SendMessage(tokenId,message,gUser) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
-	obj.id = '0167e373-15f1-11eb-83a2-e86a647a411d';
+	obj.id = gUser.id;
 	obj.message = message;
 	obj.senderId = '0167e373-15f1-11eb-83a2-e86a647a411d';
 	obj.targerId = '2de62f1e-1e05-11eb-b7cf-e86a647a411d';
@@ -64,8 +65,8 @@ async function SendMessage(tokenId,message) {
 async function DisplayMessage(tokenId,gUser) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
-	obj.id = '0167e373-15f1-11eb-83a2-e86a647a411d';
-	obj.senderId = '0167e373-15f1-11eb-83a2-e86a647a411d';
+	obj.id = gUser.id;
+	obj.senderId = gUser.id;;
 	obj.targerId = '2de62f1e-1e05-11eb-b7cf-e86a647a411d';
 	const results = await $.ajax({
 		type: "PUT",
