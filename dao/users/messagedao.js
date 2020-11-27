@@ -77,7 +77,7 @@ function MessageDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = true
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "`targetId` = ? ";
