@@ -46,7 +46,7 @@ function MessageDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = truel
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "`id` = ? ";
@@ -56,7 +56,7 @@ function MessageDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = truel
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "`dealerId` = ? ";
@@ -66,7 +66,7 @@ function MessageDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = truel
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "(`senderId` = ? OR `targetId`=?) ";
@@ -97,7 +97,7 @@ function MessageDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = truel
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "`vin` = ? ";
@@ -107,7 +107,7 @@ function MessageDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = truel
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "`isRead` = ? ";
