@@ -245,7 +245,7 @@ function VehicleDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = truel
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "`dealerId` IN (";
@@ -260,7 +260,7 @@ function VehicleDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = truel
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "`make` IN (";
@@ -275,7 +275,7 @@ function VehicleDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = truel
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "`model` IN (";
@@ -290,7 +290,7 @@ function VehicleDAO() {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
-				whereAdded = truel
+				whereAdded = true;
 				sql += "WHERE ";
 			}
 			sql += "`isSold` = ? ";
