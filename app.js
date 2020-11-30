@@ -70,6 +70,7 @@ process.on("uncaughtException", function (err) {
 app.use("/", require("./controllers/test/testcontroller"));
 app.use("/", require("./controllers/vehicle/vehiclecontroller"));
 app.use("/", require("./controllers/users/userscontroller"));
+app.use("/", require("./controllers/users/tulucontroller"));
 app.use("/", require("./controllers/users/messagecontroller"));
 app.use("/", require("./controllers/dealer/dealercontroller"));
 app.use("/", require("./controllers/core/helpercontroller"));

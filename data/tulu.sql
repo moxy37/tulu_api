@@ -131,6 +131,15 @@ CREATE TABLE `Tulus` (
 	`notes` VARCHAR(2048)
 );
 
+DROP TABLE IF EXISTS `TuluFavorite`;
+CREATE TABLE `TuluFavorite` (
+	`tuluId` VARCHAR(36) NOT NULL,
+	`vin` VARCHAR(255) NOT NULL,
+	`dealerId` VARCHAR(36) NOT NULL,
+	`timestamp` DATETIME DEFAULT NOW(),
+	PRIMARY KEY (`tuluId`, `vin`, `dealerId`)
+);
+
 DROP TABLE IF EXISTS `Rating`;
 CREATE TABLE `Rating` (
 	`targetId` VARCHAR(36),
