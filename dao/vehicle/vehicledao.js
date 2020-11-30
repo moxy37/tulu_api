@@ -26,56 +26,97 @@ function VehicleDAO() {
 			obj.timeline.push(tl);
 			self.vinDecode(tokenId, vin, function (err, r) {
 				var data = r['query_responses']['Request-Sample']['us_market_data']['common_us_data'];
-				obj.year = parseInt(data.basic_data.year);
-				obj.make = data.basic_data.make;
-				obj.model = data.basic_data.model;
-				obj.trim = data.basic_data.trim;
-				obj.vehicleType = data.basic_data.vehicle_type;
-				obj.bodyType = data.basic_data.body_type;
-				obj.doors = parseInt(data.basic_data.doors);
-				obj.modelNumber = data.basic_data.model_number;
-				obj.driveType = data.basic_data.drive_type;
-				obj.plant = data.basic_data.plant;
-				obj.msrp = parseFloat(data.pricing.msrp);
-				obj.engineName = data.engines[0].name;
-				obj.engineBrand = data.engines[0].brand;
-				obj.fuelType = data.engines[0].fuel_type;
-				obj.iceMaxHp = data.engines[0].ice_max_hp;
-				obj.iceMaxHpAt = data.engines[0].ice_max_hp_at;
-				obj.iceMaxTorque = data.engines[0].ice_max_torgue;
-				obj.iceMaxTorqueAt = data.engines[0].ice_max_torgue_at;
-				obj.maxPayload = data.engines[0].max_payload;
-				obj.transmissionName = data.transmissions[0].name;
-				obj.colorName = data.colors.exterior_colors[0].generic_color_name;
-				obj.colorHex = data.colors.exterior_colors[0].primary_rgb_code.hex;
+				obj.year = 0;
+				obj.make = '';
+				obj.model = '';
+				obj.trim = '';
+				obj.vehicleType = '';
+				obj.bodyType = '';
+				obj.doors = 0;
+				obj.modelNumber = '';
+				obj.plant = '';
+				obj.msrp = 0;
+				obj.engineName = '';
+				obj.engineBrand = '';
+				obj.fuelType = '';
+				obj.driveType = '';
+				obj.iceMaxHp = '';
+				obj.iceMaxHpAt = '';
+				obj.iceMaxTorque = '';
+				obj.iceMaxTorqueAt = '';
+				obj.maxPayload = '';
+				obj.transmissionName = '';
+				obj.colorHex = '';
+				obj.colorHex = '';
 				obj.wholeSalePrice = 0;
-				async.forEach(data.standard_specifications, function (ss, callback) {
-					if (ss.specification_category === 'Weights and Capacities') {
-						async.forEach(ss.specification_values, function (v, callback2) {
-							if (v.specification_name === 'Base Towing Capacity') {
-								obj.baseTowingCapacity = v.specification_value;
-								callback2();
-							} else if (v.specification_name === 'Gross Vehicle Weight Rating') {
-								obj.grossWeight = parseFloat(v.specification_value);
-								callback2();
-							} else if (v.specification_name === 'Fuel Tank Capacity') {
-								obj.fuelTankCapacity = parseFloat(v.specification_value);
-								callback2();
-							} else if (v.specification_name === 'Max Payload') {
-								obj.maxPayload = v.specification_value;
-								callback2();
-							} else {
-								callback2();
-							}
-						}, function (err) {
-							callback();
-						});
-					} else {
-						callback();
+
+				if (data.basic_data !== undefined) {
+					if (data.basic_data.year !== undefined) {
+						obj.year = parseInt(data.basic_data.year);
 					}
-				}, function (err) {
+					if (data.basic_data.make !== undefined) obj.make = data.basic_data.make;
+					if (data.basic_data.model !== undefined) obj.model = data.basic_data.model;
+					if (data.basic_data.trim !== undefined) obj.trim = data.basic_data.trim;
+					if (data.basic_data.vehicle_type !== undefined) obj.vehicleType = data.basic_data.vehicle_type;
+					if (data.basic_data.body_type !== undefined) obj.bodyType = data.basic_data.body_type;
+					if (data.basic_data.doors !== undefined) obj.doors = parseInt(data.basic_data.doors);
+					if (data.basic_data.model_number !== undefined) obj.modelNumber = data.basic_data.model_number;
+					if (data.basic_data.drive_type !== undefined) obj.driveType = data.basic_data.drive_type;
+					if (data.basic_data.plant !== undefined) obj.plant = data.basic_data.plant;
+				}
+				if (data.pricing !== undefined && data.pricing.msrp !== undefined) obj.msrp = parseFloat(data.pricing.msrp);
+				if (data.engines !== undefined && data.engines.length > 0) {
+					var e = data.engines[0];
+					if (e.name !== undefined) obj.engineName = data.engines[0].name;
+					if (e.brand !== undefined) obj.engineBrand = data.engines[0].brand;
+					if (e.fuel_type !== undefined) obj.fuelType = data.engines[0].fuel_type;
+					if (e.ice_max_hp !== undefined) obj.iceMaxHp = data.engines[0].ice_max_hp;
+					if (e.ice_max_hp_at !== undefined) obj.iceMaxHpAt = data.engines[0].ice_max_hp_at;
+					if (e.ice_max_torgue !== undefined) obj.iceMaxTorque = data.engines[0].ice_max_torgue;
+					if (e.ice_max_torgue_at !== undefined) obj.iceMaxTorqueAt = data.engines[0].ice_max_torgue_at;
+					if (e.max_payload !== undefined) obj.maxPayload = data.engines[0].max_payload;
+				}
+				if (data.transmissions !== undefined && data.transmissions.length > 0 && data.transmissions[0].name !== undefined) obj.transmissionName = data.transmissions[0].name;
+				if (data.colors !== undefined && data.colors.exterior_colors !== undefined && data.colors.exterior_colors.length > 0) {
+					if (data.colors.exterior_colors[0].generic_color_name !== undefined) obj.colorName = data.colors.exterior_colors[0].generic_color_name;
+					if (data.colors.exterior_colors[0].primary_rgb_code.hex !== undefined) obj.colorHex = data.colors.exterior_colors[0].primary_rgb_code.hex;
+				}
+				obj.wholeSalePrice = 0;
+				obj.baseTowingCapacity = '';
+				obj.grossWeight = '';
+				obj.fuelTankCapacity = 0;
+				obj.maxPayload = '';
+				if (data.standard_specifications !== undefined) {
+					async.forEach(data.standard_specifications, function (ss, callback) {
+						if (ss.specification_category === 'Weights and Capacities') {
+							async.forEach(ss.specification_values, function (v, callback2) {
+								if (v.specification_name === 'Base Towing Capacity') {
+									obj.baseTowingCapacity = v.specification_value;
+									callback2();
+								} else if (v.specification_name === 'Gross Vehicle Weight Rating') {
+									obj.grossWeight = parseFloat(v.specification_value);
+									callback2();
+								} else if (v.specification_name === 'Fuel Tank Capacity') {
+									obj.fuelTankCapacity = parseFloat(v.specification_value);
+									callback2();
+								} else if (v.specification_name === 'Max Payload') {
+									obj.maxPayload = v.specification_value;
+									callback2();
+								} else {
+									callback2();
+								}
+							}, function (err) {
+								callback();
+							});
+						} else {
+							callback();
+						}
+					}, function (err) {
+						return next(null, obj);
+					});
+				} else {
 					return next(null, obj);
-				});
+				}
 			});
 		});
 	}
@@ -220,11 +261,11 @@ function VehicleDAO() {
 
 		console.log(sql)
 		let self = this;
-		__con.query(tokenId, sql , vin, function (err, results) {
+		__con.query(tokenId, sql, vin, function (err, results) {
 			if (err) return next(err);
 			var list = [];
 			async.forEach(results, function (r, callback) {
-				self.get(tokenId ,function (err, v) {
+				self.get(tokenId, function (err, v) {
 					if (err) return next(err);
 					list.push(v);
 					callback();
@@ -236,7 +277,7 @@ function VehicleDAO() {
 		});
 	}
 
-	
+
 	this.list = function (tokenId, obj, next) {
 		var sql = "SELECT * FROM `Vehicle` ";
 		var whereAdded = false;
