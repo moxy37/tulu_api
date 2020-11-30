@@ -152,7 +152,7 @@ function MessageDAO() {
 				o.targetName = r.targetName;
 				o.senderName = r.senderName;
 				o.testDrive = null;
-				if (r.linkId !== '') {
+				if (r.linkId !== '' && r.linkId !== undefined) {
 					self.getTestDrive(tokenId, r.linkId, function (err, td) {
 						o.testDrive = td;
 						list.push(o);
