@@ -150,8 +150,10 @@ CREATE TABLE `Messages` (
 	`message` LONGTEXT,
 	`vin` VARCHAR(255),
 	`dealerId` VARCHAR(36),
-	`isRead` INTEGER DEFAULT 0
+	`isRead` INTEGER DEFAULT 0,
+	`linkId` VARCHAR(36) DEFAULT ''
 );
+
 
 DROP TABLE IF EXISTS `TestDrive`;
 CREATE TABLE `TestDrive` (
@@ -164,8 +166,11 @@ CREATE TABLE `TestDrive` (
 	`type` VARCHAR(255)
 );
 
+DROP VIEW IF EXISTS `TestDriveView`;
+CREATE VIEW `TestDriveView` AS SELECT `t`.`id`, `t`.`vin`, `t`.`dealerId`,`t`.`timestamp`, `t`.`userId`, `t`.`tuluId`, `t`.`type`, `u1`.`name` AS `userName`, `u2`.`name` AS `tuluName`, `d`.`name` AS `dealerName` FROM `TestDrive` `t` JOIN `Dealer` `d` ON `t`.`dealerId`=`d`.`id` JOIN `Users` `u1` ON `t`.`userId`=`u1`.`id` JOIN `Users` `u2` ON `t`.`tuluId`=`u2`.`id`;
+
 DROP VIEW IF EXISTS `MessagesView`;
-CREATE VIEW `MessagesView` AS SELECT `m`.`id`, `m`.`senderId`, `m`.`targetId`, `m`.`type`, `m`.`timestamp`, `m`.`message`, `m`.`vin`, `m`.`dealerId`, `m`.`isRead`, `u1`.`name` AS `targetName`, `u2`.`name` AS `senderName` FROM `Messages` `m` LEFT JOIN `Users` `u1` ON `m`.`targetId`=`u1`.`id` LEFT JOIN `Users` `u2` ON `m`.`senderId`=`u2`.`id`;
+CREATE VIEW `MessagesView` AS SELECT `m`.`id`, `m`.`senderId`, `m`.`targetId`, `m`.`type`, `m`.`timestamp`, `m`.`message`, `m`.`vin`, `m`.`dealerId`, `m`.`isRead`, `u1`.`name` AS `targetName`, `u2`.`name` AS `senderName`, `m`.`linkId` FROM `Messages` `m` LEFT JOIN `Users` `u1` ON `m`.`targetId`=`u1`.`id` LEFT JOIN `Users` `u2` ON `m`.`senderId`=`u2`.`id`;
 
 DROP VIEW IF EXISTS `RatingView`;
 CREATE VIEW `RatingView` AS SELECT `targetId`, `type`, AVG(`stars`) AS `rating`, COUNT(`stars`) AS `reviews` FROM `Rating` GROUP BY `targetId`, `type`;

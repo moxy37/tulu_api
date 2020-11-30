@@ -272,6 +272,7 @@ function HelperDAO() {
 					addThisOne = true;
 				} else if (obj[k] instanceof Date) {
 					addThisOne = true;
+					obj[k] = new Date().toISOString().slice(0, 19).replace('T', ' ');
 				} else {
 					if (obj[k] === undefined || obj[k] === null || obj[k] === '' || obj[k] === 'null') {
 						obj[k] = '';
@@ -341,6 +342,11 @@ function HelperDAO() {
 					addThisOne = true;
 				} else if (obj[k] instanceof Date) {
 					addThisOne = true;
+					obj[k] = new Date().toISOString().slice(0, 19).replace('T', ' ');
+					// var a = dateString.split(" ");
+					// var b = a[0].split("-");
+					// var c = a[1].split(":");
+					// var date = new Date(b[0], (b[1] - 1), b[2], b[0], c[1], c[2]);
 				} else {
 					if (obj[k] === undefined || obj[k] === null || obj[k] === '' || obj[k] === 'null') {
 						obj[k] = '';

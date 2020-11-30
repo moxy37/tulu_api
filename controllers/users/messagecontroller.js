@@ -68,4 +68,22 @@ router.put('/api/message/save', function (req, res) {
 		});
 	} else { return res.status(400).send("Invalid tokenId"); }
 });
+
+/**
+ * userId - the user who is doing test drive
+ * tuluId - the tulu doing the test drive
+ * dealerId - the dealership the car is at
+ * vin - the vin of the car
+ * */
+router.put('/api/testdrive/new', function (req, res) {
+	var obj = req.body;
+	var tokenId = obj.tokenId;
+	if (__currentTokens[tokenId] !== undefined) {
+		__currentTokens[tokenId].timestamp = new Date();
+		messageDao.newTestDrive(tokenId, obj, function (err, m) {
+			return res.send(m);
+		});
+	} else { return res.status(400).send("Invalid tokenId"); }
+});
+
 module.exports = router;
