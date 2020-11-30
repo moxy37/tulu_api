@@ -35,7 +35,7 @@ router.put('/api/message/read', function (req, res) {
 	var tokenId = obj.tokenId;
 	if (__currentTokens[tokenId] !== undefined) {
 		__currentTokens[tokenId].timestamp = new Date();
-		messageDao.read(tokenId, obj.id, function (err, m) {
+		messageDao.isRead(tokenId, obj.id, function (err, m) {
 			return res.send(m);
 		});
 	} else { return res.status(400).send("Invalid tokenId"); }

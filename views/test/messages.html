@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tulu Canada</title>
+	<link rel="stylesheet" href="/assets/webfonts/styles/all.css">
+	<link rel="stylesheet" href="/assets/css/reset.css">
+	<link rel="stylesheet" href="/assets/css/nav.css">
+	<link rel="stylesheet" href="/css/messages.css">
+	<link rel="stylesheet" href="/assets/css/footer.css">
+
+	<script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- NAVIGATION -->
+	<nav id="Nav"></nav>
+	<!-- SIDEMENU -->
+	<div id="SideMenu" class="sideMenu"></div>
+	<div class="header">
+		<h1>Tulu Canada</h1>
+		<h3>Messages Page</h3>
+	</div>
+	<section class="firstSection">
+		<div id="CreateMessageDiv">
+			<h1>Create Message</h1>
+			<input id="NewMessageButton" type="button" class="myBtn" value="New Message" onclick="NewMessage();" />
+			Target: <select id="TargetSelect"></select>
+			Vin: <select id="VinSelect"></select><br/>
+			Type: <input type="text" id="MessageType" /><br/>
+			Message:
+			<textarea id="MessageValue"></textarea>
+			<input type="button" class="myBtn" id="SendButton" value="Send Message" onclick="SendMessage();" />
+		</div>
+
+		<div id="ListMessageDiv"> 
+			<h1>Messages</h1>
+
+		</div>
+
+
+	</section>
+	<footer id="Footer"></footer>
+</body>
+<script src="/javascripts/client/components/nav.js"></script>
+<script src="/javascripts/client/components/footer.js"></script>
+<script src="/assets/js/sideMenu.js"></script>
+<script src="/assets/js/global.js"></script>
+<script src="/javascripts/core/test/messagesview.js"></script>
+
+</html>

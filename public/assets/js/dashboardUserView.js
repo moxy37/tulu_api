@@ -164,7 +164,7 @@ async function GetUser(id) {
 	obj.name = id;
 	const results = await $.ajax({
 		type: "PUT",
-		url: "/api/user/list",
+		url: "/api/user/current",
 		data: obj,
 		cache: false,
 		dataType: "json",

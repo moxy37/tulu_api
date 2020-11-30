@@ -102,7 +102,7 @@ router.get('/about', function (req, res) {
 });
 
 router.get('/messages', function (req, res) {
-    res.render('client/test/messages');
+    res.render('test/messages');
 });
 
 router.get('/dealership', function (req, res) {

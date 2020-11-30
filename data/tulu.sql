@@ -140,8 +140,8 @@ CREATE TABLE `Rating` (
 	`notes` VARCHAR(4000)
 );
 
-DROP TABLE IF EXISTS `Message`;
-CREATE TABLE `Message` (
+DROP TABLE IF EXISTS `Messages`;
+CREATE TABLE `Messages` (
 	`id` VARCHAR(36) PRIMARY KEY,
 	`senderId` VARCHAR(36),
 	`targetId` VARCHAR(36),
@@ -163,6 +163,9 @@ CREATE TABLE `TestDrive` (
 	`tuluId` VARCHAR(36),
 	`type` VARCHAR(255)
 );
+
+DROP VIEW IF EXISTS `MessagesView`;
+CREATE VIEW `MessagesView` AS SELECT `m`.`id`, `m`.`senderId`, `m`.`targetId`, `m`.`type`, `m`.`timestamp`, `m`.`message`, `m`.`vin`, `m`.`dealerId`, `m`.`isRead`, `u1`.`name` AS `targetName`, `u2`.`name` AS `senderName` FROM `Messages` `m` LEFT JOIN `Users` `u1` ON `m`.`targetId`=`u1`.`id` LEFT JOIN `Users` `u2` ON `m`.`senderId`=`u2`.`id`;
 
 DROP VIEW IF EXISTS `RatingView`;
 CREATE VIEW `RatingView` AS SELECT `targetId`, `type`, AVG(`stars`) AS `rating`, COUNT(`stars`) AS `reviews` FROM `Rating` GROUP BY `targetId`, `type`;

@@ -21,19 +21,21 @@ router.put("/api/user/list", function (req, res) {
     var tokenId = obj.tokenId;
     if (__currentTokens[tokenId] !== undefined) {
         __currentTokens[tokenId].timestamp = new Date();
-        return res.send(__currentTokens[tokenId]);
+        usersDao.list(tokenId, function (err, list) {
+            return res.send(list);
+        });
     } else { return res.status(400).send("Invalid tokenId"); }
 });
 
 router.put("/api/user/save", function (req, res) {
-	var obj = req.body;
-	var tokenId = obj.tokenId;
-	if (__currentTokens[tokenId] !== undefined) {
-		__currentTokens[tokenId].timestamp = new Date();
-		usersDao.save(tokenId, obj.user, function (err, user) {
-			return res.send(user);
-		});
-	} else { return res.status(400).send("Invalid tokenId"); }
+    var obj = req.body;
+    var tokenId = obj.tokenId;
+    if (__currentTokens[tokenId] !== undefined) {
+        __currentTokens[tokenId].timestamp = new Date();
+        usersDao.save(tokenId, obj.user, function (err, user) {
+            return res.send(user);
+        });
+    } else { return res.status(400).send("Invalid tokenId"); }
 });
 
 router.put("/api/user/login", function (req, res) {

@@ -39,7 +39,7 @@ function MessageDAO() {
 	}
 
 	this.list = function (tokenId, obj, next) {
-		var sql = "SELECT * FROM `Messages` ";
+		var sql = "SELECT * FROM `MessagesView` ";
 		var whereAdded = false;
 		var params = [];
 		if (obj.id !== undefined && obj.id !== '') {
@@ -128,6 +128,8 @@ function MessageDAO() {
 				o.vin = r.vin;
 				o.dealerId = r.dealerId;
 				o.isRead = r.isRead;
+				o.targetName = r.targetName;
+				o.senderName = r.senderName;
 				list.push(o);
 				callback();
 			}, function (err) {
