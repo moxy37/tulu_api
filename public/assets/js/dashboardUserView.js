@@ -87,7 +87,7 @@ function saveEdit() {
 	var i = gIndex;
 	gDealer.users[i].name=$("#editName").val();
 	gDealer.users[i].email=$("#editEmail").val();
-	alert('Save Edit');
+	document.querySelector(".editUser").style = "display:none;";
 }
 
 function saveUser() {
@@ -96,6 +96,7 @@ function saveUser() {
 
 	NewUser(name,email).then(function () {
 		GetDealerId();
+		document.querySelector(".addNewUser").style = "display:none;";
 	});
 }
 

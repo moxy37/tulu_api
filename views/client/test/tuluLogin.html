@@ -20,7 +20,24 @@
 
     <!-- LOG IN -->
     <div id="LoginContainer" class="loginContainer">
-        
+        <form action="" class="loginForm">
+            <label for="email">Email:</label>
+            <div class="inputContainer">
+                <input type="text" id="email" class="email" name="email"><br>
+            </div>
+            
+                <label for="password">Password:</label>
+            <div class="inputContainer">
+                <input type="password" id="password" class="password" name="password">
+            </div>  
+            <a onclick="Login();">
+                <button type="button" class="loginBtn">LOG IN</button>
+            </a>
+            <a onclick="LocationChange(`tuluRegister`);">
+                <!-- <a href=""> -->
+                <button type="button" class="registerBtn">REGISTER</button>
+            </a>
+        </form>
     </div>
 </body>
 <script src="/assets/js/global.js"></script>

@@ -1,0 +1,50 @@
+
+
+.header{
+    margin:50px 0 0 0;
+    background-color:#79C6AC;
+    height:20vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h1{
+    color:white;
+}
+
+.wrapper{
+    padding:0 0 150px 0;
+}
+
+.myVehicleContainer,.favoritesContainer,.recentlyViewedContainer{
+    justify-content: center;
+    align-items: center;
+    padding:25px 25px;
+    margin:15px 0;
+}
+
+.myVehicleContainer a,.favoritesContainer a,.recentlyViewedContainer a{
+    justify-content: center;
+    align-items: center;
+    padding:25px 0;
+    margin:15px 0;
+}
+
+.myVehicleContainer h3,.favoritesContainer h3,.recentlyViewedContainer h3{
+    margin-bottom:25px;
+}
+
+.myVehicleContainer li,.favoritesContainer li,.recentlyViewedContainer li{
+    font-size: small;
+}
+
+.seeAllBtn{
+    margin-top:25px;
+    align-items: center;
+    padding:15px 0;
+    border-radius: 10px;
+    border:none;
+    background:#79C6AC;
+    color:white;
+    width:100%;
+}

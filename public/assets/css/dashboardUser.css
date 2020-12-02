@@ -55,7 +55,7 @@
     display:none;
     height:80vh;
     width:100vw;
-    position: absolute;
+    position: fixed;
     background:white;
     padding:150px 0 0 0;
     /* justify-content: center; */
@@ -95,7 +95,7 @@ button{
     display:none;
     height:80vh;
     width:100vw;
-    position: absolute;
+    position: fixed;
     background:white;
     padding:150px 0 0 0;
     /* justify-content: center; */

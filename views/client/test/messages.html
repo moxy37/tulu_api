@@ -18,17 +18,30 @@
 	<div id ="SideMenu"class="sideMenu"></div>
 
     <div id="Messages" class="messages">
-        <div class="messageContainer">
+        <div id="ListMessageDiv"> 
+			<h1>Inbox</h1>
 
-        </div>
-        <input type="text" id="message">
-        <button onclick="SendMessage()">SEND</button>
+		</div>
     </div>
 
-    <!-- My Account -->
-    <div class="myAccountMenu"id="MyAccountMenu"></div>
+    <div class="compose" onclick="NewMessage();">
+        <i class="fas fa-pen"></i>
+    </div>
 
-
+    <div class="newMessage">
+        <div class="wrapper">
+            <p>To:</p>
+            <select id="TargetSelect"></select>
+            <p>Vehicle:</p>
+            <select id="VinSelect"></select>
+            <p>Type:</p>
+            <input type="text" id="MessageType" />
+            <p>Message:</p>
+            <textarea id="MessageValue"></textarea>
+            <input type="button" class="myBtn" id="SendButton" value="Send Message" onclick="SendMessage();" />
+            <input type="button" class="myBtn" id="CancelButton" value="Cancel" onclick="cancelMessage();" />
+        </div>
+    </div>
 
 </body>
 <script src="/javascripts/client/components/nav.js"></script>

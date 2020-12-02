@@ -1,15 +1,16 @@
 /* Registration */
 
 .registerContainer{
-    /* margin:60px 0 0 0; */
+    margin:60px 0 0 0;
     padding:20px;
     align-items: center;
     position: relative;
     overflow: hidden;
     height:75vh;
+    flex-direction: column;
 }
 
-.stepOneRegistration,.stepTwoRegistration,.stepThreeRegistration,.stepFourRegistration{
+.stepOneRegistration,.stepTwoRegistration,.stepThreeRegistration,.stepFourRegistration,.stepFiveRegistration,.stepSixRegistration{
     position:absolute;
     bottom:0;
     transform: translateX(100vw);
@@ -23,6 +24,9 @@
     margin:20px 0 10px 0;
 }
 
+.phoneLabel{
+    margin:20px 0 0 0;
+}
 
 .inputContainer{
     flex-direction: row;
@@ -30,7 +34,13 @@
     border:1px solid #79c6ac;
     border-radius: 10px;
     padding:5px 10px;
-    
+}
+
+.phoneLabel .inputContainer{
+    width:100%;
+    padding:5px;
+    margin-top:10px;
+    color:#79c6ac;
 }
 
 .registerForm{
@@ -38,6 +48,21 @@
 }
 
 .registerForm input{
+    width:100%;
+    padding:5px;
+    border:none;
+    color:#79c6ac;
+}
+
+
+.registerForm select{
+    width:100%;
+    padding:5px;
+    border:none;
+    color:#79c6ac;
+}
+
+.registerForm select option{
     width:100%;
     padding:5px;
     border:none;
@@ -81,6 +106,30 @@
     border:1px solid #79C6AC;
 }
 
+#multiplePhone{
+    border-radius: 10px;
+    border:1px solid #79C6AC;
+    padding:50px 20px;
+    height:300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    
+}
+
+.contactBtnContainer{
+    display: flex;
+    flex-direction: row !important;
+}
+
+.contactBtn{
+    width:100px !important;
+    padding:10px !important;
+    margin:15px 15px 0 0;
+    background:#79C6AC;
+    color:white;
+    border:1px solid #79C6AC;
+}
+
 /* Step Circle */
 .steps{
     padding:50px 0 0 0;
@@ -88,10 +137,10 @@
     justify-content: center;
 }
 
-.stepOne,.stepTwo,.stepThree,.stepFour{
+.stepOne,.stepTwo,.stepThree,.stepFour,.stepFive,.stepSix{
     margin:0 20px;
-    width:10px;
-    height:10px;
+    width:5px;
+    height:5px;
     border-radius: 50%;
     background:#ffffff00;
     border:2px solid #79C6AC;

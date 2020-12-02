@@ -102,7 +102,7 @@ router.get('/about', function (req, res) {
 });
 
 router.get('/messages', function (req, res) {
-    res.render('test/messages');
+    res.render('client/test/messages');
 });
 
 router.get('/dealership', function (req, res) {
@@ -139,6 +139,10 @@ router.get('/tuluRegister', function (req, res) {
 
 router.get('/dashboard', function (req, res) {
     res.render('client/test/dashboard');
+});
+
+router.get('/dashboardTulu', function (req, res) {
+    res.render('client/test/dashboardTulu');
 });
 
 router.get('/dashboard/user', function (req, res) {

@@ -10,10 +10,10 @@ function LoadLogin() {
     html=html+'    <div class="inputContainer">';
     html=html+'        <input type="password" id="password" class="password" name="password">';
     html=html+'    </div>  ';
-    html=html+'    <a href="/profile">';
+    html=html+'    <a onclick="Login();">';
     html=html+'        <button type="button" class="loginBtn">LOG IN</button>';
     html=html+'    </a>';
-    html=html+'    <a href="/register">';
+    html=html+'    <a onclick="LocationChange(\'tulu\register\');>';
     html=html+'        <button type="button" class="registerBtn">REGISTER</button>';
     html=html+'    </a>';
     html=html+'</form>';
@@ -22,4 +22,4 @@ function LoadLogin() {
 	$("#LoginContainer").append(html);
 }
 
-LoadLogin();
+// LoadLogin();

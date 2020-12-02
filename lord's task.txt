@@ -8,6 +8,24 @@ MESSAGE
 >list to display
 
 
+share button social media
+-url
+-tulu's id
+
+tulu login
+
+tulu registration
+
+tulu Dashboards
+>viewed vehicles
+>favorites
+
+
+
+
+login with facebook
+
+
 how tulu share
 
 how to book appointment
