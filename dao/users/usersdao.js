@@ -101,7 +101,7 @@ function UsersDAO() {
 				whereAdded = true;
 				sql += "WHERE ";
 			}
-			sql += "`name` LIKE %?% ";
+			sql += "LOWER(`name`) LIKE '%" + obj.name + "%' ";
 			params.push(obj.name);
 		}
 		sql += "ORDER BY `name`";

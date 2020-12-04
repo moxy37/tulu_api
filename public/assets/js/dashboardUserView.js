@@ -15,7 +15,7 @@ function PageLoadFunction() {
 async function GetList() {
 	var obj = new Object();
 	obj.tokenId = tokenId;
-	obj.name =
+	obj.name = 'admin';
 	const results = await $.ajax({
 		type: "PUT",
 		url: "/api/user/list",
