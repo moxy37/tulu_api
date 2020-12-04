@@ -12,12 +12,12 @@ function PageLoadFunction() {
 	
 }
 
-function searchUser(){
+function SearchUser(){
 	var name = $("#searchInput").val();
 	console.log(name)
 	GetList(name).then(function () {
 		
-	})
+	});
 }
 
 async function GetList(name) {

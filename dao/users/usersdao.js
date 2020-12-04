@@ -84,7 +84,7 @@ function UsersDAO() {
 		var sql = "SELECT * FROM `Users` ";
 		var whereAdded = false;
 		var params = [];
-		if (obj.email !== undefined || obj.email !== "") {
+		if (obj.email !== undefined && obj.email !== "") {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
@@ -94,7 +94,7 @@ function UsersDAO() {
 			sql += "`email` = ? ";
 			params.push(obj.email);
 		}
-		if (obj.name !== undefined  || obj.name !== "") {
+		if (obj.name !== undefined  && obj.name !== "") {
 			if (whereAdded === true) {
 				sql += "AND ";
 			} else {
