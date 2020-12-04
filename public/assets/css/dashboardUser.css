@@ -62,9 +62,33 @@
     align-items: center;
 }
 
+.userOptionContainer{
+    display:none;
+    height:80vh;
+    width:100vw;
+    position: fixed;
+    background:white;
+    justify-content: center;
+    align-items: center;
+}
+
+.addUserOption{
+    width:80vmin;
+}
+
 .addNewUserForm{
     width:80vmin;
     padding:15px 20px;
+}
+
+.searchUser{
+    display:none;
+    height:80vh;
+    width:100vw;
+    position: fixed;
+    background:white;
+    justify-content: center;
+    align-items: center;
 }
 
 label{

@@ -9,13 +9,21 @@ function PageLoadFunction() {
 	LoadNavigation();
 	LoadSideMenu();
 	GetDealerId();
-	GetList();
+	
 }
 
-async function GetList() {
+function searchUser(){
+	var name = $("#searchInput").val();
+	console.log(name)
+	GetList(name).then(function () {
+		
+	})
+}
+
+async function GetList(name) {
 	var obj = new Object();
 	obj.tokenId = tokenId;
-	obj.name = 'admin';
+	obj.name = name;
 	const results = await $.ajax({
 		type: "PUT",
 		url: "/api/user/list",
@@ -83,10 +91,22 @@ async function GetDealer(id) {
 	return results;
 }
 
-
+function showAddUserOption() {
+	document.querySelector(".userOptionContainer").style = "display:flex;";
+}
 
 function showAddNewUser() {
+	document.querySelector(".userOptionContainer").style = "display:none;";
 	document.querySelector(".addNewUser").style = "display:flex;";
+}
+
+function showSearchUser() {
+	document.querySelector(".userOptionContainer").style = "display:none;";
+	document.querySelector(".searchUser").style = "display:flex;";
+}
+
+function hideSearchUser() {
+	document.querySelector(".searchUser").style = "display:none;";
 }
 
 function hideAddNewUser() {
