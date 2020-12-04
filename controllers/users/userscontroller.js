@@ -16,6 +16,10 @@ router.put("/api/user/current", function (req, res) {
     } else { return res.status(400).send("Invalid tokenId"); }
 });
 
+/**
+ *  email - optional to search by email
+ *  name - optional to search by name
+ * */
 router.put("/api/user/list", function (req, res) {
     var obj = req.body;
     var tokenId = obj.tokenId;
