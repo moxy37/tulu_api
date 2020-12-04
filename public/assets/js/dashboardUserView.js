@@ -9,6 +9,26 @@ function PageLoadFunction() {
 	LoadNavigation();
 	LoadSideMenu();
 	GetDealerId();
+	GetList();
+}
+
+async function GetList() {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.name =
+	const results = await $.ajax({
+		type: "PUT",
+		url: "/api/user/list",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return results;
 }
 
 function GetDealerId() {
