@@ -21,6 +21,8 @@ function GetDealerId() {
 	if (dId !== '') {
 		GetDealer(dId).then(function (dealer) {
 			gDealer = dealer;
+
+			
 			gDealerUsers = dealer.users;
 			$("#userContainer").empty();
 			var html = ``;
@@ -88,15 +90,38 @@ function saveEdit() {
 	gDealer.users[i].name=$("#editName").val();
 	gDealer.users[i].email=$("#editEmail").val();
 	document.querySelector(".editUser").style = "display:none;";
+
+	var update = gDealer.users[i];
+
+	// UpdateUser(gDealer,i).then(function () {});
+	
+	
+	SaveNewUser(tokenId,update).then(function(){
+		gDealer.users.push(update);
+		console.log(gDealer);
+	})
 }
 
 function saveUser() {
 	var name = $("#name").val();
 	var email = $("#email").val();
 
-	NewUser(name,email).then(function () {
+	NewUser(name,email).then(function (newUser) {
+		var newRole = new Object;
+		newRole.role = "DealerAdmin"
+		newRole.targetId = gDealer.id;
+		newRole.userId = newUser.id;
+		newUser.name = name;
+		newUser.email = email;
+		newUser.password = "1234";
+		newUser.roles.push(newRole)
+		SaveNewUser(tokenId,newUser).then(function(){
+			PageLoadFunction()
+		})
 		GetDealerId();
 		document.querySelector(".addNewUser").style = "display:none;";
+
+		
 	});
 }
 
@@ -110,26 +135,18 @@ async function NewUser(name,email) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-			// console.log(results);
-			var newRole = new Object;
-			newRole.role = "DealerAdmin"
-			newRole.targetId = gDealer.id;
-			newRole.userId = results.id;
-			results.name = name;
-			results.email = email;
-			results.password = "1234";
-			results.roles.push(newRole)
-			SaveNewUser(tokenId,results)
+			console.log(results);
+			
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
 	return result;
 }
 
-async function SaveNewUser(tokenId,user) {
+async function SaveNewUser(tokenId,newUser) {
 	var obj = new Object();
 	obj.tokenId = tokenId
-	obj.user = user;
+	obj.user = newUser;
 	const result = await $.ajax({
 		type: "PUT",
 		url: "/api/user/save",
@@ -138,7 +155,7 @@ async function SaveNewUser(tokenId,user) {
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",
 		success: function (results) {
-			// alert(JSON.stringify(results));
+			
 		},
 		error: function (results) { console.log(results.statusText); },
 	});
@@ -199,9 +216,10 @@ function check(currentUser){
 	});
 }
 
-async function UpdateUser(user) {
+async function UpdateUser(user,index) {
 	var obj = new Object();
-	obj = user
+	obj.name = user.users[index].name;
+	obj.email = user.users[index].email;
 	obj.tokenId = tokenId;
 	const result = await $.ajax({
 		type: "PUT",
