@@ -79,9 +79,33 @@ function UsersDAO() {
 		});
 	}
 
-	this.list = function (tokenId, next) {
+	this.list = function (tokenId, obj, next) {
 		let self = this;
-		__con.query(tokenId, "SELECT * FROM `Users` ORDER BY `name`", function (err, results) {
+		var sql = "SELECT * FROM `Users` ";
+		var whereAdded = false;
+		var params = [];
+		if (obj.email !== undefined) {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = true;
+				sql += "WHERE ";
+			}
+			sql += "`email` = ? ";
+			params.push(obj.email);
+		}
+		if (obj.name !== undefined) {
+			if (whereAdded === true) {
+				sql += "AND ";
+			} else {
+				whereAdded = true;
+				sql += "WHERE ";
+			}
+			sql += "`name` LIKE %?% ";
+			params.push(obj.name);
+		}
+		sql += "ORDER BY `name`";
+		__con.query(tokenId, sql, params, function (err, results) {
 			var list = [];
 			async.forEach(results, function (r, callback) {
 				self.get(tokenId, r.id, function (err, o) {

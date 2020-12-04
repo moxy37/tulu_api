@@ -21,7 +21,7 @@ router.put("/api/user/list", function (req, res) {
     var tokenId = obj.tokenId;
     if (__currentTokens[tokenId] !== undefined) {
         __currentTokens[tokenId].timestamp = new Date();
-        usersDao.list(tokenId, function (err, list) {
+        usersDao.list(tokenId, obj, function (err, list) {
             return res.send(list);
         });
     } else { return res.status(400).send("Invalid tokenId"); }
