@@ -30,14 +30,14 @@
 			</li>
 		</ul>
 		<div class="addUser">
-			<i class="fas fa-plus" onclick="showAddUserOption()"></i>
+			<i class="fas fa-plus" onclick="ShowAddUserOption()"></i>
 		</div>
 	</div>
 
 	<div class="userOptionContainer">
 		<div class="addUserOption">
-			<button onclick="showAddNewUser()">ADD NEW USER</button>
-			<button onclick="showSearchUser()">ADD EXISTING USER</button>
+			<button onclick="ShowAddNewUser()">ADD NEW USER</button>
+			<button onclick="ShowSearchUser()">ADD EXISTING USER</button>
 		</div>
 	</div>
 
@@ -47,8 +47,8 @@
 			<input type="text" name="name" id="name">
 			<label for="email">Email:</label>
 			<input type="text" name="email" id="email">
-			<button class="addUserBtn"  onclick="saveUser()">ADD USER</button>
-			<button class="cancelBtn" onclick="hideAddNewUser()">CANCEL</button>
+			<button class="addUserBtn"  onclick="SaveUser()">ADD USER</button>
+			<button class="cancelBtn" onclick="HideAddNewUser()">CANCEL</button>
 		</div>
 	</div>
 
@@ -57,8 +57,16 @@
 			<label for="name">Email or Name</label>
 			<input type="text" name="name" id="searchInput">
 			<button class="addUserBtn"  onclick="SearchUser();">SEARCH</button>
-			<button class="cancelBtn" onclick="hideSearchUser()">CANCEL</button>
+			<button class="cancelBtn" onclick="HideSearchUser()">CANCEL</button>
 		</div>
+	</div>
+
+	<div class="userListContainer">
+		<ul class="userList">
+			<li>
+
+			</li>
+		</ul>
 	</div>
 
 	<div class="editUser">
@@ -67,8 +75,8 @@
 			<input type="text" name="name" id="editName">
 			<label for="email">Email:</label>
 			<input type="text" name="email" id="editEmail">
-			<button onclick="saveEdit()">SAVE EDIT</button>
-			<button class="cancelBtn" onclick="hideEditUser()">CANCEL</button>
+			<button onclick="SaveEdit()">SAVE EDIT</button>
+			<button class="cancelBtn" onclick="HideEditUser()">CANCEL</button>
 		</div>
 	</div>
 

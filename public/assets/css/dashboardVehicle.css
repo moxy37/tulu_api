@@ -12,11 +12,13 @@
     color:white;
 }
 
+.vehicleContainer{
+    position: relative;
+}
 
 .vehicleContainer li{
     padding:15px 20px;
     flex-direction: row;
-    justify-content:space-between;
     align-items: center;
     border-bottom:1px solid #0000002d;
 }
@@ -33,12 +35,17 @@
     width:50px;
 }
 
+.vehicleInfo{
+    padding:0 0 0 15px;
+}
+
 .vehicleInfo p{
     font-size: small;
-    /* width:230px; */
 }
 
 .control{
+    position: absolute;
+    right:15px;
     flex-direction: row;
 }
 
@@ -57,6 +64,31 @@
     color:#79C6AC;;
 }
 
+.additionalInfoContainer{
+    height:100vh;
+    width:100vw;
+    position: absolute;
+    background:white;
+    padding:70px 0 150px 0;
+    align-items: center;
+}
+
+.vehicleInfoContainer{
+    display:none;
+    width:100vw;
+    position: absolute;
+    background:white;
+    padding:70px 0 150px 0;
+    align-items: center;
+}
+
+
+.vehicleInfoForm{
+    width:80vmin;
+    padding:15px 20px;
+}
+
+
 .addNewVehicle{
     display:none;
     height:80vh;
@@ -64,7 +96,6 @@
     position: absolute;
     background:white;
     padding:150px 0 0 0;
-    /* justify-content: center; */
     align-items: center;
 }
 
@@ -99,12 +130,10 @@ button{
 
 .editVehicle{
     display:none;
-    height:80vh;
     width:100vw;
     position: absolute;
     background:white;
-    padding:150px 0 0 0;
-    /* justify-content: center; */
+    padding:150px 0 50px 0;
     align-items: center;
 }
 
@@ -115,4 +144,10 @@ button{
 
 label{
     margin:15px 0 5px 0;
+}
+
+textarea{
+    border:2px solid #79C6AC;
+    padding:10px 15px;
+    border-radius: 10px;
 }

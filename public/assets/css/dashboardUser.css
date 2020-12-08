@@ -16,7 +16,8 @@
 .userContainer li{
     padding:15px 20px;
     flex-direction: row;
-    justify-content:space-between;
+    position: relative;
+    /* justify-content:space-between; */
     align-items: center;
     border-bottom:1px solid #0000002d;
 }
@@ -27,12 +28,18 @@
     width:50px;
 }
 
+.userInfo{
+    padding:0 0 0 15px;
+}
+
 .userInfo p{
     font-size: small;
     /* width:230px; */
 }
 
 .control{
+    position: absolute;
+    right:20px;
     flex-direction: row;
 }
 
@@ -41,8 +48,8 @@
 }
 
 .addUser{
-    border-bottom:1px solid #0000002d;
-    padding:15px 0;
+    /* border-bottom:1px solid #0000002d; */
+    padding:55px 0 15px 0;
     justify-content: center;
     align-items: center;
 }
@@ -89,6 +96,28 @@
     background:white;
     justify-content: center;
     align-items: center;
+}
+
+.userListContainer{
+    padding:55px 0 0 0;
+    display:none;
+    height:80vh;
+    width:100vw;
+    position: fixed;
+    background:white;
+}
+
+.userList li{
+    border-bottom:1px solid #2e2e2e28;
+    padding:15px 25px;
+}
+
+.userList li:active{
+    background: #a4ddca;
+}
+
+.userList li p:nth-child(1){
+    color:#79C6AC;
 }
 
 label{

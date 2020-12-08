@@ -46,27 +46,64 @@
 	</div>
 	<div class="addNewVehicle">
 		<div class="addNewVehicleForm">
-			<label for="name">Name:</label>
-			<input type="text" name="name">
-			<label for="email">Email:</label>
-			<input type="text" name="email">
-			<label for="password">Password:</label>
-			<input type="text" name="password">
-			<button class="addUserBtn"  onclick="saveVehicle()">ADD USER</button>
+			<label for="name">VIN #:</label>
+			<input type="text" id="vinNum" name="vin"/>
+			<button class="addUserBtn"  onclick="MakeNewVehicle()">ADD VEHICLE</button>
 			<button class="cancelBtn" onclick="hideAddNewVehicle()">CANCEL</button>
+		</div>
+	</div>
+
+	<div class="additionalInfoContainer">
+		<div class="additionalInfo">
+			<label for="">Additional Info:</label>
+			<textarea name="" id="" cols="30" rows="10"></textarea>
+			<button onclick="SaveAdditionalInfo()">Save & Exit</button>
+			<button onclick="hideImageUpload()">Close</button>
 		</div>
 	</div>
 
 	<div class="editVehicle">
 		<div class="editVehicleForm">
+			<div class="imageContainer" id="imageContainer">
+				
+			</div>
+			<button onclick="addCarDocumentsImage()">Upload Images</button>
+
+			<form id="upload-carDocuments-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">
+				<div class="form-group" style="display:none;">
+					<label for="carDocuments-photos-input">Load Image</label>
+					<input id="carDocuments-photos-input" type="file" name="photos[]" onchange="SubmitCarDocumentsImage()" multiple="multiple" accept="image/*" capture />
+				<input class="btn btn-default" id="uploadcarDocumentsBtn" style="display:none;" type="testsubmit" name="Photo Uploads" value="Upload" />
+				</div>
+				<input type="hidden" name="csrf_token" value="just_a_text_field" />
+			</form>
+
 			<label for="price">Price:</label>
-			<input type="text" name="price" id="price">
+			<input type="text" name="price" id="price"/>
+			<label for="year">Year:</label>
+			<input type="text" name="year" id="year"/>
+			<label for="make">Make:</label>
+			<input type="text" name="make" id="make"/>
+			<label for="model">Model:</label>
+			<input type="text" name="model" id="model"/>
+			<label for="trim">Trim:</label>
+			<input type="text" name="trim" id="trim"/>
 			<label for="mileage">Mileage:</label>
-			<input type="text" name="mileage" id="mileage">
+			<input type="text" name="mileage" id="mileage"/>
+			<label for="bodyType">Body Type:</label>
+			<input type="text" name="bodyType" id="bodyType"/>
+			<label for="driveTrain">DriveTrain:</label>
+			<input type="text" name="driveTrain" id="driveTrain"/>
+			<label for="transmission">Transmission:</label>
+			<input type="text" name="transmission" id="transmission"/>
+			<label for="gasType">Gas type:</label>
+			<input type="text" name="gasType" id="gasType"/>
 			<label for="engine">Engine:</label>
-			<input type="text" name="engine" id="engine">
+			<input type="text" name="engine" id="engine"/>
 			<label for="color">Color:</label>
-			<input type="text" name="color" id="color">
+			<input type="text" name="color" id="color"/>
+			<label for="">note:</label>
+			<textarea name="" id="notes" cols="30" rows="10"></textarea>
 			
 			<button onclick="saveEdit()">SAVE EDIT</button>
 			<button class="cancelBtn" onclick="hideEditVehicle()">CANCEL</button>

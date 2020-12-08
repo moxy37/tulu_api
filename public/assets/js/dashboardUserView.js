@@ -15,8 +15,9 @@ function PageLoadFunction() {
 function SearchUser(){
 	var name = $("#searchInput").val();
 	console.log(name)
-	GetList(name).then(function () {
-		
+	GetList(name).then(function (userList) {
+		ShowUserList();
+		PopulateUserList(userList);
 	});
 }
 
@@ -38,6 +39,8 @@ async function GetList(name) {
 	});
 	return results;
 }
+
+
 
 function GetDealerId() {
 	var dId = '';
@@ -91,25 +94,40 @@ async function GetDealer(id) {
 	return results;
 }
 
-function showAddUserOption() {
+function PopulateUserList(userList){
+	var html = "";
+	for(i=0;i!=userList.length;i++){
+		var user = userList[i];
+		html+="<li id="+i+"  onclick=AddExistingUser("+i+")><p class=username>"+userList[i].name+"</p><p class=email>"+userList[i].email+"</p></li>";
+	}
+	$(".userList").empty();
+	$(".userList").append(html);
+}
+
+function ShowAddUserOption() {
 	document.querySelector(".userOptionContainer").style = "display:flex;";
 }
 
-function showAddNewUser() {
+function ShowAddNewUser() {
 	document.querySelector(".userOptionContainer").style = "display:none;";
 	document.querySelector(".addNewUser").style = "display:flex;";
 }
 
-function showSearchUser() {
+function ShowSearchUser() {
 	document.querySelector(".userOptionContainer").style = "display:none;";
 	document.querySelector(".searchUser").style = "display:flex;";
 }
 
-function hideSearchUser() {
+function ShowUserList() {
+	document.querySelector(".searchUser").style = "display:none;";
+	document.querySelector(".userListContainer").style = "display:flex;";
+}
+
+function HideSearchUser() {
 	document.querySelector(".searchUser").style = "display:none;";
 }
 
-function hideAddNewUser() {
+function HideAddNewUser() {
 	document.querySelector(".addNewUser").style = "display:none;";
 }
 
@@ -121,11 +139,11 @@ function showEditUser(index) {
 
 }
 
-function hideEditUser() {
+function HideEditUser() {
 	document.querySelector(".editUser").style = "display:none;";
 }
 
-function saveEdit() {
+function SaveEdit() {
 	var i = gIndex;
 	gDealer.users[i].name=$("#editName").val();
 	gDealer.users[i].email=$("#editEmail").val();
@@ -142,7 +160,69 @@ function saveEdit() {
 	})
 }
 
-function saveUser() {
+function AddExistingUser(index){
+	var email = $("#"+index+" .email").text();
+	GetSelectedUser(email).then(function (userList) {
+		console.log(userList);
+		// var name = userList[0].name;
+		// var email = userList[0].email;
+
+		var newRole = new Object;
+			newRole.role = "DealerAdmin"
+			newRole.targetId = gDealer.id;
+			newRole.userId = userList[0].id;
+
+			userList[0].roles.push(newRole)
+
+			SaveExistingUser(tokenId,userList).then(function(){
+				document.querySelector(".userListContainer").style = "display:none;";
+				PageLoadFunction();
+				GetDealerId();
+			})
+			
+			
+	});
+}
+
+async function SaveExistingUser(tokenId,newUser) {
+	var obj = new Object();
+	obj.tokenId = tokenId
+	obj.user = newUser[0];
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/user/save",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+}
+
+async function GetSelectedUser(email) {
+	var obj = new Object();
+	obj.tokenId = tokenId;
+	obj.email = email;
+	const results = await $.ajax({
+		type: "PUT",
+		url: "/api/user/list",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return results;
+}
+
+function SaveUser() {
 	var name = $("#name").val();
 	var email = $("#email").val();
 
@@ -205,15 +285,76 @@ async function SaveNewUser(tokenId,newUser) {
 
 
 function deleteUser(index) {
-	
-	for(var i = 0; i != gDealer.users[index].roles.length; i++){
-		if(gDealer.users[index].roles[i].role == "Dealer" || gDealer.users[index].roles[i].role == "DealerAdmin" )
-		console.log(gDealer.users[index].roles[i].userId);
-		var id = gDealer.users[index].roles[i].userId;
-		console.log(gUser)
+	console.log(gDealer.users[index].roles);
+	var newRoles = new Object;
+	var x =0;
+	for(var i = 0;i!=gDealer.users[index].roles.length;i++){
+		if(gDealer.users[index].roles[i].role != "Dealer" && gDealer.users[index].roles[i].role != "DealerAdmin"){
+			newRoles[x] = gDealer.users[index].roles[i];
+			x++
+			
+		}
+		console.log(newRoles)
 	}
 
-	GetUser(id).then(function () {});
+	var newUserRoles = new Object;
+	var y =0;
+	for(var i = 0;i!=gDealer.users[index].userRoles.length;i++){
+		if(gDealer.users[index].userRoles[i] != "Dealer" && gDealer.users[index].userRoles[i] != "DealerAdmin"){
+			newUserRoles[y] = gDealer.users[index].userRoles[i];
+			y++
+		}
+		console.log(newUserRoles)
+	}
+
+	var user = gDealer.users[index];
+	console.log(user);
+	console.log(newRoles);
+	UpdateUserRole(user,newRoles,newUserRoles).then(function (user) {
+		user.roles = newRoles;
+		user.userRoles = newUserRoles;
+		GetDealerId()
+	});
+}
+
+async function UpdateUserRole(user,newRoles,newUserRoles) {
+	var obj = new Object();
+	obj.user = user;
+	obj.user.roles = newRoles;
+	obj.user.userRoles = newUserRoles;
+	obj.tokenId = tokenId;
+	const result = await $.ajax({
+		type: "PUT",
+		url: "/api/user/save",
+		data: obj,
+		cache: false,
+		dataType: "json",
+		contentType: "application/x-www-form-urlencoded",
+		success: function (results) {
+			console.log(results);
+		},
+		error: function (results) { console.log(results.statusText); },
+	});
+	return result;
+
+
+	// var obj = new Object();
+	// obj.tokenId = tokenId
+	// obj.user = newUser;
+	// const result = await $.ajax({
+	// 	type: "PUT",
+	// 	url: "/api/user/save",
+	// 	data: obj,
+	// 	cache: false,
+	// 	dataType: "json",
+	// 	contentType: "application/x-www-form-urlencoded",
+	// 	success: function (results) {
+			
+	// 	},
+	// 	error: function (results) { console.log(results.statusText); },
+	// });
+	// return result;
+
 }
 
 async function GetUser(id) {
