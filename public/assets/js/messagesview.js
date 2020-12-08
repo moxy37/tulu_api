@@ -1,4 +1,11 @@
+var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
 var gMessage = null;
+var day = null;
+var month = null;
+var year = null;
+var time = null;
+
 
 function PageLoadFunction() {
 	// TestAjax();
@@ -16,12 +23,40 @@ function PageLoadFunction() {
 		$("#TargetSelect").append(html);
 		ListMessages().then(function (msgs) {
 			var html2 = '';
+			console.log(msgs);
+
+
+			
+
 			for (var i = 0; i < msgs.length; i++) {
+				if(msgs[i].isRead == 1){
+					html2 += `<div id="messageDiv" class="read">`;
+				}else{
+					html2 += `<div id="messageDiv" class="unread">`;
+				}
+				html2 += `<p class="from"><b>From:&nbsp</b>`+ msgs[i].senderName + `</p>`;
 				
-				html2 += `<div class="messageDiv">`;
-				html2 += `<p class="from"><b>From:</b>`+ msgs[i].targetName + `</p>`;
-				html2 += `<p class="time">`+ msgs[i].timestamp + `</p>`;
-				html2 += `<p class="message"><b>Message:</b>`+ msgs[i].message + `</p>`;
+
+				
+				time = msgs[i].timestamp.slice(11,16);
+				year = msgs[i].timestamp.slice(0,4);
+				console.log(year)
+				
+				if(msgs[i].timestamp.slice(5,6) == "0"){
+					month = msgs[i].timestamp.slice(6,7);
+				}else{
+					month = msgs[i].timestamp.slice(5,7);
+				}
+				console.log(month);
+
+				if(msgs[i].timestamp.slice(8,9) == "0"){
+					day = msgs[i].timestamp.slice(9,10);
+				}else{
+					day = msgs[i].timestamp.slice(8,10);
+				}
+
+				html2 += `<p class="time">`+ months[month-1] +` `+ day +`, `+ year +` `+ time +`</p>`;
+				html2 += `<p class="message"><b>Message:&nbsp</b>`+ msgs[i].message + `</p>`;
 				
 				if (msgs[i].isRead === 0 || msgs[i].isRead === '0') {
 					html2 += `<input type="button" value="Mark Read" id="readBtn" onclick="ReadMessage('` + msgs[i].id + `');" />`;
