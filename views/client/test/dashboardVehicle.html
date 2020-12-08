@@ -25,20 +25,7 @@
 	</div>
 	<div class="vehicles">
 		<ul class="vehicleContainer" id="vehicleContainer">
-			<li>
-				<div class="image">
 
-				</div>
-				<div class="vehicleInfo">
-					<p>Car Title</p>
-					<p>$12,345</p>
-					<p>0 views</p>
-				</div>
-				<div class="control">
-					<i class="far fa-edit" onclick="showEditVehicle()"></i>
-					<i class="far fa-trash-alt" onclick="deleteVehicle()"></i>
-				</div>
-			</li>
 		</ul>
 		<div class="addVehicle">
 			<i class="fas fa-plus" onclick="showAddNewVehicle()"></i>
@@ -64,10 +51,11 @@
 
 	<div class="editVehicle">
 		<div class="editVehicleForm">
-			<div class="imageContainer" id="imageContainer">
-				
+			<label for="imageContainer">Vehicle Images:</label>
+			<div class="imageContainer" id="imageContainer" name="imageContainer">
+
 			</div>
-			<button onclick="addCarDocumentsImage()">Upload Images</button>
+			<button class="imageUpload"onclick="addCarDocumentsImage()">Upload Images</button>
 
 			<form id="upload-carDocuments-photos" method="post" action="/api/file/upload" enctype="multipart/form-data">
 				<div class="form-group" style="display:none;">

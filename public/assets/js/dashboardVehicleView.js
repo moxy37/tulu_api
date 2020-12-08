@@ -1,11 +1,13 @@
 var gDealer = null;
 var gDealerUsers = [];
 
+
 var gIndex = null;
 var gVehicles = null;
 var dId = null;
 
 var currVin = null;
+var currVehicle = null;
 
 function PageLoadFunction() {
 	LoadNavigation();
@@ -52,10 +54,10 @@ function MakeNewVehicle() {
     var vin = $("#vinNum").val();
     NewVehicle(vin, dId).then(function (vehicle) {
 		vehicle = vehicle;
-		// SaveVehicle(vehicle, dId).then(function (vehicle) {
-		// 	hideAddNewVehicle();
-		// 	PageLoadFunction();
-		// });
+		SaveVehicle(vehicle, dId).then(function (vehicle) {
+			hideAddNewVehicle();
+			PageLoadFunction();
+		});
     });
 }
 
@@ -134,6 +136,18 @@ function showEditVehicle(index) {
 	document.querySelector(".editVehicle").style = "display:flex;";
 
 	gIndex = index;
+	currVin = gVehicles[index].vin;
+	currVehicle = gVehicles[index];
+	console.log(currVin);
+	var html = ""
+	
+	for(var x = 0;x!=currVehicle.links.length;x++){
+		html += '<img  class="thumbNail" src="' + currVehicle.links[x].url + '" />';
+	}
+
+    $("#imageContainer").empty();
+    $("#imageContainer").append(html);
+
 	$("#price").val(gVehicles[index].msrp);
 	$("#year").val(gVehicles[index].year);
 	$("#make").val(gVehicles[index].make);
@@ -271,8 +285,8 @@ function SubmitCarDocumentsImage() {
 function UploadCarDocumentsFiles(formData) {
     $.ajax({
         headers: {
-            'vin': gVehicles.vin,
-            'dealerid': gVehicles.dealerId,
+            'vin': currVehicle.vin,
+            'dealerid': currVehicle.dealerId,
             'tokenid': tokenId,
             'uuid': uid,
             'myext': myExt
@@ -287,15 +301,15 @@ function UploadCarDocumentsFiles(formData) {
             return xhr;
         }
     }).done(function (o) {  
-		console.log(gVehicles[gIndex]);
-        o.sequence = gVehicles.links.length;
+		console.log(currVehicle);
+        o.sequence = currVehicle.links.length;
         o.type = "carDocuments";
-        gVehicles.links.push(o);
-        console.log(gVehicles.links);
+        currVehicle.links.push(o);
+        console.log(currVehicle.links);
         var html = '';
-        for (var i = 0; i < gVehicles.links.length; i++) {
-            if(gVehicles.links[i].type=="carDocuments"){
-                html += '<img  class="thumbNail" src="' + gVehicles.links[i].url + '" />';
+        for (var i = 0; i < currVehicle.links.length; i++) {
+            if(currVehicle.links[i].type=="carDocuments"){
+                html += '<img  class="thumbNail" src="' + currVehicle.links[i].url + '" />';
             }
         }
         $("#imageContainer").empty();

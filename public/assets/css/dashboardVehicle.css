@@ -65,6 +65,7 @@
 }
 
 .additionalInfoContainer{
+    display:none;
     height:100vh;
     width:100vw;
     position: absolute;
@@ -150,4 +151,27 @@ textarea{
     border:2px solid #79C6AC;
     padding:10px 15px;
     border-radius: 10px;
+}
+
+.imageContainer{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:  space-evenly;
+}
+
+.thumbNail{
+    width:50px;
+    height:50px;
+    margin:15px;
+}
+
+.imageContainer{
+    margin:10px 0 0 0;
+    border:2px solid #79C6AC;
+    border-radius: 10px;
+    padding:35px 15px;
+}
+
+.imageUpload{
+    margin:20px 0 30px 0;
 }
