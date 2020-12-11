@@ -1,6 +1,36 @@
 Lord's to do list
 
 
+SITE 
+
+////////////////////////////////////////////////////////////////////
+
+Finance page
+-keep landing page
+-create new page
+
+Full Name
+Email / Phone
+Vehicle Interest (Drop down box car/suv/truck)
+Do you have a vehicle for trade? (Drop down yes/no)
+preferred time of contact? Morning or Afternoon
+
+Optional:
+Are you working full-time?
+Household income?
+
+-
+
+basic info()
+housing income employment()
+review and submit
+I agree to privacy text (textbox)
+
+Basis https://www.chhyundai.com/credit-application.htm
+
+
+//////////////////////////////////////////////////////////////////////
+
 MESSAGE
 >page
 >new to create
