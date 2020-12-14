@@ -33,7 +33,7 @@ function PageLoadFunction() {
 					html2 += `<div id="messageDiv" class="read">`;
 				}else{
 					html2 += `<div id="messageDiv" class="unread">`;
-				}
+				}	
 				html2 += `<p class="from"><b>From:&nbsp</b>`+ msgs[i].senderName + `</p>`;
 				
 
