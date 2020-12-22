@@ -1,14 +1,14 @@
 var mysql = require("mysql2");
 
 var dbConnection = mysql.createPool({
-  host: "127.0.0.1",
+  // host: "127.0.0.1",
+  host: "tulucanadamysql.mysql.database.azure.com",
   connectionLimit: 10,
-  user: "spartacus",
-  password: "I@mSp@rt@cus!",
-  // database: "spike",
+  // user: "spartacus",
+  user: "tulusqladmin@tulucanadamysql",
+  // password: "I@mSp@rt@cus!",
+  password: "Tulu..Tulu37!..Tulu",
   // port: 3306
-  // user: "root",
-  // password: "admin",
   database: "spartacus",
 });
 
