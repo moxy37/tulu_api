@@ -10,15 +10,28 @@ var helperDao = new HelperDAO();
 
 router = express.Router();
 
+
+router.get('/test_vin2/:vin', function (req, res) {
+    var VehicleDAO = require(__base + "dao/vehicle/vehicledao");
+    var vehicleDao = new VehicleDAO();
+    var vin = req.params.vin;
+    var dealerId = '';
+    vehicleDao.new('', dealerId, vin, function (err, results) {
+        return res.send(results);
+    });
+});
+
 router.get('/test_vin/:vin', function (req, res) {
     var VehicleDAO = require(__base + "dao/vehicle/vehicledao");
     var vehicleDao = new VehicleDAO();
     var vin = req.params.vin;
+    var dealerId = '';
+
     vehicleDao.vinDecode('', vin, function (err, result) {
         return res.send(result);
-        
+
     });
-    
+
 });
 
 
